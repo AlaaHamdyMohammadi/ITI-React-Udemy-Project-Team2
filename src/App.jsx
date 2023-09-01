@@ -20,7 +20,7 @@ function App() {
     <>
       <RouterProvider router={router} />
       <p className="text-center font-semibold text-red-600">Hello Tailwind</p>
-      <p className="text-primary">Hello Bootstrap</p>
+      <p className="text-primary text-center">Hello Bootstrap</p>
     </>
   );
 }
