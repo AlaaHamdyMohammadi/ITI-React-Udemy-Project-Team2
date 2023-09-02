@@ -4,6 +4,7 @@ import AppLayout from './components/AppLayout';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import HomePage from './pages/HomePage';
+import SignUp from './pages/SignUp';
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
     children: [
       {index: true, element: <HomePage/>},
       { path: '/login', element: <Login /> },
+      { path: '/signUp', element: <SignUp /> },
       { path: '*', element: <NotFound /> },
     ],
   },
