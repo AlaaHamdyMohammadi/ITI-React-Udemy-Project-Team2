@@ -1,4 +1,5 @@
-import CarouselImage from "../components/Carousel/CarouselImage"
+import CarouselImage from "../components/CarouselImage"
+import CoursesList from "../components/CoursesList"
 import Photos from "../components/Photos"
 
 function HomePage() {
@@ -6,6 +7,7 @@ function HomePage() {
         <div>
             <CarouselImage/>
             <Photos/>
+            <CoursesList/>
         </div>
     )
 }

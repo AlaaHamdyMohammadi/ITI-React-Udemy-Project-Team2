@@ -42,7 +42,12 @@ function SignUp() {
             tips.
           </span>
         </div>
-        <Button width="w-80" onClick={() => navigate('/')}>
+        <Button
+          width="w-80"
+          backgroundColor="bg-violet-600"
+          text="text-white"
+          onClick={() => navigate('/')}
+        >
           Sign Up
         </Button>
         <p className="border-b-2 p-2.5 text-xs">

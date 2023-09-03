@@ -1,12 +1,15 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
-function Button({children, width}) {
+function Button({children, width, text, backgroundColor}) {
     return (
-      <button className={`my-3 ${width} border-solid border-black bg-violet-600 p-2.5 font-bold text-white`}>
+      <button
+        className={`my-3 ${width} border-solid border-black ${backgroundColor} p-2.5 font-bold ${text}`}
+      >
         {children}
       </button>
     );
 }
 
 export default Button
+//bg-violet-600 text-white
