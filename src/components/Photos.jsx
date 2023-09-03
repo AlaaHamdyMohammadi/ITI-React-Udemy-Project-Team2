@@ -1,6 +1,6 @@
 function Photos() {
   return (
-    <div className="mt-5 bg-slate-200 p-16 text-center">
+    <div className="mt-5 bg-slate-100 p-16 text-center">
       <p className="text-xl text-slate-500">
         Trusted by over 14,400 companies and millions of learners around the
         world

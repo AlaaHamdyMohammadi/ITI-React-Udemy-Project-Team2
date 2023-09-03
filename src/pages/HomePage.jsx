@@ -1,5 +1,6 @@
 import CarouselImage from "../components/CarouselImage"
 import CoursesList from "../components/CoursesList"
+import Learners from "../components/Learners"
 import Photos from "../components/Photos"
 
 function HomePage() {
@@ -8,6 +9,7 @@ function HomePage() {
             <CarouselImage/>
             <Photos/>
             <CoursesList/>
+            <Learners/>
         </div>
     )
 }
