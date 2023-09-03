@@ -57,27 +57,6 @@ function CoursesList() {
       <ContentOutOfTheBox />
       <div className="border-1 mt-2.5 border-solid border-slate-400 p-3">
         <ContentInTheBox />
-        {/*<Card style={{ width: '18rem' }}>
-          <Card.Img
-            className="h-32"
-            variant="top"
-            src="./../../public/images/homePage/carImg1.jfif"
-          />
-          <Card.Body className="h-42 ">
-            <Card.Title>
-              <div className="text-sm font-bold">
-                The Complete Python Bootcamp From Zero to Hero in Python
-              </div>
-            </Card.Title>
-            <Card.Text>
-              <div>
-                <p className="text-sm text-slate-500">Jose Portilla</p>
-                <p className="font-bold">5 ⭐⭐⭐⭐⭐</p>
-                <p className="font-bold">E1,599.99</p>
-              </div>
-            </Card.Text>
-          </Card.Body>
-  </Card>*/}
         <Carousel>
           <Carousel.Item>
             <div className="flex justify-between">
