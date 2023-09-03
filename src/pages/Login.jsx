@@ -8,9 +8,12 @@ import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const navigate = useNavigate();
+  function handleSubmit(e){
+    e.preventDefault();
+  }
   return (
     <>
-      <form className="flex h-screen flex-col items-center justify-center">
+      <form onSubmit={(e)=> handleSubmit(e)} className="flex h-screen flex-col items-center justify-center">
         <label className="mr-40 font-bold">Log in to your Udemy account</label>
         <h5 className="border-1 my-1 w-96 border-solid border-black p-1 text-lg font-bold">
           <FcGoogle className="inline p-1 text-4xl" /> Continue with Google

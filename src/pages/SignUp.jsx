@@ -5,9 +5,15 @@ import Button from './../components/Button';
 
 function SignUp() {
     const navigate = useNavigate();
+    function handleSubmit(e) {
+      e.preventDefault();
+    }
   return (
     <>
-      <form className="flex h-screen flex-col items-center justify-center">
+      <form
+        onSubmit={(e) => handleSubmit(e)}
+        className="flex h-screen flex-col items-center justify-center"
+      >
         <label className="mr-32 font-bold">Sign up and start learning</label>
         <input
           type="text"
@@ -36,14 +42,20 @@ function SignUp() {
             tips.
           </span>
         </div>
-        <Button width="w-80" onClick={() => navigate('/')}>Sign Up</Button>
+        <Button width="w-80" onClick={() => navigate('/')}>
+          Sign Up
+        </Button>
         <p className="border-b-2 p-2.5 text-xs">
           By signing up, you agree to our <u>Terms of Use</u> and
           <u>Privacy Policy.</u>
         </p>
         <p className="text-sm">
           Already have an account?
-          <a href="" onClick={() => navigate('/login')} className="font-bold text-violet-600">
+          <a
+            href=""
+            onClick={() => navigate('/login')}
+            className="font-bold text-violet-600"
+          >
             Log in
           </a>
         </p>
