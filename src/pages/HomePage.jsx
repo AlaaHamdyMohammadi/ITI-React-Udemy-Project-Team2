@@ -1,7 +1,9 @@
+import CarouselImage from "../components/Carousel/CarouselImage"
+
 function HomePage() {
     return (
         <div>
-            HomePage
+            <CarouselImage/>
         </div>
     )
 }
