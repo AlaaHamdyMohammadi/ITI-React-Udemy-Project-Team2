@@ -1,7 +1,7 @@
 function Header() {
     return (
-        <div>
-            header
+        <div className="font-bold text-center text-lg">
+            HEADER
         </div>
     )
 }
