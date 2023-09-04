@@ -2,11 +2,16 @@
 /* eslint-disable no-unused-vars */
 import { useNavigate } from 'react-router-dom';
 import Button from './../components/Button';
+import { useState } from 'react';
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 
 function SignUp() {
     const navigate = useNavigate();
+    const [show, setShow] = useState(false);
+
     function handleSubmit(e) {
       e.preventDefault();
+      navigate('/');
     }
   return (
     <>
@@ -26,15 +31,26 @@ function SignUp() {
           className="border-1 my-1 w-80 border-solid border-black p-3 placeholder:font-bold placeholder:text-stone-950"
         />
         <input
-          type="password"
+          type={show ? 'text' : 'password'}
           placeholder="Password"
           className="border-1 my-1 w-80 border-solid border-black p-3 placeholder:font-bold placeholder:text-stone-950"
         />
         <input
-          type="password"
+          type={show ? 'text' : 'password'}
           placeholder="Confirm Password"
           className="border-1 my-1 w-80 border-solid border-black p-3 placeholder:font-bold placeholder:text-stone-950"
         />
+        {show ? (
+          <AiFillEye
+            onClick={() => setShow(!show)}
+            className="relative bottom-10 left-44 text-xl"
+          />
+        ) : (
+          <AiFillEyeInvisible
+            onClick={() => setShow(!show)}
+            className="relative bottom-10 left-44 text-xl"
+          />
+        )}
         <div className="w-80 text-left">
           <input type="checkbox" className="border-none" />
           <span className="w-80 pl-2">
@@ -42,12 +58,7 @@ function SignUp() {
             tips.
           </span>
         </div>
-        <Button
-          width="w-80"
-          backgroundColor="bg-violet-600"
-          text="text-white"
-          onClick={() => navigate('/')}
-        >
+        <Button width="w-80" backgroundColor="bg-violet-600" text="text-white">
           Sign Up
         </Button>
         <p className="border-b-2 p-2.5 text-xs">

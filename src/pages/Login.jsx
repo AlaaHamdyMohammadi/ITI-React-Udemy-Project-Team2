@@ -4,12 +4,16 @@
 import Button from './../components/Button';
 import { FcGoogle } from 'react-icons/fc';
 import { BsFacebook, BsApple } from 'react-icons/bs';
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { useNavigate, NavLink, Link } from 'react-router-dom';
+import { useState } from 'react';
 
 function Login() {
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
   function handleSubmit(e){
     e.preventDefault();
+    navigate('/');
   }
   return (
     <>
@@ -51,16 +55,23 @@ function Login() {
           className="border-1 my-1 w-96 border-solid border-black p-3 placeholder:font-bold placeholder:text-stone-950"
         />
         <input
-          type="password"
+          type={show ? 'text' : 'password'}
           placeholder="Password"
           className="border-1 my-1 w-96 border-solid border-black p-3 placeholder:font-bold placeholder:text-stone-950"
         />
-        <Button
-          width="w-96"
-          backgroundColor="bg-violet-600"
-          text="text-white"
-          onClick={() => navigate('/')}
-        >
+        {show ? (
+          <AiFillEye
+            onClick={() => setShow(!show)}
+            className="relative bottom-10 left-44 text-xl"
+          />
+        ) : (
+          <AiFillEyeInvisible
+            onClick={() => setShow(!show)}
+            className="relative bottom-10 left-44 text-xl"
+          />
+        )}
+
+        <Button width="w-96" backgroundColor="bg-violet-600" text="text-white">
           Log in
         </Button>
         <p className="w-96 border-b-2 p-2.5 text-center text-lg">
