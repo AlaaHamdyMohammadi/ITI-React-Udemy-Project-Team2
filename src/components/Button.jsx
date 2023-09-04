@@ -12,4 +12,4 @@ function Button({children, width, text, backgroundColor}) {
 }
 
 export default Button
-//bg-violet-600 text-white
+
