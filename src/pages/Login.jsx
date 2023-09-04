@@ -4,7 +4,7 @@
 import Button from './../components/Button';
 import { FcGoogle } from 'react-icons/fc';
 import { BsFacebook, BsApple } from 'react-icons/bs';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink, Link } from 'react-router-dom';
 
 function Login() {
   const navigate = useNavigate();
@@ -19,14 +19,31 @@ function Login() {
       >
         <label className="mr-40 font-bold">Log in to your Udemy account</label>
         <h5 className="border-1 my-1 w-96 border-solid border-black p-1 text-lg font-bold">
-          <FcGoogle className="inline p-1 text-4xl" /> Continue with Google
+          <FcGoogle className="inline p-1 text-4xl" />
+          <a
+            className="pointer text-black no-underline"
+            href="https://www.google.com/"
+          >
+            Continue with Google
+          </a>
         </h5>
         <h5 className="border-1 my-1 w-96 border-solid border-black p-1 text-lg font-bold">
-          <BsFacebook className="inline p-1 text-4xl text-sky-600" /> Continue
-          with Facebook
+          <BsFacebook className="inline p-1 text-4xl text-sky-600" />
+          <a
+            className="pointer text-black no-underline"
+            href="https://www.facebook.com/"
+          >
+            Continue with Facebook
+          </a>
         </h5>
         <h5 className="border-1 my-1 w-96 border-solid border-black p-1 text-lg font-bold">
-          <BsApple className="inline p-1 text-4xl" /> Continue with Apple
+          <BsApple className="inline p-1 text-4xl" />
+          <a
+            className="pointer text-black no-underline"
+            href="https://www.icloud.com/"
+          >
+            Continue with Apple
+          </a>
         </h5>
         <input
           type="email"
