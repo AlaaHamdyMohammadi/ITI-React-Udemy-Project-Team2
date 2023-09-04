@@ -7,7 +7,8 @@ import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 
 function SignUp() {
     const navigate = useNavigate();
-    const [show, setShow] = useState(false);
+    const [showPassword, setshowPassword] = useState(false);
+    const [showPasswordConfirm, setshowPasswordConfirm] = useState(false);
 
     function handleSubmit(e) {
       e.preventDefault();
@@ -31,24 +32,35 @@ function SignUp() {
           className="border-1 my-1 w-80 border-solid border-black p-3 placeholder:font-bold placeholder:text-stone-950"
         />
         <input
-          type={show ? 'text' : 'password'}
+          type={showPassword ? 'text' : 'password'}
           placeholder="Password"
           className="border-1 my-1 w-80 border-solid border-black p-3 placeholder:font-bold placeholder:text-stone-950"
         />
-        <input
-          type={show ? 'text' : 'password'}
-          placeholder="Confirm Password"
-          className="border-1 my-1 w-80 border-solid border-black p-3 placeholder:font-bold placeholder:text-stone-950"
-        />
-        {show ? (
+        {showPassword ? (
           <AiFillEye
-            onClick={() => setShow(!show)}
-            className="relative bottom-10 left-44 text-xl"
+            onClick={() => setshowPassword(!showPassword)}
+            className="relative bottom-10 left-36 text-xl"
           />
         ) : (
           <AiFillEyeInvisible
-            onClick={() => setShow(!show)}
-            className="relative bottom-10 left-44 text-xl"
+            onClick={() => setshowPassword(!showPassword)}
+            className="relative bottom-10 left-36 text-xl"
+          />
+        )}
+        <input
+          type={showPasswordConfirm ? 'text' : 'password'}
+          placeholder="Confirm Password"
+          className="border-1 my-1 w-80 border-solid border-black p-3 placeholder:font-bold placeholder:text-stone-950"
+        />
+        {showPasswordConfirm ? (
+          <AiFillEye
+            onClick={() => setshowPasswordConfirm(!showPasswordConfirm)}
+            className="relative bottom-10 left-36 text-xl"
+          />
+        ) : (
+          <AiFillEyeInvisible
+            onClick={() => setshowPasswordConfirm(!showPasswordConfirm)}
+            className="relative bottom-10 left-36 text-xl"
           />
         )}
         <div className="w-80 text-left">
