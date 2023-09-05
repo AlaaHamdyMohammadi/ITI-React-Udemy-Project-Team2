@@ -5,6 +5,7 @@ import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import HomePage from './pages/HomePage';
 import SignUp from './pages/SignUp';
+import TeachOnUdemy from './pages/TeachOnUdemy/teachonudemy';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
       {index: true, element: <HomePage/>},
       { path: '/login', element: <Login /> },
       { path: '/signup', element: <SignUp /> },
+      { path: '/teach-on-udemy', element: <TeachOnUdemy /> },
       { path: '*', element: <NotFound /> },
     ],
   },
