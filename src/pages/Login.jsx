@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
@@ -7,6 +8,7 @@ import { BsFacebook, BsApple } from 'react-icons/bs';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { useNavigate, NavLink, Link } from 'react-router-dom';
 import { useState } from 'react';
+import './LoginAndSignUp.css'
 
 function Login() {
   const navigate = useNavigate();
@@ -49,16 +51,34 @@ function Login() {
             Continue with Apple
           </a>
         </h5>
-        <input
-          type="email"
-          placeholder="Email"
-          className="border-1 my-1 w-96 border-solid border-black p-3 placeholder:font-bold placeholder:text-stone-950"
-        />
-        <input
-          type={show ? 'text' : 'password'}
-          placeholder="Password"
-          className="border-1 my-1 w-96 border-solid border-black p-3 placeholder:font-bold placeholder:text-stone-950"
-        />
+        <div className="relative">
+          <input
+            type="email"
+            placeholder=""
+            id="email"
+            className="textbox border-1 my-1 w-96 border-solid border-black p-3"
+          />
+          <label
+            htmlFor="email"
+            className="form-label absolute left-4 top-5 cursor-text font-bold transition-all"
+          >
+            Email
+          </label>
+        </div>
+        <div className="relative">
+          <input
+            type={show ? 'text' : 'password'}
+            placeholder=""
+            id="password"
+            className="textbox border-1 my-1 w-96 border-solid border-black p-3"
+          />
+          <label
+            htmlFor="password"
+            className="form-label absolute left-4 top-5 cursor-text font-bold transition-all"
+          >
+            Password
+          </label>
+        </div>
         {show ? (
           <AiFillEye
             onClick={() => setShow(!show)}
