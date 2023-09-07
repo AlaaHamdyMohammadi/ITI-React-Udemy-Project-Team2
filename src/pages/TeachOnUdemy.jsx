@@ -1,11 +1,10 @@
-// import Tab from 'react-bootstrap/Tab';
-// import Tabs from 'react-bootstrap/Tabs';
-// import Carousel from 'react-bootstrap/Carousel';
+/* eslint-disable no-unused-vars */
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+import Carousel from 'react-bootstrap/Carousel';
 
-{/*export default function TeachOnUdemy() {
-  return (
-    <>
-      <div className="container-fluid overflow-hidden p-0">
+/*
+<div className="container-fluid overflow-hidden p-0">
         <div className="d-flex flex-md-row flex-column">
           <div className="row position-relative head flex-grow-1">
             <div>
@@ -291,6 +290,12 @@
           </div>
         </div>
       </div>
+*/
+
+export default function TeachOnUdemy() {
+  return (
+    <>
+      
     </>
   );
-}*/}
+}

@@ -7,7 +7,6 @@ import HomePage from './pages/HomePage';
 import SignUp from './pages/SignUp';
 import TeachOnUdemy from './pages/TeachOnUdemy';
 
-
 const router = createBrowserRouter([
   {
     path: '/',
