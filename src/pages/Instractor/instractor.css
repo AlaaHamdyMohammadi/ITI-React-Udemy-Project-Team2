@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.sidemenue{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 5%;
+    background-color: black;
+    margin-top:-1px;
+    z-index: 1;
+    transition: all 1s;
+}
+.sidemenue:hover{
+    width: 15%;
+}
+.myMenuItem{
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+.main{
+    position: absolute;
+    left: 10%;
+}
+.purpleBtn{
+    background-color: rgb(214, 44, 214) !important;
+    color: white !important;
+}

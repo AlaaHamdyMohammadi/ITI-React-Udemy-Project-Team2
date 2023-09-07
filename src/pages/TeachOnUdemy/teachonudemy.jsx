@@ -141,7 +141,7 @@ export default function TeachOnUdemy(){
 
 
 
-    <Carousel  controls className='mt-5 bg-light'>
+    <Carousel data-bs-theme="dark" indicators={false} controls className='mt-5 bg-light'>
     <Carousel.Item>
       <div className="row g-5 justify-content-center">
                     <div className="col-md-3 col-7">
