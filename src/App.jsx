@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import HomePage from './pages/HomePage';
 import SignUp from './pages/SignUp';
 import TeachOnUdemy from './pages/TeachOnUdemy';
+import CartPage from './pages/CartPage';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       { path: '/login', element: <Login /> },
       { path: '/signup', element: <SignUp /> },
       { path: '/teach-on-udemy', element: <TeachOnUdemy/> },
+      {path: '/cart', element: <CartPage/>},
       { path: '*', element: <NotFound /> },
     ],
   },

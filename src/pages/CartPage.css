@@ -1,0 +1,93 @@
+
+.star{
+    color: #e59819;
+ }
+ .checkout{
+ background: rgb(167, 83, 245);
+ color: white;
+ border-radius: 0%;
+ width: 100%;
+ margin-top: -11px;
+ font-weight: 500;
+ 
+ } 
+ .price{
+ font-size: 30px;
+ }  
+ .card-header{
+     background-color: white;
+ }  
+ .total{
+     color: gray;
+     /* font-size: 5px; */
+ }
+ /* h5, .h5{
+     font-size: 1rem;
+ } */
+ .container .promotion{
+     font-weight: 650;
+     font-size: 1.2rem;
+ }
+ .bestseller{
+    color: rgb(11, 78, 25);
+    background: #ebe293;
+    height: 50px;
+    width: 100px;
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 2px;
+
+  }
+  .recently{
+    color: rgb(11, 78, 25);
+    background: #79cbce;
+    height: 50px;
+    width: 100px;
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 2px;
+  }
+  .update{
+    font-size: small;
+  color: rgb(53, 124, 53);
+  font-weight: 500;
+  }
+  /* .strong:hover{
+  color: rgb(104, 53, 153);
+  } */
+ .close{
+     color: black;
+ }
+ .apply{
+     background: rgb(167, 83, 245);
+  color: white;
+  font-weight: 500;
+ }
+ .keeping{
+     color: gray;
+     font-weight: 500;
+ }
+ .isapplied{
+     color: gray;
+ 
+ }
+ .input1{
+     border-radius: 0%;
+ }
+ .might{
+     font-size: 25px;
+     font-weight: 600;
+ }
+ .edit1{
+     font-size: 1rem;
+     font-weight: 700;
+ }
+ .edit2{
+     font-size: 0.8rem;
+ }
+ .card img{
+     object-fit: cover;
+     /* width: 200px; */
+     height: 150px;
+ }
+ 

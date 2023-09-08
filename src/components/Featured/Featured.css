@@ -1,0 +1,9 @@
+.featured, .customers{
+    background: #f7f9fa;
+}
+.featured a{
+    color: #5624d0;
+}
+.featured p{
+    color: gray;
+}

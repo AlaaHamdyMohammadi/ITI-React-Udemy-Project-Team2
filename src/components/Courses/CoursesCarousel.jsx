@@ -5,7 +5,7 @@ import ModalCard from './ModalCard';
 
 function CoursesCarousel() {
   return (
-    <Carousel className="mt-16 mb-16">
+    <Carousel className="mt-2 mb-2">
       <Carousel.Item>
         <div className="flex justify-between">
           <CardItem />
@@ -40,7 +40,7 @@ function CardItem() {
     <div className="relative">
       <img
         className="h-40 w-60"
-        src="./../../public/images/homePage/carImg1.jfif"
+        src="./../../public/images/homePage/carImg9.jfif"
         onMouseOver={handleShow}
         onMouseLeave={handleClose}
       />
