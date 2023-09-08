@@ -13,10 +13,28 @@ import './LoginAndSignUp.css'
 function Login() {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
+  const [login, setLogin] = useState({ email : '', password: ''});
+  const [error, setError] = useState({emailError: '', passwordError: ''});
+ 
+  function handleValidation(e){
+    if(e.target.name === 'email'){
+      const emailValue = e.target.value; 
+      setLogin({...login, email: emailValue});
+      setError({
+        ...error, emailError: emailValue.length === 0 ? 'Please fill out this field.' : emailValue.includes('@') ? '' : `Please include an '@' in the email address.`
+      })
+    }else if(e.target.name === 'password'){
+      const passwordValue = e.target.value;
+      setLogin({...login, password: passwordValue});
+      setError({...error, passwordError: passwordValue.length === 0 ? 'Please fill out this field.' : passwordValue.length <= 5 ? `Please lengthen this text to 5 characters or more` : ''})
+    }
+  }
+ 
   function handleSubmit(e){
     e.preventDefault();
     navigate('/');
   }
+  
   return (
     <>
       <form
@@ -24,7 +42,7 @@ function Login() {
         className="flex h-screen flex-col items-center justify-center"
       >
         <label className="mr-40 font-bold">Log in to your Udemy account</label>
-        <h5 className="border-1 my-1 w-96 border-solid border-black p-1 text-lg font-bold">
+        <h5 className="border-1 my-1 mb-3 w-96 border-solid border-black p-1 text-lg font-bold">
           <FcGoogle className="inline p-1 text-4xl" />
           <a
             className="pointer text-black no-underline"
@@ -33,7 +51,7 @@ function Login() {
             Continue with Google
           </a>
         </h5>
-        <h5 className="border-1 my-1 w-96 border-solid border-black p-1 text-lg font-bold">
+        <h5 className="border-1 my-1 mb-3 w-96 border-solid border-black p-1 text-lg font-bold">
           <BsFacebook className="inline p-1 text-4xl text-sky-600" />
           <a
             className="pointer text-black no-underline"
@@ -42,7 +60,7 @@ function Login() {
             Continue with Facebook
           </a>
         </h5>
-        <h5 className="border-1 my-1 w-96 border-solid border-black p-1 text-lg font-bold">
+        <h5 className="border-1 my-1 mb-3 w-96 border-solid border-black p-1 text-lg font-bold">
           <BsApple className="inline p-1 text-4xl" />
           <a
             className="pointer text-black no-underline"
@@ -53,7 +71,10 @@ function Login() {
         </h5>
         <div className="relative">
           <input
+            value={login.email}
+            onChange={(e) => handleValidation(e)}
             type="email"
+            name="email"
             placeholder=""
             id="email"
             className="textbox border-1 my-1 w-96 border-solid border-black p-3"
@@ -64,11 +85,15 @@ function Login() {
           >
             Email
           </label>
+          <p className="text-sm font-bold text-red-600">{error.emailError}</p>
         </div>
         <div className="relative">
           <input
+            value={login.password}
+            onChange={(e) => handleValidation(e)}
             type={show ? 'text' : 'password'}
             placeholder=""
+            name="password"
             id="password"
             className="textbox border-1 my-1 w-96 border-solid border-black p-3"
           />
@@ -78,16 +103,19 @@ function Login() {
           >
             Password
           </label>
+          <p className="text-sm font-bold text-red-600">
+            {error.passwordError}
+          </p>
         </div>
         {show ? (
           <AiFillEye
             onClick={() => setShow(!show)}
-            className="relative bottom-10 left-44 text-xl"
+            className="relative bottom-16 left-44  text-xl"
           />
         ) : (
           <AiFillEyeInvisible
             onClick={() => setShow(!show)}
-            className="relative bottom-10 left-44 text-xl"
+            className="relative bottom-16 left-44  text-xl"
           />
         )}
 

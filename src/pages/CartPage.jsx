@@ -89,7 +89,7 @@ function CartPage() {
 
                       <div className="price  absolute inset-y-0 right-4 ">
                         <div className="absolute inset-x-0 top-0 mb-4 rotate-180 transform text-violet-500 ">
-                          <CiShoppingTag />
+                          <CiShoppingTag className='ShoppingTag'/>
                         </div>
                         <strong className="my-4 text-sm text-violet-400">
                           E$319.99{' '}
