@@ -7,6 +7,8 @@ import HomePage from './pages/HomePage';
 import SignUp from './pages/SignUp';
 import TeachOnUdemy from './pages/TeachOnUdemy/teachonudemy';
 import Instractor from './pages/Instractor/instractor';
+import { Provider } from "react-redux"
+import store from './store/store'
 
 const router = createBrowserRouter([
   {
@@ -26,7 +28,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+    <Provider store={store}><RouterProvider router={router} /></Provider>
     </>
   );
 }

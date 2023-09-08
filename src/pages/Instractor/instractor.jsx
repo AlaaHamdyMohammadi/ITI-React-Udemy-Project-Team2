@@ -1,10 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './instractor.css'
 import { BsYoutube ,BsChatLeftText , BsWrench , BsFillBarChartFill , BsQuestionCircle } from "react-icons/bs";
+import { useDispatch } from 'react-redux';
+import { Nav } from 'react-bootstrap';
+import { changeNavbar } from '../../store/slice/navbar';
 
 export default function Instractor(){
     var [isWide,setWide]= useState(false)
+    const dispatch=useDispatch()
+    useEffect(()=>{
+        dispatch(changeNavbar(false))
 
+        return ()=>{
+            dispatch(changeNavbar(true))
+        }
+    })
 
     return <div>
     <div className="sidemenue position-fixed text-white p-2 overflow-hidden text-center" onMouseLeave={()=>{setWide(false)}} onMouseOver={()=>{setWide(true)}}>
@@ -82,7 +92,7 @@ export default function Instractor(){
                 <h6 className="mt-3">Send us a sample video and get expert feedback.</h6>
             </div>
 
-            <div className="col-2">
+            <div className="col-3">
                 <i className="fa-solid fa-comments fs-1"></i>
                 <h5 className="mt-1 text-decoration-underline text-primary">Instructor Community</h5>
                 <h6 className="mt-3">Connect with experienced instructors. Ask questions, browse discussions, and more.</h6>
@@ -94,7 +104,7 @@ export default function Instractor(){
                 <h6 className="mt-3">Learn about best practices for teaching on Udemy.</h6>
             </div>
 
-            <div className="col-2">
+            <div className="col-3">
                 <i className="fa-solid fa-chart-line fs-1"></i>
                 <h5 className="mt-1 text-decoration-underline text-primary">Marketplace Insights</h5>
                 <h6 className="mt-3">Validate your course topic by exploring our marketplace supply and demand.</h6>

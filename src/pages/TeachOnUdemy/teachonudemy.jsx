@@ -147,7 +147,7 @@ export default function TeachOnUdemy(){
                     <div className="col-md-3 col-7">
                         <img src="./public/images/teach on udemy/11.jpg" className="img-fluid rounded-start" alt="..."/>
                     </div>
-                    <div className="col-md-3 col-7 align-self-center">
+                    <div className="col-md-5 col-7 align-self-center">
                             <p className="fs-5">“I’m proud to wake up knowing my work is helping people around the
                                 world improve their careers and build great things. While being a full-time
                                 instructor is hard work, it lets you work when, where, and how you want.”
@@ -165,7 +165,7 @@ export default function TeachOnUdemy(){
                     <div className="col-md-3 col-7">
                     <img src="./public/images/teach on udemy/12.jpg" className="img-fluid rounded-start" alt="..."/>
                     </div>
-                    <div className="col-md-3 col-7 align-self-center">
+                    <div className="col-md-5 col-7 align-self-center">
                     <p className="fs-5">“Udemy has changed my life. It’s allowed me to follow my passion
                                 and become a teacher I love to see my students succeed and hear them say they’ve
                                 learned more, quicker, from my courses than they did in college. It’s so humbling.”
@@ -181,7 +181,7 @@ export default function TeachOnUdemy(){
                     <div className="col-md-3 col-7">
                         <img src="./public/images/teach on udemy/13.jpg" className="img-fluid rounded-start" alt="..."/>
                     </div>
-                    <div className="col-md-3 col-7 align-self-center">
+                    <div className="col-md-5 col-7 align-self-center">
                             <p className="fs-5">“Teaching on Udemy has provided me with two important elements: the
                                 opportunity to reach more learners than I ever would be able to on my own and a
                                 steady stream of extra income.”
@@ -226,7 +226,7 @@ export default function TeachOnUdemy(){
             <p className="fs-4 col-lg-6 col-12 m-auto">Join one of the world’s largest online learning marketplaces.</p>
         </div>
         <div className="row justify-content-center mt-3">
-            <div className="col-lg-2 bg-dark text-light p-3 mt-2 btn rounded-0">
+            <div className="col-lg-2 col-3 bg-dark text-light p-3 mt-2 btn rounded-0">
                 <a href="./business.html" className="h6 lg-3 m-1 text-decoration-none text-light">Get started</a>
 
             </div>
