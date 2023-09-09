@@ -1,0 +1,139 @@
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    list-style-type: none;
+}
+
+
+/* NAV */
+.whole-nav {
+    border-bottom: 1px solid #ccc;
+    width: 101%
+}
+
+@media screen and (max-width: 990px) {
+    .nav-class {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .udemy-logo {
+        position: relative;
+        right: 40%;
+        height: 28px;
+        max-width: 164px;
+    }
+
+    .what-we-do {
+        position: relative;
+        right: 2.6rem;
+    }
+}
+
+/* .navbar-nav .flags {
+    width: 20px !important;
+} */
+
+@media screen and (max-width: 490px) {
+    .nav-class {
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-between; */
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    /* .nav-class+img {
+        text-align: center;
+        justify-content: c;
+    } */
+
+    .udemy-logo {
+        position: relative;
+        left: 0;
+        margin-bottom: 1rem;
+    }
+
+    .what-we-do {
+        position: relative;
+        right: 2.6rem;
+    }
+}
+
+
+
+/* Section */
+
+
+/* LEFT COL */
+/* Define the FontAwesome font-face to access the icon */
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2') format('woff2'),
+        url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.marker {
+    font-family: 'FontAwesome';
+}
+
+
+
+.log-register {
+    margin-left: 17rem;
+}
+
+
+@media screen and (min-width:992px) {
+    .udemy-logo {
+        transform: translateY(-0.5rem);
+    }
+
+    .log-register {
+        display: flex;
+    }
+
+    .log-register p {
+        padding: 4px;
+        font-size: 1rem;
+    }
+
+
+}
+
+
+
+@media screen and (max-width:992px) {
+    .trust .trusted {
+        text-align: center;
+    }
+
+    .VW {
+        width: 70;
+        transform: translateY(-2rem);
+    }
+}
+
+@media screen and (max-width:1030px) {
+    .udemy-logo {
+        transform: translateY(-0.5rem);
+    }
+
+    .log-register {
+        margin-left: 1.5rem;
+    }
+}
+
+.get-in-touch {
+    background-color: black;
+}
+
+
+
+/* Footer */
+footer {
+    padding-top: 1rem;
+    background-color: black;
+
+}

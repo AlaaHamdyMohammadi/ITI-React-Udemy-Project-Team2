@@ -119,12 +119,19 @@ function Login() {
           />
         )}
 
-        <Button width="w-96" backgroundColor="bg-violet-600" text="text-white">
+        <Button
+          width="w-96"
+          backgroundColor="bg-violet-600 hover:bg-violet-800"
+          text="text-white"
+        >
           Log in
         </Button>
         <p className="w-96 border-b-2 p-2.5 text-center text-lg">
           or
-          <a href="" className="font-bold text-violet-600">
+          <a
+            href=""
+            className="font-bold text-violet-600 hover:text-violet-800"
+          >
             Forget Password
           </a>
         </p>
@@ -133,7 +140,7 @@ function Login() {
           <a
             href=""
             onClick={() => navigate('/signup')}
-            className="font-bold text-violet-600"
+            className="font-bold text-violet-600 hover:text-violet-800"
           >
             Sign up
           </a>

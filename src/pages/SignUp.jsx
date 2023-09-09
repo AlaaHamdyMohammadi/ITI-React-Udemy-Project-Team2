@@ -199,7 +199,11 @@ function SignUp() {
             tips.
           </span>
         </div>
-        <Button width="w-80" backgroundColor="bg-violet-600" text="text-white">
+        <Button
+          width="w-80"
+          backgroundColor="bg-violet-600 hover:bg-violet-800"
+          text="text-white"
+        >
           Sign Up
         </Button>
         <p className="border-b-2 p-2.5 text-xs">
@@ -211,7 +215,7 @@ function SignUp() {
           <a
             href=""
             onClick={() => navigate('/login')}
-            className="font-bold text-violet-600"
+            className="font-bold text-violet-600 hover:text-violet-800"
           >
             Log in
           </a>

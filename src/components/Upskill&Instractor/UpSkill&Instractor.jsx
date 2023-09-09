@@ -12,7 +12,7 @@ import React from 'react';
 export default function UpSkillInstractor() {
   return (
     <>
-      <div className="skills m-5 flex items-center  ">
+      <div className="skills row align-items-center m-5">
         <div className="col-lg-6 col-md-12">
           <a className="navbar-brand fs-3 mt-3" href="./index.html">
             <img

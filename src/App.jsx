@@ -10,7 +10,8 @@ import InstructorPage from './pages/InstructorPage';
 import TeachOnUdemy from './pages/TeachOnUdemy';
 import { Provider } from "react-redux"
 import store from './store/store'
-
+import Business from './pages/Business';
+import UdemyProfile from './components/UdemyProfile/UdemyProfile'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -19,7 +20,9 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: '/login', element: <Login /> },
       { path: '/signup', element: <SignUp /> },
+      { path: '/udemy-business', element: <Business /> },
       { path: '/teach-on-udemy', element: <TeachOnUdemy /> },
+      { path: '/udemyProfile', element: <UdemyProfile /> },
       { path: '/cart', element: <CartPage /> },
       { path: '/instractor', element: <InstructorPage /> },
       { path: '*', element: <NotFound /> },

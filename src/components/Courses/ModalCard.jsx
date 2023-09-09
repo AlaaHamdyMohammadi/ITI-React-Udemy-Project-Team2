@@ -8,7 +8,7 @@ import Button from '../Button';
 function ModalCard({ handleShow, handleClose }) {
   return (
     <div
-      className="absolute left-60 z-10 w-96 border-2 top-0 bg-white p-1 text-sm"
+      className="absolute left-60 top-0 z-10 w-96 border-2 bg-white p-1 text-sm"
       onMouseOver={handleShow}
       onMouseLeave={handleClose}
     >
@@ -36,10 +36,14 @@ function ModalCard({ handleShow, handleClose }) {
       </p>
 
       <div className="flex items-center">
-        <Button width="w-72" backgroundColor="bg-violet-600" text="text-white">
+        <Button
+          width="w-72"
+          backgroundColor="bg-violet-600 hover:bg-violet-800"
+          text="text-white"
+        >
           Add to cart
         </Button>
-        <AiOutlineHeart className="ml-2 rounded-full border-2 border-black p-1 text-5xl" />
+        <AiOutlineHeart className="ml-2 rounded-full border-2 border-black p-1 text-5xl hover:bg-gray-300" />
       </div>
     </div>
   );

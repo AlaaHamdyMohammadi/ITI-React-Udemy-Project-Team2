@@ -125,7 +125,7 @@ function CartPage() {
 
                   <button
                     type="button"
-                    className=" checkout border bg-violet-500 px-4 py-2 font-bold text-white hover:bg-violet-700  "
+                    className=" checkout border bg-violet-600 px-4 py-2 font-bold text-white hover:bg-violet-800  "
                   >
                     checkout
                   </button>
@@ -156,7 +156,7 @@ function CartPage() {
                         aria-describedby="button-addon2"
                       />
                       <button
-                        className=" border bg-violet-500 px-4 py-2 font-bold text-white hover:bg-violet-700"
+                        className=" border bg-violet-600 px-4 py-2 font-bold text-white hover:bg-violet-800"
                         type="button"
                         id="button-addon2"
                       >
