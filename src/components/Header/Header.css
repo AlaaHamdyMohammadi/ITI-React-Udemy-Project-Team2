@@ -1,0 +1,14 @@
+.base{
+    position: relative;
+    margin: auto;
+}
+.subDiv{
+    position: absolute;
+    z-index: 1;
+    top: 40px;
+    left: -20px;
+    width: 200%;
+}
+.searchBar{
+    width: 35vw;
+}

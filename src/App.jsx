@@ -8,6 +8,8 @@ import SignUp from './pages/SignUp';
 import CartPage from './pages/CartPage';
 import InstructorPage from './pages/InstructorPage';
 import TeachOnUdemy from './pages/TeachOnUdemy';
+import { Provider } from "react-redux"
+import store from './store/store'
 
 const router = createBrowserRouter([
   {
@@ -28,7 +30,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </>
   );
 }
