@@ -1,33 +1,16 @@
-// import React from 'react';
+import React from 'react';
 
 export default function UdemyProfile() {
     return (
         <>
-            <div className="container">
-                <h3 className="fw-bold fs-2 mt-5 pt-4" style={{ fontFamily: 'Georgia, Times New Roman, Times, serif' }}>
-                    Profile & settings
-                </h3>
-            </div>
 
             {/* Tabs */}
             <div className="container d-flex">
                 <div className="container col-6">
                     <div className="row">
                         <ul className="nav nav-tabs">
-                            <li className="nav-item">
-                                <div className="d-flex">
-                                    <a className="Udemy-profile nav-link active text-secondary fw-bolder border-0"
-                                        aria-current="page" href="./udemy-profile.html">Udemy profile
-                                    </a>
-                                    <a className="Profile-Picture nav-link text-secondary fw-bolder border-0"
-                                        href="./profile-picture.html">Profile Picture</a>
-                                    <a className="Privacy-Settings nav-link text-secondary fw-bolder border-0"
-                                        href="./privacy-settings.html">Privacy Settings</a>
-                                </div>
-                                {/* LINE */}
-                                <div className="row">
-                                    <hr className="ms-4 text-dark" />
-                                </div>
+                            <li className="nav-item mt-4">
+
 
                                 {/* Tab 1 Left Content */}
                                 <div className="tab-content">
@@ -81,9 +64,9 @@ export default function UdemyProfile() {
                 {/* Tab 1 Content Right Column */}
                 <div className="container col-6">
                     <div className="row">
-                        <ul className="nav nav-tabs">
-                            <li className="nav-item mt-4">
-                                <div className="col-12 pt-4 mt-2 tab-content">
+                        <ul className="nav nav-tabs mt-2">
+                            <li className="nav-item ">
+                                <div className="col-12 pt-3 tab-content">
                                     <div className="form-group ms-3 mb-3">
                                         <label htmlFor="exampleInputWebsite" className="mb-1"><small className="fw-bold">Website</small></label>
                                         <input type="text" className="form-control border-dark rounded-0 me-5`"
@@ -155,4 +138,3 @@ export default function UdemyProfile() {
     );
 }
 
- 

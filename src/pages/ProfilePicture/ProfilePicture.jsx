@@ -1,40 +1,20 @@
-// import React from 'react';
+/* eslint-disable no-unused-vars */
+import React from 'react';
 
 export default function ProfileSettings() {
     return (
         <>
             {/* Header */}
             <div>
-                <div className="container">
-                    <h3 className="fw-bold fs-2 mt-5 pt-4" style={{ fontFamily: "Georgia, 'Times New Roman', Times, serif" }}>
-                        Profile & settings
-                    </h3>
-                </div>
 
                 {/* Tabs */}
                 <div className="container d-flex">
                     <div className="container col-6">
                         <div className="row">
                             <ul className="nav nav-tabs">
-                                <li className="nav-item">
-                                    <div className="d-flex">
-                                        <a className="Udemy-profile nav-link active text-secondary fw-bolder border-0"
-                                            aria-current="page" href="./udemy-profile.html">
-                                            Udemy profile
-                                        </a>
-                                        <a className="Profile-Picture nav-link text-secondary fw-bolder border-0"
-                                            href="./profile-picture.html">
-                                            Profile Picture
-                                        </a>
-                                        <a className="Privacy-Settings nav-link text-secondary fw-bolder border-0"
-                                            href="./privacy-settings.html">
-                                            Privacy Settings
-                                        </a>
-                                    </div>
+                                <li className="nav-item mt-4">
                                     {/* LINE */}
-                                    <div className="row">
-                                        <hr className="container-fluid ms-4 text-dark" />
-                                    </div>
+
 
                                     {/* Content */}
                                     <div style={{ width: "30rem" }}>
