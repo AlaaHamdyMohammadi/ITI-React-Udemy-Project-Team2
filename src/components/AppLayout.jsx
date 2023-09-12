@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 function AppLayout() {
   const nav = useSelector((state) => state.nav.navbar);
-  console.log(nav);
+  // console.log(nav);
   return (
     <div>
       {nav ? <Header /> : ''}

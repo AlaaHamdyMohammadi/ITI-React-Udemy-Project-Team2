@@ -1,12 +1,24 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './CartPage.css';
 import { AiFillStar } from 'react-icons/ai';
 import { AiOutlineClose } from 'react-icons/ai';
 import { CiShoppingTag } from 'react-icons/ci';
 import CoursesCarousel from '../components/Courses/CoursesCarousel';
+import axiosInstance from '../axiosConfig/instance';
 
 function CartPage() {
+  // const [courses, setCourses] = useState([]);
+
+
+  // useEffect(function(){
+  //   axiosInstance
+  //     .get('/categories')
+  //     .then((res) => console.log(res))
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
     return (
       <>
         <div className="container py-5">
@@ -172,6 +184,9 @@ function CartPage() {
         <div className=" mt-4 p-4">
           <h3 className="pb-3">You might also like</h3>
           <CoursesCarousel />
+        </div>
+        <div>
+            
         </div>
       </>
     );
