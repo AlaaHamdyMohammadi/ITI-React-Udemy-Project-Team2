@@ -213,7 +213,7 @@ export default function Header() {
 
           <div className="ms-2 mt-2">
             <NavLink
-              className="border-1 rounded-none border-black p-2 text-sm font-bold text-gray-950 no-underline hover:bg-gray-200"
+              className="border-1 rounded-none border-black p-2 text-sm font-bold bg-gray-950 text-white no-underline hover:bg-gray-700"
               to="/signup"
             >
               Sign Up
