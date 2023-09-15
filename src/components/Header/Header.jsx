@@ -16,6 +16,10 @@ import NavCategories from './NavCategories';
 import NavForm from './NavForm';
 import NavBusiness from './NavBusiness';
 import Categories from '../userLogin/Categories';
+import LoginUser from './LoginUser';
+import LogoutUser from './LogoutUser';
+
+//className="border-1 rounded-none border-black p-2 text-sm font-bold text-gray-950 no-underline hover:bg-gray-200"
 
 export default function Header() {
   const [onUdemyBusiness, setUB] = useState(false);
@@ -23,8 +27,12 @@ export default function Header() {
   const [myLearning, setMyLearning] = useState(false);
   const [onCategories, setCAT] = useState(false);
   const [show, setShow] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+  const [wishList, setWishList] = useState(false);
+  const [addToCart, setAddToCart] = useState(false);
   const [categories, setCategories] = useState([]);
   const { isLogin, setIsLogin } = useContext(authentication);
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -40,15 +48,14 @@ export default function Header() {
       .catch((err) => console.log(err));
   }, []);
 
-  function handleLogout(){
-    localStorage.removeItem('token')
+  function handleLogout() {
+    localStorage.removeItem('token');
     setIsLogin(false);
   }
 
-
   return (
     <>
-      <Navbar expand="xl" className="bg-white px-3 shadow-md shadow-gray-400 ">
+      <Navbar expand="xl" className="bg-white px-3 shadow-md shadow-gray-300 ">
         <div className="d-none d-xl-flex m-auto">
           <NavLogo />
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -62,176 +69,20 @@ export default function Header() {
 
           {/* Handle Login */}
           {isLogin ? (
-            <>
-            <div className="d-flex ms-3 ">
-              <div
-                className="ms-3 mt-3"
-                onMouseOver={() => {
-                  setTON(true);
-                }}
-                onMouseLeave={() => {
-                  setTON(false);
-                }}
-              >
-                <div className="base text-decoration-none ">
-                  <NavLink
-                    className="text-gray-950 no-underline hover:text-violet-600"
-                    to="/teach-on-udemy"
-                  >
-                    Instructor
-                  </NavLink>
-                </div>
-              </div>
-              <div
-                className="ms-3 mt-3"
-                onMouseOver={() => {
-                  setMyLearning(true);
-                }}
-                onMouseLeave={() => {
-                  setMyLearning(false);
-                }}
-              >
-                <div className="base text-decoration-none ">
-                  <NavLink
-                    className="text-gray-950 no-underline hover:text-violet-600"
-                    to="/my-learning"
-                  >
-                    My Learning
-                  </NavLink>
-                  {myLearning ? (
-                    <div
-                      onMouseOver={() => {
-                        setMyLearning(true);
-                      }}
-                      onMouseLeave={() => {
-                        setMyLearning(false);
-                      }}
-                      className="subDiv fw-bold w-72 bg-white p-3 text-center"
-                    >
-                      <NavLink
-                        className="btn rounded-0 m-lg-3 col-8 text-decoration-none m-1 w-96 bg-black p-2 text-white"
-                        to="/my-learning"
-                      >
-                        Go to My learning
-                      </NavLink>
-                    </div>
-                  ) : (
-                    ''
-                  )}
-                </div>
-              </div>
-              <div className="align-self-center mb-1 ms-3">
-                <NavLink
-                  className="text-xl font-bold text-gray-950 hover:text-violet-600"
-                  to="/my-learning"
-                >
-                  <AiOutlineHeart />
-                </NavLink>
-              </div>
-              <div className="align-self-center mb-1 ms-3">
-                <NavLink
-                  className="text-xl font-bold text-gray-950 hover:text-violet-600"
-                  to="/cart"
-                >
-                  <BsCart3 />
-                </NavLink>
-              </div>
-              <div className="align-self-center mb-1 ms-3">
-                <NavLink
-                  className="text-xl font-bold text-gray-950 hover:text-violet-600"
-                  to="/cart"
-                >
-                  <BsBell />
-                </NavLink>
-              </div>
-
-              <div className="ms-2 mt-3">
-                <NavLink
-                  className="border-1 rounded-none border-black p-2 text-sm font-bold text-gray-950 no-underline hover:bg-gray-200"
-                  to="/logout"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </NavLink>
-              </div>
-            </div>
-            
-            </>
+            <LoginUser
+              setTON={setTON}
+              setMyLearning={setMyLearning}
+              myLearning={myLearning}
+              setIsActive={setIsActive}
+              handleLogout={handleLogout}
+              isActive={isActive}
+              wishList={wishList}
+              setWishList={setWishList}
+              addToCart={addToCart}
+              setAddToCart={setAddToCart}
+            />
           ) : (
-            <div className="d-flex ms-3 ">
-              <div
-                className="ms-3 mt-3"
-                onMouseOver={() => {
-                  setTON(true);
-                }}
-                onMouseLeave={() => {
-                  setTON(false);
-                }}
-              >
-                <div className="base text-decoration-none ">
-                  <NavLink
-                    className="text-gray-950 no-underline hover:text-violet-600"
-                    to="/teach-on-udemy"
-                  >
-                    Teach On Udemy
-                  </NavLink>
-                  {onTeachOnUdemy ? (
-                    <div
-                      onMouseOver={() => {
-                        setTON(true);
-                      }}
-                      onMouseLeave={() => {
-                        setTON(false);
-                      }}
-                      className="subDiv fw-bold w-72 bg-white p-3 text-center"
-                    >
-                      Get your team access to over 22,000 top Udemy courses,
-                      anytime, anywhere.
-                      <NavLink
-                        className="btn rounded-0 m-lg-3 col-8 text-decoration-none m-1 w-96 bg-black p-2 text-white"
-                        to="/teach-on-udemy"
-                      >
-                        Learn More
-                      </NavLink>
-                    </div>
-                  ) : (
-                    ''
-                  )}
-                </div>
-              </div>
-              <div className="align-self-center mb-1 ms-2">
-                <NavLink
-                  className="text-xl font-bold text-gray-950 hover:text-violet-600"
-                  to="/cart"
-                >
-                  <BsCart3 />
-                </NavLink>
-              </div>
-
-              <div className="ms-2 mt-3">
-                <NavLink
-                  className="border-1 rounded-none border-black p-2 text-sm font-bold text-gray-950 no-underline hover:bg-gray-200"
-                  to="/login"
-                >
-                  Log In
-                </NavLink>
-              </div>
-
-              <div className="ms-2 mt-3">
-                <NavLink
-                  className="border-1 rounded-none border-black bg-gray-950 p-2 text-sm font-bold text-white no-underline hover:bg-gray-700"
-                  to="/signup"
-                >
-                  Sign Up
-                </NavLink>
-              </div>
-
-              <div className="ms-2 mt-2.5 ">
-                <h1 className="border-1 rounded-none border-black p-2 text-sm font-bold text-gray-950 no-underline hover:bg-gray-200">
-                  <BsGlobe className="text-lg" />
-                </h1>
-              </div>
-            </div>
+            <LogoutUser setTON={setTON} onTeachOnUdemy={onTeachOnUdemy} />
           )}
         </div>
 
@@ -334,13 +185,3 @@ export default function Header() {
     </>
   );
 }
-
-
-
-
-
-
-
-
-
-

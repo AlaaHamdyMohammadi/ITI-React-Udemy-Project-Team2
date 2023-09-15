@@ -19,6 +19,8 @@ import Guard from './components/Guards/Guard';
 import Logout from './pages/Logout';
 import MyLearning from './pages/MyLearning';
 import './App.css';
+import WishListPage from './pages/WishListPage';
+import CategoriesPage from './pages/CategoriesPage';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -45,10 +47,19 @@ const router = createBrowserRouter([
           </Guard>
         ),
       },
-      {path: '/logout', element: <Logout/>},
+      {
+        path: '/my-wishList',
+        element: (
+          <Guard>
+            <WishListPage />
+          </Guard>
+        ),
+      },
+      {path: '/categoriesPage', element: <CategoriesPage/>},
       { path: '/cart', element: <CartPage /> },
       { path: '/login', element: <Login /> },
       { path: '/signup', element: <SignUp /> },
+      {path: '/logout', element: <Logout/>},
       { path: '*', element: <NotFound /> },
     ],
   },

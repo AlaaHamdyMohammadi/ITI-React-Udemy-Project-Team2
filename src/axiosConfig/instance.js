@@ -4,6 +4,7 @@ import axios from 'axios';
 //('http://localhost:4000/api/v1/courses');
 //('http://localhost:4000/api/v1/reviews');
 //('http://localhost:4000/api/v1/categories');
+//('http://localhost:4000/api/v1/subCategories');
 //('http://localhost:4000/api/v1/carts');
 //('http://localhost:4000/api/v1/wishLists');
 //('http://localhost:4000/api/v1/enrolled');

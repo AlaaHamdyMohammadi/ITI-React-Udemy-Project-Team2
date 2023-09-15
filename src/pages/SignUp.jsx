@@ -80,10 +80,11 @@ function SignUp() {
     e.preventDefault();
     if (signup.password === signup.passwordConfirm) {
       try {
-        console.log(signup);
-        const res = await signupUser(signup);
-        console.log(res);
-        //navigate('/login');
+        //console.log(signup);
+        const res = await signupUser(signup); 
+        //localStorage.setItem('data', res.data.data.user);
+        //console.log(res.data.data.user);
+        navigate('/login');
       } catch (err) {
         console.log(err);
       }

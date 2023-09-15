@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 function NavBusiness({ setUB, onUdemyBusiness }) {
   return (
     <div
-      className="ms-3 mt-3"
+      className="ms-2 mt-3"
       onMouseOver={() => {
         setUB(true);
       }}
