@@ -2,19 +2,23 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+import { useContext, useState } from 'react'; 
+// import toast, {Toaster} from 'react-hot-toast'; npm i react-hot-toast
+import { loginUser } from '../services/authentication';
 import Button from './../components/Button';
 import { FcGoogle } from 'react-icons/fc';
 import { BsFacebook, BsApple } from 'react-icons/bs';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { useNavigate, NavLink, Link } from 'react-router-dom';
-import { useState } from 'react';
 import './LoginAndSignUp.css'
+import { authentication } from '../contextConfig/authentication';
 
 function Login() {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [login, setLogin] = useState({ email : '', password: ''});
   const [error, setError] = useState({emailError: '', passwordError: ''});
+  const {isLogin, setIsLogin} = useContext(authentication)
  
   function handleValidation(e){
     if(e.target.name === 'email'){
@@ -30,9 +34,23 @@ function Login() {
     }
   }
  
-  function handleSubmit(e){
+  async function handleSubmit(e){
     e.preventDefault();
-    navigate('/');
+    if(error.passwordError || error.passwordError){
+      //toast.error('Email or Password is Invalid')
+      alert('Error');
+    }else{
+      try{ 
+        const res = await loginUser(login);
+        //console.log(res); 
+        localStorage.setItem('token', res.data.token);
+        setIsLogin(true);
+        navigate('/courses');
+      }catch(err){
+        console.log(err);
+      }
+       
+    }
   }
   
   return (
@@ -146,6 +164,7 @@ function Login() {
           </a>
         </p>
       </form>
+      {/*<Toaster/>*/}
     </>
   );
 }

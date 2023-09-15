@@ -8,10 +8,17 @@ import SignUp from './pages/SignUp';
 import CartPage from './pages/CartPage';
 import InstructorPage from './pages/InstructorPage';
 import TeachOnUdemy from './pages/TeachOnUdemy';
-import { Provider } from "react-redux"
-import store from './store/store'
+import { Provider } from 'react-redux';
+import store from './store/store';
 import Business from './pages/Business';
-import UdemyProfile from './pages/UdemyProfile/UdemyProfile'
+import UdemyProfile from './pages/UdemyProfile/UdemyProfile';
+import { AuthProvider } from './contextConfig/authentication';
+import { useState } from 'react';
+import CoursesPage from './pages/CoursesPage';
+import Guard from './components/Guards/Guard';
+import Logout from './pages/Logout';
+import MyLearning from './pages/MyLearning';
+import './App.css';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -22,6 +29,23 @@ const router = createBrowserRouter([
       { path: '/udemyProfile', element: <UdemyProfile /> },
       { path: '/teach-on-udemy', element: <TeachOnUdemy /> },
       { path: '/instractor', element: <InstructorPage /> },
+      {
+        path: '/courses',
+        element: (
+          <Guard>
+            <CoursesPage />
+          </Guard>
+        ),
+      },
+      {
+        path: '/my-learning',
+        element: (
+          <Guard>
+            <MyLearning />
+          </Guard>
+        ),
+      },
+      {path: '/logout', element: <Logout/>},
       { path: '/cart', element: <CartPage /> },
       { path: '/login', element: <Login /> },
       { path: '/signup', element: <SignUp /> },
@@ -31,14 +55,16 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const [isLogin, setIsLogin] = useState(localStorage.getItem('token') ? true : false);
   return (
     <>
-      <Provider store={store}>
-        <RouterProvider router={router} />
-      </Provider>
+      <AuthProvider value={{ isLogin, setIsLogin }}>
+        <Provider store={store}>
+          <RouterProvider router={router} />
+        </Provider>
+      </AuthProvider>
     </>
   );
 }
-
 
 export default App;

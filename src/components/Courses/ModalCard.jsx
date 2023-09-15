@@ -4,7 +4,7 @@
 import { BsCheckLg } from 'react-icons/bs';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import Button from '../Button';
-
+ 
 function ModalCard({ handleShow, handleClose }) {
   return (
     <div

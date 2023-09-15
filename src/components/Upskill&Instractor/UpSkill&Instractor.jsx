@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 // import {
 //     Card,
@@ -31,9 +32,12 @@ export default function UpSkillInstractor() {
             <li>International course collection in 14 languages</li>
             <li>Top certifications in tech and business</li>
           </ul>
-          <button className="bg-dark fw-bold p-2 text-white">
+          <NavLink
+            to="udemy-business"
+            className="bg-dark fw-bold p-2 text-white no-underline"
+          >
             Get Udemy Business
-          </button>
+          </NavLink>
           <button className="text-dark fw-bold bg-white p-2">Learn more</button>
         </div>
         <div className="col-lg-6 col-md-12 mt-md-4">
@@ -59,9 +63,12 @@ export default function UpSkillInstractor() {
             Instructors from around the world teach millions of students on
             Udemy. We provide the tools and skills to teach what you love.
           </p>
-          <button className="bg-dark fw-bold p-2 text-white">
+          <NavLink
+            to="teach-on-udemy"
+            className="bg-dark fw-bold p-2 text-white no-underline"
+          >
             Start teaching today
-          </button>
+          </NavLink>
         </div>
       </div>
     </>

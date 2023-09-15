@@ -5,31 +5,32 @@ import Button from './../components/Button';
 import { useState } from 'react';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import './LoginAndSignUp.css';
+import { signupUser } from '../services/authentication';
 
 function SignUp() {
   const navigate = useNavigate();
   const [showPassword, setshowPassword] = useState(false);
   const [showPasswordConfirm, setshowPasswordConfirm] = useState(false);
   const [signup, setSignup] = useState({
-    fullName: '',
+    username: '',
     email: '',
     password: '',
-    confirmPassword: '',
+    passwordConfirm: '',
   });
   const [error, setError] = useState({
-    fullNameError: '',
+    usernameError: '',
     emailError: '',
     passwordError: '',
-    confirmPasswordError: '',
+    passwordConfirmError: '',
   });
 
   function handleValidation(e) {
-    if (e.target.name === 'fullName') {
+    if (e.target.name === 'username') {
       const fullNameValue = e.target.value;
-      setSignup({ ...signup, fullName: fullNameValue });
+      setSignup({ ...signup, username: fullNameValue });
       setError({
         ...error,
-        fullNameError:
+        usernameError:
           fullNameValue.length === 0
             ? 'Please fill out this field.'
             : fullNameValue.length <= 5
@@ -60,12 +61,12 @@ function SignUp() {
             ? `Please lengthen this text to 5 characters or more`
             : '',
       });
-    } else if (e.target.name === 'confirmPassword') {
+    } else if (e.target.name === 'passwordConfirm') {
       const confirmPasswordValue = e.target.value;
-      setSignup({ ...signup, confirmPassword: confirmPasswordValue });
+      setSignup({ ...signup, passwordConfirm: confirmPasswordValue });
       setError({
         ...error,
-        confirmPasswordError:
+        passwordConfirmError:
           confirmPasswordValue.length === 0
             ? 'Please fill out this field.'
             : confirmPasswordValue.length <= 5
@@ -74,12 +75,18 @@ function SignUp() {
       });
     }
   }
-
-  function handleSubmit(e) {
+ 
+  async function handleSubmit(e) {
     e.preventDefault();
-    if (signup.password === signup.confirmPassword) {
-      alert('the same');
-      navigate('/');
+    if (signup.password === signup.passwordConfirm) {
+      try {
+        console.log(signup);
+        const res = await signupUser(signup);
+        console.log(res);
+        //navigate('/login');
+      } catch (err) {
+        console.log(err);
+      }
     } else {
       alert('not the same');
     }
@@ -95,8 +102,8 @@ function SignUp() {
         <div className="relative">
           <input
             type="text"
-            name="fullName"
-            value={signup.fullName}
+            name="username"
+            value={signup.username}
             onChange={(e) => handleValidation(e)}
             placeholder=""
             id="username"
@@ -109,7 +116,7 @@ function SignUp() {
             Full name
           </label>
           <p className="text-sm font-bold text-red-600">
-            {error.fullNameError}
+            {error.usernameError}
           </p>
         </div>
         <div className="relative">
@@ -165,8 +172,8 @@ function SignUp() {
           <input
             type={showPasswordConfirm ? 'text' : 'password'}
             placeholder=""
-            name="confirmPassword"
-            value={signup.confirmPassword}
+            name="passwordConfirm"
+            value={signup.passwordConfirm}
             onChange={(e) => handleValidation(e)}
             id="confirmPassword"
             className="textbox border-1 w-80 border-solid border-black p-3"
@@ -178,7 +185,7 @@ function SignUp() {
             Confirm Password
           </label>
           <p className="text-sm font-bold text-red-600">
-            {error.confirmPasswordError}
+            {error.passwordConfirmError}
           </p>
         </div>
         {showPasswordConfirm ? (
