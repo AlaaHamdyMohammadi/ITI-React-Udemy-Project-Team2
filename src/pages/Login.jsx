@@ -4,6 +4,10 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useState } from 'react'; 
 // import toast, {Toaster} from 'react-hot-toast'; npm i react-hot-toast
+
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { loginUser } from '../services/authentication';
 import Button from './../components/Button';
 import { FcGoogle } from 'react-icons/fc';
@@ -37,7 +41,7 @@ function Login() {
   async function handleSubmit(e){
     e.preventDefault();
     if(error.passwordError || error.passwordError){
-      //toast.error('Email or Password is Invalid')
+      toast.error('Email or Password is Invalid')
       alert('Error');
     }else{
       try{ 
@@ -45,9 +49,11 @@ function Login() {
         //console.log(res); 
         localStorage.setItem('token', res.data.token);
         setIsLogin(true);
+        toast.success('Successfully logged in');
         navigate('/courses');
+
       }catch(err){
-        console.log(err);
+        toast.error('Login failed. Please check your credentials.');
       }
        
     }
@@ -164,7 +170,7 @@ function Login() {
           </a>
         </p>
       </form>
-      {/*<Toaster/>*/}
+      <ToastContainer position="top-right" autoClose={3000} />
     </>
   );
 }

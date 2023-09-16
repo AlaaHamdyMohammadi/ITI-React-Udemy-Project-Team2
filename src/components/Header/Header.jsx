@@ -18,6 +18,8 @@ import NavBusiness from './NavBusiness';
 import Categories from '../userLogin/Categories';
 import LoginUser from './LoginUser';
 import LogoutUser from './LogoutUser';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //className="border-1 rounded-none border-black p-2 text-sm font-bold text-gray-950 no-underline hover:bg-gray-200"
 
@@ -51,6 +53,7 @@ export default function Header() {
   function handleLogout() {
     localStorage.removeItem('token');
     setIsLogin(false);
+    toast.success('Successfully logged out');
   }
 
   return (
@@ -182,6 +185,7 @@ export default function Header() {
           </div>
         </div>
       </Navbar>
+      <ToastContainer position="top-right" autoClose={3000} />
     </>
   );
 }

@@ -1,6 +1,10 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Button from './../components/Button';
 import { useState } from 'react';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
@@ -75,21 +79,23 @@ function SignUp() {
       });
     }
   }
- 
+
   async function handleSubmit(e) {
     e.preventDefault();
     if (signup.password === signup.passwordConfirm) {
       try {
         //console.log(signup);
-        const res = await signupUser(signup); 
+        //const res = await signupUser(signup);
         //localStorage.setItem('data', res.data.data.user);
         //console.log(res.data.data.user);
+        toast.success('The Account has been created');
+        
         navigate('/login');
       } catch (err) {
-        console.log(err);
+        toast.error('Please Email must be Unique');
       }
     } else {
-      alert('not the same');
+      toast.error('Password and Confirm Password Not the same');
     }
   }
 
@@ -229,6 +235,8 @@ function SignUp() {
           </a>
         </p>
       </form>
+
+      <ToastContainer position="top-right" autoClose={3000} />
     </>
   );
 }
