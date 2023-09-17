@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import './TopCategory.css';
+import { NavLink } from 'react-router-dom';
 export default function TopCategory() {
   const category = [
     {
@@ -57,14 +58,19 @@ export default function TopCategory() {
       <h3 className="pb-3">Top categories</h3>
       <div className="container-fliud grid grid-cols-4 grid-rows-2 gap-2 ">
         {category.map((item) => (
-          <div
-            key={item.id}
-            className="categoryImg bg-cover object-cover "
-            style={item.style}
-          >
-            <img src={item.src} alt="" />
-            <p className="font-bold	">{item.name}</p>
-          </div>
+          <>
+            <div
+              key={item.id}
+              className="categoryImg bg-cover object-cover "
+              style={item.style}
+            >
+              <NavLink to={`/categoriesPage/${item.name}`}>
+              
+              <img className="image" src={item.src} alt="" />
+              </NavLink>
+              <p className="font-bold	">{item.name}</p>
+              </div>
+          </>
         ))}
       </div>
     </div>

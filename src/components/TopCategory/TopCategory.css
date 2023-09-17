@@ -1,3 +1,9 @@
-.categoryImg:hover{
-    transform: scale(0.9);
+.image{
+    transform: none;
+    transition: 0.1s all;
+}
+
+.image:hover{
+    transform: scale(0.95) translateZ(0px);
+    transition: 0.1s all;
 }

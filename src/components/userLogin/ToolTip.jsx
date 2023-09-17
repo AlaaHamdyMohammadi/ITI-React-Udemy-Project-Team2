@@ -5,55 +5,68 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../../axiosConfig/instance";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 /* eslint-disable no-unused-vars */
 
 //{subCategories.map((subCategory) => <div key={subCategory.id}>{subCategory.name}</div>) }
+//<div>
+//   {subCategory.category.map(cat => <div key={cat.id}>{cat.name}</div>)}
+// </div>
 
-function ToolTip({handleShow, handleClose}) {
+// useEffect(function () {
+  //   axiosInstance
+  //     .get('/categories')
+  //     .then((res) => {
+  //       //console.log(res.data.data.documents);
+  //       //const numOfCategories = res.data.data.documents.slice(0, 10);
+  //       setCategory(res.data.data.documents);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
+
+  // useEffect(function(){
+  //   axiosInstance
+  //     .get(`/subCategories`)
+  //     .then((res) => {
+  //       console.log(res.data.data);
+  //       setSubCategories(res.data.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
+
+function ToolTip({ handleShow, handleClose }) {
   const [subCategories, setSubCategories] = useState([]);
-  const [category, setCategory] = useState([]);
-  const {id} = useParams();
+  //const [category, setCategory] = useState([]);
+  const { id } = useParams();
+  console.log(id);
 
-
-  useEffect(function () {
+  useEffect(() => {
     axiosInstance
-      .get('/categories')
+      .get(`/categories/${id}/subCategories`)
       .then((res) => {
-        //console.log(res.data.data.documents);
-        //const numOfCategories = res.data.data.documents.slice(0, 10);
-        setCategory(res.data.data.documents);
+        console.log(res.data.data.subCategories);
+        setSubCategories(res.data.data.subCategories);
       })
-      .catch((err) => console.log(err));
-  }, []);
+      .catch((error) => {
+        console.error('Error fetching subcategories:', error);
+      });
+  }, [id]);
 
-  useEffect(function(){
-    axiosInstance
-      .get(`/subCategories`)
-      .then((res) => {
-        console.log(res.data.data.documents);
-        setSubCategories(res.data.data.documents);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-    return (
-      <div
-        style={{ backgroundColor: '#2d2f31' }}
-        className="w-100 absolute left-0 top-10 z-10 flex justify-center p-2 text-center text-white"
-        onMouseOver={handleShow}
-        onMouseLeave={handleClose}
-      >
-        {/*{subCategories.map((subCategory) => (
-          <div key={subCategory.id}>
-            <h3>{subCategory.name}</h3>
-            <div>
-              {subCategory.category.map(cat => <div key={cat.id}>{cat.name}</div>)}
-            </div>
-          </div>
-        ))}*/}
-      </div>
-    );
+  return (
+    <div
+      style={{ backgroundColor: '#2d2f31' }}
+      className="w-100 absolute left-0 top-10 z-10 flex justify-center p-2 text-center text-white"
+      onMouseOver={handleShow}
+      onMouseLeave={handleClose}
+    >
+      {subCategories.map((subCategory) => (
+        <div key={subCategory._id}>
+          <h3>{subCategory.name}</h3>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default ToolTip

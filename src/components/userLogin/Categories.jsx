@@ -3,13 +3,15 @@
 import { useEffect, useState } from "react";
 import ToolTip from "./ToolTip";
 import axiosInstance from "../../axiosConfig/instance";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 
 //onMouseLeave={handleClose}
 
 function Categories() {
     const [showTooltip, setShowTooltip] = useState(false);
     const [categories, setCategories] = useState([]);
+    const {_id} = useParams();
+    // console.log(id);
 
     useEffect(function(){
       axiosInstance
@@ -35,7 +37,7 @@ function Categories() {
               className="text-gray-900 no-underline hover:text-violet-600"
               onMouseOver={handleShow}
               onMouseLeave={handleClose}
-              key={category.id}
+              key={category._id}
               to={`/categoriesPage/${category.name}`}
             >
               {category.name}
@@ -43,7 +45,11 @@ function Categories() {
           </>
         ))}
         {showTooltip && (
-          <ToolTip handleShow={handleShow} handleClose={handleClose} />
+          <ToolTip
+            handleShow={handleShow}
+            handleClose={handleClose}
+            
+          />
         )}
       </div>
     );

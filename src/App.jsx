@@ -21,6 +21,7 @@ import MyLearning from './pages/MyLearning';
 import './App.css';
 import WishListPage from './pages/WishListPage';
 import CategoriesPage from './pages/CategoriesPage';
+import Test from './pages/Test';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
           </Guard>
         ),
       },
-      {path: '/categoriesPage', element: <CategoriesPage/>},
+      {path: '/categoriesPage/:name', element: <CategoriesPage/>},
       { path: '/cart', element: <CartPage /> },
       { path: '/login', element: <Login /> },
       { path: '/signup', element: <SignUp /> },

@@ -1,25 +1,29 @@
+/* eslint-disable no-inner-declarations */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './CartPage.css';
 import { AiFillStar } from 'react-icons/ai';
 import { AiOutlineClose } from 'react-icons/ai';
 import { CiShoppingTag } from 'react-icons/ci';
 import CoursesCarousel from '../components/Courses/CoursesCarousel';
 import axiosInstance from '../axiosConfig/instance';
+import { authentication } from '../contextConfig/authentication';
+import { useNavigate } from 'react-router-dom';
 
 function CartPage() {
-  // const [courses, setCourses] = useState([]);
+    // const {isLogin, setIsLogin} = useContext(authentication);
+    // const navigate = useNavigate();
 
+   
+    //   function handleCheckout(){
+    //     if (isLogin == true) {
+    //       axiosInstance.post(`/buyings/checkout-session`);
+    //     } else {
+    //       navigate('/login');
+    //     }
+    // }
 
-  // useEffect(function(){
-  //   axiosInstance
-  //     .get('/categories')
-  //     .then((res) => console.log(res))
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
-    return (
+      return (
       <>
         <div className="container py-5">
           <h1 className='font-bold'>Shopping Cart</h1>
@@ -135,7 +139,8 @@ function CartPage() {
                     </li>
                   </ul>
 
-                  <button
+                  <button 
+                    
                     type="button"
                     className=" checkout border bg-violet-600 px-4 py-2 font-bold text-white hover:bg-violet-800  "
                   >

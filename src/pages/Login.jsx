@@ -51,11 +51,10 @@ function Login() {
         setIsLogin(true);
         toast.success('Successfully logged in');
         navigate('/courses');
-
       }catch(err){
-        toast.error('Login failed. Please check your credentials.');
-      }
-       
+        console.log(err);
+        //toast.error('Login failed. Please check your credentials.');
+      } 
     }
   }
   
