@@ -24,6 +24,9 @@ import CategoriesPage from './pages/CategoriesPage';
 import Profile from './pages/Profile/Profile';
 import ProfilePicture from './pages/ProfilePicture/ProfilePicture'
 import PrivacySettings from './pages/PrivacySettings/PrivacySettings';
+import CourseDetials, {
+  loadercourse,
+} from './pages/CourseDetials/CourseDetials';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -67,6 +70,11 @@ const router = createBrowserRouter([
         ),
       },
       { path: '/categoriesPage/:name', element: <CategoriesPage /> },
+      {
+        path: '/CourseDetials',
+        element: <CourseDetials/>,
+        loader: loadercourse,
+      },
       { path: '/cart', element: <CartPage /> },
       { path: '/login', element: <Login /> },
       { path: '/signup', element: <SignUp /> },
@@ -78,9 +86,12 @@ const router = createBrowserRouter([
 
 function App() {
   const [isLogin, setIsLogin] = useState(localStorage.getItem('token') ? true : false);
+  const [isSignup, setIsSignup] = useState(
+    localStorage.getItem('token') ? true : false,
+  );
   return (
     <>
-      <AuthProvider value={{ isLogin, setIsLogin }}>
+      <AuthProvider value={{ isLogin, setIsLogin, isSignup, setIsSignup }}>
         <Provider store={store}>
           <RouterProvider router={router} />
         </Provider>

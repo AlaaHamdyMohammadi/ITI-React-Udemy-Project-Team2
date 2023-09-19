@@ -7,10 +7,11 @@ import { useSelector } from 'react-redux';
 
 function AppLayout() {
   const nav = useSelector((state) => state.nav.navbar);
+    const Bar = useSelector((state) => state.ScrollBar.ScrollBar);
   // console.log(nav);
   return (
     <div>
-      {nav ? <Header /> : ''}
+      {nav && !Bar ? <Header /> : ''}
       <Outlet />
       <Footer />
     </div>
@@ -18,3 +19,9 @@ function AppLayout() {
 }
 
 export default AppLayout;
+
+/*
+
+
+
+*/

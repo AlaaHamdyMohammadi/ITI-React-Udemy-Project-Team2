@@ -6,15 +6,18 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Button from './../components/Button';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import './LoginAndSignUp.css';
 import { signupUser } from '../services/authentication';
+import { authentication } from '../contextConfig/authentication';
 
 function SignUp() {
   const navigate = useNavigate();
   const [showPassword, setshowPassword] = useState(false);
   const [showPasswordConfirm, setshowPasswordConfirm] = useState(false);
+  const {isSignup, setIsSignup} = useContext(authentication);
+
   const [signup, setSignup] = useState({
     username: '',
     email: '',
@@ -84,12 +87,8 @@ function SignUp() {
     e.preventDefault();
     if (signup.password === signup.passwordConfirm) {
       try {
-        //console.log(signup);
-        //const res = await signupUser(signup);
-        //localStorage.setItem('data', res.data.data.user);
-        //console.log(res.data.data.user);
         toast.success('The Account has been created');
-        
+        localStorage.setItem('user', JSON.stringify(signup));
         navigate('/login');
       } catch (err) {
         toast.error('Please Email must be Unique');
@@ -99,8 +98,19 @@ function SignUp() {
     }
   }
 
+  const getUserName = () => {
+    const userJSON = localStorage.getItem('user');
+    const user = JSON.parse(userJSON);
+    if (user && user.username) {
+      return `Welcome, ${user.username}!`;
+    }
+    return 'Welcome!';
+  };
+
   return (
     <>
+      <h1>{getUserName()}</h1>
+
       <form
         onSubmit={(e) => handleSubmit(e)}
         className="flex h-screen flex-col items-center justify-center"
