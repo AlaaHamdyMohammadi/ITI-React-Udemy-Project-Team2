@@ -1,10 +1,30 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { useEffect, useState } from 'react';
 import { Nav, NavDropdown } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../axiosConfig/instance';
+
 ///${category.name}
-function NavCategories({ setCAT, onCategories, categories }) {
+
+// subCategories={subCategories}
+// setSubCategories={setSubCategories}
+
+function NavCategories({
+  setCAT,
+  onCategories,
+  categories,
+
+}) {
   const navigate = useNavigate();
+  //const [subCategories, setSubCategories] = useState([]);
+  const [currentId, setCurrentId] = useState(null);
+  
+  function handleClick(id){
+    setCurrentId(id);
+  }
+  
   return (
     <Nav className="me-auto">
       <div
@@ -30,25 +50,19 @@ function NavCategories({ setCAT, onCategories, categories }) {
             >
               {categories.map((category) => (
                 <NavDropdown
-                  key={category.id}
+                  key={category._id}
                   id={`dropdown-button-drop-end`}
                   drop={'end'}
                   title={category.name}
                   className="dropColor text-gray-900 hover:text-violet-600"
-                  onClick={() => {navigate(`/categoriesPage/${category.name}`);}}
+                  onClick={() => {
+                    navigate(`/categoriesPage/${category.name}`);
+                    handleClick(category._id);
+                  }}
                 >
-                  <NavDropdown.Item href="#action/3.1">
-                    Category
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
-                    Something
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.4">
-                    Separated link
-                  </NavDropdown.Item>
+                  <Item
+                    currentId={currentId}
+                  />
                 </NavDropdown>
               ))}
             </div>
@@ -59,6 +73,30 @@ function NavCategories({ setCAT, onCategories, categories }) {
       </div>
     </Nav>
   );
+}
+
+//, subCategories, setSubCategories
+function Item({currentId}){
+  const [subCategories, setSubCategories] = useState([]);
+  useEffect(() => {
+    axiosInstance
+      .get(`/categories/${currentId}/subCategories`)
+      .then((res) => {
+        console.log(res.data.data.subCategories);
+        setSubCategories(res.data.data.subCategories);
+      })
+      .catch((error) => {
+        console.error('Error fetching subcategories:', error);
+      });
+  }, [currentId]);
+
+  {
+    subCategories.map((subCategory) => (
+      <NavDropdown.Item href="#action/3.1" key={subCategory._id}>
+        {subCategory.name}
+      </NavDropdown.Item>
+    ));
+  }
 }
 
 export default NavCategories;

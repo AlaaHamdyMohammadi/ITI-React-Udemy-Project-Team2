@@ -10,8 +10,8 @@ import { Link, NavLink, useParams } from "react-router-dom";
 function Categories() {
     const [showTooltip, setShowTooltip] = useState(false);
     const [categories, setCategories] = useState([]);
-    const {_id} = useParams();
-    // console.log(id);
+    const [currentId, setCurrentId] = useState(null);
+    
 
     useEffect(function(){
       axiosInstance
@@ -23,8 +23,9 @@ function Categories() {
         }).catch(err => console.log(err));
     }, []);
 
-    function handleShow(){
+    function handleShow(id){
         setShowTooltip(true);
+        setCurrentId(id);
     }
     function handleClose(){
         setShowTooltip(false);
@@ -34,8 +35,8 @@ function Categories() {
         {categories.map((category) => (
           <>
             <Link
-              className="text-gray-900 no-underline hover:text-violet-600"
-              onMouseOver={handleShow}
+              className="text-gray-900 text-xs no-underline hover:text-violet-600"
+              onMouseOver={() => handleShow(category._id)}
               onMouseLeave={handleClose}
               key={category._id}
               to={`/categoriesPage/${category.name}`}
@@ -47,8 +48,8 @@ function Categories() {
         {showTooltip && (
           <ToolTip
             handleShow={handleShow}
+            currentId={currentId}
             handleClose={handleClose}
-            
           />
         )}
       </div>

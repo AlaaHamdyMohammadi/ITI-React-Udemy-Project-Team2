@@ -35,34 +35,32 @@ import axios from "axios";
   //     .catch((err) => console.log(err));
   // }, []);
 
-function ToolTip({ handleShow, handleClose }) {
+function ToolTip({ handleShow, handleClose, currentId }) {
   const [subCategories, setSubCategories] = useState([]);
-  //const [category, setCategory] = useState([]);
-  const { id } = useParams();
-  console.log(id);
+  
 
   useEffect(() => {
     axiosInstance
-      .get(`/categories/${id}/subCategories`)
+      .get(`/categories/${currentId}/subCategories`)
       .then((res) => {
         console.log(res.data.data.subCategories);
         setSubCategories(res.data.data.subCategories);
       })
       .catch((error) => {
-        console.error('Error fetching subcategories:', error);
+        console.log(error);
       });
-  }, [id]);
+  }, [currentId]);
 
   return (
     <div
       style={{ backgroundColor: '#2d2f31' }}
-      className="w-100 absolute left-0 top-10 z-10 flex justify-center p-2 text-center text-white"
+      className="w-100 absolute left-0 top-8 z-10 flex justify-center p-2 text-center  text-white"
       onMouseOver={handleShow}
       onMouseLeave={handleClose}
     >
       {subCategories.map((subCategory) => (
-        <div key={subCategory._id}>
-          <h3>{subCategory.name}</h3>
+        <div className="text-xs" key={subCategory._id}>
+          <h6 className="pl-4 text-sm">{subCategory.name}</h6>
         </div>
       ))}
     </div>

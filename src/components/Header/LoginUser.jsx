@@ -260,7 +260,7 @@ function DropDownList({ setIsActive, isActive, handleLogout }) {
               </NavLink>
 
               <NavLink
-                to="/udemyProfile"
+                to="/profile"
                 className="cursor-pointer pt-4 text-gray-900 no-underline hover:text-violet-600"
               >
                 Edit Profile

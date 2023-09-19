@@ -21,7 +21,9 @@ import MyLearning from './pages/MyLearning';
 import './App.css';
 import WishListPage from './pages/WishListPage';
 import CategoriesPage from './pages/CategoriesPage';
-import Test from './pages/Test';
+import Profile from './pages/Profile/Profile';
+import ProfilePicture from './pages/ProfilePicture/ProfilePicture'
+import PrivacySettings from './pages/PrivacySettings/PrivacySettings';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -29,7 +31,15 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: '/udemy-business', element: <Business /> },
-      { path: '/udemyProfile', element: <UdemyProfile /> },
+      {
+        path: '/profile',
+        element: <Profile />,
+        children: [
+          { index: true, element: <UdemyProfile /> },
+          { path: 'profile-picture', element: <ProfilePicture /> },
+          { path: 'privacy-setting', element: <PrivacySettings /> },
+        ],
+      },
       { path: '/teach-on-udemy', element: <TeachOnUdemy /> },
       { path: '/instractor', element: <InstructorPage /> },
       {
@@ -56,11 +66,11 @@ const router = createBrowserRouter([
           </Guard>
         ),
       },
-      {path: '/categoriesPage/:name', element: <CategoriesPage/>},
+      { path: '/categoriesPage/:name', element: <CategoriesPage /> },
       { path: '/cart', element: <CartPage /> },
       { path: '/login', element: <Login /> },
       { path: '/signup', element: <SignUp /> },
-      {path: '/logout', element: <Logout/>},
+      { path: '/logout', element: <Logout /> },
       { path: '*', element: <NotFound /> },
     ],
   },
