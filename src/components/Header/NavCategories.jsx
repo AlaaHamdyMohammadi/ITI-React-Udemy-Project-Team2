@@ -18,9 +18,21 @@ function NavCategories({
 
 }) {
   const navigate = useNavigate();
-  //const [subCategories, setSubCategories] = useState([]);
+  const [subCategories, setSubCategories] = useState([]);
   const [currentId, setCurrentId] = useState(null);
   
+  useEffect(() => {
+    axiosInstance
+      .get(`/categories/${currentId}/subCategories`)
+      .then((res) => {
+        console.log(res.data.data.subCategories);
+        setSubCategories(res.data.data.subCategories);
+      })
+      .catch((error) => {
+        console.error('Error fetching subcategories:', error);
+      });
+  }, [currentId]);
+
   function handleClick(id){
     setCurrentId(id);
   }
@@ -60,9 +72,9 @@ function NavCategories({
                     handleClick(category._id);
                   }}
                 >
-                  <Item
-                    currentId={currentId}
-                  />
+                  {subCategories.map((subCategory) => (
+                    <NavDropdown.Item href="#action/3.1" key={subCategory._id}>{subCategory.name}</NavDropdown.Item>
+                  ))}
                 </NavDropdown>
               ))}
             </div>
@@ -75,29 +87,7 @@ function NavCategories({
   );
 }
 
-//, subCategories, setSubCategories
-function Item({currentId}){
-  const [subCategories, setSubCategories] = useState([]);
-  useEffect(() => {
-    axiosInstance
-      .get(`/categories/${currentId}/subCategories`)
-      .then((res) => {
-        console.log(res.data.data.subCategories);
-        setSubCategories(res.data.data.subCategories);
-      })
-      .catch((error) => {
-        console.error('Error fetching subcategories:', error);
-      });
-  }, [currentId]);
 
-  {
-    subCategories.map((subCategory) => (
-      <NavDropdown.Item href="#action/3.1" key={subCategory._id}>
-        {subCategory.name}
-      </NavDropdown.Item>
-    ));
-  }
-}
 
 export default NavCategories;
 

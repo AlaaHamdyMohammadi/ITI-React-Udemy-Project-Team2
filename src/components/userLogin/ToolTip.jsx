@@ -37,8 +37,8 @@ import axios from "axios";
 
 function ToolTip({ handleShow, handleClose, currentId }) {
   const [subCategories, setSubCategories] = useState([]);
-  
 
+  //`/subCategories/${currentId}/subCategories`
   useEffect(() => {
     axiosInstance
       .get(`/categories/${currentId}/subCategories`)
