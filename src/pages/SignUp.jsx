@@ -12,6 +12,7 @@ import './LoginAndSignUp.css';
 import { signupUser } from '../services/authentication';
 import { authentication } from '../contextConfig/authentication';
 import axiosInstance from '../axiosConfig/instance';
+import { Helmet } from 'react-helmet';
 
 function SignUp() {
   const navigate = useNavigate();
@@ -102,6 +103,9 @@ function SignUp() {
 
   return (
     <>
+    <Helmet>
+      <title>Sign Up and Start Learning | Udemy</title>
+    </Helmet>
       <form
         onSubmit={(e) => handleSubmit(e)}
         className="flex h-screen flex-col items-center justify-center"
