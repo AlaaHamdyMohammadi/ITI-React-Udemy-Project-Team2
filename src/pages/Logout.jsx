@@ -2,11 +2,15 @@
 import { BsCheckCircleFill } from 'react-icons/bs';
 import Button from '../components/Button';
 import { NavLink } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 function Logout() {
 
   return (
     <>
+      <Helmet>
+        <title>udemy.com/logout/</title>
+      </Helmet>
       <div className="m-4">
         <div style={{ backgroundColor: '#acd2cc' }} className=" p-3">
           <BsCheckCircleFill className="inline text-2xl" />
