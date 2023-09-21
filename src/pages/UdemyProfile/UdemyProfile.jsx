@@ -17,7 +17,7 @@ export default function UdemyProfile() {
                 <div className="tab-content">
                   <div className="form-group mb-3 ms-3">
                     <label htmlFor="exampleInputFirstName" className="mb-1">
-                      <small className="fw-bold">First Name</small>
+                      <small className="fw-bold">Name</small>
                     </label>
                     <input
                       type="text"
@@ -28,13 +28,13 @@ export default function UdemyProfile() {
                   </div>
                   <div className="form-group mb-3 ms-3">
                     <label htmlFor="exampleInputSecondName" className="mb-1">
-                      <small className="fw-bold">Last Name</small>
+                      <small className="fw-bold">Email</small>
                     </label>
                     <input
-                      type="text"
+                      type="email"
                       className="form-control border-dark rounded-0 me-5 shadow-none "
                       id="exampleInputSecondName"
-                      placeholder="Name *"
+                      placeholder="Email *"
                     />
                   </div>
                   <div className="form-group mb-3 ms-3">

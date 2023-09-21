@@ -227,6 +227,7 @@ function DropDownList({ setIsActive, isActive, handleLogout }) {
     getMe()
       .then((res) => {
         const user = res.data.data.document.username;
+        //console.log(user)
         setUser(user);
       })
       .catch((err) => {

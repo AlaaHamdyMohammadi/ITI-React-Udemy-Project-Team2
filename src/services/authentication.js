@@ -7,7 +7,7 @@ export const loginUser = (data) => {
 
 export const signupUser = (data) => {
     return axiosInstance.post('/users/signup', data);
-}
+} 
 
 export const getMe = () => {
 
@@ -29,4 +29,14 @@ export const getMe = () => {
     }else{
         console.error('No token found.');
     }
+}
+
+export const updateMe = () => {
+    const token = localStorage.getItem('token');
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
 }

@@ -89,6 +89,7 @@ function App() {
   const [userName, setUsername] = useState('');
   const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
+  const [photo, setPhoto] = useState(null);
   return (
     <>
       <AuthProvider
@@ -101,6 +102,8 @@ function App() {
           setEmail,
           user,
           setUser,
+          photo,
+          setPhoto,
         }}
       >
         <Provider store={store}>
