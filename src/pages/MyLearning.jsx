@@ -1,18 +1,17 @@
-import { Helmet } from "react-helmet";
-
+import { Helmet } from 'react-helmet';
 function MyLearning() {
-    return (
-        <>
-        <div>
+  return (
+    <>
+      <div>
         <Helmet>
-        <title>
-        Online Courses - Learn Anything, On Your Schedule | Udemy
-        </title>
+          <title>
+            Online Courses - Learn Anything, On Your Schedule | Udemy
+          </title>
         </Helmet>
         My Learning
-        </div>
-        </>
-    );
+      </div>
+    </>
+  );
 }
 
-export default MyLearning
+export default MyLearning;
