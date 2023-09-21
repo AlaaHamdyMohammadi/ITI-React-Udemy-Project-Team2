@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { changeNavbar } from '../../store/slices/navbar';
@@ -14,6 +15,7 @@ import Learn from './learn/learn';
 import Requirements from './requirments/requirments';
 import CourseContent from './CourseContent/CourseContent';
 import Description from './Description/Description';
+import { Helmet } from 'react-helmet';
 // import {firstComp}from './firstComp.jsx/firstComp'
 export const loadercourse = async () => {
   var res = await getCourse();
@@ -46,6 +48,9 @@ export default function CourseDetials() {
 
   return (
     <>
+      <Helmet>
+        <title>{`${Course.title} | Udemy`}</title>
+      </Helmet>
       {/* <Header /> */}
       <FirstComp course={Course} />
       {/* <AboveList className='sticky top-0'  course={Course} /> */}
