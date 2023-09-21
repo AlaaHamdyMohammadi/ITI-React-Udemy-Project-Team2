@@ -56,14 +56,5 @@ function Categories() {
     );
 }
 
-// function List({ category, handleShow, handleClose }) {
-//   <li
-//     className="hover:text-violet-600"
-//     onMouseOver={handleShow}
-//     onMouseLeave={handleClose}
-//   >
-//     {category.name}
-//   </li>;
-// }
 
 export default Categories

@@ -22,8 +22,6 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getMe } from '../../services/authentication';
 
-//className="border-1 rounded-none border-black p-2 text-sm font-bold text-gray-950 no-underline hover:bg-gray-200"
-
 export default function Header() {
   const [onUdemyBusiness, setUB] = useState(false);
   const [onTeachOnUdemy, setTON] = useState(false);
@@ -38,8 +36,6 @@ export default function Header() {
   const {userName, setUsername} = useContext(authentication);
   const { email, setEmail } = useContext(authentication);
 
-  
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -53,10 +49,6 @@ export default function Header() {
       })
       .catch((err) => console.log(err));
   }, []);
-
-  // function handleLogin(newName){
-  //   setUsername(newName)
-  // }
 
   function handleLogout() {
     localStorage.removeItem('token');

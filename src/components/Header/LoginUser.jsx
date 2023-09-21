@@ -204,8 +204,7 @@ function GoToNotifications() {
 }
 
 function DropDownList({ setIsActive, isActive, handleLogout }) {
-  // const { isSignup, setIsSignup } = useContext(authentication);
-  // const { isLogin, setIsLogin } = useContext(authentication);
+  
   const { userName, setUsername } = useContext(authentication);
   const { user, setUser } = useContext(authentication);
   const { email, setEmail } = useContext(authentication);
