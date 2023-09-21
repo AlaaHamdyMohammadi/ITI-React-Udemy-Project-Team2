@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import axiosInstance from "../../axiosConfig/instance";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 
 function CategoriesPage() {
@@ -21,9 +22,14 @@ function CategoriesPage() {
   );
 
   return (
-    <div>
-      <h1>category: {category.name}</h1>
-    </div>
+    <>
+      <Helmet>
+        <title>{`${category.name} Online Courses | Udemy`}</title>
+      </Helmet>
+      <div>
+        <h1>category: {category.name}</h1>
+      </div>
+    </>
   );
 }
 
