@@ -7,6 +7,7 @@ import { Button, NavDropdown, Dropdown } from 'react-bootstrap';
 import './Business.css';
 import { changeNavbar } from './../store/slices/navbar';
 import { useDispatch } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 export default function Business() {
   // const [show, setShow] = useState(false);
@@ -22,6 +23,9 @@ export default function Business() {
 
   return (
     <div>
+      <Helmet>
+        <title>Request a free demo | Udemy Business</title>
+      </Helmet>
       {/* Nav */}
       <div className="whole-nav  bg-light row ms-3">
         <nav className="navbar navbar-expand-lg navbar-light bg-light mt-2">
