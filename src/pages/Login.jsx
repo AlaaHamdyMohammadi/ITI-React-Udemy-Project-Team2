@@ -23,7 +23,8 @@ function Login() {
   const [login, setLogin] = useState({ email : '', password: ''});
   const [error, setError] = useState({emailError: '', passwordError: ''});
   const {isLogin, setIsLogin} = useContext(authentication)
- 
+  //const { userName, setUsername } = useContext(authentication);
+
   function handleValidation(e){
     if(e.target.name === 'email'){
       const emailValue = e.target.value; 
@@ -51,9 +52,10 @@ function Login() {
         setIsLogin(true);
         toast.success('Successfully logged in');
         navigate('/courses');
+        
       }catch(err){
-        console.log(err);
-        //toast.error('Login failed. Please check your credentials.');
+        //console.log(err);
+        toast.error('Login failed. Please check your credentials.');
       } 
     }
   }

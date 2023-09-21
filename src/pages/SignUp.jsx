@@ -11,12 +11,13 @@ import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import './LoginAndSignUp.css';
 import { signupUser } from '../services/authentication';
 import { authentication } from '../contextConfig/authentication';
+import axiosInstance from '../axiosConfig/instance';
 
 function SignUp() {
   const navigate = useNavigate();
   const [showPassword, setshowPassword] = useState(false);
   const [showPasswordConfirm, setshowPasswordConfirm] = useState(false);
-  const {isSignup, setIsSignup} = useContext(authentication);
+  //const {isSignup, setIsSignup} = useContext(authentication);
 
   const [signup, setSignup] = useState({
     username: '',
@@ -82,13 +83,14 @@ function SignUp() {
       });
     }
   }
-
+ 
   async function handleSubmit(e) {
     e.preventDefault();
     if (signup.password === signup.passwordConfirm) {
+      const user = {username: signup.username, email: signup.email, password: signup.password, passwordConfirm: signup.passwordConfirm};
+      signupUser(user);
       try {
         toast.success('The Account has been created');
-        localStorage.setItem('user', JSON.stringify(signup));
         navigate('/login');
       } catch (err) {
         toast.error('Please Email must be Unique');
@@ -98,19 +100,8 @@ function SignUp() {
     }
   }
 
-  const getUserName = () => {
-    const userJSON = localStorage.getItem('user');
-    const user = JSON.parse(userJSON);
-    if (user && user.username) {
-      return `Welcome, ${user.username}!`;
-    }
-    return 'Welcome!';
-  };
-
   return (
     <>
-      <h1>{getUserName()}</h1>
-
       <form
         onSubmit={(e) => handleSubmit(e)}
         className="flex h-screen flex-col items-center justify-center"

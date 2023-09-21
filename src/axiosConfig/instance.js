@@ -3,7 +3,7 @@ import axios from 'axios';
 //('http://localhost:4000/api/v1/users');
 //('http://localhost:4000/api/v1/courses');
 //('http://localhost:4000/api/v1/reviews');
-//('http://localhost:4000/api/v1/categories');
+//('http://localhost:4000/api/v1/categories/${id}');
 //('http://localhost:4000/api/v1/subCategories');
 //('http://localhost:4000/api/v1/subCategories/${id}/courses'); //poula
 //('http://localhost:4000/api/v1//categories/${id}/subCategories');

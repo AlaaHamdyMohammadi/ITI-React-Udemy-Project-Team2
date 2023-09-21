@@ -20,6 +20,7 @@ import LoginUser from './LoginUser';
 import LogoutUser from './LogoutUser';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getMe } from '../../services/authentication';
 
 //className="border-1 rounded-none border-black p-2 text-sm font-bold text-gray-950 no-underline hover:bg-gray-200"
 
@@ -34,13 +35,13 @@ export default function Header() {
   const [addToCart, setAddToCart] = useState(false);
   const [categories, setCategories] = useState([]);
   const { isLogin, setIsLogin } = useContext(authentication);
+  const {userName, setUsername} = useContext(authentication);
+  const { email, setEmail } = useContext(authentication);
 
+  
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // function handleClick(id){
-  //   setCurrentId(id);
-  // }
 
   useEffect(function () {
     axiosInstance
@@ -52,6 +53,10 @@ export default function Header() {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  // function handleLogin(newName){
+  //   setUsername(newName)
+  // }
 
   function handleLogout() {
     localStorage.removeItem('token');
@@ -86,6 +91,7 @@ export default function Header() {
               setWishList={setWishList}
               addToCart={addToCart}
               setAddToCart={setAddToCart}
+              
             />
           ) : (
             <LogoutUser setTON={setTON} onTeachOnUdemy={onTeachOnUdemy} />

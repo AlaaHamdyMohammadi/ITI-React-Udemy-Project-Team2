@@ -20,7 +20,7 @@ import Logout from './pages/Logout';
 import MyLearning from './pages/MyLearning';
 import './App.css';
 import WishListPage from './pages/WishListPage';
-import CategoriesPage from './pages/CategoriesPage';
+import CategoriesPage from './pages/CategoriesPage/CategoriesPage';
 import Profile from './pages/Profile/Profile';
 import ProfilePicture from './pages/ProfilePicture/ProfilePicture'
 import PrivacySettings from './pages/PrivacySettings/PrivacySettings';
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
           </Guard>
         ),
       },
-      { path: '/categoriesPage/:name', element: <CategoriesPage /> },
+      { path: '/categoriesPage/:_id', element: <CategoriesPage /> },
       {
         path: '/CourseDetials',
         element: <CourseDetials/>,
@@ -86,18 +86,29 @@ const router = createBrowserRouter([
 
 function App() {
   const [isLogin, setIsLogin] = useState(localStorage.getItem('token') ? true : false);
-  const [isSignup, setIsSignup] = useState(
-    localStorage.getItem('token') ? true : false,
-  );
+  const [userName, setUsername] = useState('');
+  const [user, setUser] = useState('');
+  const [email, setEmail] = useState('');
   return (
     <>
-      <AuthProvider value={{ isLogin, setIsLogin, isSignup, setIsSignup }}>
+      <AuthProvider
+        value={{
+          isLogin,
+          setIsLogin,
+          userName,
+          setUsername,
+          email,
+          setEmail,
+          user,
+          setUser,
+        }}
+      >
         <Provider store={store}>
           <RouterProvider router={router} />
         </Provider>
       </AuthProvider>
     </>
   );
-}
+} 
 
 export default App;

@@ -43,7 +43,7 @@ function ToolTip({ handleShow, handleClose, currentId }) {
     axiosInstance
       .get(`/categories/${currentId}/subCategories`)
       .then((res) => {
-        console.log(res.data.data.subCategories);
+        //console.log(res.data.data.subCategories);
         setSubCategories(res.data.data.subCategories);
       })
       .catch((error) => {
