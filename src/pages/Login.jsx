@@ -16,6 +16,7 @@ import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { useNavigate, NavLink, Link } from 'react-router-dom';
 import './LoginAndSignUp.css'
 import { authentication } from '../contextConfig/authentication';
+import { Helmet } from 'react-helmet';
 
 function Login() {
   const navigate = useNavigate();
@@ -62,6 +63,9 @@ function Login() {
   
   return (
     <>
+      <Helmet>
+        <title>Log In and Start Learning | Udemy</title>
+      </Helmet>
       <form
         onSubmit={(e) => handleSubmit(e)}
         className="flex h-screen flex-col items-center justify-center"
