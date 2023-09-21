@@ -1,14 +1,11 @@
 function NotFound() {
   return (
     <>
-      <div className="flex h-screen items-center justify-center">
-        <div className="text-center">
-          <h1 className="display-1 fw-bold">404</h1>
-          <p className="text-3xl">
-            <span className="text-red-600">Opps!</span> Page not found.
-          </p>
-          <p className="lead">The page you’re looking for doesn’t exist.</p>
-        </div>
+      <div className="h-screen">
+        <img className="ml-96"  src="./../../public/images/notFoundImg.jpg" />
+        <h1 className="w-2/5 ml-96 font-bold text-center">
+          We can’t find the page you’re looking for
+        </h1>
       </div>
     </>
   );
