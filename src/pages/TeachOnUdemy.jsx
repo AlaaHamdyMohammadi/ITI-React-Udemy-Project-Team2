@@ -1,10 +1,14 @@
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Carousel from 'react-bootstrap/Carousel';
+import { Helmet } from 'react-helmet';
   
 export default function TeachOnUdemy() {
   return (
     <>
+      <Helmet>
+        <title>Teach Online - Share your knowledge with millions of student...</title>
+      </Helmet>
       <div className="overflow-hidden p-0">
         <div className="d-flex flex-md-row flex-column">
           <div className="row position-relative head flex-grow-1">
