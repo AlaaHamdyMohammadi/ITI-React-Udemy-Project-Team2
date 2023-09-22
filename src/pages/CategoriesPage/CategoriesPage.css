@@ -1,0 +1,17 @@
+.triangle-border {
+  width: 100px; /* Adjust the width and height as needed */
+  height: 100px;
+  position: relative;
+  border: 1px solid #000; /* Border color and thickness */
+  border-top-right-radius: 0px; /* Adjust the radius to change the triangle size */
+  border-bottom-right-radius: 0px; /* Adjust the radius to change the triangle size */
+}
+
+.triangle-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -20px; /* Adjust this value to change the triangle's position */
+  border-width: 20px 20px 20px 0;
+  border-color: transparent #000 transparent transparent; /* Adjust the border color */
+}
