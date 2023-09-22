@@ -12,7 +12,7 @@ function NavBusiness({ setUB, onUdemyBusiness }) {
         setUB(false);
       }}
     >
-      <div className="base text-decoration-none text-dark">
+      <div className="base ms-3 text-decoration-none text-dark">
         <NavLink
           className="text-sm text-gray-950 no-underline hover:text-violet-600 "
           to="/udemy-business"

@@ -23,7 +23,7 @@ function LoginUser({
  
 
   return (
-    <div className="d-flex ms-3 ">
+    <div className="d-flex ms-12 ">
       <Instructor setTON={setTON} />
       <MyLearning myLearning={myLearning} setMyLearning={setMyLearning} />
       <GoToWishList wishList={wishList} setWishList={setWishList} />
@@ -41,7 +41,7 @@ function LoginUser({
 function Instructor({ setTON }) {
   return (
     <div
-      className="ms-1 mt-3"
+      className="-ml-6 mr-3 mt-3"
       onMouseOver={() => {
         setTON(true);
       }}
@@ -64,7 +64,7 @@ function Instructor({ setTON }) {
 function MyLearning({ setMyLearning, myLearning }) {
   return (
     <div
-      className="ms-3 mt-3"
+      className="ms-2 mt-3"
       onMouseOver={() => {
         setMyLearning(true);
       }}
@@ -107,7 +107,7 @@ function MyLearning({ setMyLearning, myLearning }) {
 function GoToWishList({wishList, setWishList}) {
   return (
     <div
-      className="ms-3 mt-3"
+      className="ms-4 mt-3"
       onMouseOver={() => {
         setWishList(true);
       }}
@@ -150,7 +150,7 @@ function GoToWishList({wishList, setWishList}) {
 function GoToCart({ addToCart, setAddToCart }) {
   return (
     <div
-      className="ms-3 mt-3"
+      className="ms-4 mt-3"
       onMouseOver={() => {
         setAddToCart(true);
       }}
@@ -192,7 +192,7 @@ function GoToCart({ addToCart, setAddToCart }) {
 
 function GoToNotifications() {
   return (
-    <div className="align-self-center  ms-3.5">
+    <div className="align-self-center  ms-4">
       <NavLink
         className="text-xl font-bold text-gray-950 hover:text-violet-600"
         to="/cart"
