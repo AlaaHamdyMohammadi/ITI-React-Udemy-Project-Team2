@@ -41,7 +41,7 @@ function CategoriesPage() {
 
       <NavSubCategory category={category} subCategories={subCategories} />
 
-      <div className="ml-4 mt-5">
+      <div className="mx-4 mt-5">
         <h2 className="mb-5 font-bold">{category.name} Courses</h2>
         <h4 className="mb-3 font-bold">Courses to get you started</h4>
         <div className="border-b-2">
@@ -54,20 +54,20 @@ function CategoriesPage() {
         </div>
       </div>
 
-      <div className="ml-4 mt-5">
+      <div className="mx-4 mt-5">
         <h4 className="mb-3 font-bold">Featured course</h4>
       </div>
 
       <PopularTopics subCategories={subCategories} />
 
-      <div className="ml-4 mt-5">
+      <div className="mx-4 mt-5">
         <h4 className="mb-3 font-bold">Popular Instructors</h4>
       </div>
-      <div className="ml-4 mt-5">
+      <div className="mx-4 mt-5">
         <h4 className="mb-3 font-bold">All Data Science courses</h4>
         <div className="border-1 p-3">
           <AiFillExclamationCircle className="inline text-4xl" />
-          <span className="pl-3 text-md font-bold">
+          <span className="text-md pl-3 font-bold">
             Not sure? All courses have a 30-day money-back guarantee
           </span>
         </div>
@@ -97,18 +97,20 @@ function NavSubCategory({ category, subCategories }) {
 
 function PopularTopics({subCategories}) {
 
-  return <div className="ml-4 mt-5">
-    <h4 className="mb-5 font-bold">Popular topics</h4>
-    <div className="flex flex-wrap justify-evenly">
-      {subCategories.map((subCategory) => (
-        <div className="" key={subCategory._id}>
-          <NavLink className=" border-1 p-3 font-bold text-gray-950 no-underline hover:bg-gray-100">
-            {subCategory.name}
-          </NavLink>
-        </div>
-      ))}
+  return (
+    <div className="mx-4 mt-5">
+      <h4 className="mb-5 font-bold">Popular topics</h4>
+      <div className="flex flex-wrap justify-evenly">
+        {subCategories.map((subCategory) => (
+          <div className="" key={subCategory._id}>
+            <NavLink className=" border-1 p-3 font-bold text-gray-950 no-underline hover:bg-gray-100">
+              {subCategory.name}
+            </NavLink>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
+  );
 }
 
 export default CategoriesPage;
