@@ -4,7 +4,7 @@ import { Nav, NavDropdown } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { BsSearch, BsCart3, BsGlobe, BsBell } from 'react-icons/bs';
 import { AiOutlineHeart } from 'react-icons/ai';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { authentication } from '../../contextConfig/authentication';
 import { getMe } from '../../services/authentication';
 
