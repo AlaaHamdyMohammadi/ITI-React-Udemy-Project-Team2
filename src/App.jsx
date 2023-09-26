@@ -20,13 +20,14 @@ import Logout from './pages/Logout';
 import MyLearning from './pages/MyLearning';
 import './App.css';
 import WishListPage from './pages/WishListPage';
-import CategoriesPage from './pages/CategoriesPage/CategoriesPage';
+import CategoriesPage, { loadercourseShow } from './pages/CategoriesPage/CategoriesPage';
 import Profile from './pages/Profile/Profile';
 import ProfilePicture from './pages/ProfilePicture/ProfilePicture'
 import PrivacySettings from './pages/PrivacySettings/PrivacySettings';
 import CourseDetials, {
   loadercourse,
 } from './pages/CourseDetials/CourseDetials';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -69,10 +70,14 @@ const router = createBrowserRouter([
           </Guard>
         ),
       },
-      { path: '/categoriesPage/:_id', element: <CategoriesPage /> },
+      {
+        path: '/categoriesPage/:_id',
+        element: <CategoriesPage />,
+        loader: loadercourseShow,
+      },
       {
         path: '/CourseDetials',
-        element: <CourseDetials/>,
+        element: <CourseDetials />,
         loader: loadercourse,
       },
       { path: '/cart', element: <CartPage /> },
@@ -83,6 +88,7 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 
 function App() {
   const [isLogin, setIsLogin] = useState(localStorage.getItem('token') ? true : false);

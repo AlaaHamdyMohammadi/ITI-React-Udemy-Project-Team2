@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom';
-
+import './Profile.css';
 function Profile() {
   return (
     <div>
@@ -13,21 +13,21 @@ function Profile() {
       </div>
       <div className="container border-b-2 p-2">
         <NavLink
-          className="fw-bold pr-2 text-gray-500 hover:text-gray-950"
+          className="fw-bold test pb-2.5 text-gray-500"
           style={{ textDecoration: 'none' }}
           to="/profile"
         >
           Udamy profile
         </NavLink>
         <NavLink
-          className="fw-bold pr-2 text-gray-500 hover:text-gray-950"
+          className="fw-bold test ml-2 pb-2.5 text-gray-500"
           style={{ textDecoration: 'none' }}
           to="/profile/profile-picture"
         >
           Profile picture
         </NavLink>
         <NavLink
-          className="fw-bold pr-2 text-gray-500 hover:text-gray-950"
+          className="fw-bold test  ml-2 pb-2.5 text-gray-500"
           style={{ textDecoration: 'none' }}
           to="/profile/privacy-setting"
         >

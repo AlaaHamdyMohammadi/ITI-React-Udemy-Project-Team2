@@ -1,0 +1,37 @@
+/* a{
+    text-decoration: none;
+    --tw-text-opacity: 1;
+    color: rgb(107 114 128 / var(--tw-text-opacity));
+} */
+
+/* .active{
+    color:black;
+    border-bottom: 1px solid black;
+} */
+
+.rotate-left {
+  transform: rotate(-90deg);
+  /* font-size: 50px; */
+  /* width: 100px; 
+  height: 100px; */
+}
+
+/* 
+
+<svg
+          className="rotate-left"
+          fill="none"
+          height="24"
+          shapeRendering="geometricPrecision"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1.5"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path d="M6 9l6 6 6-6"></path>
+        </svg>
+
+
+*/

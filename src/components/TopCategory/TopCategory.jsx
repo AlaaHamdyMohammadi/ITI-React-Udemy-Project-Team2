@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './TopCategory.css';
 import { NavLink } from 'react-router-dom';
+import axiosInstance from '../../axiosConfig/instance';
+
+
 export default function TopCategory() {
   const category = [
     {
@@ -53,6 +56,10 @@ export default function TopCategory() {
       id: 8,
     },
   ];
+  const [categories, setCategories] = useState([]);
+  useEffect(function(){
+    axiosInstance.get('/categories');
+  }, []);
   return (
     <div className="mt-5 p-4">
       <h3 className="pb-3">Top categories</h3>
@@ -64,7 +71,7 @@ export default function TopCategory() {
               className="categoryImg bg-cover object-cover "
               style={item.style}
             >
-              <NavLink to={`/categoriesPage/${item.name}`}>
+              <NavLink to={`/categoriesPage/${item.id}`}>
               
               <img className="image" src={item.src} alt="" />
               </NavLink>

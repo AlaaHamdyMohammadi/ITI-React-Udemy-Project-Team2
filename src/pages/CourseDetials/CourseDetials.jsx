@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { changeNavbar } from '../../store/slices/navbar';
 import { changeScrollBar } from '../../store/slices/ScrollBar';
 import Header from '../../components/Header/Header';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { getCourse } from '../../services/Detials';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
 import './CourseDetials.css';
 import FirstComp from './firstComp.jsx/firstComp';
 import AboveList from './firstComp.jsx/aboveComp/aboveComp';
@@ -16,15 +16,37 @@ import Requirements from './requirments/requirments';
 import CourseContent from './CourseContent/CourseContent';
 import Description from './Description/Description';
 import { Helmet } from 'react-helmet';
+import Reviwes from './reviwes/reviwes';
+import ShowCourses from '../../components/CoursesSection/ShowCourses/ShowCourses';
+import ShowCoursesD from './ShowCoursesD/ShowCoursesD';
+import axiosInstance from '../../axiosConfig/instance';
 // import {firstComp}from './firstComp.jsx/firstComp'
 export const loadercourse = async () => {
   var res = await getCourse();
-  console.log(res.data.data.document);
+  console.log(res.data.data.course);
   // return object of keys &values of loaders
-  return res.data.data.document;
+  return res.data.data.course;
 };
 
 export default function CourseDetials() {
+  const{courseID}=useParams()
+// another way to get course using useeffect
+// const [Course, setCourse] = useState([]);
+  
+
+// useEffect(function () {
+//   axiosInstance
+//     .get(`courses/${courseID}`)
+//     .then((res) => {
+//       console.log(res.data.data.course);
+
+//       const CourseD = res.data.data.course;
+
+//       setCourse(CourseD);
+//     })
+//     .catch((err) => console.log(err));
+// }, []);
+  //
   const dispatch = useDispatch();
   const Bar = useSelector((state) => state.ScrollBar.ScrollBar);
 
@@ -65,7 +87,8 @@ export default function CourseDetials() {
         <CourseContent course={Course}/>
         <Requirements course={Course}/>
         <Description course={Course}/>
-
+        <ShowCoursesD  />
+        <Reviwes course={Course} courseID={courseID}/>
         </div>
         <div className="col-span-1">
         {/* <AboveList  className='absolute right-0 top-0' course={Course} /> */}

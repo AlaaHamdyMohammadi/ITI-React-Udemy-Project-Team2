@@ -5,7 +5,7 @@ export default function CourseContent({ course }) {
   const ContentSection = course.ContentSection;
   return (
     <>
-      <div className="container">
+      <div className="">
         <div className="text-2xl font-extrabold">Course content</div>
         <div
           htmlFor="countries"

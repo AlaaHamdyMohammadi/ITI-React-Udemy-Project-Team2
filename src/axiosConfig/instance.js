@@ -6,7 +6,7 @@ import axios from 'axios';
 //('http://localhost:4000/api/v1/categories/${id}');
 //('http://localhost:4000/api/v1/subCategories');
 //('http://localhost:4000/api/v1/subCategories/${id}/courses'); //poula
-//('http://localhost:4000/api/v1//categories/${id}/subCategories');
+//('http://localhost:4000/api/v1/categories/${id}/subCategories');
 
 //('127.0.0.1:4000/api/v1/users/InstructorId/courses') //Esraa And Alaa
 
