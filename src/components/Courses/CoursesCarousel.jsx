@@ -1,34 +1,34 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { Carousel } from 'react-bootstrap';
-import { useState } from 'react';
 import ModalCard from './ModalCard';
+import { useEffect, useState } from 'react';
+import axiosInstance from '../../axiosConfig/instance';
+import { useDispatch, useSelector } from 'react-redux';
 
 function CoursesCarousel() {
+  const courses = useSelector(
+    (state) => state.categoryCourses.categoryCourse.courses,
+  );
+  
+  //console.log('sssss', courses);
+
+  //const [courseArr, setCourseArr] = useState([]);
+
+  // setCourseArr(courses.courses)
   return (
-    <Carousel className="mt-2 mb-2">
-      <Carousel.Item>
-        <div className="flex justify-between">
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
-        </div>
-      </Carousel.Item>
-      <Carousel.Item>
-        <div className="flex justify-between">
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
-        </div>
-      </Carousel.Item>
-    </Carousel>
+    <>
+      <Carousel className="mb-2 mt-2">
+        <Carousel.Item>
+          
+        </Carousel.Item>
+      </Carousel>
+    </>
   );
 }
 
-function CardItem() {
+function CardItem(props) {
+  console.log(props);
   const [showModal, setShowModal] = useState(false);
   const handleShow = () => {
     setShowModal(true);
@@ -40,19 +40,17 @@ function CardItem() {
     <div className="relative">
       <img
         className="h-40 w-60"
-        src="./../../public/images/homePage/carImg9.jfif"
+        src={props.course.photo}
         onMouseOver={handleShow}
         onMouseLeave={handleClose}
       />
-      <h6 className="mt-2 w-64 font-bold">
-        The Complete Python Bootcamp From Zero to Hero in Python
-      </h6>
+      <h6 className="mt-2 w-64 font-bold">{props.course.title}</h6>
       <div>
-        <p className="text-sm text-slate-500">Jose Portilla</p>
-        <p className="font-bold">5 ⭐⭐⭐⭐⭐</p>
-        <p className="font-bold">E1,599.99</p>
+        <p className="text-sm text-slate-500">{props.course.instructor}</p>
+        <p className="font-bold">{props.course.rating} ⭐</p>
+        <p className="font-bold">E{props.course.price}</p>
         <p className="w-fit bg-lime-200 p-1.5 text-xs text-lime-950">
-          Best Seller
+          {props.course.NumStd > 1000 ? 'Best Seller' : ''}
         </p>
       </div>
       {showModal && (
@@ -63,3 +61,6 @@ function CardItem() {
 }
 
 export default CoursesCarousel;
+
+
+// 

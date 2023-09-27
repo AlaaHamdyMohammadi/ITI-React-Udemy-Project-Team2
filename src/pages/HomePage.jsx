@@ -7,27 +7,25 @@ import StudentsViewing from '../components/StudentsViewing';
 import TopCategory from '../components/TopCategory/TopCategory';
 import Featured from '../components/Featured/Featured';
 import UpSkillInstractor from '../components/Upskill&Instractor/UpSkill&Instractor';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { authentication } from '../contextConfig/authentication';
 import Categories from '../components/userLogin/Categories';
-// import { useState } from 'react';
-// import Spinner from '../components/Spinner';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { changeSpinner } from '../store/slices/spinner';
-
-
+import Spinner from '../components/Spinner';
 
 function HomePage() {
-  // const [isLoading, setIsLoading] = useState(false);
-  // // if(isLoading) return <Spinner/>
-  // const spinner = useSelector(state => state.spinner.spinner);
-  // const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
   const { isLogin, setIsLogin } = useContext(authentication);
+
+  useEffect(function(){
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 1000)
+  }, []);
 
   return (
     <div>
       {isLogin && <Categories />}
-      <CarouselImage />
+      {isLoading ? <Spinner/> : <CarouselImage />}
       <Photos />
       <CoursesList />
       <Learners />

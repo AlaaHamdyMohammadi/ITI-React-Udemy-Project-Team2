@@ -20,13 +20,15 @@ import Logout from './pages/Logout';
 import MyLearning from './pages/MyLearning';
 import './App.css';
 import WishListPage from './pages/WishListPage';
-import CategoriesPage, { loadercourseShow } from './pages/CategoriesPage/CategoriesPage';
+import CategoriesPage from './pages/CategoriesPage/CategoriesPage';
+//, { loadercourseShow }
 import Profile from './pages/Profile/Profile';
 import ProfilePicture from './pages/ProfilePicture/ProfilePicture'
 import PrivacySettings from './pages/PrivacySettings/PrivacySettings';
 import CourseDetials, {
   loadercourse,
 } from './pages/CourseDetials/CourseDetials';
+import TestForm from './components/Header/testForm';
 
 const router = createBrowserRouter([
   {
@@ -72,8 +74,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/categoriesPage/:_id',
-        element: <CategoriesPage />,
-        loader: loadercourseShow,
+        element: <CategoriesPage />
+        //loader: loadercourseShow,
       },
       {
         path: '/CourseDetials',
@@ -84,6 +86,7 @@ const router = createBrowserRouter([
       { path: '/login', element: <Login /> },
       { path: '/signup', element: <SignUp /> },
       { path: '/logout', element: <Logout /> },
+      { path: '/test', element: <TestForm /> },
       { path: '*', element: <NotFound /> },
     ],
   },

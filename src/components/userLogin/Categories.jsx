@@ -17,7 +17,7 @@ function Categories() {
       axiosInstance
         .get('/categories')
         .then((res) => {
-          //console.log(res.data.data.documents);
+          console.log(res.data.data.documents);
           const numOfCategories = res.data.data.documents.slice(0,10);
           setCategories(numOfCategories);
         }).catch(err => console.log(err));

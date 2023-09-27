@@ -1,6 +1,16 @@
+/* eslint-disable no-unused-vars */
+import { useEffect, useState } from 'react';
+import Spinner from './../Spinner';
 function FirstContent() {
-    return (
-      <div>
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(function () {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
+  return (
+    <>
+      {isLoading ? <Spinner/> : <div>
         <img src="./../../public/images/homePage/userLogin.jpg" />
         <div className="relative drop-shadow-xl">
           <div className="absolute bottom-40  left-32  hidden  w-1/3 bg-white p-3   lg:block xl:block">
@@ -10,8 +20,9 @@ function FirstContent() {
             </p>
           </div>
         </div>
-      </div>
-    );
+      </div>}
+    </>
+  );
 }
 
-export default FirstContent
+export default FirstContent;

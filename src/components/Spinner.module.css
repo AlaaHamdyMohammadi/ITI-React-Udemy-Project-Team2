@@ -6,13 +6,14 @@
 }
  
 .spinner {
-  width: 6rem;
-  height: 6rem;
+  border: 5px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  /* background: conic-gradient(#0000 10%, var(--color-light--2)); */
-  background: black;
-  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
-  animation: rotate 1.5s infinite linear;
+  border-top: 5px solid black;
+  border-right: 5px solid black; 
+  width: 4rem;
+  height: 4rem;
+  margin-top: 30px !important;
+  animation: rotate 1.5s linear infinite;
 }
 
 @keyframes rotate {
