@@ -12,25 +12,29 @@ function NavForm() {
   const [dropdown, setDropdown] = useState(false);
   const navigate = useNavigate();
   const {_id} = useParams();
+  // useEffect(function(){
+  //     axiosInstance.get('/courses').then(res => {
+  //         // console.log(
+  //         //   res.data.data.courses.filter((course) =>
+  //         //     course.title.toLowerCase().includes('mo'),
+  //         //   ),
+  //         // );
+  //       setInputs(res.data.data.courses.slice(0,6));
+  //     }).catch(err => console.log(err))
+  // }, []);
+
   useEffect(function(){
-      axiosInstance.get('/courses').then(res => {
-          // console.log(
-          //   res.data.data.courses.filter((course) =>
-          //     course.title.toLowerCase().includes('mo'),
-          //   ),
-          // );
-        setInputs(res.data.data.courses.slice(0,6));
-      }).catch(err => console.log(err))
+    async function getCourses(){
+      const res = await axiosInstance.get('/courses');
+      setInputs(res.data.data.courses.slice(0, 6));
+      // setDropdown(false);
+    }
+    getCourses();
   }, []);
 
-  
-  const handleClidk = () => {
-    //Form.Control
-    //overflow-hidden
-  }
   return (
-    <Form inline className="searchBar ms-3 mt-2">
-      <InputGroup className="rounded-pill  z-10 border border-black">
+    <Form inline className="searchBar ms-3  mt-2">
+      <InputGroup className="rounded-pill z-10 border border-black">
         <InputGroup.Text className="border-0 bg-white" id="basic-addon1">
           <BsSearch />
         </InputGroup.Text>
@@ -44,6 +48,7 @@ function NavForm() {
             setQuery(e.target.value);
             setDropdown(true);
           }}
+          onBlur={() => setDropdown(false)}
         />
         {dropdown && inputs && (
           <ul className="absolute top-10 z-10 w-full  bg-white">
