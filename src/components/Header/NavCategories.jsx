@@ -7,12 +7,7 @@ import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import axiosInstance from '../../axiosConfig/instance';
 import './Header.css';
 
-function NavCategories({
-  setCAT,
-  onCategories,
-  categories,
-
-}) {
+function NavCategories({ setCAT, onCategories, categories }) {
   const navigate = useNavigate();
   const [subCategories, setSubCategories] = useState([]);
   const [currentId, setCurrentId] = useState('');
@@ -99,6 +94,12 @@ function NavCategories({
                       <NavDropdown.Item
                         className="text-sm"
                         key={subCategory._id}
+                        onClick={(event) => {
+                          event.preventDefault();
+                          event.stopPropagation();
+                          navigate(`/subCategories/${subCategory._id}`);
+                          // handleClick(category._id);
+                        }}
                       >
                         {subCategory.name}
                       </NavDropdown.Item>

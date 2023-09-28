@@ -75,7 +75,7 @@ function CategoriesPage() {
   useEffect(function () {
     axiosInstance.get(`/categories/${_id}/courses`).then((res) => {
       //console.log(res.data.data.courses.slice(0,1));
-      setCourse(res.data.data.courses.slice(2, 3));
+      setCourse(res.data.data.courses.slice(0, 1));
       setcoursesSUB(res.data.data.courses);
     });
   }, [_id]);
@@ -141,10 +141,19 @@ function CategoriesPage() {
               className="h-60 w-96"
               src={`http://localhost:4000/img/courses/${item.photo}`}
             />
-            <div className=" w-50 ml-4">
+            <div className=" w-50 ml-4 cursor-pointer">
               <h3 className="font-bold">{item.title}</h3>
               <p className="w-5/6">{item.subTitle}</p>
-              <p>By {item.instructor}</p>
+              <p className="text-sm font-bold text-gray-500">
+                By {item.instructor}
+              </p>
+              <span className="text-sm font-bold">Updated {item.updated}</span>
+              <span className="ml-2 text-sm font-bold text-gray-500">
+                {item.duration} total hours .
+              </span>
+              <span className="ml-2 text-sm font-bold text-gray-500">
+                {item.lectures} lectures
+              </span>
             </div>
           </div>
         ))}
