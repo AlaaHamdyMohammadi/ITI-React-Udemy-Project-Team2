@@ -12,14 +12,12 @@ function CoursesList() {
   const [categories,setCategories]=useState([])
   const[defCat,setDefCat]=useState([])
   const category=useSelector((state)=>state.category.category)
-  const courses=useSelector((state)=>state.categoryCourses.categoryCourse)
+  const courses=useSelector((state)=>state.categoryCourses.categoryCourse.courses)
 
-  // console.log(courses.documents)
   function getCategory () {
     axiosInstance
       .get('/subCategories')
       .then((res) => {
-        console.log(res);
         const numOfCategories = res.data.data.subCategories.slice(0, 7);
         setCategories(numOfCategories)
         setDefCat(numOfCategories[0])
@@ -36,7 +34,7 @@ function CoursesList() {
       <ContentOutOfTheBox categories={categories} defCategory={defCat} />
       <div className="border-1 mt-2.5 border-solid border-slate-400 p-3">
         <ContentInTheBox category={category} categ={defCat} />
-        <CoursesCarousel courses={courses} />
+        <CoursesCarousel courseArr={courses} categ={defCat} />
         
       </div>
     </div>

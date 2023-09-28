@@ -1,8 +1,6 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable react/prop-types */
 import { useDispatch } from 'react-redux';
 import { setCategory } from '../../store/slices/categories';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axiosInstance from '../../axiosConfig/instance';
 import { setcategoryCourse } from '../../store/slices/categoryCourses';
 
@@ -17,7 +15,6 @@ function ContentOutOfTheBox(props) {
       .then((res) => {
         const courseslist = res.data.data;
         dispatch(setcategoryCourse(courseslist))
-        //console.log("courseslist",courseslist);
         setCheck(true)
       })
       .catch((err) => console.log(err));
@@ -40,7 +37,7 @@ function ContentOutOfTheBox(props) {
           published every month
         </p>
         {props.categories.map((categ)=>{
-          return  <a onClick={()=>changeContent(categ)}
+          return  <a key={categ._id} onClick={()=>changeContent(categ)}
           href="#E"
           className="p-3 font-bold text-slate-500 no-underline hover:text-black"
         >

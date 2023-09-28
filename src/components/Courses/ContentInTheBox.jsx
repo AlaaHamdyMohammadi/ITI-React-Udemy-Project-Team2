@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import Button from "../Button";
 
 function ContentInTheBox({category,categ}) {

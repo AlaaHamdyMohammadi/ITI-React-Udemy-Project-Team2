@@ -8,7 +8,7 @@ import Button from '../Button';
 function ModalCard({ handleShow, handleClose }) {
   return (
     <div
-      className="absolute left-60 top-0 z-10 w-96 border-2 bg-white p-1 text-sm"
+      className="absolute left-60 -top-5 z-10 w-96 border-2 bg-white p-2 text-sm"
       onMouseOver={handleShow}
       onMouseLeave={handleClose}
     >
@@ -29,11 +29,11 @@ function ModalCard({ handleShow, handleClose }) {
         FULLY UPDATED FOR CLF-C01 & CLF-C02: Pass the AWS Certified Cloud
         Practitioner Certification
       </p>
-      <p className="flex">
+      {/*<p className="flex">
         <BsCheckLg className=" text-3xl" />
         FULLY UPDATED FOR CLF-C01 & CLF-C02: Pass the AWS Certified Cloud
         Practitioner Certification
-      </p>
+  </p>*/}
 
       <div className="flex items-center">
         <Button
