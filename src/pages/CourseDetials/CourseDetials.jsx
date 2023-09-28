@@ -30,22 +30,42 @@ export const loadercourse = async () => {
 
 export default function CourseDetials() {
   const{courseID}=useParams()
+  console.log(courseID);
 // another way to get course using useeffect
-// const [Course, setCourse] = useState([]);
+const [Course, setCourse] = useState(undefined);
   
 
 // useEffect(function () {
 //   axiosInstance
-//     .get(`courses/${courseID}`)
+//     .get(`/courses/${courseID}`)
 //     .then((res) => {
-//       console.log(res.data.data.course);
+//       console.log(res);
 
-//       const CourseD = res.data.data.course;
+//       const CourseD = res;
 
 //       setCourse(CourseD);
 //     })
 //     .catch((err) => console.log(err));
 // }, []);
+
+
+useEffect( ()=> {
+  // console.log(esss);
+  axiosInstance
+    .get(`/courses/${courseID}`)
+    .then((res) => {
+      console.log(res);
+      // console.log(res.data);
+
+      // const coursReview = res.data;
+
+      setCourse(res.data.data.course);
+    })
+    .catch((err) => console.log(err));
+}, []);
+// console.log(Course);
+
+
   //
   const dispatch = useDispatch();
   const Bar = useSelector((state) => state.ScrollBar.ScrollBar);
@@ -66,75 +86,79 @@ export default function CourseDetials() {
     };
   }, []);
 
-  const Course = useLoaderData();
+  // const Course = useLoaderData();
 
   return (
     <>
-      <Helmet>
-        <title>{`${Course.title} | Udemy`}</title>
-      </Helmet>
-      {/* <Header /> */}
-      <FirstComp course={Course} />
-      {/* <AboveList className='sticky top-0'  course={Course} /> */}
-
-      {/* <div className='container grid grid-cols-1 gap-4 '> */}
-      <div className="grid grid-cols-3 container  ">
-        <div  className="col-span-2 " >
-        {/* <FirstComp course={Course} /> */}
-
-        <Learn course={Course}/>
-        <StaticSection/>
-        <CourseContent course={Course}/>
-        <Requirements course={Course}/>
-        <Description course={Course}/>
-        <ShowCoursesD  />
-        <Reviwes course={Course} courseID={courseID}/>
-        </div>
-        <div className="col-span-1">
-        {/* <AboveList  className='absolute right-0 top-0' course={Course} /> */}
-
-        </div>
-      </div>
-{/* scrollbar */}
-      {Bar ? (
-        <div className="relative">
-          <div className="fixed left-0 right-0  top-0 bg-zinc-700  px-5 py-1 text-white">
-            <div className="text-sm font-bold"> {Course.title}</div>
-            <div>
-              <span className="flex p-0 ">
-                <span className="custom flex items-center font-bold text-yellow-500">
-                <div className="update mt-0 pr-1">
-                        <span className="bestseller p-1">Best Seller</span>
-                      </div>
-                  {Course.rating}
-
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="h-4 w-4 text-yellow-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                </span>
-
-                <span className="p-2 ">
-                  <a className="text-slate-300" href="#">
-                    ({Course.NumRating} ratings)
-                  </a>
-                </span>
-                <span className="p-2">{Course.NumStd} students</span>
-              </span>
-            </div>
+    {Course&&
+    <>
+          <Helmet>
+          <title>{`${Course.title} | Udemy`}</title>
+        </Helmet>
+        {/* <Header /> */}
+        <FirstComp course={Course} />
+        {/* <AboveList className='sticky top-0'  course={Course} /> */}
+  
+        {/* <div className='container grid grid-cols-1 gap-4 '> */}
+        <div className="grid grid-cols-3 container  ">
+          <div  className="col-span-2 " >
+          {/* <FirstComp course={Course} /> */}
+  
+          <Learn course={Course} courseID={courseID}/>
+          <StaticSection/>
+          <CourseContent course={Course}/>
+          <Requirements course={Course}/>
+          <Description course={Course}/>
+          <ShowCoursesD  />
+          <Reviwes course={Course} courseID={courseID}/>
+          </div>
+          <div className="col-span-1">
+          {/* <AboveList  className='absolute right-0 top-0' course={Course} /> */}
+  
           </div>
         </div>
-      ) : (
-        ''
-      )}
-     
+  {/* scrollbar */}
+        {Bar ? (
+          <div className="relative">
+            <div className="fixed left-0 right-0  top-0 bg-zinc-700  px-5 py-1 text-white">
+              <div className="text-sm font-bold"> {Course.title}</div>
+              <div>
+                <span className="flex p-0 ">
+                  <span className="custom flex items-center font-bold text-yellow-500">
+                  <div className="update mt-0 pr-1">
+                          <span className="bestseller p-1">Best Seller</span>
+                        </div>
+                    {Course.rating}
+  
+                    <svg
+                      fill="currentColor"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      className="h-4 w-4 text-yellow-500"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                  </span>
+  
+                  <span className="p-2 ">
+                    <a className="text-slate-300" href="#">
+                      ({Course.NumRating} ratings)
+                    </a>
+                  </span>
+                  <span className="p-2">{Course.NumStd} students</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        ) : (
+          ''
+        )}
+        </>
+       }
+
     </>
   );
 }

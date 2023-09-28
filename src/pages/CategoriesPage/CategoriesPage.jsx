@@ -136,25 +136,35 @@ function CategoriesPage() {
       <div className="mx-4 mt-5">
         <h4 className="mb-3 font-bold">Featured course</h4>
         {course.map((item) => (
-          <div className="border-1 flex p-3 hover:bg-slate-100" key={item._id}>
-            <img
-              className="h-60 w-96"
-              src={`http://localhost:4000/img/courses/${item.photo}`}
-            />
-            <div className=" w-50 ml-4 cursor-pointer">
-              <h3 className="font-bold">{item.title}</h3>
-              <p className="w-5/6">{item.subTitle}</p>
-              <p className="text-sm font-bold text-gray-500">
-                By {item.instructor}
-              </p>
-              <span className="text-sm font-bold">Updated {item.updated}</span>
-              <span className="ml-2 text-sm font-bold text-gray-500">
-                {item.duration} total hours .
-              </span>
-              <span className="ml-2 text-sm font-bold text-gray-500">
-                {item.lectures} lectures
-              </span>
-            </div>
+          <div key={item._id}>
+            <NavLink
+              className="text-white no-underline"
+              to={`/CourseDetials/${item._id}`}
+            >
+              <div className="flex border-1 p-3 hover:bg-slate-100">
+                <img
+                  className="h-60 w-96"
+                  src={`http://localhost:4000/img/courses/${item.photo}`}
+                />
+
+                <div className="text-black w-50 ml-4 cursor-pointer">
+                  <h3 className="font-bold">{item.title}</h3>
+                  <p className="w-5/6">{item.subTitle}</p>
+                  <p className="text-sm font-bold text-gray-500">
+                    By {item.instructor}
+                  </p>
+                  <span className="text-sm font-bold">
+                    Updated {item.updated}
+                  </span>
+                  <span className="ml-2 text-sm font-bold text-gray-500">
+                    {item.duration} total hours .
+                  </span>
+                  <span className="ml-2 text-sm font-bold text-gray-500">
+                    {item.lectures} lectures
+                  </span>
+                </div>
+              </div>
+            </NavLink>
           </div>
         ))}
       </div>

@@ -75,15 +75,16 @@ const router = createBrowserRouter([
       },
       {
         path: '/categoriesPage/:_id',
-        element: <CategoriesPage />
+        element: <CategoriesPage />,
         //loader: loadercourseShow,
       },
-      { path: '/subCategories/:_id', element: <SubcategoryPage />} ,
+      { path: '/subCategories/:_id', element: <SubcategoryPage /> },
       {
-        path: '/CourseDetials',
+        path: '/CourseDetials/:courseID',
         element: <CourseDetials />,
-        loader: loadercourse,
+        // loader: loadercourse,
       },
+      
       { path: '/cart', element: <CartPage /> },
       { path: '/login', element: <Login /> },
       { path: '/signup', element: <SignUp /> },

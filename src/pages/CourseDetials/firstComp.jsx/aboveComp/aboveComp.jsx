@@ -23,10 +23,11 @@ export default function AboveList({ course }) {
   const Bar = useSelector((state) => state.ScrollBar.ScrollBar);
 
   const handleScroll = () => {
-    if (window.scrollY == 0) {
-      dispatch(changeScrollBar(false));
+    if (window.scrollY >= 97 &&window.scrollY<2000) {
+document.getElementsByClassName('above')[0].style.position='fixed'
     } else {
-      dispatch(changeScrollBar(true));
+      document.getElementsByClassName('above')[0].style.position=''
+
     }
   };
 
@@ -47,7 +48,7 @@ export default function AboveList({ course }) {
         </div>
         {/* without video */}
 
-        <div className="sticky top-20 ">
+        <div className="above customwidthh bg-white  shadow shadow-gray-400 ">
           <div className="container   flex flex-col pt-4">
             {/* price */}
             <div>
