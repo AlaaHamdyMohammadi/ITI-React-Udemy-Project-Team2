@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
-import axiosInstance from '../../../axiosConfig/instance';
+// import axiosInstance from '../../../axiosConfig/instance';
 // import { useParams } from 'react-router-dom';
 
 export default function ShowCourses({coursesSUB}) {
   // console.log(id);
   // const {currentId}=useParams()
 // console.log(currentId);
-
+console.log(coursesSUB);
   return (
     <>
       <div className="flex flex-col">

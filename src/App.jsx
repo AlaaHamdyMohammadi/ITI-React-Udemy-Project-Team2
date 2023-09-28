@@ -28,6 +28,7 @@ import PrivacySettings from './pages/PrivacySettings/PrivacySettings';
 import CourseDetials, {
   loadercourse,
 } from './pages/CourseDetials/CourseDetials';
+import SubcategoryPage from './pages/SubCategoriesPage/CoursesPageCat';
 import TestForm from './components/Header/testForm';
 
 const router = createBrowserRouter([
@@ -77,6 +78,7 @@ const router = createBrowserRouter([
         element: <CategoriesPage />
         //loader: loadercourseShow,
       },
+      { path: '/subCategories/:_id', element: <SubcategoryPage />} ,
       {
         path: '/CourseDetials',
         element: <CourseDetials />,
@@ -86,7 +88,7 @@ const router = createBrowserRouter([
       { path: '/login', element: <Login /> },
       { path: '/signup', element: <SignUp /> },
       { path: '/logout', element: <Logout /> },
-      { path: '/test', element: <TestForm /> },
+      // { path: '/test', element: <TestForm /> },
       { path: '*', element: <NotFound /> },
     ],
   },

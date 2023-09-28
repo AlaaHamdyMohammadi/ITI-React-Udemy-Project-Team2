@@ -3,11 +3,11 @@ import { BiSquare,BiCircle } from "react-icons/bi";
 import { AiFillStar ,AiOutlineStar,} from 'react-icons/ai';
 
 import { BsStarHalf } from "react-icons/bs";
-import { useState } from 'react';
-import { useEffect } from 'react';
-import axiosInstance from '../../../axiosConfig/instance';
+// import { useState } from 'react';
+// import { useEffect } from 'react';
+// import axiosInstance from '../../../axiosConfig/instance';
 
-export default function SideBar({subCategories,coursesSUB,id}) {
+export default function SideBar({coursesSUB,id}) {
 
   // const [subCategories, setSubCategories] = useState([]);
   
@@ -242,50 +242,7 @@ export default function SideBar({subCategories,coursesSUB,id}) {
      {/* ))} */}
         </div>
 
-        <div className='pr-5'>
-{/* <div key={item.title}> */}
-<details  className="mb-3 group">
-				<summary className="  grid grid-cols-12  justify-between items-center font-extrabold cursor-pointer list-none">
-     
-        	{/* <span className='col-span-10'> {item.title}</span> */}
-          <span className='col-span-10'>SubCategory </span>
-
-          <span className=" transition  group-open:rotate-180">
-                <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round"  strokeLinejoin="round"  strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
-                          </svg>
-              </span>
-             
-				</summary>
-        {/* {item.inside} */}
-				<div className="text-black  mt-3 pr-3 group-open:animate-fadeIn">
-          <ul className="list-disc">
-     {subCategories.map((item) => (
-
-  <li key={item._id}> 
-  <span  className='text-sm mb-1 p-2 text-black flex flex-row'>
-  <BiSquare className='mt-1 mr-2'/>
-
-    <span className=' flex flex-row'> 
-  {item.name}
-</span>
-
-</span>
-</li>
-
-))}
-</ul>
-
-
-				</div>
-      
-			</details>
-      <div className='pr-5'>
-              <hr className=" w-100 text-gray-500" />
-            </div>
-{/* </div> */}
-  
-     {/* ))} */}
-        </div>
+        
 
 
 

@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { Nav, NavDropdown } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import axiosInstance from '../../axiosConfig/instance';
 import './Header.css';
 
@@ -16,7 +16,20 @@ function NavCategories({
   const navigate = useNavigate();
   const [subCategories, setSubCategories] = useState([]);
   const [currentId, setCurrentId] = useState('');
-  
+  //const { _id } = useParams();
+
+  // useEffect(() => {
+  //   axiosInstance
+  //     .get(`subCategories/${_id}`)
+  //     .then((res) => {
+  //       //console.log(res.data.data.subCategories);
+  //       setSubCategories(res.data.data.subCategories);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, [_id]);
+
   useEffect(() => {
     axiosInstance
       .get(`/categories/${currentId}/subCategories`)
@@ -29,10 +42,21 @@ function NavCategories({
       });
   }, [currentId]);
 
-  function handleClick(id){
+  function handleClick(id) {
     setCurrentId(id);
   }
-  
+
+  /*
+    <NavLink to={`/subCategories/${subCategory._id}`}>
+                          {subCategory.name}
+                        </NavLink>    
+
+                        onClick={() => {
+                          navigate(`/subCategories/${subCategory._id}`);
+                          console.log(subCategory._id);
+                        }}
+  */
+
   return (
     <Nav className="me-auto">
       <div
@@ -71,13 +95,14 @@ function NavCategories({
                   }}
                 >
                   {subCategories.map((subCategory) => (
-                    <NavDropdown.Item
-                      className="text-sm"
-                      href="#action/3.1"
-                      key={subCategory._id}
-                    >
-                      {subCategory.name}
-                    </NavDropdown.Item>
+                    <>
+                      <NavDropdown.Item
+                        className="text-sm"
+                        key={subCategory._id}
+                      >
+                        {subCategory.name}
+                      </NavDropdown.Item>
+                    </>
                   ))}
                 </NavDropdown>
               ))}

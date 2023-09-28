@@ -4,7 +4,7 @@
 
 import { useEffect, useState } from "react";
 import axiosInstance from "../../axiosConfig/instance";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
 
 /* eslint-disable no-unused-vars */
@@ -60,7 +60,9 @@ function ToolTip({ handleShow, handleClose, currentId }) {
     >
       {subCategories.map((subCategory) => (
         <div className="text-xs" key={subCategory._id}>
-          <h6 className="pl-4 text-sm">{subCategory.name}</h6>
+          <NavLink className='no-underline text-white' to={`/subCategories/${subCategory._id}`}>
+            <h6 className="pl-4 text-sm">{subCategory.name}</h6>
+          </NavLink>
         </div>
       ))}
     </div>

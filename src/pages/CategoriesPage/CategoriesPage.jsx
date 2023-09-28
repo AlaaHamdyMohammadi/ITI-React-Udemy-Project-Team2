@@ -16,18 +16,22 @@ import { changeSpinner } from '../../store/slices/spinner';
 import Spinner from '../../components/Spinner';
 // import { Spinner } from 'react-bootstrap';
 
-// export const loadercourseShow = async () => {
-//   var res = await getCourseSub();
-//   console.log(res.data.data.courses);
-//   // return object of keys &values of loaders
-//   return res.data.data.courses;
-// };
+//`http://localhost:4000/img/courses/${item.photo}`
+
+export const loadercourseShow = async () => {
+  var res = await getCourseSub();
+  console.log(res.data.data.courses);
+  // return object of keys &values of loaders
+  return res.data.data.courses;
+};
 
 function CategoriesPage() {
   const { _id } = useParams();
   //console.log(_id)
   const [category, setCategory] = useState({});
+  const [course, setCourse] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
+  const [coursesSUB, setcoursesSUB] = useState([]);
   const [instructors, setInstructors] = useState([]);
   const spinner = useSelector((state) => state.spinner.spinner);
   const dispatch = useDispatch();
@@ -67,6 +71,28 @@ function CategoriesPage() {
     },
     [_id],
   );
+
+  useEffect(function () {
+    axiosInstance.get(`/categories/${_id}/courses`).then((res) => {
+      //console.log(res.data.data.courses.slice(0,1));
+      setCourse(res.data.data.courses.slice(2, 3));
+      setcoursesSUB(res.data.data.courses);
+    });
+  }, [_id]);
+
+  // 'subCategories/6508bfdf4e4c2aafd7756269/courses/
+  //categories/catID/subCategories/subId/courses
+  // useEffect(() => {
+  //   axiosInstance
+  //     .get(`/categories/${_id}/courses`)
+  //     .then((res) => {
+  //       console.log(res.data.data.courses);
+  //       setcoursesSUB(res.data.data.courses);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, [_id]);
 
   useEffect(function () {
     axiosInstance.get(`/courses`).then((res) => {
@@ -109,6 +135,19 @@ function CategoriesPage() {
 
       <div className="mx-4 mt-5">
         <h4 className="mb-3 font-bold">Featured course</h4>
+        {course.map((item) => (
+          <div className="border-1 flex p-3 hover:bg-slate-100" key={item._id}>
+            <img
+              className="h-60 w-96"
+              src={`http://localhost:4000/img/courses/${item.photo}`}
+            />
+            <div className=" w-50 ml-4">
+              <h3 className="font-bold">{item.title}</h3>
+              <p className="w-5/6">{item.subTitle}</p>
+              <p>By {item.instructor}</p>
+            </div>
+          </div>
+        ))}
       </div>
 
       <PopularTopics subCategories={subCategories} />
@@ -125,7 +164,12 @@ function CategoriesPage() {
           </span>
         </div>
         {/* Show courses of subCategories*/}
-        {/*<CoursesSection coursesSUB={coursesSUB} id={_id} className="p-5" />*/}
+        <CoursesSection
+          subCategories={subCategories}
+          coursesSUB={coursesSUB}
+          id={_id}
+          className="p-5"
+        />
       </div>
     </>
   );
@@ -143,6 +187,7 @@ function NavSubCategory({ category, subCategories }) {
         <NavLink
           className="text-gray-950 no-underline hover:text-violet-600"
           key={subCategory._id}
+          to={`/subCategories/${subCategory._id}`}
         >
           {subCategory.name}
         </NavLink>
@@ -152,13 +197,17 @@ function NavSubCategory({ category, subCategories }) {
 }
 
 function PopularTopics({ subCategories }) {
+
   return (
     <div className="mx-4 mt-5">
       <h4 className="mb-5 font-bold">Popular topics</h4>
       <div className="flex flex-wrap justify-evenly">
         {subCategories.map((subCategory) => (
           <div className="" key={subCategory._id}>
-            <NavLink className=" border-1 p-3 font-bold text-gray-950 no-underline hover:bg-gray-100">
+            <NavLink
+              to={`/subCategories/${subCategory._id}`}
+              className=" border-1 p-3 font-bold text-gray-950 no-underline hover:bg-gray-100"
+            >
               {subCategory.name}
             </NavLink>
           </div>

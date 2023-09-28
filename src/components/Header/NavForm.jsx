@@ -12,6 +12,10 @@ function NavForm() {
   const [dropdown, setDropdown] = useState(false);
   const navigate = useNavigate();
   const {_id} = useParams();
+
+  // if(!query){
+  //   setDropdown(false);
+  // }
   // useEffect(function(){
   //     axiosInstance.get('/courses').then(res => {
   //         // console.log(
@@ -24,17 +28,20 @@ function NavForm() {
   // }, []);
 
   useEffect(function(){
+    if (!query) {
+      setDropdown(false);
+    }
     async function getCourses(){
       const res = await axiosInstance.get('/courses');
-      setInputs(res.data.data.courses.slice(0, 6));
+      setInputs(res.data.data.courses);
       // setDropdown(false);
     }
     getCourses();
-  }, []);
+  }, [query]);
 
   return (
     <Form inline className="searchBar ms-3  mt-2">
-      <InputGroup className="rounded-pill z-10 border border-black">
+      <InputGroup className="z-10 rounded-lg border border-black">
         <InputGroup.Text className="border-0 bg-white" id="basic-addon1">
           <BsSearch />
         </InputGroup.Text>
@@ -48,7 +55,6 @@ function NavForm() {
             setQuery(e.target.value);
             setDropdown(true);
           }}
-          onBlur={() => setDropdown(false)}
         />
         {dropdown && inputs && (
           <ul className="absolute top-10 z-10 w-full  bg-white">
@@ -56,7 +62,7 @@ function NavForm() {
               .filter((course) => course.title.toLowerCase().includes(query))
               .map((item) => (
                 <li
-                  className="m-4 flex cursor-pointer border-b-2 pb-2 text-center hover:bg-gray-300
+                  className="m-4 flex cursor-pointer border-b-2 p-2 shadow-sm text-center hover:bg-gray-300
               "
                   key={item._id}
                   onClick={() => navigate(`/CategoriesPage/${_id}`)}
