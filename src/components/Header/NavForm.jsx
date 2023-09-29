@@ -34,7 +34,7 @@ function NavForm() {
       }
       async function getCourses() {
         const res = await axiosInstance.get('/courses');
-        setInputs(res.data.data.courses);
+        setInputs(res.data.data.courses.slice(0, 8));
         // setDropdown(false);
       }
       getCourses();
@@ -69,11 +69,9 @@ function NavForm() {
                   className="m-4 flex cursor-pointer border-b-2 p-2 text-center hover:bg-gray-300
               "
                   key={item._id}
+                  onClick={() => {navigate(`/CourseDetials/${item._id}`); setQuery('')}}
                 >
-                  <NavLink
-                    className="text-white no-underline"
-                    to={`/CourseDetials/${item._id}`}
-                  >
+                  
                     <img
                       className="inline h-8 w-14"
                       src={`http://localhost:4000/img/courses/${item.photo}`}
@@ -81,7 +79,7 @@ function NavForm() {
                     <span className="ml-4 text-sm  font-bold text-black">
                       {item.title}
                     </span>
-                  </NavLink>
+                 
                 </li>
               ))}
           </ul>
