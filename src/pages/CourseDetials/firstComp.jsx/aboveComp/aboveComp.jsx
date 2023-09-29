@@ -16,11 +16,13 @@ import { AiFillThunderbolt, AiFillTrophy } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeScrollBar } from '../../../../store/slices/ScrollBar';
 import Video from './Video';
+import Spinner from '../../../../components/Spinner';
 
 
 export default function AboveList({ course }) {
   const dispatch = useDispatch();
   const Bar = useSelector((state) => state.ScrollBar.ScrollBar);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleScroll = () => {
     if (window.scrollY >= 97 &&window.scrollY<2000) {
@@ -39,9 +41,16 @@ document.getElementsByClassName('above')[0].style.position='fixed'
     };
   }, []);
 
+  useEffect(function(){
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000)
+  }, [])
+
   return (
     <>
-      <div className="customwidthh  flex flex-col border border-white shadow shadow-gray-400">
+
+      {isLoading ? <Spinner/> : <div className="customwidthh  flex flex-col border border-white shadow shadow-gray-400">
         {/* video */}
         <div>
           <Video course={course}/>
@@ -199,7 +208,7 @@ document.getElementsByClassName('above')[0].style.position='fixed'
             </div>
           </div>
         </div>
-      </div>
+      </div>}
     </>
   );
 }

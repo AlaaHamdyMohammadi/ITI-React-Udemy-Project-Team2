@@ -58,6 +58,7 @@ function NavForm() {
             setQuery(e.target.value);
             setDropdown(true);
           }}
+          
         />
         {dropdown && inputs && (
           <ul className="absolute top-10 z-10 w-full  bg-white">
