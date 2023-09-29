@@ -10,9 +10,16 @@ import axiosInstance from '../axiosConfig/instance';
 import { authentication } from '../contextConfig/authentication';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-
+import { loadStripe } from '@stripe/stripe-js';
 
 function CartPage() {    
+  // const handlePayment = async () =>{
+  //   const stripe = await loadStripe(
+  //     'pk_test_51NiJyfH0IkXldde8Oao47b2u1KMvHG8BVubJ5CSSpg8D2RwPaTQY8k16Scb6hXig2UBoEUWzuzRNzDLyEhqcTSvS00dkpji8U0',
+  //   );
+
+  // }
+
       return (
         <>
           <Helmet>
@@ -137,6 +144,7 @@ function CartPage() {
                     </ul>
 
                     <button
+                      
                       type="button"
                       className=" checkout border bg-violet-600 px-4 py-2 font-bold text-white hover:bg-violet-800  "
                     >

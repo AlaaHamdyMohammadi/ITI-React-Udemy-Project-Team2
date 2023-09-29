@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { InputGroup } from "react-bootstrap";
+import { useEffect, useState } from 'react';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import { InputGroup } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { BsSearch } from 'react-icons/bs';
-import axiosInstance from "../../axiosConfig/instance";
+import axiosInstance from '../../axiosConfig/instance';
 
 function NavForm() {
   const [query, setQuery] = useState('');
   const [inputs, setInputs] = useState([]);
   const [dropdown, setDropdown] = useState(false);
   const navigate = useNavigate();
-  const {_id} = useParams();
+  const { _id } = useParams();
 
   // if(!query){
   //   setDropdown(false);
@@ -27,17 +27,20 @@ function NavForm() {
   //     }).catch(err => console.log(err))
   // }, []);
 
-  useEffect(function(){
-    if (!query) {
-      setDropdown(false);
-    }
-    async function getCourses(){
-      const res = await axiosInstance.get('/courses');
-      setInputs(res.data.data.courses);
-      // setDropdown(false);
-    }
-    getCourses();
-  }, [query]);
+  useEffect(
+    function () {
+      if (!query) {
+        setDropdown(false);
+      }
+      async function getCourses() {
+        const res = await axiosInstance.get('/courses');
+        setInputs(res.data.data.courses);
+        // setDropdown(false);
+      }
+      getCourses();
+    },
+    [query],
+  );
 
   return (
     <Form inline className="searchBar ms-3  mt-2">
@@ -62,16 +65,22 @@ function NavForm() {
               .filter((course) => course.title.toLowerCase().includes(query))
               .map((item) => (
                 <li
-                  className="m-4 flex cursor-pointer border-b-2 p-2 shadow-sm text-center hover:bg-gray-300
+                  className="m-4 flex cursor-pointer border-b-2 p-2 text-center hover:bg-gray-300
               "
                   key={item._id}
-                  onClick={() => navigate(`/CategoriesPage/${_id}`)}
                 >
-                  <img
-                    className="h-8 w-14"
-                    src={`http://localhost:4000/img/courses/${item.photo}`}
-                  />
-                  <span className="ml-4 text-sm font-bold">{item.title}</span>
+                  <NavLink
+                    className="text-white no-underline"
+                    to={`/CourseDetials/${item._id}`}
+                  >
+                    <img
+                      className="inline h-8 w-14"
+                      src={`http://localhost:4000/img/courses/${item.photo}`}
+                    />
+                    <span className="ml-4 text-sm  font-bold text-black">
+                      {item.title}
+                    </span>
+                  </NavLink>
                 </li>
               ))}
           </ul>
@@ -81,5 +90,4 @@ function NavForm() {
   );
 }
 
-export default NavForm
-
+export default NavForm;
