@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { BsStarHalf } from 'react-icons/bs';
+import Spinner from 'react-bootstrap/Spinner';
 
 function CoursesCarousel(props) {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ function CoursesCarousel(props) {
   } else {
     return (
       <>
-        <h1>The Server Is Loading</h1>
+      <Spinner animation="border" variant="primary" />
       </>
     );
   }
@@ -68,7 +69,7 @@ function CardItem(props) {
       >
         <img
           className="h-40 w-60"
-          src={`http://localhost:4000/img/courses/${props.course.photo}`}
+          src={props.course.photo}
           onMouseOver={handleShow}
           onMouseLeave={handleClose}
         />
@@ -103,14 +104,14 @@ function CardItem(props) {
           </span>
         </div>
         <p className="w-fit bg-lime-200 p-1.5 text-xs text-lime-950">
-          {props.course.NumStd > 1000 ? 'Best Seller' : ''}
+          {props.course.NumStd > 1000 ? 'Best Seller' : ""}
         </p>
       </div>
       </NavLink>
 
      
       {showModal && (
-        <ModalCard handleShow={handleShow} handleClose={handleClose} />
+        <ModalCard course={props.course} handleShow={handleShow} handleClose={handleClose} />
       )}
     </div>
   );

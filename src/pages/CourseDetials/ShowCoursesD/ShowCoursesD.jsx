@@ -9,9 +9,29 @@ import axiosInstance from '../../../axiosConfig/instance';
 import { BsPersonHeart } from 'react-icons/bs';
 
 import { GrFavorite } from 'react-icons/gr';
+import { setWishList } from '../../../store/slices/WishList';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function ShowCoursesD() {
   const [courses, setCourses] = useState([]);
+  const wishList = useSelector((state) => state.wishList.wishList);
+  const dispatch = useDispatch()
+  function addToFav(course) {
+    var check = wishList.map((wish) => {
+      if (wish._id == course._id) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    console.log(check);
+    if (check.includes(true) || check == []) {
+      dispatch(setWishList([...wishList]));
+    } else {
+      dispatch(setWishList([...wishList, course]));
+    }
+    console.log(wishList);
+  }
 
   useEffect(function () {
     axiosInstance
@@ -91,7 +111,7 @@ export default function ShowCoursesD() {
                       E{item.price}
                     </div>
                     <div className="col-span-2  pl-10">
-                      <GrFavorite />
+                      <GrFavorite onClick={() => addToFav(item)} />
                     </div>
 
                     {/* <span className="text-sm/[17px]">

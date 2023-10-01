@@ -11,14 +11,50 @@ import { authentication } from '../contextConfig/authentication';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { loadStripe } from '@stripe/stripe-js';
+import { useDispatch, useSelector } from 'react-redux';
+import { setWishList } from '../store/slices/WishList';
+import { setCartItems } from '../store/slices/CartItems';
+import { setTotalCost } from '../store/slices/TotalCost';
 
 function CartPage() {    
-  // const handlePayment = async () =>{
-  //   const stripe = await loadStripe(
-  //     'pk_test_51NiJyfH0IkXldde8Oao47b2u1KMvHG8BVubJ5CSSpg8D2RwPaTQY8k16Scb6hXig2UBoEUWzuzRNzDLyEhqcTSvS00dkpji8U0',
-  //   );
+  const dispatch=useDispatch()
+  const wishListe = useSelector(
+    (state) => state.wishList.wishList
+  );
+  const cartItems = useSelector(
+    (state) => state.cartItems.cartItems
+  );
+  const TotalPrice = useSelector(
+    (state) => state.TotalCost.TotalCost
+   );
 
-  // }
+  function addToWishList(course){
+    var check=wishListe.map((item)=>{if(item._id==course._id){return true}else{return false}})
+    console.log(check);
+    if(check.includes(true)||check==[]){
+      dispatch(setWishList([...wishListe]))
+    }else{
+      dispatch(setWishList([...wishListe,course]))
+    }
+  }
+  function removeCart(course){
+    var check=cartItems.map((item)=>{if(item._id==course._id){return true}else{return false}})
+    var i=check.indexOf(true)
+    var arr=[...cartItems].filter((item)=>{
+      return item._id!=course._id
+    });
+    dispatch(setCartItems([...arr]))
+    if(course.DiscountPrice){
+      dispatch(setTotalCost(TotalPrice-course.DiscountPrice))
+  }else if(course.price){
+      dispatch(setTotalCost(TotalPrice-course.price))
+  }
+  }
+
+  useEffect(function () {
+    console.log(wishListe);
+    }, [wishListe,cartItems]);
+
 
       return (
         <>
@@ -33,12 +69,13 @@ function CartPage() {
               <div className="col-md-8">
                 <div className=" mb-4">
                   <div className="card-header py-3">
-                    <h5 className="mb-0">1 course in cart</h5>
+                    <h5 className="mb-0">{cartItems.length} course in cart</h5>
                     <hr className="my-1" />
                   </div>
                   <div className="card-body">
                     {/* <!-- Single item --> */}
-                    <div className="row">
+                    {cartItems.map((item)=>{
+                   return <div className="row">
                       <div className="col-lg-3 col-md-12 mb-lg-0 mb-4">
                         {/* <!-- Image --> */}
                         <div
@@ -47,9 +84,9 @@ function CartPage() {
                         >
                           {/* <div className='bg-[url(./../../public/images/cart/php.jpeg)]'></div> */}
                           <img
-                            src="./../../public/images/cart/php.jpeg"
+                            src={item.photo}
                             className="h-50 w-full object-cover"
-                            alt="Blue Jeans Jacket"
+                            alt={item.title}
                           />
                           {/* <a href="#!">
                                             <div className="mask color" ></div>
@@ -61,16 +98,15 @@ function CartPage() {
                         {/* <!-- Data --> */}
                         <p className="mb-1">
                           <strong>
-                            The Complete JavaScript Course 2023: From Zero to
-                            Expert!
+                            {item.title}
                           </strong>
                         </p>
                         <p className="mb-0 pb-1 text-sm/[17px]">
                           {' '}
-                          By Josenph Delgadillo
+                          {item.instructor}
                         </p>
                         <div className="update mt-0">
-                          <span className="bestseller">Best Seller</span>
+                        {item.NumStd > 1000 ? <span className="bestseller">Best Seller</span>: ""}
                           <span className="recently mx-2">
                             Updated Recently
                           </span>
@@ -79,31 +115,24 @@ function CartPage() {
                         <span className="star">
                           {' '}
                           <span className="flex flex-row ">
-                            <span>4.1</span>
+                            <span>{item.rating}</span>
                             <span className="mt-1 flex flex-row">
-                              <AiFillStar />
-                              <AiFillStar />
-                              <AiFillStar />
-                              <AiFillStar />
                               <AiFillStar />
                             </span>
                           </span>
                         </span>
                         <span className="text-sm/[17px]">
-                          (23.558.650 ratings)
+                          ({item.NumRating} ratings)
                         </span>
                       </div>
 
                       <div className=" col-lg-4 col-md-6 mb-lg-0 relative  mb-4 flex flex-row ">
                         <div className="absolute inset-y-0 	left-6   flex flex-col text-sm">
-                          <a href="#" className="text-violet-600">
+                          <a href="#"  onClick={()=>removeCart(item)} className="text-violet-600">
                             Remove
                           </a>
-                          <a href="#" className="text-violet-600">
-                            May be later
-                          </a>
-                          <a href="#" className="text-violet-600">
-                            Add to wishlist
+                          <a href="#" onClick={()=>addToWishList(item)} className="text-violet-600">
+                            Add to wishList
                           </a>
                         </div>
 
@@ -112,17 +141,18 @@ function CartPage() {
                             <CiShoppingTag className="ShoppingTag" />
                           </div>
                           <strong className="my-4 text-sm text-violet-400">
-                            E$319.99{' '}
+                           {(item.DiscountPrice)?"E$"+item.DiscountPrice:"E$"+item.price}{' '}
                           </strong>
                           <div className="px-2 text-sm text-gray-400 line-through">
-                            E$400.50
+                          {(item.DiscountPrice)?"E$"+item.price:""}
                           </div>
                         </div>
                       </div>
+                      <hr className="my-2" />
                     </div>
+                                        })}
                     {/* <!-- Single item --> */}
 
-                    <hr className="my-2" />
                   </div>
                 </div>
               </div>
@@ -135,10 +165,7 @@ function CartPage() {
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item d-flex justify-content-between align-items-center mb-3 border-0 px-0">
                         <div className="price">
-                          <strong>E$319.99</strong>
-                          <div className="text-sm text-gray-400 line-through">
-                            E$400.50
-                          </div>
+                          <strong>E${TotalPrice}</strong>
                         </div>
                       </li>
                     </ul>

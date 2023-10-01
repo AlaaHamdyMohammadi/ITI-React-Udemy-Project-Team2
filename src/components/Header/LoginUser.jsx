@@ -4,10 +4,11 @@ import { Nav, NavDropdown } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { BsSearch, BsCart3, BsGlobe, BsBell } from 'react-icons/bs';
 import { AiOutlineHeart } from 'react-icons/ai';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { authentication } from '../../contextConfig/authentication';
 import { getMe } from '../../services/authentication';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { setTotalCost } from '../../store/slices/TotalCost';
 function LoginUser({
   setTON,
   setMyLearning,
@@ -104,34 +105,65 @@ function MyLearning({ setMyLearning, myLearning }) {
   );
 }
 
-function GoToWishList({wishList, setWishList}) {
+function GoToWishList() {
+  const [onWishList, setUB] = useState(false);
+  const wishListe = useSelector((state) => state.wishList.wishList);
+
   return (
     <div
-      className="ms-4 mt-3"
+      className="ms-3 mt-3"
       onMouseOver={() => {
-        setWishList(true);
+        setUB(true);
       }}
       onMouseLeave={() => {
-        setWishList(false);
+        setUB(false);
       }}
     >
-      <div className="base text-decoration-none ">
+      <div className="base text-decoration-none">
         <NavLink
-          className="text-gray-950 text-xl no-underline hover:text-violet-600"
+          className="text-xl text-gray-950 no-underline hover:text-violet-600"
           to="/my-wishList"
         >
           <AiOutlineHeart />
         </NavLink>
-        {wishList ? (
+        {onWishList ? (
           <div
             onMouseOver={() => {
-              setWishList(true);
+              setUB(true);
             }}
             onMouseLeave={() => {
-              setWishList(false);
+              setUB(false);
             }}
-            className="subDiv fw-bold w-72 bg-white p-3 text-center"
+            className="subDiv bg-light fw-bold rounded p-3 text-center shadow-lg"
           >
+            {wishListe.map((item) => {
+              return (
+                <>
+                  <NavLink
+                    key={item._id}
+                    to={'/CourseDetials/' + item._id}
+                    className="text-decoration-none text-reset"
+                  >
+                    <li className="mb-2">
+                      <div className="d-flex">
+                        <div className=" me-2 h-20 w-20">
+                          <img className="img-fluid" src={item.photo} />
+                        </div>
+
+                        <div className="text-start">
+                          <p className="fs-6 mb-0">{item.title}</p>
+                          <span className="fs-6 fw-light">
+                            Course By: {item.instructor}
+                          </span>
+                          <p className="fs-6 mb-0">E${item.price}</p>
+                        </div>
+                      </div>
+                    </li>
+                  </NavLink>
+                  <hr />
+                </>
+              );
+            })}
             <NavLink
               className="btn rounded-0 m-lg-3 col-8 text-decoration-none m-1 w-96 bg-black p-2 text-white"
               to="/my-wishList"
@@ -148,33 +180,71 @@ function GoToWishList({wishList, setWishList}) {
 }
 
 function GoToCart({ addToCart, setAddToCart }) {
+  const dispatch = useDispatch();
+  const [onCart, setUB] = useState(false);
+  const cartItems = useSelector((state) => state.cartItems.cartItems);
+  const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
+  
   return (
     <div
-      className="ms-4 mt-3"
+      className="ms-3 mt-3"
       onMouseOver={() => {
-        setAddToCart(true);
+        setUB(true);
       }}
       onMouseLeave={() => {
-        setAddToCart(false);
+        setUB(false);
       }}
     >
-      <div className="base text-decoration-none ">
+      <div className="base text-decoration-none">
         <NavLink
           className="text-xl text-gray-950 no-underline hover:text-violet-600"
           to="/cart"
         >
           <BsCart3 />
         </NavLink>
-        {addToCart ? (
+        {onCart ? (
           <div
             onMouseOver={() => {
-              setAddToCart(true);
+              setUB(true);
             }}
             onMouseLeave={() => {
-              setAddToCart(false);
+              setUB(false);
             }}
-            className="subDiv fw-bold w-72 bg-white p-3 text-center"
+            className="subDiv bg-light fw-bold rounded p-3 text-center shadow-lg"
           >
+            {cartItems.map((item) => {
+              return (
+                <>
+                  <NavLink
+                    key={item._id}
+                    to={'/CourseDetials/' + item._id}
+                    className="text-decoration-none text-reset"
+                  >
+                    <li className="mb-2">
+                      <div className="d-flex">
+                        <div className=" me-2 h-20 w-20">
+                          <img className="img-fluid" src={item.photo} />
+                        </div>
+
+                        <div className="text-start">
+                          <p className="fs-6 mb-0">{item.title}</p>
+                          <span className="fs-6 fw-light">
+                            Course By: {item.instructor}
+                          </span>
+                          <p className="fs-6 mb-0">
+                            {item.DiscountPrice
+                              ? 'E$' + item.DiscountPrice
+                              : 'E$' + item.price}
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                  </NavLink>
+                  <hr />
+                </>
+              );
+            })}
+            <h4>Total E$:{Math.round(TotalPrice)}</h4>
             <NavLink
               className="btn rounded-0 m-lg-3 col-8 text-decoration-none m-1 w-96 bg-black p-2 text-white"
               to="/cart"

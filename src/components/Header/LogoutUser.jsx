@@ -2,8 +2,14 @@
 /* eslint-disable no-unused-vars */
 import { NavLink } from "react-router-dom";
 import { BsSearch, BsCart3, BsGlobe, BsBell } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 function LogoutUser({ setTON, onTeachOnUdemy }) {
+  const [onCart, setUB] = useState(false);
+  const cartItems = useSelector((state) => state.cartItems.cartItems);
+  const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
+
   return (
     <div className="d-flex ms-3 ">
       <div
@@ -46,13 +52,67 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
           )}
         </div>
       </div>
-      <div className="align-self-center mb-1 ms-2">
-        <NavLink
-          className="text-xl font-bold text-gray-950 hover:text-violet-600"
-          to="/cart"
-        >
-          <BsCart3  />
-        </NavLink>
+
+      <div
+        className="ms-3 mt-3"
+        onMouseOver={() => {
+          setUB(true);
+        }}
+        onMouseLeave={() => {
+          setUB(false);
+        }}
+      >
+        <div className="base text-decoration-none text-dark">
+          <NavLink
+            className="text-xl font-bold text-gray-950 hover:text-violet-600"
+            to="/cart"
+          >
+            <BsCart3 />
+          </NavLink>
+          {onCart ? (
+            <div
+              onMouseOver={() => {
+                setUB(true);
+              }}
+              onMouseLeave={() => {
+                setUB(false);
+              }}
+              className="subDiv bg-light fw-bold rounded p-3 text-center shadow-lg"
+            >
+              {cartItems.map((item) => {
+                return (
+                  <>
+                    <NavLink
+                      key={item._id}
+                      to={'/CourseDetials/' + item._id}
+                      className="text-decoration-none text-reset"
+                    >
+                      <li className="mb-2">
+                        <div className="d-flex">
+                          <div className=" me-2 h-20 w-20">
+                            <img className="img-fluid" src={item.photo} />
+                          </div>
+
+                          <div className="text-start">
+                            <p className="fs-6 mb-0">{item.title}</p>
+                            <span className="fs-6 fw-light">
+                              Course By: {item.instructor}
+                            </span>
+                            <p className="fs-6 mb-0">E${item.price}</p>
+                          </div>
+                        </div>
+                      </li>
+                    </NavLink>
+                    <hr />
+                  </>
+                );
+              })}
+              <h4>Total E$:{Math.round(TotalPrice)}</h4>
+            </div>
+          ) : (
+            ''
+          )}
+        </div>
       </div>
 
       <div className="ms-2 mt-3">
@@ -81,5 +141,7 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
     </div>
   );
 }
+
+
 
 export default LogoutUser
