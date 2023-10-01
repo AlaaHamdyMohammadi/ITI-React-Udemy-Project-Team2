@@ -68,7 +68,7 @@ function CardItem(props) {
       >
         <img
           className="h-40 w-60"
-          src={props.course.photo}
+          src={`http://localhost:4000/img/courses/${props.course.photo}`}
           onMouseOver={handleShow}
           onMouseLeave={handleClose}
         />

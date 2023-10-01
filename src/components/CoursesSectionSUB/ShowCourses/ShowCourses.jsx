@@ -31,7 +31,7 @@ export default function ShowCourses({ coursesSUB }) {
                     <img
                       src={`http://localhost:4000/img/courses/${item.photo}`}
                       // src={`${item.photo}`}
-                      className="h-50 w-full object-cover"
+                      className="h-32 w-full object-cover"
                       alt="Blue Jeans Jacket"
                     />
                   </NavLink>

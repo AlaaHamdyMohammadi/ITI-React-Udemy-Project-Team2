@@ -4,6 +4,9 @@
 import { useEffect, useState } from 'react';
 import axiosInstance from '../../axiosConfig/instance';
 import { Link, NavLink, useParams } from 'react-router-dom';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { BsStarHalf } from 'react-icons/bs';
+
 //useLoaderData
 import { Helmet } from 'react-helmet';
 import { LiaGreaterThanSolid } from 'react-icons/Lia';
@@ -15,6 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeSpinner } from '../../store/slices/spinner';
 import Spinner from '../../components/Spinner';
 // import { Spinner } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
 
 //`http://localhost:4000/img/courses/${item.photo}`
 
@@ -70,7 +74,7 @@ function CategoriesPage() {
       });
     },
     [_id],
-  );
+  ); 
 
   useEffect(function () {
     axiosInstance.get(`/categories/${_id}/courses`).then((res) => {
@@ -118,16 +122,20 @@ function CategoriesPage() {
           <div className="mx-4 mt-5">
             <h2 className="mb-5 font-bold">{category.name} Courses</h2>
             <h4 className="mb-3 font-bold">Courses to get you started</h4>
-            <div className="border-b-2">
-              <NavLink to={`/categoriesPage/:id`} className="pb-1 font-bold ">
+            <div className="">
+              <NavLink
+                to={`/categoriesPage/:id`}
+                className="border-b-2 border-black pb-3.5 font-bold text-black no-underline "
+              >
                 Most popular
               </NavLink>
               <NavLink
                 to={`/categoriesPage/:id`}
-                className="ml-3 pb-1 font-bold "
+                className="ml-3 pb-1 font-bold text-gray-400 no-underline "
               >
-                Trending (carousel)
+                Trending
               </NavLink>
+              <CategoriesCarousel coursesSUB={coursesSUB}/>
             </div>
           </div>
         </>
@@ -141,13 +149,13 @@ function CategoriesPage() {
               className="text-white no-underline"
               to={`/CourseDetials/${item._id}`}
             >
-              <div className="flex border-1 p-3 hover:bg-slate-100">
+              <div className="border-1 flex p-3 hover:bg-slate-100">
                 <img
                   className="h-60 w-96"
                   src={`http://localhost:4000/img/courses/${item.photo}`}
                 />
 
-                <div className="text-black w-50 ml-4 cursor-pointer">
+                <div className="w-50 ml-4 cursor-pointer text-black">
                   <h3 className="font-bold">{item.title}</h3>
                   <p className="w-5/6">{item.subTitle}</p>
                   <p className="text-sm font-bold text-gray-500">
@@ -171,9 +179,6 @@ function CategoriesPage() {
 
       <PopularTopics subCategories={subCategories} />
 
-      <div className="mx-4 mt-5">
-        <h4 className="mb-3 font-bold">Popular Instructors</h4>
-      </div>
       <div className="mx-4 mt-5">
         <h4 className="mb-3 font-bold">All Data Science courses</h4>
         <div className="border-1 p-3">
@@ -213,6 +218,213 @@ function NavSubCategory({ category, subCategories }) {
         </NavLink>
       ))}
     </div>
+  );
+}
+
+function CategoriesCarousel({ coursesSUB }) {
+  return (
+    <Carousel className="mb-2 mt-2 border-t-2 pt-4">
+      <Carousel.Item>
+        <div className="flex justify-between">
+          {coursesSUB.map((course) => (
+            <NavLink
+              key={course._id}
+              className="text-white no-underline"
+              to={`/CourseDetials/${course._id}`}
+            >
+              <img
+                className="h-40 w-60"
+                src={`http://localhost:4000/img/courses/${course.photo}`}
+              />
+              <div className="w-64 pt-2 font-bold text-black">
+                {course.title}
+              </div>
+              <div>
+                <div className="text-sm text-gray-500">
+                  by:{course.instructor}
+                </div>
+                <span className=" flex flex-row">
+                  <span className="text-black">{course.rating}</span>
+
+                  <span className="flex flex-row pt-1 text-yellow-500 ">
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <BsStarHalf />
+                  </span>
+                </span>
+                {/* <p className="font-bold">E{props.course.price}</p> */}
+                <div className="flex flex-row gap-2">
+                  <span className=" font-semibold text-black">
+                    E${course.price}
+                  </span>
+
+                  <span className=" text-sm	text-gray-500 line-through">
+                    E$ {course.DiscountPrice}
+                  </span>
+
+                  <span className="  text-right text-sm	text-gray-900 ">
+                    ({course.NumRating})
+                  </span>
+                </div>
+                <p className="w-fit bg-lime-200 p-1.5 text-xs text-lime-950">
+                  {course.NumStd > 1000 ? 'Best Seller' : ''}
+                </p>
+              </div>
+            </NavLink>
+          ))}
+          {coursesSUB.map((course) => (
+            <NavLink
+              key={course._id}
+              className="text-white no-underline"
+              to={`/CourseDetials/${course._id}`}
+            >
+              <img
+                className="h-40 w-60"
+                src={`http://localhost:4000/img/courses/${course.photo}`}
+              />
+              <div className="w-64 pt-2 font-bold text-black">
+                {course.title}
+              </div>
+              <div>
+                <div className="text-sm text-gray-500">
+                  by:{course.instructor}
+                </div>
+                <span className=" flex flex-row">
+                  <span className="text-black">{course.rating}</span>
+
+                  <span className="flex flex-row pt-1 text-yellow-500 ">
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <BsStarHalf />
+                  </span>
+                </span>
+                {/* <p className="font-bold">E{props.course.price}</p> */}
+                <div className="flex flex-row gap-2">
+                  <span className=" font-semibold text-black">
+                    E${course.price}
+                  </span>
+
+                  <span className=" text-sm	text-gray-500 line-through">
+                    E$ {course.DiscountPrice}
+                  </span>
+
+                  <span className="  text-right text-sm	text-gray-900 ">
+                    ({course.NumRating})
+                  </span>
+                </div>
+                <p className="w-fit bg-lime-200 p-1.5 text-xs text-lime-950">
+                  {course.NumStd > 1000 ? 'Best Seller' : ''}
+                </p>
+              </div>
+            </NavLink>
+          ))}
+        </div>
+      </Carousel.Item>
+      <Carousel.Item>
+        <div className="flex justify-between">
+          {coursesSUB.map((course) => (
+            <NavLink
+              key={course._id}
+              className="text-white no-underline"
+              to={`/CourseDetials/${course._id}`}
+            >
+              <img
+                className="h-40 w-60"
+                src={`http://localhost:4000/img/courses/${course.photo}`}
+              />
+              <div className="w-64 pt-2 font-bold text-black">
+                {course.title}
+              </div>
+              <div>
+                <div className="text-sm text-gray-500">
+                  by:{course.instructor}
+                </div>
+                <span className=" flex flex-row">
+                  <span className="text-black">{course.rating}</span>
+
+                  <span className="flex flex-row pt-1 text-yellow-500 ">
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <BsStarHalf />
+                  </span>
+                </span>
+                {/* <p className="font-bold">E{props.course.price}</p> */}
+                <div className="flex flex-row gap-2">
+                  <span className=" font-semibold text-black">
+                    E${course.price}
+                  </span>
+
+                  <span className=" text-sm	text-gray-500 line-through">
+                    E$ {course.DiscountPrice}
+                  </span>
+
+                  <span className="  text-right text-sm	text-gray-900 ">
+                    ({course.NumRating})
+                  </span>
+                </div>
+                <p className="w-fit bg-lime-200 p-1.5 text-xs text-lime-950">
+                  {course.NumStd > 1000 ? 'Best Seller' : ''}
+                </p>
+              </div>
+            </NavLink>
+          ))}
+          {coursesSUB.map((course) => (
+            <NavLink
+              key={course._id}
+              className="text-white no-underline"
+              to={`/CourseDetials/${course._id}`}
+            >
+              <img
+                className="h-40 w-60"
+                src={`http://localhost:4000/img/courses/${course.photo}`}
+              />
+              <div className="w-64 pt-2 font-bold text-black">
+                {course.title}
+              </div>
+              <div>
+                <div className="text-sm text-gray-500">
+                  by:{course.instructor}
+                </div>
+                <span className=" flex flex-row">
+                  <span className="text-black">{course.rating}</span>
+
+                  <span className="flex flex-row pt-1 text-yellow-500 ">
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <BsStarHalf />
+                  </span>
+                </span>
+                {/* <p className="font-bold">E{props.course.price}</p> */}
+                <div className="flex flex-row gap-2">
+                  <span className=" font-semibold text-black">
+                    E${course.price}
+                  </span>
+
+                  <span className=" text-sm	text-gray-500 line-through">
+                    E$ {course.DiscountPrice}
+                  </span>
+
+                  <span className="  text-right text-sm	text-gray-900 ">
+                    ({course.NumRating})
+                  </span>
+                </div>
+                <p className="w-fit bg-lime-200 p-1.5 text-xs text-lime-950">
+                  {course.NumStd > 1000 ? 'Best Seller' : ''}
+                </p>
+              </div>
+            </NavLink>
+          ))}
+        </div>
+      </Carousel.Item>
+    </Carousel>
   );
 }
 
