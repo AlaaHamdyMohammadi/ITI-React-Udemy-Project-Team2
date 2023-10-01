@@ -84,6 +84,9 @@ function CategoriesPage() {
     });
   }, [_id]);
 
+  const firstSetOfCourses = coursesSUB.slice(0, 5);
+  const secondSetOfCourses = coursesSUB.slice(5, 10);
+
   // 'subCategories/6508bfdf4e4c2aafd7756269/courses/
   //categories/catID/subCategories/subId/courses
   // useEffect(() => {
@@ -135,7 +138,11 @@ function CategoriesPage() {
               >
                 Trending
               </NavLink>
-              <CategoriesCarousel coursesSUB={coursesSUB}/>
+              <CategoriesCarousel
+                coursesSUB={coursesSUB}
+                secondSetOfCourses={secondSetOfCourses}
+                firstSetOfCourses={firstSetOfCourses}
+              />
             </div>
           </div>
         </>
@@ -221,12 +228,16 @@ function NavSubCategory({ category, subCategories }) {
   );
 }
 
-function CategoriesCarousel({ coursesSUB }) {
+function CategoriesCarousel({
+  coursesSUB,
+  secondSetOfCourses,
+  firstSetOfCourses,
+}) {
   return (
     <Carousel className="mb-2 mt-2 border-t-2 pt-4">
       <Carousel.Item>
         <div className="flex justify-between">
-          {coursesSUB.map((course) => (
+          {firstSetOfCourses.map((course) => (
             <NavLink
               key={course._id}
               className="text-white no-underline"
@@ -274,7 +285,7 @@ function CategoriesCarousel({ coursesSUB }) {
               </div>
             </NavLink>
           ))}
-          {coursesSUB.map((course) => (
+          {firstSetOfCourses.map((course) => (
             <NavLink
               key={course._id}
               className="text-white no-underline"
@@ -326,7 +337,7 @@ function CategoriesCarousel({ coursesSUB }) {
       </Carousel.Item>
       <Carousel.Item>
         <div className="flex justify-between">
-          {coursesSUB.map((course) => (
+          {secondSetOfCourses.map((course) => (
             <NavLink
               key={course._id}
               className="text-white no-underline"
@@ -374,7 +385,7 @@ function CategoriesCarousel({ coursesSUB }) {
               </div>
             </NavLink>
           ))}
-          {coursesSUB.map((course) => (
+          {secondSetOfCourses.map((course) => (
             <NavLink
               key={course._id}
               className="text-white no-underline"
