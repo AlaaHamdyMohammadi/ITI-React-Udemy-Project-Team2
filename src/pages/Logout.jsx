@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { BsCheckCircleFill } from 'react-icons/bs';
 import Button from '../components/Button';
+import CoursesList from '../components/Courses/CoursesList';
+import StudentsViewing from '../components/StudentsViewing';
 import { NavLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import Spinner from '../components/Spinner';
@@ -54,6 +56,8 @@ function Logout() {
           </div>
         </div>
       )}
+      <CoursesList/>
+      <StudentsViewing />
     </>
   );
 }

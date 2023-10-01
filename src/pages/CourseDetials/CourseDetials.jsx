@@ -110,7 +110,7 @@ useEffect( ()=> {
           <Requirements course={Course}/>
           <Description course={Course}/>
           <ShowCoursesD  />
-          <Reviwes course={Course} courseID={courseID}/>
+          {/*<Reviwes course={Course} courseID={courseID}/>*/}
           </div>
           <div className="col-span-1">
           {/* <AboveList  className='absolute right-0 top-0' course={Course} /> */}

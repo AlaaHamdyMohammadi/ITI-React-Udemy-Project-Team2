@@ -197,9 +197,10 @@ function CategoriesPage() {
 function NavSubCategory({ category, subCategories }) {
   return (
     <div className="relative flex cursor-pointer justify-around pb-3 pt-3 shadow-md shadow-gray-300">
-      <NavLink className="font-bold text-gray-950 no-underline hover:text-violet-600">
+      <NavLink className="font-bold  text-gray-950 no-underline hover:text-violet-600">
         {category.name}
 
+        <LiaGreaterThanSolid className="text-1xl inline ml-5 text-gray-500" />
         <LiaGreaterThanSolid className="text-1xl inline text-gray-500" />
       </NavLink>
       {subCategories.map((subCategory) => (
