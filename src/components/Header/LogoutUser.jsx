@@ -69,9 +69,13 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
             to="/cart"
           >
             <div className="relative">
-              {counter > 0 ? <span className="absolute bottom-3 left-3 z-10 h-4 w-5 rounded-full bg-violet-600 pl-1.5 text-sm text-white">
-                {counter}
-              </span>: ''}
+              {counter > 0 ? (
+                <span className="absolute bottom-3 left-3 z-10 h-4 w-5 rounded-full bg-violet-600 pl-1.5 text-sm text-white">
+                  {counter}
+                </span>
+              ) : (
+                ''
+              )}
               <BsCart3 />
             </div>
           </NavLink>
@@ -97,7 +101,8 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
                         <div className="d-flex justify-between">
                           <div className="me-2 h-20">
                             <img
-                              className="" style={{width: "200px", height: "70px"}}
+                              className=""
+                              style={{ width: '200px', height: '70px' }}
                               src={`http://localhost:4000/img/courses/${item.photo}`}
                             />
                           </div>
@@ -117,6 +122,12 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
                 );
               })}
               <h4 className="text-sm">Total E$:{Math.round(TotalPrice)}</h4>
+              <NavLink
+                className="btn rounded-0 m-lg-3 col-8 text-decoration-none m-1 w-full bg-black p-2 text-sm text-white"
+                to="/cart"
+              >
+                Go to Cart
+              </NavLink>
             </div>
           ) : (
             ''

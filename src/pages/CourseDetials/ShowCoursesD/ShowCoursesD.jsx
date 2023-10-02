@@ -71,6 +71,7 @@ export default function ShowCoursesD() {
                         <img
                           src={`http://localhost:4000/img/courses/${item.photo}`}
                           className=" w-full"
+                          style={{height: "50px"}}
                           alt="Blue Jeans Jacket"
                         />
                         {/* <a href="#!">

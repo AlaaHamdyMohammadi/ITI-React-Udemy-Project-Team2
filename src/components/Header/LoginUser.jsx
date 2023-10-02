@@ -134,7 +134,7 @@ function GoToWishList() {
             onMouseLeave={() => {
               setUB(false);
             }}
-            className="subDiv bg-light fw-bold rounded p-3 text-center shadow-lg"
+            className="subDiv bg-white fw-bold p-3 text-center shadow-md"
           >
             {wishListe.map((item) => {
               return (
@@ -184,7 +184,7 @@ function GoToCart({ addToCart, setAddToCart }) {
   const [onCart, setUB] = useState(false);
   const cartItems = useSelector((state) => state.cartItems.cartItems);
   const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
-  
+
   return (
     <div
       className="ms-3 mt-3"
@@ -210,7 +210,7 @@ function GoToCart({ addToCart, setAddToCart }) {
             onMouseLeave={() => {
               setUB(false);
             }}
-            className="subDiv bg-light fw-bold rounded p-3 text-center shadow-lg"
+            className="subDiv bg-white fw-bold  p-3 text-center shadow-md"
           >
             {cartItems.map((item) => {
               return (
