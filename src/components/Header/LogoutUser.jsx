@@ -77,7 +77,7 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
               onMouseLeave={() => {
                 setUB(false);
               }}
-              className="subDiv bg-light fw-bold rounded p-3 text-center shadow-lg"
+              className="subDiv fw-bold bg-white  p-3 text-center shadow-md "
             >
               {cartItems.map((item) => {
                 return (

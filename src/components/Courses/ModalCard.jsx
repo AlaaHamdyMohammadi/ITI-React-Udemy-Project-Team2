@@ -84,7 +84,7 @@ function ModalCard({course, handleShow, handleClose }) {
         >
          <h5 onClick={()=>addToCart(course)}>Add to cart</h5> 
         </Button>
-        <AiOutlineHeart  onClick={()=>addToFav(course)} className="ml-2 rounded-full border-2 border-black p-1 text-5xl hover:bg-gray-300" />
+        <AiOutlineHeart  onClick={()=>addToFav(course)} className="ml-2 cursor-pointer rounded-full border-2 border-black p-1 text-5xl hover:bg-gray-300" />
       </div>
     </div>
   );
