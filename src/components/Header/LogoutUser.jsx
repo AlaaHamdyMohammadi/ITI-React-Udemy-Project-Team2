@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 function LogoutUser({ setTON, onTeachOnUdemy }) {
   const [onCart, setUB] = useState(false);
   const cartItems = useSelector((state) => state.cartItems.cartItems);
+  const counter = useSelector((state) => state.cartItems.cartItems.length);
   const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
 
   return (
@@ -54,7 +55,7 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
       </div>
 
       <div
-        className="ms-3 mt-3"
+        className="mr-3 ms-3 mt-3"
         onMouseOver={() => {
           setUB(true);
         }}
@@ -67,7 +68,12 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
             className="text-xl font-bold text-gray-950 hover:text-violet-600"
             to="/cart"
           >
-            <BsCart3 />
+            <div className="relative">
+              {counter > 0 ? <span className="absolute bottom-3 left-3 z-10 h-4 w-5 rounded-full bg-violet-600 pl-1.5 text-sm text-white">
+                {counter}
+              </span>: ''}
+              <BsCart3 />
+            </div>
           </NavLink>
           {onCart ? (
             <div
@@ -88,17 +94,20 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
                       className="text-decoration-none text-reset"
                     >
                       <li className="mb-2">
-                        <div className="d-flex">
-                          <div className=" me-2 h-20 w-20">
-                            <img className="img-fluid" src={item.photo} />
+                        <div className="d-flex justify-between">
+                          <div className="me-2 h-20">
+                            <img
+                              className="" style={{width: "200px", height: "70px"}}
+                              src={`http://localhost:4000/img/courses/${item.photo}`}
+                            />
                           </div>
 
                           <div className="text-start">
-                            <p className="fs-6 mb-0">{item.title}</p>
-                            <span className="fs-6 fw-light">
+                            <p className="mb-0 text-sm">{item.title}</p>
+                            <span className="fw-light text-sm">
                               Course By: {item.instructor}
                             </span>
-                            <p className="fs-6 mb-0">E${item.price}</p>
+                            <p className="mb-0 text-sm">E${item.price}</p>
                           </div>
                         </div>
                       </li>
@@ -107,7 +116,7 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
                   </>
                 );
               })}
-              <h4>Total E$:{Math.round(TotalPrice)}</h4>
+              <h4 className="text-sm">Total E$:{Math.round(TotalPrice)}</h4>
             </div>
           ) : (
             ''

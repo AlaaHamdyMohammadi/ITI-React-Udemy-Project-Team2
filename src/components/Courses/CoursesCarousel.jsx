@@ -69,49 +69,54 @@ function CardItem(props) {
       >
         <img
           className="h-40 w-60"
-          src={props.course.photo}
+          src={`http://localhost:4000/img/courses/${props.course.photo}`}
           onMouseOver={handleShow}
           onMouseLeave={handleClose}
         />
-              <div className="w-64 pt-2 text-black font-bold">{props.course.title}</div>
-              <div>
-        <div className="text-sm text-gray-500">
-          by:{props.course.instructor}
+        <div className="w-64 pt-2 font-bold text-black">
+          {props.course.title}
         </div>
-        <span className=" flex flex-row">
-          <span className='text-black'>{props.course.rating}</span>
+        <div>
+          <div className="text-sm text-gray-500">
+            by:{props.course.instructor}
+          </div>
+          <span className=" flex flex-row">
+            <span className="text-black">{props.course.rating}</span>
 
-          <span className="flex flex-row pt-1 text-yellow-500 ">
-            <AiFillStar />
-            <AiFillStar />
-            <AiFillStar />
-            <AiFillStar />
-            <BsStarHalf />
+            <span className="flex flex-row pt-1 text-yellow-500 ">
+              <AiFillStar />
+              <AiFillStar />
+              <AiFillStar />
+              <AiFillStar />
+              <BsStarHalf />
+            </span>
           </span>
-        </span>
-        {/* <p className="font-bold">E{props.course.price}</p> */}
-        <div className="flex flex-row gap-2">
-          <span className=" font-semibold text-black">
-            E${props.course.price}
-          </span>
+          {/* <p className="font-bold">E{props.course.price}</p> */}
+          <div className="flex flex-row gap-2">
+            <span className=" font-semibold text-black">
+              E${props.course.price}
+            </span>
 
-          <span className=" text-sm	text-gray-500 line-through">
-            E$ {props.course.DiscountPrice}
-          </span>
+            <span className=" text-sm	text-gray-500 line-through">
+              E$ {props.course.DiscountPrice}
+            </span>
 
-          <span className="  text-right text-sm	text-gray-900 ">
-            ({props.course.NumRating})
-          </span>
+            <span className="  text-right text-sm	text-gray-900 ">
+              ({props.course.NumRating})
+            </span>
+          </div>
+          <p className="w-fit bg-lime-200 p-1.5 text-xs text-lime-950">
+            {props.course.NumStd > 1000 ? 'Best Seller' : ''}
+          </p>
         </div>
-        <p className="w-fit bg-lime-200 p-1.5 text-xs text-lime-950">
-          {props.course.NumStd > 1000 ? 'Best Seller' : ""}
-        </p>
-      </div>
       </NavLink>
 
-     
       {showModal && (
-        <ModalCard course={props.course} handleShow={handleShow} handleClose={handleClose} />
+        <ModalCard
+          course={props.course}
+          handleShow={handleShow}
+          handleClose={handleClose}
+        />
       )}
     </div>
   );
