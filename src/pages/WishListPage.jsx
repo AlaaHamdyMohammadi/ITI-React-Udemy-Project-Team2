@@ -61,81 +61,93 @@ function WishListPage() {
                   <div className="card-body">
                     {/* <!-- Single item --> */}
                   {wishListe.map((item)=>{
-                   return <div className="row">
-                      <div className="col-lg-3 col-md-12 mb-lg-0 mb-4">
-                        {/* <!-- Image --> */}
-                        <div
-                          className="bg-image hover-overlay hover-zoom ripple rounded"
-                          data-mdb-ripple-color="light"
-                        >
-                          {/* <div className='bg-[url(./../../public/images/cart/php.jpeg)]'></div> */}
-                          <img
-                            src={item.photo}
-                            className="h-50 w-full object-cover"
-                            alt={item.title}
-                          />
-                          {/* <a href="#!">
+                   return (
+                     <div className="row" key={item._id}>
+                       <div className="col-lg-3 col-md-12 mb-lg-0 mb-4">
+                         {/* <!-- Image --> */}
+                         <div
+                           className="bg-image hover-overlay hover-zoom ripple rounded"
+                           data-mdb-ripple-color="light"
+                         >
+                           {/* <div className='bg-[url(./../../public/images/cart/php.jpeg)]'></div> */}
+                           <img
+                             src={`http://localhost:4000/img/courses/${item.photo}`}
+                             className="h-50 w-full object-cover"
+                             alt={item.title}
+                           />
+                           {/* <a href="#!">
                                             <div className="mask color" ></div>
                                         </a> */}
-                        </div>
-                      </div>
+                         </div>
+                       </div>
 
-                      <div className="col-lg-5 col-md-6  mb-lg-0 mb-4">
-                        {/* <!-- Data --> */}
-                        <p className="mb-1">
-                          <strong>
-                            {item.title}
-                          </strong>
-                        </p>
-                        <p className="mb-0 pb-1 text-sm/[17px]">
-                          {' '}
-                          {item.instructor}
-                        </p>
-                        <div className="update mt-0">
-                        {item.NumStd > 1000 ? <span className="bestseller">Best Seller</span>: ""}
-                          <span className="recently mx-2">
-                            Updated Recently
-                          </span>
-                        </div>
+                       <div className="col-lg-5 col-md-6  mb-lg-0 mb-4">
+                         {/* <!-- Data --> */}
+                         <p className="mb-1">
+                           <strong>{item.title}</strong>
+                         </p>
+                         <p className="mb-0 pb-1 text-sm/[17px]">
+                           {' '}
+                           {item.instructor}
+                         </p>
+                         <div className="update mt-0">
+                           {item.NumStd > 1000 ? (
+                             <span className="bestseller">Best Seller</span>
+                           ) : (
+                             ''
+                           )}
+                           <span className="recently mx-2">
+                             Updated Recently
+                           </span>
+                         </div>
 
-                        <span className="star">
-                          {' '}
-                          <span className="flex flex-row ">
-                            <span>{item.rating}</span>
-                            <span className="mt-1 flex flex-row">
-                              <AiFillStar />
-                            </span>
-                          </span>
-                        </span>
-                        <span className="text-sm/[17px]">
-                          ({item.NumRating} ratings)
-                        </span>
-                      </div>
+                         <span className="star">
+                           {' '}
+                           <span className="flex flex-row ">
+                             <span>{item.rating}</span>
+                             <span className="mt-1 flex flex-row">
+                               <AiFillStar />
+                             </span>
+                           </span>
+                         </span>
+                         <span className="text-sm/[17px]">
+                           ({item.NumRating} ratings)
+                         </span>
+                       </div>
 
-                      <div className=" col-lg-4 col-md-6 mb-lg-0 relative  mb-4 flex flex-row ">
-                        <div className="absolute inset-y-0 	left-6   flex flex-col text-sm">
-                          <a href="#"  onClick={()=>removeWish(item)} className="text-violet-600">
-                            Remove
-                          </a>
-                          <a href="#" onClick={()=>addToCart(item)} className="text-violet-600">
-                            Add to cart
-                          </a>
-                        </div>
+                       <div className=" col-lg-4 col-md-6 mb-lg-0 relative  mb-4 flex flex-row ">
+                         <div className="absolute inset-y-0 	left-6   flex flex-col text-sm">
+                           <a
+                             href="#"
+                             onClick={() => removeWish(item)}
+                             className="text-violet-600"
+                           >
+                             Remove
+                           </a>
+                           <a
+                             href="#"
+                             onClick={() => addToCart(item)}
+                             className="text-violet-600"
+                           >
+                             Add to cart
+                           </a>
+                         </div>
 
-                        <div className="price  absolute inset-y-0 right-4 ">
-                          <div className="absolute inset-x-0 top-0 mb-4 rotate-180 transform text-violet-500 ">
-                            <CiShoppingTag className="ShoppingTag" />
-                          </div>
-                          <strong className="my-4 text-sm text-violet-400">
-                            E$319.99{' '}
-                          </strong>
-                          <div className="px-2 text-sm text-gray-400 line-through">
-                            E$400.50
-                          </div>
-                        </div>
-                      </div>
-                      <hr className="my-2" />
-                    </div>
+                         <div className="price  absolute inset-y-0 right-4 ">
+                           <div className="absolute inset-x-0 top-0 mb-4 rotate-180 transform text-violet-500 ">
+                             <CiShoppingTag className="ShoppingTag" />
+                           </div>
+                           <strong className="my-4 text-sm text-violet-400">
+                             E$319.99{' '}
+                           </strong>
+                           <div className="px-2 text-sm text-gray-400 line-through">
+                             E$400.50
+                           </div>
+                         </div>
+                       </div>
+                       <hr className="my-2" />
+                     </div>
+                   );
                                         })}
                     {/* <!-- Single item --> */}
 

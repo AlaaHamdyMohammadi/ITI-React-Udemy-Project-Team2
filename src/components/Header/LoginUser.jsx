@@ -108,6 +108,7 @@ function MyLearning({ setMyLearning, myLearning }) {
 function GoToWishList() {
   const [onWishList, setUB] = useState(false);
   const wishListe = useSelector((state) => state.wishList.wishList);
+  const counter = useSelector((state) => state.wishList.wishList.length);
 
   return (
     <div
@@ -124,7 +125,16 @@ function GoToWishList() {
           className="text-xl text-gray-950 no-underline hover:text-violet-600"
           to="/my-wishList"
         >
-          <AiOutlineHeart />
+          <div className="relative">
+            {counter > 0 ? (
+              <span className="absolute bottom-3 left-3 z-10 h-4 w-5 rounded-full bg-violet-600 pl-1.5 text-sm text-white">
+                {counter}
+              </span>
+            ) : (
+              ''
+            )}
+            <AiOutlineHeart />
+          </div>
         </NavLink>
         {onWishList ? (
           <div
@@ -134,7 +144,7 @@ function GoToWishList() {
             onMouseLeave={() => {
               setUB(false);
             }}
-            className="subDiv bg-white fw-bold p-3 text-center shadow-md"
+            className="subDiv fw-bold bg-white p-3 text-center shadow-md"
           >
             {wishListe.map((item) => {
               return (
@@ -146,16 +156,20 @@ function GoToWishList() {
                   >
                     <li className="mb-2">
                       <div className="d-flex">
-                        <div className=" me-2 h-20 w-20">
-                          <img className="img-fluid" src={item.photo} />
+                        <div className="me-2">
+                          <img
+                            className=""
+                            style={{ width: '200px', height: '70px' }}
+                            src={`http://localhost:4000/img/courses/${item.photo}`}
+                          />
                         </div>
 
                         <div className="text-start">
-                          <p className="fs-6 mb-0">{item.title}</p>
-                          <span className="fs-6 fw-light">
+                          <p className="mb-0 text-sm">{item.title}</p>
+                          <span className="fw-light text-sm">
                             Course By: {item.instructor}
                           </span>
-                          <p className="fs-6 mb-0">E${item.price}</p>
+                          <p className="mb-0 text-sm">E${item.price}</p>
                         </div>
                       </div>
                     </li>
@@ -184,6 +198,7 @@ function GoToCart({ addToCart, setAddToCart }) {
   const [onCart, setUB] = useState(false);
   const cartItems = useSelector((state) => state.cartItems.cartItems);
   const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
+  const counter = useSelector((state) => state.cartItems.cartItems.length);
 
   return (
     <div
@@ -200,7 +215,16 @@ function GoToCart({ addToCart, setAddToCart }) {
           className="text-xl text-gray-950 no-underline hover:text-violet-600"
           to="/cart"
         >
-          <BsCart3 />
+          <div className="relative">
+            {counter > 0 ? (
+              <span className="absolute bottom-3 left-3 z-10 h-4 w-5 rounded-full bg-violet-600 pl-1.5 text-sm text-white">
+                {counter}
+              </span>
+            ) : (
+              ''
+            )}
+            <BsCart3 />
+          </div>
         </NavLink>
         {onCart ? (
           <div
@@ -210,7 +234,7 @@ function GoToCart({ addToCart, setAddToCart }) {
             onMouseLeave={() => {
               setUB(false);
             }}
-            className="subDiv bg-white fw-bold  p-3 text-center shadow-md"
+            className="subDiv fw-bold bg-white  p-3 text-center shadow-md"
           >
             {cartItems.map((item) => {
               return (
@@ -222,16 +246,20 @@ function GoToCart({ addToCart, setAddToCart }) {
                   >
                     <li className="mb-2">
                       <div className="d-flex">
-                        <div className=" me-2 h-20 w-20">
-                          <img className="img-fluid" src={item.photo} />
+                        <div className=" me-2">
+                          <img
+                            className=""
+                            style={{ width: '200px', height: '70px' }}
+                            src={`http://localhost:4000/img/courses/${item.photo}`}
+                          />
                         </div>
 
                         <div className="text-start">
-                          <p className="fs-6 mb-0">{item.title}</p>
-                          <span className="fs-6 fw-light">
+                          <p className="mb-0 text-sm">{item.title}</p>
+                          <span className="fw-light text-sm">
                             Course By: {item.instructor}
                           </span>
-                          <p className="fs-6 mb-0">
+                          <p className="mb-0 text-sm">
                             {item.DiscountPrice
                               ? 'E$' + item.DiscountPrice
                               : 'E$' + item.price}

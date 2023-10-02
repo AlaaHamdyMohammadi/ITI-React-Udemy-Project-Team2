@@ -99,7 +99,7 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
                     >
                       <li className="mb-2">
                         <div className="d-flex justify-between">
-                          <div className="me-2 h-20">
+                          <div className="me-2">
                             <img
                               className=""
                               style={{ width: '200px', height: '70px' }}
