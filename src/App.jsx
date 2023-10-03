@@ -29,7 +29,8 @@ import CourseDetials, {
   loadercourse,
 } from './pages/CourseDetials/CourseDetials';
 import SubcategoryPage from './pages/SubCategoriesPage/CoursesPageCat';
-import TestForm from './components/Header/testForm';
+// import TestForm from './components/Header/testForm';
+import Checkout from './components/Checkout';
 
 const router = createBrowserRouter([
   {
@@ -84,8 +85,16 @@ const router = createBrowserRouter([
         element: <CourseDetials />,
         // loader: loadercourse,
       },
-      
+
       { path: '/cart', element: <CartPage /> },
+      {
+        path: '/checkout',
+        element: (
+          <Guard>
+            <Checkout />
+          </Guard>
+        ),
+      },
       { path: '/login', element: <Login /> },
       { path: '/signup', element: <SignUp /> },
       { path: '/logout', element: <Logout /> },

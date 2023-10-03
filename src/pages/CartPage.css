@@ -31,12 +31,10 @@
  .bestseller{
     color: rgb(11, 78, 25);
     background: #ebe293;
-    height: 50px;
-    width: 100px;
     text-align: center;
     font-size: 0.9rem;
-    padding: 2px;
-
+    padding: 0 !important;
+    /* height: 50px; */
   }
   .recently{
     color: rgb(11, 78, 25);
@@ -50,6 +48,7 @@
   .update{
     font-size: small;
   color: rgb(53, 124, 53);
+  /* background: red; */
   font-weight: 500;
   }
   /* .strong:hover{

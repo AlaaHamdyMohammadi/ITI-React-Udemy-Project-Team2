@@ -10,11 +10,14 @@ import axiosInstance from '../axiosConfig/instance';
 import { authentication } from '../contextConfig/authentication';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { loadStripe } from '@stripe/stripe-js';
 import { useDispatch, useSelector } from 'react-redux';
 import { setWishList } from '../store/slices/WishList';
 import { setCartItems } from '../store/slices/CartItems';
 import { setTotalCost } from '../store/slices/TotalCost';
+
+
+
+
 
 function CartPage() {
   const dispatch = useDispatch();
@@ -22,6 +25,7 @@ function CartPage() {
   const cartItems = useSelector((state) => state.cartItems.cartItems);
   const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
 
+  const navigate = useNavigate();
   function addToWishList(course) {
     var check = wishListe.map((item) => {
       if (item._id == course._id) {
@@ -63,6 +67,18 @@ function CartPage() {
     },
     [wishListe, cartItems],
   );
+
+  // const checkout = async() => {
+  //   try{
+  //     const res = axiosInstance.post(`/checkout-session/:courseID`, {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     });
+  //   }catch(err){
+  //     console.log(err)
+  //   }
+  // }
 
   return (
     <>
@@ -192,7 +208,8 @@ function CartPage() {
                 <button
                   type="button"
                   className=" checkout border bg-violet-600 px-4 py-2 font-bold text-white hover:bg-violet-800  "
-                >
+                  onClick={() => navigate('/checkout')}
+                  >
                   checkout
                 </button>
                 <hr className="my-4" />

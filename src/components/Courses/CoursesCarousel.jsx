@@ -76,7 +76,7 @@ function CardItem(props) {
         <div className="w-64 pt-2 font-bold text-black">
           {props.course.title}
         </div>
-        <div>
+        <div className="">
           <div className="text-sm text-gray-500">
             by:{props.course.instructor}
           </div>
@@ -101,12 +101,12 @@ function CardItem(props) {
               E$ {props.course.DiscountPrice}
             </span>
 
-            <span className="  text-right text-sm	text-gray-900 ">
+            <span className="text-right text-sm	text-gray-900 ">
               ({props.course.NumRating})
             </span>
           </div>
-          <p className="w-fit bg-lime-200 p-1.5 text-xs text-lime-950">
-            {props.course.NumStd > 1000 ? 'Best Seller' : ''}
+          <p className=" bestseller w-fit h-fit text-xs">
+            {props.course.BestSeller}
           </p>
         </div>
       </NavLink>

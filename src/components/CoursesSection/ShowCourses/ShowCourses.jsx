@@ -61,7 +61,9 @@ export default function ShowCourses({ coursesSUB }) {
                     </span>
                   </span>
                 </span>
-                <span className="text-sm/[17px]">(23.558.650 ratings)</span>
+                <span className="text-sm/[17px]">
+                  ({item.NumRating} rating)
+                </span>
 
                 <div className="update mt-0">
                   <span className="bestseller">{item.BestSeller}</span>

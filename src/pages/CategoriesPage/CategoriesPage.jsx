@@ -279,8 +279,8 @@ function CategoriesCarousel({
                     ({course.NumRating})
                   </span>
                 </div>
-                <p className="w-fit bg-lime-200 p-1.5 text-xs text-lime-950">
-                  {course.NumStd > 1000 ? 'Best Seller' : ''}
+                <p className=" bestseller h-fit w-fit text-xs ">
+                  {course.BestSeller ? 'Best Seller' : ''}
                 </p>
               </div>
             </NavLink>
@@ -327,8 +327,8 @@ function CategoriesCarousel({
                     ({course.NumRating})
                   </span>
                 </div>
-                <p className="w-fit bg-lime-200 p-1.5 text-xs text-lime-950">
-                  {course.NumStd > 1000 ? 'Best Seller' : ''}
+                <p className="bestseller h-fit w-fit text-xs">
+                  {course.BestSeller ? 'Best Seller' : ''}
                 </p>
               </div>
             </NavLink>
