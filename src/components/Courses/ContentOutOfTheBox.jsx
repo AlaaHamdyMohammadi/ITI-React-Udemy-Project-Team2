@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { useDispatch } from 'react-redux';
 import { setCategory } from '../../store/slices/categories';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axiosInstance from '../../axiosConfig/instance';
 import { setcategoryCourse } from '../../store/slices/categoryCourses';
 
@@ -31,15 +32,15 @@ function ContentOutOfTheBox(props) {
 
     return (
       <div>
-        <h1>A broad selection of courses</h1>
-        <p className="text-2xl">
+        <h1 className='text-3xl font-bold'>A broad selection of courses</h1>
+        <p className="text-xl">
           Choose from over 210,000 online video courses with new additions
           published every month
         </p>
         {props.categories.map((categ)=>{
           return  <a key={categ._id} onClick={()=>changeContent(categ)}
           href="#E"
-          className="p-3 font-bold text-slate-500 no-underline hover:text-black"
+          className="p-3 font-bold text-md text-slate-500 no-underline hover:text-black"
         >
           {categ.name}
         </a>

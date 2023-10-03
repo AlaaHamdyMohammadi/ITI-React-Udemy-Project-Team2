@@ -14,6 +14,7 @@ function MyLearning() {
           <h6 className='absolute left-64 pl-32 top-40 font-bold text-gray-100'>Wishlist</h6>
           <h6 className='absolute left-64 pl-60 top-40 font-bold text-gray-100'>Archive</h6>
         </div>
+        <h2>Checkout success</h2>
       </div>
     </>
   );
