@@ -7,9 +7,12 @@ import { useEffect, useState } from 'react';
 
 function LogoutUser({ setTON, onTeachOnUdemy }) {
   const [onCart, setUB] = useState(false);
-  const cartItems = useSelector((state) => state.cartItems.cartItems);
-  const counter = useSelector((state) => state.cartItems.cartItems.length);
-  const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
+   const cartItems = useSelector((state) => state.cartItems.cartItems);
+     const counter = useSelector((state) =>
+       state.cartItems.cartItems ? state.cartItems.cartItems.length : 0,
+     );
+
+   const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
 
   return (
     <div className="d-flex ms-3 ">
@@ -112,7 +115,12 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
                             <span className="fw-light text-sm">
                               Course By: {item.instructor}
                             </span>
-                            <p className="mb-0 text-sm">E${item.price}</p>
+                            <p className="mb-0 text-sm">
+                              E$
+                              {item.DiscountPrice
+                                ? item.DiscountPrice
+                                : item.price}
+                            </p>
                           </div>
                         </div>
                       </li>

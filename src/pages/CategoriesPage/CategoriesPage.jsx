@@ -40,6 +40,28 @@ function CategoriesPage() {
   const spinner = useSelector((state) => state.spinner.spinner);
   const dispatch = useDispatch();
 
+  // const [priceType, setPriceType] = useState('Free');
+  // const [priceFilter, setPriceFilter] = useState([]);
+
+  // const handleCheckbox = (e) => {
+  //   setPriceType(e.target.checked ? 'Free' : 'Paid');
+  //   console.log('Price type changed to:', priceType);
+  // };
+
+  // useEffect(() => {
+  //   console.log('API request made with priceType:', priceType);
+
+  //   axiosInstance
+  //     .get(
+  //       `/categories/6508c7674e4c2aafd7756343/courses?priceType=${priceType}`,
+  //     )
+  //     .then((res) => {
+  //       console.log(res.data.data.courses);
+  //       setcoursesSUB(res.data.data.courses);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, [priceType]);
+
   // useEffect(
   //   function () {
   //     axiosInstance.get(`/categories/${_id}`).then((res) => {

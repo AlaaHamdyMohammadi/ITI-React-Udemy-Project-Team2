@@ -31,6 +31,7 @@ import CourseDetials, {
 import SubcategoryPage from './pages/SubCategoriesPage/CoursesPageCat';
 // import TestForm from './components/Header/testForm';
 import Checkout from './components/Checkout';
+import Test from './pages/Test';
 
 const router = createBrowserRouter([
   {
@@ -98,7 +99,7 @@ const router = createBrowserRouter([
       { path: '/login', element: <Login /> },
       { path: '/signup', element: <SignUp /> },
       { path: '/logout', element: <Logout /> },
-      // { path: '/test', element: <TestForm /> },
+      { path: '/test', element: <Test /> },
       { path: '*', element: <NotFound /> },
     ],
   },

@@ -40,16 +40,24 @@ export default function AboveList({ course }) {
       }
     });
     console.log(check);
+    var cart = [];
+    var price = TotalPrice;
     if (check.includes(true) || check == []) {
       dispatch(setCartItems([...cartItems]));
+      cart = [...cartItems];
     } else {
       dispatch(setCartItems([...cartItems, course]));
+      cart = [...cartItems, course];
       if (course.DiscountPrice) {
         dispatch(setTotalCost(TotalPrice + course.DiscountPrice));
+        price = TotalPrice + course.DiscountPrice;
       } else if (course.price) {
         dispatch(setTotalCost(TotalPrice + course.price));
+        price = TotalPrice + course.price;
       }
     }
+    localStorage.setItem('cartItems', JSON.stringify(cart));
+    localStorage.setItem('TotalPrice', price);
     console.log(cartItems, TotalPrice);
   }
 
@@ -62,11 +70,15 @@ export default function AboveList({ course }) {
       }
     });
     console.log(check);
+    var wish = [];
     if (check.includes(true) || check == []) {
       dispatch(setWishList([...wishList]));
+      wish = [...wishList];
     } else {
       dispatch(setWishList([...wishList, course]));
+      wish = [...wishList, course];
     }
+    localStorage.setItem('wishList', JSON.stringify(wish));
     console.log(wishList);
   }
 

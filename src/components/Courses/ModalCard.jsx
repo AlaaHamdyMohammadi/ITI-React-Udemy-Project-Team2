@@ -23,30 +23,54 @@ function ModalCard({course, handleShow, handleClose }) {
     (state) => state.cartItems.cartItems
   );
 
-  function addToCart(course){
-    var check=cartItems.map((item)=>{if(item._id==course._id){return true}else{return false}})
+  function addToCart(course) {
+    var check = cartItems.map((item) => {
+      if (item._id == course._id) {
+        return true;
+      } else {
+        return false;
+      }
+    });
     console.log(check);
-    if(check.includes(true)||check==[]){
-      dispatch(setCartItems([...cartItems]))
-    }else{
-      dispatch(setCartItems([...cartItems,course]))
-        if(course.DiscountPrice){
-            dispatch(setTotalCost(TotalPrice+course.DiscountPrice))
-        }else if(course.price){
-            dispatch(setTotalCost(TotalPrice+course.price))
-        }
+    var cart = [];
+    var price = TotalPrice;
+    if (check.includes(true) || check == []) {
+      dispatch(setCartItems([...cartItems]));
+      cart = [...cartItems];
+    } else {
+      dispatch(setCartItems([...cartItems, course]));
+      cart = [...cartItems, course];
+      if (course.DiscountPrice) {
+        dispatch(setTotalCost(TotalPrice + course.DiscountPrice));
+        price = TotalPrice + course.DiscountPrice;
+      } else if (course.price) {
+        dispatch(setTotalCost(TotalPrice + course.price));
+        price = TotalPrice + course.price;
+      }
     }
-    console.log(cartItems,TotalPrice);
+    localStorage.setItem('cartItems', JSON.stringify(cart));
+    localStorage.setItem('TotalPrice', price);
+    console.log(cartItems, TotalPrice);
   }
 
-  function addToFav(course){
-    var check=wishList.map((wish)=>{if(wish._id==course._id){return true}else{return false}})
+  function addToFav(course) {
+    var check = wishList.map((wish) => {
+      if (wish._id == course._id) {
+        return true;
+      } else {
+        return false;
+      }
+    });
     console.log(check);
-    if(check.includes(true)||check==[]){
-      dispatch(setWishList([...wishList]))
-    }else{
-      dispatch(setWishList([...wishList,course]))
+    var wish = [];
+    if (check.includes(true) || check == []) {
+      dispatch(setWishList([...wishList]));
+      wish = [...wishList];
+    } else {
+      dispatch(setWishList([...wishList, course]));
+      wish = [...wishList, course];
     }
+    localStorage.setItem('wishList', JSON.stringify(wish));
     console.log(wishList);
   }
 

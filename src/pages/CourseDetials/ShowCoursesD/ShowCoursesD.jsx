@@ -16,6 +16,7 @@ export default function ShowCoursesD() {
   const [courses, setCourses] = useState([]);
   const wishList = useSelector((state) => state.wishList.wishList);
   const dispatch = useDispatch()
+
   function addToFav(course) {
     var check = wishList.map((wish) => {
       if (wish._id == course._id) {
@@ -25,11 +26,15 @@ export default function ShowCoursesD() {
       }
     });
     console.log(check);
+    var wish = [];
     if (check.includes(true) || check == []) {
       dispatch(setWishList([...wishList]));
+      wish = [...wishList];
     } else {
       dispatch(setWishList([...wishList, course]));
+      wish = [...wishList, course];
     }
+    localStorage.setItem('wishList', JSON.stringify(wish));
     console.log(wishList);
   }
 

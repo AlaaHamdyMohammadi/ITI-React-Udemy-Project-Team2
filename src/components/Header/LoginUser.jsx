@@ -21,8 +21,6 @@ function LoginUser({
   addToCart,
   setAddToCart,
 }) {
- 
-
   return (
     <div className="d-flex ms-12 ">
       <Instructor setTON={setTON} />
@@ -108,7 +106,9 @@ function MyLearning({ setMyLearning, myLearning }) {
 function GoToWishList() {
   const [onWishList, setUB] = useState(false);
   const wishListe = useSelector((state) => state.wishList.wishList);
-  const counter = useSelector((state) => state.wishList.wishList.length);
+    const counter = useSelector((state) =>
+      state.wishList.wishList ? state.wishList.wishList.length : 0,
+    );
 
   return (
     <div
@@ -169,7 +169,12 @@ function GoToWishList() {
                           <span className="fw-light text-sm">
                             Course By: {item.instructor}
                           </span>
-                          <p className="mb-0 text-sm">E${item.price}</p>
+                          <p className="mb-0 text-sm">
+                            E$
+                            {item.DiscountPrice
+                              ? item.DiscountPrice
+                              : item.price}
+                          </p>
                         </div>
                       </div>
                     </li>
@@ -198,7 +203,8 @@ function GoToCart({ addToCart, setAddToCart }) {
   const [onCart, setUB] = useState(false);
   const cartItems = useSelector((state) => state.cartItems.cartItems);
   const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
-  const counter = useSelector((state) => state.cartItems.cartItems.length);
+  const counter = useSelector((state) => state.cartItems.cartItems ? state.cartItems.cartItems.length : 0);
+  // console.log('Counter after = ', counter);
 
   return (
     <div
@@ -302,7 +308,6 @@ function GoToNotifications() {
 }
 
 function DropDownList({ setIsActive, isActive, handleLogout }) {
-  
   const { userName, setUsername } = useContext(authentication);
   const { user, setUser } = useContext(authentication);
   const { email, setEmail } = useContext(authentication);
@@ -379,7 +384,7 @@ function DropDownList({ setIsActive, isActive, handleLogout }) {
                   {user}
                 </NavLink>
               </div>
-              <p className="border-b-2 text-center pb-4 text-xs text-gray-400">
+              <p className="border-b-2 pb-4 text-center text-xs text-gray-400">
                 {email}
               </p>
 

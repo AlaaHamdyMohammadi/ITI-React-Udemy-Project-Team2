@@ -67,26 +67,33 @@ why console.log(cartItems); give me undefined not the data of this item ?
 
 function CartPage() { 
   const dispatch = useDispatch();
-  const wishListe = useSelector((state) => state.wishList.wishList);
+  const wishList = useSelector((state) => state.wishList.wishList);
   const cartItems = useSelector((state) => state.cartItems.cartItems);
   const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
 
   const navigate = useNavigate();
+  
   function addToWishList(course) {
-    var check = wishListe.map((item) => {
-      if (item._id == course._id) {
+    var check = wishList.map((wish) => {
+      if (wish._id == course._id) {
         return true;
       } else {
         return false;
       }
     });
     console.log(check);
+    var wish = [];
     if (check.includes(true) || check == []) {
-      dispatch(setWishList([...wishListe]));
+      dispatch(setWishList([...wishList]));
+      wish = [...wishList];
     } else {
-      dispatch(setWishList([...wishListe, course]));
+      dispatch(setWishList([...wishList, course]));
+      wish = [...wishList, course];
     }
+    localStorage.setItem('wishList', JSON.stringify(wish));
+    console.log(wishList);
   }
+
   function removeCart(course) {
     var check = cartItems.map((item) => {
       if (item._id == course._id) {
@@ -100,18 +107,23 @@ function CartPage() {
       return item._id != course._id;
     });
     dispatch(setCartItems([...arr]));
+    var price = TotalPrice;
     if (course.DiscountPrice) {
       dispatch(setTotalCost(TotalPrice - course.DiscountPrice));
+      price = TotalPrice - course.DiscountPrice;
     } else if (course.price) {
       dispatch(setTotalCost(TotalPrice - course.price));
+      price = TotalPrice - course.price;
     }
+    localStorage.setItem('cartItems', JSON.stringify(arr));
+    localStorage.setItem('TotalPrice', price);
   }
 
   useEffect(
     function () {
-      console.log(wishListe);
+      console.log(wishList);
     },
-    [wishListe, cartItems],
+    [wishList, cartItems],
   );
 
   // const checkout = async() => {

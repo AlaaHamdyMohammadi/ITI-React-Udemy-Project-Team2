@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-inner-declarations */
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from 'react';
@@ -10,6 +11,7 @@ import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCartItems } from '../store/slices/CartItems';
 import { setWishList } from '../store/slices/WishList';
+import { setTotalCost } from '../store/slices/TotalCost';
 
 function WishListPage() {
   const dispatch = useDispatch();
@@ -22,15 +24,30 @@ function WishListPage() {
         return false;
       }
     });
+    console.log(check);
+    var cart = [];
+    var price = TotalPrice;
     if (check.includes(true) || check == []) {
       dispatch(setCartItems([...cartItems]));
+      cart = [...cartItems];
     } else {
       dispatch(setCartItems([...cartItems, course]));
+      cart = [...cartItems, course];
+      if (course.DiscountPrice) {
+        dispatch(setTotalCost(TotalPrice + course.DiscountPrice));
+        price = TotalPrice + course.DiscountPrice;
+      } else if (course.price) {
+        dispatch(setTotalCost(TotalPrice + course.price));
+        price = TotalPrice + course.price;
+      }
     }
+    localStorage.setItem('cartItems', JSON.stringify(cart));
+    localStorage.setItem('TotalPrice', price);
+    console.log(cartItems, TotalPrice);
   }
 
   function removeWish(course) {
-    var check = wishListe.map((item) => {
+    var check = wishList.map((item) => {
       if (item._id == course._id) {
         return true;
       } else {
@@ -38,20 +55,22 @@ function WishListPage() {
       }
     });
     var i = check.indexOf(true);
-    var arr = [...wishListe].filter((item) => {
+    var arr = [...wishList].filter((item) => {
       return item._id != course._id;
     });
     dispatch(setWishList([...arr]));
+    localStorage.setItem('wishList', JSON.stringify(arr));
   }
 
-  const wishListe = useSelector((state) => state.wishList.wishList);
+  const wishList = useSelector((state) => state.wishList.wishList);
   const cartItems = useSelector((state) => state.cartItems.cartItems);
+  const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
 
   useEffect(
     function () {
-      console.log(wishListe);
+      console.log(wishList);
     },
-    [wishListe, cartItems],
+    [wishList, cartItems],
   );
 
   return (
@@ -69,7 +88,7 @@ function WishListPage() {
               </div>
               <div className="card-body">
                 {/* <!-- Single item --> */}
-                {wishListe.map((item) => {
+                {wishList.map((item) => {
                   return (
                     <div className="row" key={item._id}>
                       <div className="col-lg-3 col-md-12 mb-lg-0 mb-4">
