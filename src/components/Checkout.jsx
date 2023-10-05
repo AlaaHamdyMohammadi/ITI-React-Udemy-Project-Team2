@@ -20,18 +20,23 @@ function Checkout({ cartItems }) {
   const handleCheckout = () => {
     console.log(cartItems);
     axios
-      .post(`${url}/checkout-session`, {cartItems}, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      .post(
+        `${url}/checkout-session`,
+        { cartItems },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      })
+      )
       .then((res) => {
-        if (res.data.url) {
-          window.location.href = res.data.url;
+        if (res.data.session.url) {
+          window.location.href = res.data.session.url;
         }
+        console.log('ok', res.data.session.url);
       })
       .catch((err) => {
-        console.log('Error In Front: ',err.message);
+        console.log('Error In Front: ', err.message);
       }); 
   };
   return (
