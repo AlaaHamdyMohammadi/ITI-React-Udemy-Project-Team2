@@ -70,6 +70,7 @@ function CartPage() {
   const wishList = useSelector((state) => state.wishList.wishList);
   const cartItems = useSelector((state) => state.cartItems.cartItems);
   const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
+  const {isLogin} = useContext(authentication);
 
   const navigate = useNavigate();
   
@@ -262,15 +263,25 @@ function CartPage() {
                     </div>
                   </li>
                 </ul>
- 
+
                 {/*<button
                   type="button"
                   className=" checkout border bg-violet-600 px-4 py-2 font-bold text-white hover:bg-violet-800  "
                   onClick={() => navigate('/checkout')}
                   >
-                  checkout
+                  Login to checkout
               </button>*/}
-                <Checkout cartItems={cartItems} />
+                {isLogin ? (
+                  <Checkout cartItems={cartItems} />
+                ) : (
+                  <button
+                    type="button"
+                    className=" checkout border bg-violet-600 px-4 py-2 font-bold text-white hover:bg-violet-800  "
+                    onClick={() => navigate('/checkout')}
+                  >
+                    Login to checkout
+                  </button>
+                )}
                 <hr className="my-4" />
               </div>
             </div>

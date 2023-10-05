@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { useContext, useState } from 'react'; 
+import { useContext, useEffect, useState } from 'react'; 
 // import toast, {Toaster} from 'react-hot-toast'; npm i react-hot-toast
 
 import { toast, ToastContainer } from 'react-toastify';
@@ -17,6 +17,7 @@ import { useNavigate, NavLink, Link } from 'react-router-dom';
 import './LoginAndSignUp.css'
 import { authentication } from '../contextConfig/authentication';
 import { Helmet } from 'react-helmet';
+import Spinner from '../components/Spinner';
 
 function Login() {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ function Login() {
   const [error, setError] = useState({emailError: '', passwordError: ''});
   const {isLogin, setIsLogin} = useContext(authentication)
   //const { userName, setUsername } = useContext(authentication);
+  const [isLoading, setIsLoading] = useState(true);
 
   function handleValidation(e){
     if(e.target.name === 'email'){
@@ -60,13 +62,19 @@ function Login() {
       } 
     }
   }
+
+  useEffect(function(){
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000)
+  }, []);
   
   return (
     <>
       <Helmet>
         <title>Log In and Start Learning | Udemy</title>
       </Helmet>
-      <form
+      {isLoading ? <Spinner/> : <form
         onSubmit={(e) => handleSubmit(e)}
         className="flex h-screen flex-col items-center justify-center"
       >
@@ -174,7 +182,7 @@ function Login() {
             Sign up
           </a>
         </p>
-      </form>
+      </form>} 
       <ToastContainer position="top-right" autoClose={3000} />
     </>
   );

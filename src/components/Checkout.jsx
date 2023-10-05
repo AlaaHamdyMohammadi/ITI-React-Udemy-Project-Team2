@@ -110,6 +110,7 @@ import axios from "axios";
 function Checkout({ cartItems }) {
     const url = 'http://localhost:4000/api/v1';
     const token = localStorage.getItem('token');
+    
   const handleCheckout = () => {
     console.log(cartItems);
     axios
