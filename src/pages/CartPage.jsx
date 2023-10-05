@@ -16,55 +16,6 @@ import { setCartItems } from '../store/slices/CartItems';
 import { setTotalCost } from '../store/slices/TotalCost';
 import Checkout from '../components/Checkout';
 
-/*
-this is my code in slice :
-import { createSlice } from "@reduxjs/toolkit"
-
-
-const cartItemSlice = createSlice({
-  name: "cartItems",
-  initialState: { cartItems: [] },
-  reducers: {
-    setCartItems: function (state, action) {
-      state.cartItems = action.payload
-    }
-  }
-})
-export const {setCartItems} = cartItemSlice.actions  
-
-
-export default cartItemSlice.reducer
-
-and this is my code in CartPage component:
-function CartPage(){
-  const cart = useSelector((state) => state.cartItems.cartItems);
-  return <Checkout cartItems={cart.cartItems} />
-}
-
-and finally this is my Checkout component code: 
-function Checkout({ cartItems }) {
-  
-  const handleCheckout = () => {
-    console.log(cartItems);
-  };
-  return (
-    <>
-      <button
-        className="checkout border bg-violet-600 px-4 py-2 font-bold text-white hover:bg-violet-800  "
-        onClick={() => handleCheckout()}
-      >
-        Check Out
-      </button>
-    </>
-  );
-}
-
-why console.log(cartItems); give me undefined not the data of this item ? 
-
-*/
-
-
-
 function CartPage() { 
   const dispatch = useDispatch();
   const wishList = useSelector((state) => state.wishList.wishList);
@@ -251,7 +202,7 @@ function CartPage() {
             </div>
           </div>
           <div className="col-md-4">
-            <div className=" mb-4">
+            <div className=" mt-4">
               <div className="card-header  total py-3">
                 <h5 className="mb-0">Total:</h5>
               </div>
@@ -263,14 +214,6 @@ function CartPage() {
                     </div>
                   </li>
                 </ul>
-
-                {/*<button
-                  type="button"
-                  className=" checkout border bg-violet-600 px-4 py-2 font-bold text-white hover:bg-violet-800  "
-                  onClick={() => navigate('/checkout')}
-                  >
-                  Login to checkout
-              </button>*/}
                 {isLogin ? (
                   <Checkout cartItems={cartItems} />
                 ) : (
@@ -282,43 +225,11 @@ function CartPage() {
                     Login to checkout
                   </button>
                 )}
-                <hr className="my-4" />
+                <hr className="my-4 " />
               </div>
             </div>
 
-            <div>
-              <div className="container">
-                <p className="promotion">promotions</p>
-                <div>
-                  <span className="flex flex-row">
-                    <span className="mx-1 mt-1">
-                      <AiOutlineClose />
-                    </span>
-                    {/* <i className="fa-solid  close fa-xmark"></i> */}
-                    <span className="keeping">KEEPLEARNING </span>
-                    <span className="isapplied">is applied</span>
-                  </span>
-                </div>
-                <div>
-                  <div className="input-group  mb-3">
-                    <input
-                      type="text"
-                      className="form-control input1"
-                      placeholder="Enter Coupon"
-                      aria-label="Enter Coupon"
-                      aria-describedby="button-addon2"
-                    />
-                    <button
-                      className=" border bg-violet-600 px-4 py-2 font-bold text-white hover:bg-violet-800"
-                      type="button"
-                      id="button-addon2"
-                    >
-                      Apply
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>

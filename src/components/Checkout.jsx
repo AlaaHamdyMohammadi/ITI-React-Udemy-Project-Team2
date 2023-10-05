@@ -18,6 +18,7 @@ function Checkout({ cartItems }) {
     // const history = useHistory();
 
   const handleCheckout = () => {
+    //userId: user._id
     console.log(cartItems);
     axios
       .post(
@@ -32,8 +33,8 @@ function Checkout({ cartItems }) {
       .then((res) => {
         if (res.data.session.url) {
           window.location.href = res.data.session.url;
+          console.log('ok', res);
         }
-        console.log('ok', res.data.session.url);
       })
       .catch((err) => {
         console.log('Error In Front: ', err.message);

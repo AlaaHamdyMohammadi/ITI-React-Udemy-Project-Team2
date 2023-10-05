@@ -339,11 +339,11 @@ export default function SideBar({ subCategories, coursesSUB, id }) {
 }
 
 function HandlePriceFilter({ id }) {
-  const [priceType, setPriceType] = useState('Paid');
+  const [priceType, setPriceType] = useState('Free');
   const [priceFilter, setPriceFilter] = useState([]);
 
   const handleCheckbox = (e) => {
-    setPriceType(e.target.checked ? 'Free' : 'Paid');
+    setPriceType(e.target.name === 'free' ? 'Free' : 'Paid');
     console.log('Price type changed to:', priceType);
   };
 
@@ -373,6 +373,7 @@ function HandlePriceFilter({ id }) {
               className="mr-2 mt-1"
               checked={priceType == 'Paid'}
               onChange={handleCheckbox}
+              name="paid"
             />
             <span className="flex flex-row pt-1 text-sm">Paid</span>
           </label>
@@ -381,6 +382,7 @@ function HandlePriceFilter({ id }) {
           <label className="mb-2 flex flex-row p-2 pt-1 text-black">
             <input
               type="checkbox"
+              name="free"
               className="mr-2 mt-1"
               checked={priceType == 'Free'}
               onChange={handleCheckbox}
