@@ -6,19 +6,21 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Button from './../components/Button';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import './LoginAndSignUp.css';
 import { signupUser } from '../services/authentication';
 import { authentication } from '../contextConfig/authentication';
 import axiosInstance from '../axiosConfig/instance';
 import { Helmet } from 'react-helmet';
+import Spinner from '../components/Spinner';
 
 function SignUp() {
   const navigate = useNavigate();
   const [showPassword, setshowPassword] = useState(false);
   const [showPasswordConfirm, setshowPasswordConfirm] = useState(false);
   //const {isSignup, setIsSignup} = useContext(authentication);
+  const[isLoading, setIsLoading] = useState(true);
 
   const [signup, setSignup] = useState({
     username: '',
@@ -101,12 +103,18 @@ function SignUp() {
     }
   }
 
+  useEffect(function(){
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
+
   return (
     <>
     <Helmet>
       <title>Sign Up and Start Learning | Udemy</title>
     </Helmet>
-      <form
+      {isLoading ? <Spinner/> : <form
         onSubmit={(e) => handleSubmit(e)}
         className="flex h-screen flex-col items-center justify-center"
       >
@@ -239,7 +247,7 @@ function SignUp() {
             Log in
           </a>
         </p>
-      </form>
+      </form>}
 
       <ToastContainer position="top-right" autoClose={3000} />
     </>

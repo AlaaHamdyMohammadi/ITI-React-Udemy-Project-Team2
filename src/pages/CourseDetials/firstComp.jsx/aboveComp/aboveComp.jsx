@@ -20,9 +20,11 @@ import Spinner from '../../../../components/Spinner';
 import { setWishList } from '../../../../store/slices/WishList';
 import { setTotalCost } from '../../../../store/slices/TotalCost';
 import { setCartItems } from '../../../../store/slices/CartItems';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function AboveList({ course }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const Bar = useSelector((state) => state.ScrollBar.ScrollBar);
   const [isLoading, setIsLoading] = useState(true);
@@ -168,6 +170,7 @@ document.getElementsByClassName('above')[0].style.position='fixed'
                 <div className="my-2">
                   <button
                     type="button"
+                    onClick={() => {navigate('/cart'); addToCart(course);}}
                     className=" checkout11 w-100 border border-black bg-white px-4 py-3 font-bold text-black hover:bg-gray-400  "
                   >
                     Buy Now
