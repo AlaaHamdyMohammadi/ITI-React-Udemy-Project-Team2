@@ -96,15 +96,18 @@ function CategoriesPage() {
       });
     },
     [_id],
-  ); 
+  );
 
-  useEffect(function () {
-    axiosInstance.get(`/categories/${_id}/courses`).then((res) => {
-      //console.log(res.data.data.courses.slice(0,1));
-      setCourse(res.data.data.courses.slice(0, 1));
-      setcoursesSUB(res.data.data.courses);
-    });
-  }, [_id]);
+  useEffect(
+    function () {
+      axiosInstance.get(`/categories/${_id}/courses`).then((res) => {
+        //console.log(res.data.data.courses.slice(0,1));
+        setCourse(res.data.data.courses.slice(0, 1));
+        setcoursesSUB(res.data.data.courses);
+      });
+    },
+    [_id],
+  );
 
   const firstSetOfCourses = coursesSUB.slice(0, 5);
   const secondSetOfCourses = coursesSUB.slice(5, 10);
@@ -208,6 +211,8 @@ function CategoriesPage() {
 
       <PopularTopics subCategories={subCategories} />
 
+      <Instructors />
+
       <div className="mx-4 mt-5">
         <h4 className="mb-3 font-bold">All Data Science courses</h4>
         <div className="border-1 p-3">
@@ -234,7 +239,7 @@ function NavSubCategory({ category, subCategories }) {
       <NavLink className="font-bold  text-gray-950 no-underline hover:text-violet-600">
         {category.name}
 
-        <LiaGreaterThanSolid className="text-1xl inline ml-5 text-gray-500" />
+        <LiaGreaterThanSolid className="text-1xl ml-5 inline text-gray-500" />
         <LiaGreaterThanSolid className="text-1xl inline text-gray-500" />
       </NavLink>
       {subCategories.map((subCategory) => (
@@ -462,7 +467,6 @@ function CategoriesCarousel({
 }
 
 function PopularTopics({ subCategories }) {
-
   return (
     <div className="mx-4 mt-5">
       <h4 className="mb-5 font-bold">Popular topics</h4>
@@ -479,6 +483,56 @@ function PopularTopics({ subCategories }) {
         ))}
       </div>
     </div>
+  );
+}
+
+function Instructors() {
+  const [instructors, setInstructors] = useState([]);
+
+  useEffect(function () {
+    axiosInstance
+      .get('/users', { params: { role: 'instructor' } })
+      .then((res) => {
+        console.log(res.data.data.documents);
+        setInstructors(res.data.data.documents.slice(0, 2));
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  return (
+    <>
+      <div className="mx-4 mt-5">
+        <h4 className="mb-3 font-bold">Popular Instructors</h4>
+        <div className="flex flex-wrap justify-evenly">
+          {instructors.map((instructor) => (
+            <div
+              key={instructor._id}
+              className="border-1 relative flex items-center p-3"
+            >
+              <img
+                className="absolute top-2 w-16 rounded-full border-2"
+                src={`http://localhost:4000/img/users/${instructor.photo}`}
+              ></img>
+              <div className=" ml-20 text-gray-950">
+                <h6 className="text-sm font-bold">{instructor.username}</h6>
+                <p className="text-xs">{instructor.lastCourse}</p>
+                <p className="text-xs">
+                  <strong>{instructor.instructorRating}</strong>
+                  <AiFillStar className="inline text-yellow-400	" /> Instructor
+                  Rating
+                </p>
+                <p className="text-xs">
+                  <strong>{instructor.instructorStudents}</strong> students
+                </p>
+                <p>
+                  <strong>{instructor.numberOfCourses}</strong> courses
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
 
