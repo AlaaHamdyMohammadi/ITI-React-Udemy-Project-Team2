@@ -494,7 +494,7 @@ function Instructors() {
       .get('/users', { params: { role: 'instructor' } })
       .then((res) => {
         console.log(res.data.data.documents);
-        setInstructors(res.data.data.documents.slice(0, 2));
+        setInstructors(res.data.data.documents.slice(2, 6));
       })
       .catch((err) => console.log(err));
   }, []);
@@ -507,7 +507,7 @@ function Instructors() {
           {instructors.map((instructor) => (
             <div
               key={instructor._id}
-              className="border-1 relative flex items-center p-3"
+              className="border-1 relative flex w-80 cursor-pointer items-center p-3 hover:bg-gray-100"
             >
               <img
                 className="absolute top-2 w-16 rounded-full border-2"
@@ -515,7 +515,7 @@ function Instructors() {
               ></img>
               <div className=" ml-20 text-gray-950">
                 <h6 className="text-sm font-bold">{instructor.username}</h6>
-                <p className="text-xs">{instructor.lastCourse}</p>
+                {/*<p className="text-xs">{instructor.lastCourse}</p>*/}
                 <p className="text-xs">
                   <strong>{instructor.instructorRating}</strong>
                   <AiFillStar className="inline text-yellow-400	" /> Instructor
@@ -524,7 +524,7 @@ function Instructors() {
                 <p className="text-xs">
                   <strong>{instructor.instructorStudents}</strong> students
                 </p>
-                <p>
+                <p className="text-xs">
                   <strong>{instructor.numberOfCourses}</strong> courses
                 </p>
               </div>

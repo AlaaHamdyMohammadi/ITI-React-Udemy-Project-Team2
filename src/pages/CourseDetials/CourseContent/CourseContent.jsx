@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import './CourseContent.css'
 export default function CourseContent({ course }) {
@@ -39,7 +41,7 @@ export default function CourseContent({ course }) {
           <span className=' col-span-4 text-end pr-0  text-sm font-thin text-gray-500'>
           <span >
             <span className="p-1">{item.lecturesNum} lectures</span>
-            <span className="p-1">{item.time} min</span>
+            <span className="p-1">{item.time} h</span>
           </span>
           </span>
           
