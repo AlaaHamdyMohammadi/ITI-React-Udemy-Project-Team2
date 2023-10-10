@@ -15,6 +15,7 @@ import { setWishList } from '../store/slices/WishList';
 import { setCartItems } from '../store/slices/CartItems';
 import { setTotalCost } from '../store/slices/TotalCost';
 import Checkout from '../components/Checkout';
+import { useTranslation } from 'react-i18next';
 
 function CartPage() { 
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function CartPage() {
   const cartItems = useSelector((state) => state.cartItems.cartItems);
   const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
   const {isLogin} = useContext(authentication);
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
   
@@ -96,7 +98,7 @@ function CartPage() {
         <title>Online Courses - Learn Anything, On Your Schedule | Udemy</title>
       </Helmet>
       <div className="container py-5">
-        <h1 className="font-bold">Shopping Cart</h1>
+        <h1 className="font-bold">{t('shopping_cart')}</h1>
         <div className="row d-flex justify-content-center my-4">
           <div className="col-md-8">
             <div className=" mb-4">
@@ -183,13 +185,13 @@ function CartPage() {
                           <div className="absolute inset-x-0 top-0 mb-4 rotate-180 transform text-violet-500 ">
                             <CiShoppingTag className="ShoppingTag" />
                           </div>
-                          <strong className="my-4 text-sm text-violet-400">
+                          <strong className="my-4 text-sm text-violet-400 ">
+                            {item.DiscountPrice ? 'E$' + item.price : ''}
+                          </strong>
+                          <div className=" px-2 text-sm text-gray-400  line-through">
                             {item.DiscountPrice
                               ? 'E$' + item.DiscountPrice
                               : 'E$' + item.price}{' '}
-                          </strong>
-                          <div className="px-2 text-sm text-gray-400 line-through">
-                            {item.DiscountPrice ? 'E$' + item.price : ''}
                           </div>
                         </div>
                       </div>
@@ -228,13 +230,11 @@ function CartPage() {
                 <hr className="my-4 " />
               </div>
             </div>
-
-            
           </div>
         </div>
       </div>
       <div className=" mt-4 p-4">
-        <h3 className="pb-3">You might also like</h3>
+        <h3 className="pb-3">{t('You might also like')}</h3>
         <CoursesCarousel />
       </div>
     </>

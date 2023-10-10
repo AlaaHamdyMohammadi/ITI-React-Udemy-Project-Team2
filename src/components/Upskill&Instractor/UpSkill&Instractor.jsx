@@ -1,16 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
-// import {
-//     Card,
-//     CardHeader,
-//     CardBody,
-//     Typography,
-//     Button,
-//   } from "@material-tailwind/react";
+import { useTranslation } from 'react-i18next';
 
 export default function UpSkillInstractor() {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="skills row align-items-center m-5">
@@ -24,21 +19,25 @@ export default function UpSkillInstractor() {
             />
             <span className="icon">business</span>
           </a>
-          <h2>Upskill your team with Udemy Business</h2>
+          <h2>{t('Upskill your team with Udemy Business')}</h2>
           <ul>
             <li>
-              Unlimited access to 22,000+ top Udemy courses, anytime, anywhere
+              {t(
+                'Unlimited access to 22,000+ top Udemy courses, anytime, anywhere',
+              )}
             </li>
-            <li>International course collection in 14 languages</li>
-            <li>Top certifications in tech and business</li>
+            <li>{t('International course collection in 14 languages')}</li>
+            <li>{t('Top certifications in tech and business')}</li>
           </ul>
           <NavLink
             to="udemy-business"
             className="bg-dark fw-bold p-2 text-white no-underline"
           >
-            Get Udemy Business
+            {t('Get Udemy Business')}
           </NavLink>
-          <button className="text-dark fw-bold bg-white p-2">Learn more</button>
+          <button className="text-dark fw-bold bg-white p-2">
+            {t('Learn more')}
+          </button>
         </div>
         <div className="col-lg-6 col-md-12 mt-md-4">
           <img
@@ -58,16 +57,17 @@ export default function UpSkillInstractor() {
           />
         </div>
         <div className="col-lg-6 col-md-12 mt-md-4">
-          <h2 className="text-dark">Become an instructor</h2>
+          <h2 className="text-dark">{t('Become an instructor')}</h2>
           <p className="fs-4 w-75">
-            Instructors from around the world teach millions of students on
-            Udemy. We provide the tools and skills to teach what you love.
+            {t(
+              'Instructors from around the world teach millions of students on Udemy. We provide the tools and skills to teach what you love.',
+            )}
           </p>
           <NavLink
             to="teach-on-udemy"
             className="bg-dark fw-bold p-2 text-white no-underline"
           >
-            Start teaching today
+            {t('Start teaching today')}
           </NavLink>
         </div>
       </div>

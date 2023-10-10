@@ -33,7 +33,8 @@ function Checkout({ cartItems }) {
       .then((res) => {
         if (res.data.session.url) {
           window.location.href = res.data.session.url;
-          console.log('ok', res);
+          console.log('ok', res); 
+          localStorage.removeItem('cartItems');
         }
       })
       .catch((err) => {

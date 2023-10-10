@@ -8,8 +8,13 @@ import './Business.css';
 import { changeNavbar } from './../store/slices/navbar';
 import { useDispatch } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import { useTranslation } from 'react-i18next';
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/js/bootstrap";
 
 export default function Business() {
+  const { t } = useTranslation();
+
   // const [show, setShow] = useState(false);
   // const target = useRef(null);
   const dispatch = useDispatch();
@@ -27,7 +32,7 @@ export default function Business() {
         <title>Request a free demo | Udemy Business</title>
       </Helmet>
       {/* Nav */}
-      <div className="whole-nav  bg-light row ms-3">
+      <div className="whole-nav  bg-light row" style={{ paddingLeft: '2rem' }}>
         <nav className="navbar navbar-expand-lg navbar-light bg-light mt-2">
           <div className=" nav-class">
             <img
@@ -370,39 +375,42 @@ export default function Business() {
 
       {/* Section */}
       <div className="row mt-5">
-        <div className="col-lg-7 col-md-7 container mx-4">
+        <div className="col-lg-7 col-md-7 mx-4">
           <h2
             style={{ fontFamily: 'Georgia, Times New Roman, Times, serif' }}
             className="fw-bold mb-4 mt-2"
           >
-            Get your demo
+            {t('Get your demo')}
           </h2>
           <p className="fs-5 mb-3">
-            See why leading organizations choose Udemy Business as their
-            destination for employee learning.
+            {t(
+              'See why leading organizations choose Udemy Business as their destination for employee learning.',
+            )}
           </p>
-          <h3 className="fw-bold">In your demo, learn more about:</h3>
+          <h3 className="fw-bold">{t('In your demo, learn more about:')}</h3>
           <div className="section-box mb-5">
             <ul style={{ listStyleType: 'none' }}>
               <li>
-                <span className="marker">&#xf00c; &nbsp;</span>Unlimited access
-                to 22,000+ top Udemy courses and certifications – anytime, on
-                any device
+                <span className="marker">&#xf00c; &nbsp;</span>
+                {t(
+                  'Unlimited access to 22,000 + top Udemy courses and certifications – anytime, on any device',
+                )}
               </li>
               <li>
-                <span className="marker">&#xf00c; &nbsp;</span>Fresh content
-                taught by global instructors in 15 languages – for any learning
-                style
+                <span className="marker">&#xf00c; &nbsp;</span>
+                {t(
+                  'Fresh content taught by global instructors in 15 languages – for any learning style',
+                )}
               </li>
               <li>
-                <span className="marker">&#xf00c; &nbsp;</span>Actionable
-                learning insights and admin functionality
+                <span className="marker">&#xf00c; &nbsp;</span>
+                {t('Actionable learning insights and admin functionality')}
               </li>
             </ul>
           </div>
 
           <div className="trust">
-            <h3 className="trusted fw-bold">Trusted by:</h3>
+            <h3 className="trusted fw-bold">{t('Trusted by:')}</h3>
           </div>
 
           <div className="container">
@@ -465,7 +473,7 @@ export default function Business() {
                 className="form-control border-dark rounded-0 border-dark rounded-0 border-dark shadow"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
-                placeholder="Work email *"
+                placeholder={t('Work email *')}
               />
             </div>
             <div className="form-group mb-3">
@@ -473,7 +481,7 @@ export default function Business() {
                 type="text"
                 className="form-control border-dark rounded-0 border-dark rounded-0 border-dark rounded-0 shadow"
                 id="exampleInputPassword1"
-                placeholder="First Name *"
+                placeholder={t('First Name *')}
               />
             </div>
             <div className="form-group mb-3">
@@ -481,7 +489,7 @@ export default function Business() {
                 type="text"
                 className="form-control border-dark rounded-0 border-dark rounded-0 border-dark rounded-0 shadow outline-0"
                 id="exampleInputPassword1"
-                placeholder="Last Name *"
+                placeholder={t('Last Name *')}
               />
             </div>
             <div className="form-group mb-3">
@@ -489,7 +497,7 @@ export default function Business() {
                 type="number"
                 className="form-control border-dark rounded-0 border-dark rounded-0 border-dark rounded-0 shadow"
                 id="exampleInputPassword1"
-                placeholder="Phone Number*"
+                placeholder={t('Phone Number*')}
               />
             </div>
             <div className="form-group mb-3">
@@ -497,15 +505,15 @@ export default function Business() {
                 type="text"
                 className="form-control border-dark rounded-0 border-dark rounded-0 shadow"
                 id="exampleInputPassword1"
-                placeholder="Company Name*"
+                placeholder={t('Company Name*')}
               />
             </div>
             <select
               className="form-select border-dark  rounded-0 mb-3 shadow"
               aria-label="Default select example"
             >
-              <option selected>Company Size</option>
-              <option value="1">I am a contractor / freelancer</option>
+              <option selected>{t('Company Size')}</option>
+              <option value="1">{t('I am a contractor / freelancer')}</option>
               <option value="2">1-199</option>
               <option value="3">200-999</option>
               <option value="4">1000-5000</option>
@@ -516,39 +524,39 @@ export default function Business() {
                 type="text"
                 className="form-control border-dark rounded-0 border-dark rounded-0 shadow"
                 id="exampleInputPassword1"
-                placeholder="Job Title*"
+                placeholder={t('Job Title*')}
               />
             </div>
             <select
               className="form-select border-dark rounded-0 mb-3 shadow"
               aria-label="Default select example"
             >
-              <option selected>Job Level*</option>
-              <option value="1">C-Level</option>
+              <option selected>{t('Job Level*')}</option>
+              <option value="1">{t('C-Level')}</option>
               <option value="2">VP</option>
-              <option value="3">Director / SR</option>
-              <option value="4">Manager</option>
-              <option value="5">Individual Contributor</option>
+              <option value="3">{t('Director / SR')}</option>
+              <option value="4">{t('Manager')}</option>
+              <option value="5">{t('Individual Contributor')}</option>
             </select>
             <select
               className="form-select border-dark rounded-0 mb-3 shadow"
               aria-label="Default select example"
             >
-              <option selected>Where are you located? * Select</option>
-              <option value="1">Egypt</option>
-              <option value="2">United States</option>
-              <option value="3">United Kingdom</option>
-              <option value="4">Australia</option>
-              <option value="5">Saudi Arabia</option>
+              <option selected>{t('Where are you located? * Select')}</option>
+              <option value="1">{t('Egypt')}</option>
+              <option value="2">{t('United States')}</option>
+              <option value="3">{t('United Kingdom')}</option>
+              <option value="4">{t('Australia')}</option>
+              <option value="5">{t('Saudi Arabia')}</option>
             </select>
             <select
               className="form-select border-dark rounded-0 mb-3 shadow"
               aria-label="Default select example"
             >
               <option selected>
-                How many people are you planning to train? * Select...
+                {t('How many people are you planning to train? * Select...')}
               </option>
-              <option value="1">Just myself</option>
+              <option value="1">{t('Just myself')}</option>
               <option value="2">5 - 20</option>
               <option value="3">21 - 200</option>
               <option value="4">201 - 2000</option>
@@ -559,34 +567,35 @@ export default function Business() {
                 type="text"
                 className="form-control border-dark rounded-0 border-dark rounded-0 shadow"
                 id="exampleInputPassword1"
-                placeholder="What are your organization's training needs ?"
+                placeholder={t("What are your organization's training needs ?")}
               />
             </div>
             <Button
               type="submit"
               className="get-in-touch btn bg-dark rounded-0 w-100 text-light fw-bolder mt-4 border pb-3 pt-3"
             >
-              Get in touch
+              {t('Get in touch')}
             </Button>
             <p className="fs-6 fw-lighter text-secondary pt-3">
-              By signing up, you agree to our{' '}
+              {t('By signing up, you agree to our ')}
               <a
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://www.udemy.com/terms/ub/"
               >
-                terms
+                {t('terms')}
               </a>{' '}
-              and{' '}
+              {t('and')}{' '}
               <a
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://www.udemy.com/terms/privacy/"
               >
-                privacy policy
+                {t('privacy policy')}
               </a>
-              . You agree that we can contact you about Udemy and use data from
-              third parties to personalize your experience.
+              {t(
+                'You agree that we can contact you about Udemy and use data from third parties to personalize your experience.',
+              )}
             </p>
           </form>
         </div>

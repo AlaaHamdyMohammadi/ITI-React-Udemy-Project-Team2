@@ -1,9 +1,14 @@
+import { useTranslation } from 'react-i18next';
+
 function Photos() {
+  const { t } = useTranslation();
+
   return (
     <div className="mt-5 bg-slate-100 p-16 text-center">
-      <p className="text-xl text-slate-500">
-        Trusted by over 14,400 companies and millions of learners around the
-        world
+      <p className="mb-4 text-xl text-slate-500">
+        {t(
+          'Trusted by over 14,400 companies and millions of learners around the world',
+        )}
       </p>
       <div className="flex flex-row flex-wrap justify-around sm:flex-col md:flex-col lg:flex-col xl:flex-col">
         <img src="./../../public/images/homePage/volkswagen.svg" />

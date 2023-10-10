@@ -7,9 +7,11 @@ import { NavLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import Spinner from '../components/Spinner';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function Logout() {
   const [isLoading, setIsLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(function () {
     setTimeout(() => {
@@ -29,7 +31,7 @@ function Logout() {
           <div style={{ backgroundColor: '#acd2cc' }} className=" p-3">
             <BsCheckCircleFill className="inline text-2xl" />
             <span className="ml-3 font-bold">
-              You’ve successfully logged out of Udemy. Come back soon!
+              {t('You’ve successfully logged out of Udemy. Come back soon!')}
             </span>
           </div>
           <div className="relative mt-4">
@@ -56,7 +58,7 @@ function Logout() {
           </div>
         </div>
       )}
-      <CoursesList/>
+      <CoursesList />
       <StudentsViewing />
     </>
   );

@@ -1,6 +1,10 @@
-import { Carousel } from 'react-bootstrap';
 
+// import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { Carousel } from 'react-bootstrap';
 function CarouselImage() {
+    const { t } = useTranslation();
+
   return (
     <Carousel>
       <Carousel.Item>
@@ -10,10 +14,12 @@ function CarouselImage() {
           alt="First slide"
         />
         <div className="relative">
-          <div className="absolute bottom-40 left-40  hidden  w-96 bg-white p-3   lg:block xl:block">
-            <h3>Learning that gets you</h3>
+          <div className="absolute bottom-40 left-40 hidden w-96 bg-white p-3 lg:block xl:block">
+            <h3>{t('Learning that gets you')}</h3>
             <p>
-              Skills for your present (and your future). Get started with us.
+              {t(
+                'Skills for your present (and your future). Get started with us.',
+              )}
             </p>
           </div>
         </div>
@@ -26,12 +32,14 @@ function CarouselImage() {
         />
         <div className="relative">
           <div className="absolute bottom-32 left-40 hidden w-96 bg-white p-3 lg:block xl:block">
-            <h3>Build ready-for-anything teams</h3>
+            <h3>{t('Build ready-for-anything teams')}</h3>
             <p>
-              See why leading organizations choose to learn with Udemy Business
+              {t(
+                'See why leading organizations choose to learn with Udemy Business',
+              )}
             </p>
             <button className="bg-dark fw-bold p-3 text-white">
-              Request a demo
+              {t('Request a demo')}
             </button>
           </div>
         </div>

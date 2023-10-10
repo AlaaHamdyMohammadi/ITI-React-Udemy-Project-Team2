@@ -9,8 +9,11 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { Button, Modal } from 'react-bootstrap';
 import './Footer.css'; // Make sure to import your CSS file
+import { useTranslation } from 'react-i18next'; // Import useTranslation hook
 
 export default function Footer() {
+  const { t, i18n } = useTranslation(); // Get the t and i18n functions
+
   // Step 1: Set up state to control the modal
   const [showModal, setShowModal] = useState(false);
 
@@ -23,13 +26,20 @@ export default function Footer() {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
+  // Step 4: Function to change the language
+  const changeLanguage = (newLanguage) => {
+    i18n.changeLanguage(newLanguage); // Change the language using i18n function
+    handleCloseModal(); // Close the modal after changing the language
+  };
+
   return (
     <>
       <footer className="footer mt-5 p-4">
         {/* social footer */}
         <div id="socialFooter" className="d-flex justify-content-end">
           <div>
-            <span className="text-light fw-bold m-3">Follow us</span>
+            <span className="text-light fw-bold m-3">{t('Follow us')}</span>
           </div>
           <div className="mx-3">
             <a href="#">
@@ -59,7 +69,7 @@ export default function Footer() {
                   aria-current="page"
                   href="./business.html"
                 >
-                  Udemy Business
+                  {t('Udemy Business')}
                 </a>
               </li>
               <li>
@@ -68,51 +78,22 @@ export default function Footer() {
                   aria-current="page"
                   href="./teach-on-udemy.html"
                 >
-                  Teach on Udemy
+                  {t('Teach on Udemy')}
                 </a>
               </li>
               <li>
                 <a className="nav-link text-light" aria-current="page" href="#">
-                  Get the app
+                  {t('Get the app')}
                 </a>
               </li>
               <li>
                 <a className="nav-link text-light" aria-current="page" href="#">
-                  About us
+                  {t('About us')}
                 </a>
               </li>
               <li>
                 <a className="nav-link text-light" aria-current="page" href="#">
-                  Contact us
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="col-3 ps-4">
-            <ul className="mb-lg-0 mb-2 me-auto">
-              <li>
-                <a className="nav-link text-light" aria-current="page" href="#">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a className="nav-link text-light" aria-current="page" href="#">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a className="nav-link text-light" aria-current="page" href="#">
-                  Help and Support
-                </a>
-              </li>
-              <li>
-                <a className="nav-link text-light" aria-current="page" href="#">
-                  Affiliate
-                </a>
-              </li>
-              <li>
-                <a className="nav-link text-light" aria-current="page" href="#">
-                  Investors
+                  {t('Contact us')}
                 </a>
               </li>
             </ul>
@@ -121,27 +102,56 @@ export default function Footer() {
             <ul className="mb-lg-0 mb-2 me-auto">
               <li>
                 <a className="nav-link text-light" aria-current="page" href="#">
-                  Terms
+                  {t('Careers')}
                 </a>
               </li>
               <li>
                 <a className="nav-link text-light" aria-current="page" href="#">
-                  Privacy policy
+                  {t('Blog')}
                 </a>
               </li>
               <li>
                 <a className="nav-link text-light" aria-current="page" href="#">
-                  Cookie settings
+                  {t('Help and Support')}
                 </a>
               </li>
               <li>
                 <a className="nav-link text-light" aria-current="page" href="#">
-                  Sitemap
+                  {t('Affiliate')}
                 </a>
               </li>
               <li>
                 <a className="nav-link text-light" aria-current="page" href="#">
-                  Accessibility statement
+                  {t('Investors')}
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="col-3 ps-4">
+            <ul className="mb-lg-0 mb-2 me-auto">
+              <li>
+                <a className="nav-link text-light" aria-current="page" href="#">
+                  {t('Terms')}
+                </a>
+              </li>
+              <li>
+                <a className="nav-link text-light" aria-current="page" href="#">
+                  {t('Privacy policy')}
+                </a>
+              </li>
+              <li>
+                <a className="nav-link text-light" aria-current="page" href="#">
+                  {t('Cookie settings')}
+                </a>
+              </li>
+              <li>
+                <a className="nav-link text-light" aria-current="page" href="#">
+                  {t('Sitemap')}
+                </a>
+              </li>
+              <li>
+                <a className="nav-link text-light" aria-current="page" href="#">
+                  {t('Accessibility statement')}
                 </a>
               </li>
             </ul>
@@ -149,7 +159,7 @@ export default function Footer() {
           <div className="col-3 pe-4 text-end">
             {/* Button trigger modal */}
             <Button variant="outline-light" onClick={handleShowModal}>
-              <i className="bi bi-globe2"></i> English
+              <i className="bi bi-globe2"></i> {t('English')}
             </Button>
           </div>
         </div>
@@ -157,26 +167,36 @@ export default function Footer() {
         {/* Modal */}
         <Modal show={showModal} onHide={handleCloseModal}>
           <Modal.Header closeButton>
-            <Modal.Title>Choose a language</Modal.Title>
+            <Modal.Title>{t('Choose a language')}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <ul className="mb-lg-0 mb-2 me-auto">
               <li className="list-group-item border-0">
-                <a className="nav-link text-dark" aria-current="page" href="#">
+                <a
+                  className="nav-link text-dark"
+                  aria-current="page"
+                  href="#"
+                  onClick={() => changeLanguage('en')} // Change to English
+                >
                   English
                 </a>
               </li>
               <li className="list-group-item border-0">
-                <a className="nav-link text-dark" aria-current="page" href="#">
-                  Arabic
+                <a
+                  className="nav-link text-dark"
+                  aria-current="page"
+                  href="#"
+                  onClick={() => changeLanguage('ar')} // Change to Arabic
+                >
+                  {t('Arabic')}
                 </a>
               </li>
             </ul>
           </Modal.Body>
         </Modal>
+
         {/* LOGO */}
         <div className="container-fluid d-flex justify-content-between mt-4">
-          {/* <a href="./index.html" className="ms-3 ps-3" /> */}
           <img
             src="./../../../public/images/homePage/udemy.png"
             className="ms-1"

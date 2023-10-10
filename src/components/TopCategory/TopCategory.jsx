@@ -3,9 +3,12 @@ import React, { useEffect, useState } from 'react';
 import './TopCategory.css';
 import { NavLink } from 'react-router-dom';
 import axiosInstance from '../../axiosConfig/instance';
+import { useTranslation } from 'react-i18next';
 
 
 export default function TopCategory() {
+    const { t } = useTranslation();
+
   const [categories, setCategories] = useState([]);
   useEffect(function(){
     axiosInstance.get('/categories').then(res => {
@@ -15,7 +18,8 @@ export default function TopCategory() {
   }, []);
   return (
     <div className="mt-5 p-4">
-      <h3 className="pb-3">Top categories</h3>
+      <h3 className="pb-3">{t('Top categories')}</h3>
+
       <div className="container-fliud grid grid-cols-5 grid-rows-2 gap-2 ">
         {categories.map((item) => (
           <>

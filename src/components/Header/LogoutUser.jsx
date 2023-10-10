@@ -4,6 +4,9 @@ import { NavLink } from "react-router-dom";
 import { BsSearch, BsCart3, BsGlobe, BsBell } from 'react-icons/bs';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import LanguageOption from "../language-dropdown";
+import i18next from "i18next";
+import { useTranslation } from "react-i18next";
 
 function LogoutUser({ setTON, onTeachOnUdemy }) {
   const [onCart, setUB] = useState(false);
@@ -13,6 +16,12 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
      );
 
    const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
+
+   const { t } = useTranslation();
+
+   const handleClick = (e) => {
+     i18next.changeLanguage(e.target.value);
+   };
 
   return (
     <div className="d-flex ms-3 ">
@@ -164,6 +173,7 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
       <div className="ms-2 mt-2.5 ">
         <h1 className="border-1 rounded-none border-black p-2 text-sm font-bold text-gray-950 no-underline hover:bg-gray-200">
           <BsGlobe className="text-lg" />
+          <LanguageOption onChange={(e) => handleClick(e)} />
         </h1>
       </div>
     </div>

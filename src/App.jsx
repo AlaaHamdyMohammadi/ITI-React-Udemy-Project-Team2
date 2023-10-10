@@ -49,7 +49,8 @@ const router = createBrowserRouter([
         ],
       },
       { path: '/teach-on-udemy', element: <TeachOnUdemy /> },
-      { path: '/instractor', element: <InstructorPage /> },
+      { path: '/instructor', element: <InstructorPage /> },
+      { path: '/create-course', element: <InstructorPage /> },
       {
         path: '/courses',
         element: (

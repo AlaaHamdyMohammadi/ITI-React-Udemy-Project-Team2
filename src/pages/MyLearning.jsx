@@ -2,8 +2,11 @@
 import { Helmet } from 'react-helmet';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 import axios from 'axios';
 
+//<li key={course._id}>{course.course.title}</li>
 
 function MyLearning() {
   const location = useLocation();
@@ -11,6 +14,8 @@ function MyLearning() {
   const isSuccess = queryParams.get('success');
   const [courseData, setCourseData] = useState([]);
   const token = localStorage.getItem('token');
+    const [progress, setProgress] = useState(0);
+
 
   useEffect(() => {
     if (isSuccess === 'true') {
@@ -58,12 +63,30 @@ function MyLearning() {
         <div>
           {isSuccess === 'true' ? (
             <>
-              <h2>Enrolled Courses:</h2>
-              <ul>
+              <div className="m-5 flex flex-wrap justify-between">
                 {courseData.map((course) => (
-                  <li key={course._id}>{course.course.title}</li>
+                  <div key={course._id}>
+                    <div style={{ width: '16rem' }}>
+                      <img
+                        className="w-62"
+                        src={`http://localhost:4000/img/courses/${course.photo}`}
+                      />
+                      <div className="mt-2">
+                        <h6 className="font-bold">{course.course.title}</h6>
+                        <p className="text-sm text-gray-500">
+                          {course.instructor}
+                        </p>
+                        <ProgressBar
+                          now={progress}
+                          style={{ height: '3px' }}
+                          label={`${progress}%`}
+                        />
+                        <p className="mt-1 text-sm">START COURSE</p>
+                      </div>
+                    </div>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </>
           ) : (
             <h1>Payment not successful</h1>

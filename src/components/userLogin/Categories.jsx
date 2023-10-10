@@ -31,7 +31,7 @@ function Categories() {
         setShowTooltip(false);
     }
     return (
-      <div className=" relative flex cursor-pointer justify-around pb-3 pt-3 shadow-md shadow-gray-300">
+      <div className=" relative flex flex-col lg:flex-row cursor-pointer justify-around pb-3 pt-3 shadow-md shadow-gray-300">
         {categories.map((category) => (
           <>
             <Link
