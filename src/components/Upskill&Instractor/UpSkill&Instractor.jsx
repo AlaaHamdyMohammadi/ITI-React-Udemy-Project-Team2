@@ -7,7 +7,7 @@ export default function UpSkillInstractor() {
   const { t } = useTranslation();
 
   return (
-    <>
+    <> 
       <div className="skills row align-items-center m-5">
         <div className="col-lg-6 col-md-12">
           <a className="navbar-brand fs-3 mt-3" href="./index.html">

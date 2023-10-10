@@ -48,9 +48,9 @@ export default function Featured() {
     <>
       <div className="featured mt-5 pb-16 pl-8 pt-16">
         <h2>{t('Featured topics by category')}</h2>
-        <div className="mt-4 grid grid-cols-4 ">
+        <div className="container row mt-4 justify-content-evenly">
           {featuredData.map((item) => (
-            <div className="px-5" key={item.name}>
+            <div className="col-lg-3 col-md-6 col-sm-6 px-5" key={item.name}>
               <h4>{item.name}</h4>
               <a className="font-bold" href="#">
                 {item.course1}
