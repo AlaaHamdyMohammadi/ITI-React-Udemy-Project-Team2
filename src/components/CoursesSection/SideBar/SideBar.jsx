@@ -189,51 +189,7 @@ export default function SideBar({ subCategories, coursesSUB, id }) {
       </div>
 
       {/*SubCategory */}
-      <div className="pr-5">
-        {/* <div key={item.title}> */}
-        <details className="group mb-3">
-          <summary className="  grid cursor-pointer  list-none grid-cols-12 items-center justify-between font-extrabold">
-            {/* <span className='col-span-10'> {item.title}</span> */}
-            <span className="col-span-10">SubCategory </span>
-
-            <span className=" transition  group-open:rotate-180">
-              <svg
-                fill="none"
-                height="24"
-                shapeRendering="geometricPrecision"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1.5"
-                viewBox="0 0 24 24"
-                width="24"
-              >
-                <path d="M6 9l6 6 6-6"></path>
-              </svg>
-            </span>
-          </summary>
-          {/* {item.inside} */}
-          <div className="group-open:animate-fadeIn  mt-3 pr-3 text-black">
-            <ul className="list-disc">
-              {subCategories.map((item) => (
-                <li key={item._id}>
-                  <span className="mb-1 flex flex-row p-2 text-sm text-black">
-                    <BiSquare className="mr-2 mt-1" />
-
-                    <span className=" flex flex-row">{item.name}</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </details>
-        <div className="pr-5">
-          <hr className=" w-100 text-gray-500" />
-        </div>
-        {/* </div> */}
-
-        {/* ))} */}
-      </div>
+      
 
       {/*Level */}
       <div className="pr-5">

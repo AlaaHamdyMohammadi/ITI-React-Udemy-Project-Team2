@@ -6,21 +6,22 @@ import SideBar from './SideBar/SideBar';
 import axiosInstance from '../../axiosConfig/instance';
 import StaticSection from '../CoursesSectionSUB/ShowCourses/staticSection/staticSection';
 
+//grid grid-cols-8 
+//<div className='col-span-2'>
+//<div className='col-span-6'>
 
 export default function CoursesSection({subCategories,coursesSUB,id}) {
-
-
   // console.log(coursesSUB);
   return (
     <>
-    <div className="m-3 grid grid-cols-8 ">
+    <div className="m-3 d-flex">
         {/* side Bar */}
-        <div className='col-span-2'>
+        <div className=''>
         <SideBar subCategories={subCategories} coursesSUB={coursesSUB} id={id}/>
 
         </div>
         {/* show courses */}
-        <div className='col-span-6'>
+        <div className=''>
        
    <ShowCourses coursesSUB={coursesSUB} id={id}/>
    <StaticSection/>

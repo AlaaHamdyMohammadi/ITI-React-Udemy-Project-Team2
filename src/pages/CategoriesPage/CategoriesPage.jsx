@@ -406,8 +406,8 @@ function CategoriesCarousel({
                     ({course.NumRating})
                   </span>
                 </div>
-                <p className="w-fit bg-lime-200 p-1.5 text-xs text-lime-950">
-                  {course.NumStd > 1000 ? 'Best Seller' : ''}
+                <p className="bestseller h-fit w-fit text-xs">
+                  {course.BestSeller ? 'Best Seller' : ''}
                 </p>
               </div>
             </NavLink>
@@ -454,8 +454,8 @@ function CategoriesCarousel({
                     ({course.NumRating})
                   </span>
                 </div>
-                <p className="w-fit bg-lime-200 p-1.5 text-xs text-lime-950">
-                  {course.NumStd > 1000 ? 'Best Seller' : ''}
+                <p className="bestseller h-fit w-fit text-xs">
+                  {course.BestSeller ? 'Best Seller' : ''}
                 </p>
               </div>
             </NavLink>
@@ -470,7 +470,7 @@ function PopularTopics({ subCategories }) {
   return (
     <div className="mx-4 mt-5">
       <h4 className="mb-5 font-bold">Popular topics</h4>
-      <div className="flex flex-wrap justify-evenly">
+      <div className="d-flex justify-content-evenly">
         {subCategories.map((subCategory) => (
           <div className="" key={subCategory._id}>
             <NavLink

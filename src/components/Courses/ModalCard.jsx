@@ -76,26 +76,22 @@ function ModalCard({course, handleShow, handleClose }) {
 
   return (
     <div
-      className="absolute left-60 -top-5 z-10 w-96 border-2 bg-white p-2 text-sm"
+      className="absolute left-60 shadow-md top-2 z-10 w-80 border-2  bg-white pl-5 pr-1 text-sm"
       onMouseOver={handleShow}
       onMouseLeave={handleClose}
     >
-      <h6 className="mt-2 w-64 font-bold">
+      <h6 className="mt-2  font-bold">
         {course.title}
       </h6>
-      <span className="w-fit bg-lime-200 p-1.5 text-xs text-lime-950">
-             {course.NumStd > 1000 ? 'Best Seller' : ""}
-      </span>
+      <span className="bestseller h-fit w-fit text-xs">
+                  {course.BestSeller ? 'Best Seller' : ''}
+                </span>
       <span className="pl-2">{course.updated}</span>
       <p className="text-sm">15 total hours . Beginner Level . Subtitles, CC</p>
       <p className="">
         {(course.description)?course.description.slice(0,200)+"...":""}
       </p>
-      <p className="flex">
-        <BsCheckLg className=" text-3xl" />
-        FULLY UPDATED FOR CLF-C01 & CLF-C02: Pass the AWS Certified Cloud
-        Practitioner Certification
-      </p>
+      
       {/*<p className="flex">
         <BsCheckLg className=" text-3xl" />
         FULLY UPDATED FOR CLF-C01 & CLF-C02: Pass the AWS Certified Cloud
