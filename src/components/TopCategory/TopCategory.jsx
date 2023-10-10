@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import axiosInstance from '../../axiosConfig/instance';
 import { useTranslation } from 'react-i18next';
 
+//grid grid-cols-5 grid-rows-2 gap-2 md:grid-col-3 md:grid-row-4
 
 export default function TopCategory() {
     const { t } = useTranslation();
@@ -20,12 +21,12 @@ export default function TopCategory() {
     <div className="mt-5 p-4">
       <h3 className="pb-3">{t('Top categories')}</h3>
 
-      <div className="container-fliud grid grid-cols-5 grid-rows-2 gap-2 ">
+      <div className="container-fliud row ">
         {categories.map((item) => (
           <>
             <div
               key={item.id}
-              className="categoryImg bg-cover object-cover "
+              className="categoryImg col-lg-3 col-md-4 col-sm-6 bg-cover object-cover "
               style={item.style}
             >
               <NavLink
