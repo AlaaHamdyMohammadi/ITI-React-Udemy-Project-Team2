@@ -181,13 +181,13 @@ function CategoriesPage() {
               className="text-white no-underline"
               to={`/CourseDetials/${item._id}`}
             >
-              <div className="border-1 flex p-3 hover:bg-slate-100">
+              <div className="border-1 flex flex-col p-3 hover:bg-slate-100 md:flex-row md:items-center">
                 <img
-                  className="h-60 w-96"
+                  className="sm:w-100 h-60 md:w-96"
                   src={`http://localhost:4000/img/courses/${item.photo}`}
                 />
 
-                <div className="w-50 ml-4 cursor-pointer text-black">
+                <div className="w-100 lg:w-50 ml-4 cursor-pointer text-black">
                   <h3 className="font-bold">{item.title}</h3>
                   <p className="w-5/6">{item.subTitle}</p>
                   <p className="text-sm font-bold text-gray-500">
@@ -235,7 +235,7 @@ function CategoriesPage() {
 
 function NavSubCategory({ category, subCategories }) {
   return (
-    <div className="relative flex cursor-pointer justify-around pb-3 pt-3 shadow-md shadow-gray-300">
+    <div className="relative flex flex-col lg:flex-row p-2 cursor-pointer justify-around pb-3 pt-3 shadow-md shadow-gray-300">
       <NavLink className="font-bold  text-gray-950 no-underline hover:text-violet-600">
         {category.name}
 

@@ -31,11 +31,11 @@ function Categories() {
         setShowTooltip(false);
     }
     return (
-      <div className=" relative flex flex-col lg:flex-row cursor-pointer justify-around pb-3 pt-3 shadow-md shadow-gray-300">
+      <div className=" relative flex flex-col lg:flex-row cursor-pointer justify-around pb-3 pt-3  xs:p-2 shadow-md shadow-gray-300">
         {categories.map((category) => (
           <>
             <Link
-              className="text-gray-900 text-xs no-underline hover:text-violet-600"
+              className="text-gray-900 pt-0 md:p-2 sm:p-2 text-xs no-underline hover:text-violet-600"
               onMouseOver={() => handleShow(category._id)}
               onMouseLeave={handleClose}
               key={category._id}
