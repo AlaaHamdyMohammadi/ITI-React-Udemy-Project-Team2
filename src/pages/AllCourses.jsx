@@ -34,7 +34,7 @@ function AllCourses() {
     }, [isSuccess, token]);
   return (
     <div>
-      {/*isSuccess === 'true' ? (
+      {isSuccess === 'true' ? (
         <>
           <div className="m-5 flex flex-wrap justify-between">
             {courseData.map((course) => (
@@ -52,7 +52,8 @@ function AllCourses() {
                       style={{ height: '3px' }}
                       label={`${progress}%`}
                     />
-                    <p className="mt-1 text-sm">START COURSE</p>
+                    <p className="text-sm">0%</p>
+                    <p className="-mt-3 text-sm">START COURSE</p>
                   </div>
                 </div>
               </div>
@@ -61,7 +62,7 @@ function AllCourses() {
         </>
       ) : (
         ''
-      )*/}
+      )}
     </div>
   );
 }

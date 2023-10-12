@@ -5,6 +5,7 @@ import ScrollBarReducer from './slices/ScrollBar';
 import category from './slices/categories';
 import categoryCourses from './slices/categoryCourses'; 
 import WishList from "./slices/WishList";
+import favoritesReducer from './slices/WishList';
 import CartItems from "./slices/CartItems";
 import TotalCost from "./slices/TotalCost";
 import CatRatingFilteredCourses from './slices/CatRatingFilteredCourses';
@@ -24,6 +25,7 @@ const store = configureStore({
     CatRatingFilteredCourses: CatRatingFilteredCourses,
     SubRatingFilteredCourses: SubRatingFilteredCourses,
     language: languageReducer,
+    favorites: favoritesReducer,
   },
 });
 export default store

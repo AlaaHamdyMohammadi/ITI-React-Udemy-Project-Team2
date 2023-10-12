@@ -7,7 +7,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setWishList } from '../store/slices/WishList';
-
+import './../pages/Profile/Profile.css'
 //<li key={course._id}>{course.course.title}</li>
 
 /*
@@ -79,20 +79,20 @@ function MyLearning() {
           </h1>
           <NavLink
             to="/my-learning"
-            className="absolute left-64 top-40 font-bold text-gray-100 no-underline"
+            className=" absolute left-64 top-[163px] font-bold text-gray-100 no-underline hover:text-stone-300"
           >
             All Courses
           </NavLink>
           <NavLink
             to="/my-learning/myList"
             onClick={(item) => addToFav(item)}
-            className="absolute left-96 top-40 font-bold text-gray-100 no-underline"
+            className="absolute left-96 top-[163px] font-bold text-gray-100 no-underline hover:text-stone-300"
           >
             Wishlist
           </NavLink>
         </div>
         <Outlet />
-        <div>
+        {/*<div>
           {isSuccess === 'true' ? (
             <>
               <div className="m-5 flex gap-3">
@@ -124,7 +124,7 @@ function MyLearning() {
           ) : (
             ''
           )}
-        </div>
+          </div>*/}
       </div>
     </div>
   );
