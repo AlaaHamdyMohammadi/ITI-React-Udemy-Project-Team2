@@ -58,7 +58,7 @@ function Logout() {
           </div>
         </div>
       )}
-      <CoursesList />
+      
       <StudentsViewing />
     </>
   );

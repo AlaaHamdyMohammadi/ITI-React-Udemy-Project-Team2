@@ -7,7 +7,9 @@ import { useSelector } from 'react-redux';
 
 function AppLayout() {
   const nav = useSelector((state) => state.nav.navbar);
-    const Bar = useSelector((state) => state.ScrollBar.ScrollBar);
+  const Bar = useSelector((state) => state.ScrollBar.ScrollBar);
+  //const language = useSelector(state => state.language.language);
+
   // console.log(nav);
   return (
     <div>

@@ -1,7 +1,11 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 
 function NavBusiness({ setUB, onUdemyBusiness }) {
+    const { t, i18n } = useTranslation();
+
   return (
     <div
       className="ms-2 mt-3"
@@ -17,7 +21,7 @@ function NavBusiness({ setUB, onUdemyBusiness }) {
           className="text-sm text-gray-950 no-underline hover:text-violet-600 "
           to="/udemy-business"
         >
-          Udemy Business
+        { t('Udemy Business')}
         </NavLink>
         {onUdemyBusiness ? (
           <div

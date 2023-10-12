@@ -25,7 +25,7 @@
   cursor: pointer;
 }
 
-.modal {
+/* .modal {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -36,7 +36,7 @@
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 10;
-}
+} */
 
 .overlay {
   position: absolute;

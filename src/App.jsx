@@ -31,6 +31,8 @@ import CourseDetials, {
 import SubcategoryPage from './pages/SubCategoriesPage/CoursesPageCat';
 // import TestForm from './components/Header/testForm';
 import Checkout from './components/Checkout';
+import AllCourses from './pages/AllCourses';
+import WishList from './pages/WishList';
 
 const router = createBrowserRouter([
   {
@@ -61,11 +63,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/my-learning',
-        element: (
+        element: 
           <Guard>
             <MyLearning />
           </Guard>
-        ),
+        ,
+        children: [
+          { index: true, element: <AllCourses /> },
+          { path: 'myList', element: <WishList /> },
+        ],
       },
       {
         path: '/my-wishList',

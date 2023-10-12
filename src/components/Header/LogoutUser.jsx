@@ -1,30 +1,46 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import { NavLink } from "react-router-dom";
-import { BsSearch, BsCart3, BsGlobe, BsBell } from 'react-icons/bs';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { BsCart3, BsGlobe } from 'react-icons/bs';
 import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import LanguageOption from "../language-dropdown";
-import i18next from "i18next";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
+import { Button, Modal } from 'react-bootstrap';
 
 function LogoutUser({ setTON, onTeachOnUdemy }) {
   const [onCart, setUB] = useState(false);
-   const cartItems = useSelector((state) => state.cartItems.cartItems);
-     const counter = useSelector((state) =>
-       state.cartItems.cartItems ? state.cartItems.cartItems.length : 0,
-     );
+  const cartItems = useSelector((state) => state.cartItems.cartItems);
+  const counter = useSelector((state) =>
+    state.cartItems.cartItems ? state.cartItems.cartItems.length : 0,
+  );
 
-   const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
+  const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
 
-   const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-   const handleClick = (e) => {
-     i18next.changeLanguage(e.target.value);
-   };
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const changeLanguage = (newLanguage) => {
+    i18n.changeLanguage(newLanguage);
+
+    if (newLanguage === 'ar') {
+      document.documentElement.classList.add('rtl');
+    } else {
+      document.documentElement.classList.remove('rtl');
+    }
+
+    handleCloseModal();
+  };
 
   return (
-    <div className="d-flex ms-3 ">
+    <div className="d-flex ms-3">
       <div
         className="ms-3 mt-3"
         onMouseOver={() => {
@@ -34,12 +50,12 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
           setTON(false);
         }}
       >
-        <div className="base text-decoration-none ">
+        <div className="base text-decoration-none">
           <NavLink
             className="text-sm text-gray-950 no-underline hover:text-violet-600"
             to="/teach-on-udemy"
           >
-            Teach On Udemy
+            {t('Teach On Udemy')}
           </NavLink>
           {onTeachOnUdemy ? (
             <div
@@ -51,13 +67,14 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
               }}
               className="subDiv fw-bold w-72 bg-white p-3 text-center text-sm"
             >
-              Get your team access to over 22,000 top Udemy courses, anytime,
-              anywhere.
+              {t(
+                'Get your team access to over 22,000 top Udemy courses, anytime, anywhere.',
+              )}
               <NavLink
                 className="btn rounded-0 m-lg-3 col-8 text-decoration-none m-1 w-96 bg-black p-2 text-sm text-white"
                 to="/teach-on-udemy"
               >
-                Learn More
+                {t('Learn More')}
               </NavLink>
             </div>
           ) : (
@@ -99,13 +116,12 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
               onMouseLeave={() => {
                 setUB(false);
               }}
-              className="subDiv fw-bold bg-white  p-3 text-center shadow-md "
+              className="subDiv fw-bold bg-white  p-3 text-center shadow-md"
             >
               {cartItems.map((item) => {
                 return (
-                  <>
+                  <div key={item._id}>
                     <NavLink
-                      key={item._id}
                       to={'/CourseDetials/' + item._id}
                       className="text-decoration-none text-reset"
                     >
@@ -116,9 +132,9 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
                               className=""
                               style={{ width: '200px', height: '70px' }}
                               src={`http://localhost:4000/img/courses/${item.photo}`}
+                              alt={item.title}
                             />
                           </div>
-
                           <div className="text-start">
                             <p className="mb-0 text-sm">{item.title}</p>
                             <span className="fw-light text-sm">
@@ -135,15 +151,15 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
                       </li>
                     </NavLink>
                     <hr />
-                  </>
+                  </div>
                 );
               })}
-              <h4 className="text-sm">Total E$:{Math.round(TotalPrice)}</h4>
+              <h4 className="text-sm">Total E$: {Math.round(TotalPrice)}</h4>
               <NavLink
                 className="btn rounded-0 m-lg-3 col-8 text-decoration-none m-1 w-full bg-black p-2 text-sm text-white"
                 to="/cart"
               >
-                Go to Cart
+                {t('Go to Cart')}
               </NavLink>
             </div>
           ) : (
@@ -157,7 +173,7 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
           className="border-1 rounded-none border-black p-2 text-sm font-bold text-gray-950 no-underline hover:bg-gray-200"
           to="/login"
         >
-          Log In
+          {t('Log In')}
         </NavLink>
       </div>
 
@@ -166,20 +182,50 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
           className="border-1 rounded-none border-black bg-gray-950 p-2 text-sm font-bold text-white no-underline hover:bg-gray-700"
           to="/signup"
         >
-          Sign Up
+          {t('Sign Up')}
         </NavLink>
       </div>
 
-      <div className="ms-2 mt-2.5 ">
-        <h1 className="border-1 rounded-none border-black p-2 text-sm font-bold text-gray-950 no-underline hover:bg-gray-200">
-          <BsGlobe className="text-lg" />
-          <LanguageOption onChange={(e) => handleClick(e)} />
-        </h1>
+      <div className="ms-2">
+        <Button
+          variant=" outline-none border-dark rounded-0 "
+          style={{ padding: '7px 10px', marginTop: '0.8rem' }}
+          onClick={handleShowModal}
+        >
+          <BsGlobe className="text-dark border-dark" />
+        </Button>
+        <Modal show={showModal} onHide={handleCloseModal} centered>
+          <Modal.Header >
+          <Modal.Title className=''>{t('Choose a language')}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <ul className="">
+              <li className="list-group-item border-0">
+                <a
+                  className="nav-link text-dark"
+                  aria-current="page"
+                  href="#"
+                  onClick={() => changeLanguage('en')}
+                >
+                  English
+                </a>
+              </li>
+              <li className="list-group-item border-0">
+                <a
+                  className="nav-link text-dark"
+                  aria-current="page"
+                  href="#"
+                  onClick={() => changeLanguage('ar')}
+                >
+                  {t('Arabic')}
+                </a>
+              </li>
+            </ul>
+          </Modal.Body>
+        </Modal>
       </div>
     </div>
   );
 }
 
-
-
-export default LogoutUser
+export default LogoutUser;

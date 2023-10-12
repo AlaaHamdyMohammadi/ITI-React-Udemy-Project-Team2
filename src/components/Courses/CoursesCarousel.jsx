@@ -17,26 +17,29 @@ function CoursesCarousel(props) {
     (state) => state.categoryCourses.categoryCourse.courses,
   );
 
+  
   if (courses) {
+    const firstSetOfCourses = courses.slice(0, 5);
+    const secondSetOfCourses = courses.slice(5, 10);
     return (
       <>
         <Carousel className="mb-2 mt-2">
           <Carousel.Item>
             <div className="flex justify-between">
-              {courses.map((course) => {
+              {firstSetOfCourses.map((course) => {
                 return <CardItem key={course._id} course={course} />;
               })}
-              {courses.map((course) => {
+              {firstSetOfCourses.map((course) => {
                 return <CardItem key={course._id} course={course} />;
               })}
             </div>
           </Carousel.Item>
           <Carousel.Item>
             <div className="flex justify-between">
-              {courses.map((course) => {
+              {secondSetOfCourses.map((course) => {
                 return <CardItem key={course._id} course={course} />;
               })}
-              {courses.map((course) => {
+              {secondSetOfCourses.map((course) => {
                 return <CardItem key={course._id} course={course} />;
               })}
             </div>

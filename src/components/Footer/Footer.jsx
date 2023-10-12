@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faLinkedinIn,
@@ -10,29 +9,32 @@ import {
 import { Button, Modal } from 'react-bootstrap';
 import './Footer.css'; // Make sure to import your CSS file
 import { useTranslation } from 'react-i18next'; // Import useTranslation hook
+import { BsGlobe } from 'react-icons/bs';
 
 export default function Footer() {
-  const { t, i18n } = useTranslation(); // Get the t and i18n functions
+  const { t, i18n } = useTranslation();
 
-  // Step 1: Set up state to control the modal
   const [showModal, setShowModal] = useState(false);
 
-  // Step 2: Function to show the modal
   const handleShowModal = () => {
     setShowModal(true);
   };
 
-  // Step 3: Function to hide the modal
   const handleCloseModal = () => {
     setShowModal(false);
   };
 
-  // Step 4: Function to change the language
   const changeLanguage = (newLanguage) => {
-    i18n.changeLanguage(newLanguage); // Change the language using i18n function
-    handleCloseModal(); // Close the modal after changing the language
-  };
+    i18n.changeLanguage(newLanguage);
 
+    if (newLanguage === 'ar') {
+      document.documentElement.classList.add('rtl'); // Add RTL class for Arabic
+    } else {
+      document.documentElement.classList.remove('rtl');
+    }
+
+    handleCloseModal();
+  };
   return (
     <>
       <footer className="footer mt-5 p-4">
@@ -159,18 +161,20 @@ export default function Footer() {
           <div className="col-3 pe-4 text-end">
             {/* Button trigger modal */}
             <Button variant="outline-light" onClick={handleShowModal}>
-              <i className="bi bi-globe2"></i> {t('English')}
+              <i className="bi bi-globe2">
+                <BsGlobe className="text-lg" />
+              </i>
             </Button>
           </div>
         </div>
 
         {/* Modal */}
-        <Modal show={showModal} onHide={handleCloseModal}>
-          <Modal.Header closeButton>
+        <Modal show={showModal} onHide={handleCloseModal} centered>
+          <Modal.Header>
             <Modal.Title>{t('Choose a language')}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <ul className="mb-lg-0 mb-2 me-auto">
+            <ul className="">
               <li className="list-group-item border-0">
                 <a
                   className="nav-link text-dark"

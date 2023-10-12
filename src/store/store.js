@@ -9,6 +9,8 @@ import CartItems from "./slices/CartItems";
 import TotalCost from "./slices/TotalCost";
 import CatRatingFilteredCourses from './slices/CatRatingFilteredCourses';
 import SubRatingFilteredCourses from './slices/SubRatingFilteredCourses';
+import languageReducer from './slices/language';
+
 const store = configureStore({
   reducer: {
     nav: navbar,
@@ -21,6 +23,7 @@ const store = configureStore({
     TotalCost: TotalCost,
     CatRatingFilteredCourses: CatRatingFilteredCourses,
     SubRatingFilteredCourses: SubRatingFilteredCourses,
+    language: languageReducer,
   },
 });
 export default store
