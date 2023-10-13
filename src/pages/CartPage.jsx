@@ -24,7 +24,7 @@ function CartPage() {
   const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
   const {isLogin} = useContext(authentication);
   const { t } = useTranslation();
-
+ 
   const navigate = useNavigate();
   
   function addToWishList(course) {
@@ -59,13 +59,14 @@ function CartPage() {
     var i = check.indexOf(true);
     var arr = [...cartItems].filter((item) => {
       return item._id != course._id;
-    });
+    }); 
     dispatch(setCartItems([...arr]));
     var price = TotalPrice;
     if (course.DiscountPrice) {
       dispatch(setTotalCost(TotalPrice - course.DiscountPrice));
       price = TotalPrice - course.DiscountPrice;
-    } else if (course.price) {
+    } 
+    else if (course.price) {
       dispatch(setTotalCost(TotalPrice - course.price));
       price = TotalPrice - course.price;
     }
@@ -79,18 +80,6 @@ function CartPage() {
     },
     [wishList, cartItems],
   );
-
-  // const checkout = async() => {
-  //   try{
-  //     const res = axiosInstance.post(`/checkout-session/:courseID`, {
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     });
-  //   }catch(err){
-  //     console.log(err)
-  //   }
-  // }
 
   return (
     <>

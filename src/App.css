@@ -7,4 +7,15 @@
   text-align: right;
 }
 
-.nsearch {}
+.test {
+  /* display: none !important; */
+  /* border-right: 1px solid black !important; */
+}
+.test2{
+  /* width: 80% !important; */
+  border-radius: 0 !important;
+}
+.test3{
+  /* display: none !important; */
+  /* border-right: 1px solid black !important; */
+}

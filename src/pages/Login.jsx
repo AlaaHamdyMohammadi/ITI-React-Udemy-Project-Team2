@@ -2,19 +2,19 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { useContext, useEffect, useState } from 'react'; 
+import { useContext, useEffect, useState } from 'react';
 // import toast, {Toaster} from 'react-hot-toast'; npm i react-hot-toast
 
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'; 
 
 import { loginUser } from '../services/authentication';
 import Button from './../components/Button';
 import { FcGoogle } from 'react-icons/fc';
 import { BsFacebook, BsApple } from 'react-icons/bs';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
-import { useNavigate, NavLink, Link } from 'react-router-dom';
-import './LoginAndSignUp.css'
+import { useNavigate, NavLink, Link, useNavigation } from 'react-router-dom';
+import './LoginAndSignUp.css';
 import { authentication } from '../contextConfig/authentication';
 import { Helmet } from 'react-helmet';
 import Spinner from '../components/Spinner';
@@ -22,61 +22,75 @@ import Spinner from '../components/Spinner';
 function Login() {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
-  const [login, setLogin] = useState({ email : '', password: ''});
-  const [error, setError] = useState({emailError: '', passwordError: ''});
-  const {isLogin, setIsLogin} = useContext(authentication)
+  const [login, setLogin] = useState({ email: '', password: '' });
+  const [error, setError] = useState({ emailError: '', passwordError: '' });
+  const { isLogin, setIsLogin } = useContext(authentication);
   //const { userName, setUsername } = useContext(authentication);
   const [isLoading, setIsLoading] = useState(true);
   const [isDisable, setIsDisable] = useState(false);
-
-  function handleValidation(e){
-    if(e.target.name === 'email'){
-      const emailValue = e.target.value; 
-      setLogin({...login, email: emailValue});
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
+  function handleValidation(e) {
+    if (e.target.name === 'email') {
+      const emailValue = e.target.value;
+      setLogin({ ...login, email: emailValue });
       setError({
-        ...error, emailError: emailValue.length === 0 ? 'Please fill out this field.' : emailValue.includes('@') ? '' : `Please include an '@' in the email address.`
-      })
-    }else if(e.target.name === 'password'){
+        ...error,
+        emailError:
+          emailValue.length === 0
+            ? 'Please fill out this field.'
+            : emailValue.includes('@')
+            ? ''
+            : `Please include an '@' in the email address.`,
+      });
+    } else if (e.target.name === 'password') {
       const passwordValue = e.target.value;
-      setLogin({...login, password: passwordValue});
-      setError({...error, passwordError: passwordValue.length === 0 ? 'Please fill out this field.' : passwordValue.length <= 5 ? `Please lengthen this text to 5 characters or more` : ''})
+      setLogin({ ...login, password: passwordValue });
+      setError({
+        ...error,
+        passwordError:
+          passwordValue.length === 0
+            ? 'Please fill out this field.'
+            : passwordValue.length <= 5
+            ? `Please lengthen this text to 5 characters or more`
+            : '',
+      });
     }
   }
- 
-  async function handleSubmit(e){
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    if(error.passwordError || error.passwordError){
-      toast.error('Email or Password is Invalid')
+    if (error.passwordError || error.passwordError) {
+      toast.error('Email or Password is Invalid');
       alert('Error');
-    }else{
-      try{ 
+    } else {
+      try {
         const res = await loginUser(login);
-        //console.log(res); 
+        //console.log(res);
         localStorage.setItem('token', res.data.token);
         setIsLogin(true);
         toast.success('Successfully logged in');
         navigate('/courses');
-        
-      }catch(err){
+      } catch (err) {
         //console.log(err);
         toast.error('Login failed. Please check your credentials.');
-      } 
+      }
     }
   }
 
-  useEffect(function(){
+  useEffect(function () {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000)
+    }, 1000);
   }, []);
 
-  function handleClick(){
+  function handleClick() {
     setIsDisable(true);
     setTimeout(() => {
       setIsDisable(false);
-    },1000);
+    }, 1000);
   }
-  
+
   return (
     <>
       <Helmet>
@@ -170,11 +184,12 @@ function Login() {
           )}
 
           <Button
-            onClick={() => handleClick()}
-            disabled={isDisable}
+            disabled={isSubmitting}
             width="w-96"
             backgroundColor={
-              isDisable ? 'bg-violet-300' : 'bg-violet-600 hover:bg-violet-800'
+              isSubmitting
+                ? 'bg-violet-300 disabled:cursor-not-allowed focus:ring focus:ring-violet-300'
+                : 'bg-violet-600 hover:bg-violet-800'
             }
             text="text-white"
           >
