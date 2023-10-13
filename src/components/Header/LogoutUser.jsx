@@ -142,9 +142,7 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
                             </span>
                             <p className="mb-0 text-sm">
                               E$
-                              {item.DiscountPrice
-                                ? item.DiscountPrice
-                                : item.price}
+                              {item.price}
                             </p>
                           </div>
                         </div>

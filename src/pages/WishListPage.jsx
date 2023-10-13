@@ -33,13 +33,9 @@ function WishListPage() {
     } else {
       dispatch(setCartItems([...cartItems, course]));
       cart = [...cartItems, course];
-      if (course.DiscountPrice) {
-        dispatch(setTotalCost(TotalPrice + course.DiscountPrice));
-        price = TotalPrice + course.DiscountPrice;
-      } else if (course.price) {
-        dispatch(setTotalCost(TotalPrice + course.price));
-        price = TotalPrice + course.price;
-      }
+
+      dispatch(setTotalCost(TotalPrice + course.price));
+      price = TotalPrice + course.price;
     }
     localStorage.setItem('cartItems', JSON.stringify(cart));
     localStorage.setItem('TotalPrice', price);

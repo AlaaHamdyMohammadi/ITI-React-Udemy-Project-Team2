@@ -41,16 +41,7 @@ function NavCategories({ setCAT, onCategories, categories }) {
     setCurrentId(id);
   }
 
-  /*
-    <NavLink to={`/subCategories/${subCategory._id}`}>
-                          {subCategory.name}
-                        </NavLink>    
-
-                        onClick={() => {
-                          navigate(`/subCategories/${subCategory._id}`);
-                          console.log(subCategory._id);
-                        }}
-  */
+  
 
   return (
     <Nav className="me-auto">

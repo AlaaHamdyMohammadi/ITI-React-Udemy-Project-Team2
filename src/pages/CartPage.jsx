@@ -62,13 +62,12 @@ function CartPage() {
     }); 
     dispatch(setCartItems([...arr]));
     var price = TotalPrice;
-    if (course.DiscountPrice) {
-      dispatch(setTotalCost(TotalPrice - course.DiscountPrice));
-      price = TotalPrice - course.DiscountPrice;
-    } 
-    else if (course.price) {
+    if (course.price) {
       dispatch(setTotalCost(TotalPrice - course.price));
       price = TotalPrice - course.price;
+    } else if (course.DiscountPrice) {
+      dispatch(setTotalCost(TotalPrice - course.DiscountPrice));
+      price = TotalPrice - course.DiscountPrice;
     }
     localStorage.setItem('cartItems', JSON.stringify(arr));
     localStorage.setItem('TotalPrice', price);

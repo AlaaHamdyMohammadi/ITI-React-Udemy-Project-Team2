@@ -493,7 +493,7 @@ function Instructors() {
     axiosInstance
       .get('/users', { params: { role: 'instructor' } })
       .then((res) => {
-        console.log(res.data.data.documents);
+        //console.log(res.data.data.documents);
         setInstructors(res.data.data.documents.slice(2, 6));
       })
       .catch((err) => console.log(err));

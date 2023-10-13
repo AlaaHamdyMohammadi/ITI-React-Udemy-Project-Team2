@@ -8,23 +8,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, setWishList } from '../../store/slices/WishList';
 import { setCartItems } from '../../store/slices/CartItems';
 import { setTotalCost } from '../../store/slices/TotalCost';
- 
-function ModalCard({course, handleShow, handleClose }) {
-  const dispatch=useDispatch()
-  const wishList = useSelector(
-    (state) => state.wishList.wishList
-  );
+
+function ModalCard({ course, handleShow, handleClose }) {
+  const dispatch = useDispatch();
+  const wishList = useSelector((state) => state.wishList.wishList);
 
   const favoriteCourse = useSelector((state) => state.favorites.favorites);
   const favorite = favoriteCourse.some((course) => course._id == course._id);
-  
-  const TotalPrice = useSelector(
-    (state) => state.TotalCost.TotalCost
-  );
-  
-  const cartItems = useSelector(
-    (state) => state.cartItems.cartItems
-  );
+
+  const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
+
+  const cartItems = useSelector((state) => state.cartItems.cartItems);
 
   function addToCart(course) {
     var check = cartItems.map((item) => {
@@ -43,13 +37,9 @@ function ModalCard({course, handleShow, handleClose }) {
     } else {
       dispatch(setCartItems([...cartItems, course]));
       cart = [...cartItems, course];
-      if (course.DiscountPrice) {
-        dispatch(setTotalCost(TotalPrice + course.DiscountPrice));
-        price = TotalPrice + course.DiscountPrice;
-      } else if (course.price) {
-        dispatch(setTotalCost(TotalPrice + course.price));
-        price = TotalPrice + course.price;
-      }
+
+      dispatch(setTotalCost(TotalPrice + course.price));
+      price = TotalPrice + course.price;
     }
     localStorage.setItem('cartItems', JSON.stringify(cart));
     localStorage.setItem('TotalPrice', price);

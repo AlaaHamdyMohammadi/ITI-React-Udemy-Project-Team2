@@ -171,9 +171,7 @@ function GoToWishList() {
                           </span>
                           <p className="mb-0 text-sm">
                             E$
-                            {item.DiscountPrice
-                              ? item.DiscountPrice
-                              : item.price}
+                            {item.price}
                           </p>
                         </div>
                       </div>
@@ -266,9 +264,7 @@ function GoToCart({ addToCart, setAddToCart }) {
                             Course By: {item.instructor}
                           </span>
                           <p className="mb-0 text-sm">
-                            {item.DiscountPrice
-                              ? 'E$' + item.DiscountPrice
-                              : 'E$' + item.price}
+                            {'E$' + item.price}
                           </p>
                         </div>
                       </div>

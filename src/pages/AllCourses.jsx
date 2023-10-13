@@ -19,21 +19,13 @@ function AllCourses() {
     const [progress, setProgress] = useState(0);
     const [query, setQuery] = useState('');
     const [courses, setCourses] = useState([]);
-    //const [searchTerm, setSearchTerm] = useState('');
-    //const [results, setResults] = useState([]);
-    // const navigate = useNavigate();
 
     async function handleSubmit(e) {
       e.preventDefault();
       if (!query) return;
       try {
-        const res = await axiosInstance.get(`/enrolled/search?q=${query}`);
-        if (res.data) {
-          console.log(res.data);
-          // Update your state with the received data
-        } else {
-          console.log('No data returned from the API');
-        }
+        const res = await axiosInstance.get(`/enrolled`);
+        console.log(res.data.enrolledCourses);
       } catch (err) {
         console.error('Error searching:', err);
         // Handle the error appropriately
@@ -54,14 +46,14 @@ function AllCourses() {
           .then((res) => {
             setCourseData(res.data.enrolledCourses);
             //console.log(res.data.enrolledCourses);
-            toast.success('Checkout successfully')
+            //toast.success('Checkout successfully')
           })
           .catch((err) => {
             console.error('Error fetching purchased courses: ', err);
           });
       }
     }, [isSuccess, token]);
-  return (
+  return ( 
     <div>
       <form onSubmit={handleSubmit} className="px-24 py-5 text-right">
         <div className="relative">
