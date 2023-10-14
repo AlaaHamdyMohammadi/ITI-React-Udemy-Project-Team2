@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from 'react';
 // import toast, {Toaster} from 'react-hot-toast'; npm i react-hot-toast
 
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; 
+import 'react-toastify/dist/ReactToastify.css';
 
 import { loginUser } from '../services/authentication';
 import Button from './../components/Button';
@@ -30,6 +30,8 @@ function Login() {
   const [isDisable, setIsDisable] = useState(false);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
+  console.log(isSubmitting);
+  // const [isSubmitting, setIsSubmitting] = useState(true);
   function handleValidation(e) {
     if (e.target.name === 'email') {
       const emailValue = e.target.value;
@@ -69,6 +71,7 @@ function Login() {
         //console.log(res);
         localStorage.setItem('token', res.data.token);
         setIsLogin(true);
+        // setIsSubmitting(false);
         toast.success('Successfully logged in');
         navigate('/courses');
       } catch (err) {
@@ -188,13 +191,14 @@ function Login() {
             width="w-96"
             backgroundColor={
               isSubmitting
-                ? 'bg-violet-300 disabled:cursor-not-allowed focus:ring focus:ring-violet-300'
+                ? 'bg-violet-300 bg-violet-600 focus:ring focus:ring-violet-300'
                 : 'bg-violet-600 hover:bg-violet-800'
             }
             text="text-white"
           >
             Log in
           </Button>
+
           <p className="w-96 border-b-2 p-2.5 text-center text-lg">
             or
             <a

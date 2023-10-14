@@ -155,7 +155,7 @@ function GoToWishList() {
                     className="text-decoration-none text-reset"
                   >
                     <li className="mb-2">
-                      <div className="d-flex">
+                      <div className="flex">
                         <div className="me-2">
                           <img
                             className=""
@@ -165,11 +165,11 @@ function GoToWishList() {
                         </div>
 
                         <div className="text-start">
-                          <p className="mb-0 text-sm">{item.title}</p>
-                          <span className="fw-light text-sm">
+                          <p className="mb-0 text-xs">{item.title}</p>
+                          <span className="fw-light text-xs">
                             Course By: {item.instructor}
                           </span>
-                          <p className="mb-0 text-sm">
+                          <p className="mb-0 text-xs">
                             E$
                             {item.price}
                           </p>
@@ -259,11 +259,11 @@ function GoToCart({ addToCart, setAddToCart }) {
                         </div>
 
                         <div className="text-start">
-                          <p className="mb-0 text-sm">{item.title}</p>
-                          <span className="fw-light text-sm">
+                          <p className="mb-0 text-xs">{item.title}</p>
+                          <span className="fw-light text-xs">
                             Course By: {item.instructor}
                           </span>
-                          <p className="mb-0 text-sm">
+                          <p className="mb-0 text-xs">
                             {'E$' + item.price}
                           </p>
                         </div>

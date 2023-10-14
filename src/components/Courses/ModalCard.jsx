@@ -14,7 +14,7 @@ function ModalCard({ course, handleShow, handleClose }) {
   const wishList = useSelector((state) => state.wishList.wishList);
 
   const favoriteCourse = useSelector((state) => state.favorites.favorites);
-  const favorite = favoriteCourse.some((course) => course._id == course._id);
+  const favorite = favoriteCourse.some((item) => item._id == course._id);
 
   const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
 
@@ -101,7 +101,7 @@ function ModalCard({ course, handleShow, handleClose }) {
         <Button backgroundColor="border p-1 border-black ml-2 rounded-full hover:bg-gray-300 ">
           <AiFillHeart
             onClick={() => addToFav(course)}
-            className={` cursor-pointer    text-5xl ${
+            className={` cursor-pointer    text-4xl ${
               favorite ? 'text-red-600' : 'text-stone-600'
             }`}
           />

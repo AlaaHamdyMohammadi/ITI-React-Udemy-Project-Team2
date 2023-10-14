@@ -8,11 +8,6 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setWishList } from '../../store/slices/WishList';
 import './../Profile/Profile.css';
-//<li key={course._id}>{course.course.title}</li>
-
-/*
-<WishListPage />
-*/
 
 function MyLearning() {
   const location = useLocation();
@@ -47,7 +42,6 @@ function MyLearning() {
 
   useEffect(() => {
     if (isSuccess === 'true') {
-      // Fetch and display course data
       axios
         .get('http://localhost:4000/api/v1/enrolled', {
           headers: {
