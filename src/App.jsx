@@ -29,7 +29,6 @@ import CourseDetials, {
   loadercourse,
 } from './pages/CourseDetials/CourseDetials';
 import SubcategoryPage from './pages/SubCategoriesPage/CoursesPageCat';
-// import TestForm from './components/Header/testForm';
 import Checkout from './components/Checkout';
 import AllCourses from './pages/MyLearningPage/AllCourses';
 import WishList from './pages/MyLearningPage/WishList';

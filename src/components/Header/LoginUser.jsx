@@ -202,7 +202,6 @@ function GoToCart({ addToCart, setAddToCart }) {
   const cartItems = useSelector((state) => state.cartItems.cartItems);
   const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
   const counter = useSelector((state) => state.cartItems.cartItems ? state.cartItems.cartItems.length : 0);
-  // console.log('Counter after = ', counter);
 
   return (
     <div

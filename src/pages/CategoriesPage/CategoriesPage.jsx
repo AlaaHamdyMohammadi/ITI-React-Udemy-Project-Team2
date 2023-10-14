@@ -40,39 +40,6 @@ function CategoriesPage() {
   const spinner = useSelector((state) => state.spinner.spinner);
   const dispatch = useDispatch();
 
-  // const [priceType, setPriceType] = useState('Free');
-  // const [priceFilter, setPriceFilter] = useState([]);
-
-  // const handleCheckbox = (e) => {
-  //   setPriceType(e.target.checked ? 'Free' : 'Paid');
-  //   console.log('Price type changed to:', priceType);
-  // };
-
-  // useEffect(() => {
-  //   console.log('API request made with priceType:', priceType);
-
-  //   axiosInstance
-  //     .get(
-  //       `/categories/6508c7674e4c2aafd7756343/courses?priceType=${priceType}`,
-  //     )
-  //     .then((res) => {
-  //       console.log(res.data.data.courses);
-  //       setcoursesSUB(res.data.data.courses);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, [priceType]);
-
-  // useEffect(
-  //   function () {
-  //     axiosInstance.get(`/categories/${_id}`).then((res) => {
-  //       const numOfCategories = res.data.data.document;
-  //       //console.log(numOfCategories);
-  //       setCategory(numOfCategories);
-  //     });
-  //   },
-  //   [_id],
-  // );
-
   useEffect(
     function () {
       async function getCategory() {
@@ -112,29 +79,12 @@ function CategoriesPage() {
   const firstSetOfCourses = coursesSUB.slice(0, 5);
   const secondSetOfCourses = coursesSUB.slice(5, 10);
 
-  // 'subCategories/6508bfdf4e4c2aafd7756269/courses/
-  //categories/catID/subCategories/subId/courses
-  // useEffect(() => {
-  //   axiosInstance
-  //     .get(`/categories/${_id}/courses`)
-  //     .then((res) => {
-  //       console.log(res.data.data.courses);
-  //       setcoursesSUB(res.data.data.courses);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, [_id]);
-
   useEffect(function () {
     axiosInstance.get(`/courses`).then((res) => {
       //console.log(res.data.data.courses);
       setInstructors(res.data.data.courses);
     });
-  }, []);
-
-  // const coursesSUB = useLoaderData(_id);
-  // console.log(coursesSUB);
+  }, [])
 
   return (
     <>
