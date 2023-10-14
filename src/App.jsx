@@ -17,13 +17,13 @@ import { useState } from 'react';
 import CoursesPage from './pages/CoursesPage';
 import Guard from './components/Guards/Guard';
 import Logout from './pages/Logout';
-import MyLearning from './pages/MyLearning';
+import MyLearning from './pages/MyLearningPage/MyLearning';
 import './App.css';
 import WishListPage from './pages/WishListPage';
 import CategoriesPage from './pages/CategoriesPage/CategoriesPage';
 //, { loadercourseShow }
 import Profile from './pages/Profile/Profile';
-import ProfilePicture from './pages/ProfilePicture/ProfilePicture'
+import ProfilePicture from './pages/ProfilePicture/ProfilePicture';
 import PrivacySettings from './pages/PrivacySettings/PrivacySettings';
 import CourseDetials, {
   loadercourse,
@@ -31,8 +31,8 @@ import CourseDetials, {
 import SubcategoryPage from './pages/SubCategoriesPage/CoursesPageCat';
 // import TestForm from './components/Header/testForm';
 import Checkout from './components/Checkout';
-import AllCourses from './pages/AllCourses';
-import WishList from './pages/WishList';
+import AllCourses from './pages/MyLearningPage/AllCourses';
+import WishList from './pages/MyLearningPage/WishList';
 
 const router = createBrowserRouter([
   {
@@ -63,11 +63,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/my-learning',
-        element: 
+        element: (
           <Guard>
             <MyLearning />
           </Guard>
-        ,
+        ),
         children: [
           { index: true, element: <AllCourses /> },
           { path: 'myList', element: <WishList /> },
@@ -110,9 +110,10 @@ const router = createBrowserRouter([
   },
 ]);
 
-
 function App() {
-  const [isLogin, setIsLogin] = useState(localStorage.getItem('token') ? true : false);
+  const [isLogin, setIsLogin] = useState(
+    localStorage.getItem('token') ? true : false,
+  );
   const [userName, setUsername] = useState('');
   const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
@@ -139,6 +140,6 @@ function App() {
       </AuthProvider>
     </>
   );
-} 
+}
 
 export default App;

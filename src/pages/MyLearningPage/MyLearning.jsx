@@ -6,8 +6,8 @@ import Card from 'react-bootstrap/Card';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { setWishList } from '../store/slices/WishList';
-import './../pages/Profile/Profile.css'
+import { setWishList } from '../../store/slices/WishList';
+import './../Profile/Profile.css';
 //<li key={course._id}>{course.course.title}</li>
 
 /*
@@ -23,7 +23,6 @@ function MyLearning() {
   const [progress, setProgress] = useState(0);
   const wishList = useSelector((state) => state.wishList.wishList);
   const dispatch = useDispatch();
-
 
   function addToFav(course) {
     var check = wishList.map((wish) => {

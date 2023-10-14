@@ -8,52 +8,52 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import axios from 'axios';
-import axiosInstance from '../axiosConfig/instance';
+import axiosInstance from '../../axiosConfig/instance';
 //enrolled
 function AllCourses() {
-    const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
-    const isSuccess = queryParams.get('success');
-    const [courseData, setCourseData] = useState([]);
-    const token = localStorage.getItem('token');
-    const [progress, setProgress] = useState(0);
-    const [query, setQuery] = useState('');
-    const [courses, setCourses] = useState([]);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const isSuccess = queryParams.get('success');
+  const [courseData, setCourseData] = useState([]);
+  const token = localStorage.getItem('token');
+  const [progress, setProgress] = useState(0);
+  const [query, setQuery] = useState('');
+  const [courses, setCourses] = useState([]);
 
-    async function handleSubmit(e) {
-      e.preventDefault();
-      if (!query) return;
-      try {
-        const res = await axiosInstance.get(`/enrolled`);
-        console.log(res.data.enrolledCourses);
-      } catch (err) {
-        console.error('Error searching:', err);
-        // Handle the error appropriately
-      }
-
-      setQuery('');
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!query) return;
+    try {
+      const res = await axiosInstance.get(`/enrolled`);
+      console.log(res.data.enrolledCourses);
+    } catch (err) {
+      console.error('Error searching:', err);
+      // Handle the error appropriately
     }
 
-    useEffect(() => {
-      if (isSuccess === 'true') {
-        // Fetch and display course data
-        axios
-          .get('http://localhost:4000/api/v1/enrolled', {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          })
-          .then((res) => {
-            setCourseData(res.data.enrolledCourses);
-            //console.log(res.data.enrolledCourses);
-            //toast.success('Checkout successfully')
-          })
-          .catch((err) => {
-            console.error('Error fetching purchased courses: ', err);
-          });
-      }
-    }, [isSuccess, token]);
-  return ( 
+    setQuery('');
+  }
+
+  useEffect(() => {
+    if (isSuccess === 'true') {
+      // Fetch and display course data
+      axios
+        .get('http://localhost:4000/api/v1/enrolled', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setCourseData(res.data.enrolledCourses);
+          //console.log(res.data.enrolledCourses);
+          //toast.success('Checkout successfully')
+        })
+        .catch((err) => {
+          console.error('Error fetching purchased courses: ', err);
+        });
+    }
+  }, [isSuccess, token]);
+  return (
     <div>
       <form onSubmit={handleSubmit} className="px-24 py-5 text-right">
         <div className="relative">
