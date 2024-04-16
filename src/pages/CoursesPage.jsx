@@ -2,7 +2,7 @@
 import { Helmet } from "react-helmet";
 import Categories from "../components/userLogin/Categories";
 import FirstContent from "../components/userLogin/FirstContent";
-import UserCourses from "../components/userLogin/userCourses";
+// import UserCourses from "../components/userLogin/userCourses";
 // import UserCourses from "../components/userLogin/UserCourses";
 
 
@@ -16,7 +16,7 @@ function CoursesPage() {
         </Helmet>
         <Categories />
         <FirstContent />
-        <UserCourses />
+    {/*<UserCourses />*/}
         
       </div>
     );
