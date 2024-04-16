@@ -9,7 +9,7 @@ import { BsStarHalf } from 'react-icons/bs';
 
 //useLoaderData
 import { Helmet } from 'react-helmet';
-import { LiaGreaterThanSolid } from 'react-icons/Lia';
+import { FaGreaterThan } from 'react-icons/fa6';
 import { AiFillExclamationCircle } from 'react-icons/ai';
 //import { getCourseSub } from '../../services/CoursesSub';
 import CoursesSection from '../../components/CoursesSection/CoursesSection';
@@ -185,12 +185,12 @@ function CategoriesPage() {
 
 function NavSubCategory({ category, subCategories }) {
   return (
-    <div className="relative flex flex-col lg:flex-row p-2 cursor-pointer justify-around pb-3 pt-3 shadow-md shadow-gray-300">
+    <div className="relative flex cursor-pointer flex-col justify-around p-2 pb-3 pt-3 shadow-md shadow-gray-300 lg:flex-row">
       <NavLink className="font-bold  text-gray-950 no-underline hover:text-violet-600">
         {category.name}
 
-        <LiaGreaterThanSolid className="text-1xl ml-5 inline text-gray-500" />
-        <LiaGreaterThanSolid className="text-1xl inline text-gray-500" />
+        <FaGreaterThan className="text-1xl ml-5 inline text-gray-500" />
+        <FaGreaterThan className="text-1xl inline text-gray-500" />
       </NavLink>
       {subCategories.map((subCategory) => (
         <NavLink
