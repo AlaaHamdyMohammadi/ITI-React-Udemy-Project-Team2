@@ -5,7 +5,7 @@ import { BsFillPlayCircleFill } from 'react-icons/bs';
 import { useTranslation } from 'react-i18next';
 
 function Learners() {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div className="mt-5 bg-slate-100 p-10">
@@ -13,7 +13,7 @@ function Learners() {
         {t('How learners like you are achieving their goals')}
       </h3>
 
-      <div className="flex flex-wrap justify-between">
+      <div className="flex justify-between gap-1">
         <div className="border-1 mt-5 w-96 border-slate-300 bg-white p-4">
           <img className="w-6" src="./../../public/images/homePage/quote.svg" />
           <p className="pb-4 pt-4">

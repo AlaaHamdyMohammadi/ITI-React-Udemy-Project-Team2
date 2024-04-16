@@ -68,14 +68,14 @@ function Login() {
     } else {
       try {
         const res = await loginUser(login);
-        //console.log(res);
+        console.log(res);
         localStorage.setItem('token', res.data.token);
         setIsLogin(true);
         // setIsSubmitting(false);
         toast.success('Successfully logged in');
         navigate('/courses');
       } catch (err) {
-        //console.log(err);
+        console.log(err.message);
         toast.error('Login failed. Please check your credentials.');
       }
     }

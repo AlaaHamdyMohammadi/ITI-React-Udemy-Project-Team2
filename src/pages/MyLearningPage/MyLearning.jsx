@@ -73,7 +73,7 @@ function MyLearning() {
           <NavLink
             to="/my-learning"
             className=" absolute left-64 top-[163px] font-bold text-gray-100 no-underline hover:text-stone-300"
-          >
+          > 
             All Courses
           </NavLink>
           <NavLink
@@ -86,6 +86,7 @@ function MyLearning() {
         </div>
         <Outlet />
       </div>
+      
     </div>
   );
 }
