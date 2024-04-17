@@ -10,7 +10,7 @@ function CarouselImage() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="./public/images/homePage/img1.jpg"
+          src="img1.jpg"
           alt="First slide"
         />
         <div className="relative">
@@ -27,7 +27,7 @@ function CarouselImage() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="./public/images/homePage/img2.jpg"
+          src="img2.jpg"
           alt="Second slide"
         />
         <div className="relative">
