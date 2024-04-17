@@ -24,9 +24,7 @@ import CategoriesPage from './pages/CategoriesPage/CategoriesPage';
 import Profile from './pages/Profile/Profile';
 import ProfilePicture from './pages/ProfilePicture/ProfilePicture';
 import PrivacySettings from './pages/PrivacySettings/PrivacySettings';
-import CourseDetials, {
-  loadercourse,
-} from './pages/CourseDetials/CourseDetials';
+import CourseDetials from './pages/CourseDetials/CourseDetials';
 import SubcategoryPage from './pages/SubCategoriesPage/CoursesPageCat';
 import Checkout from './components/Checkout';
 import AllCourses from './pages/MyLearningPage/AllCourses';
