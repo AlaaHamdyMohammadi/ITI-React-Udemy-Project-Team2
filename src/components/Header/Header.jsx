@@ -83,7 +83,6 @@ export default function Header() {
               setWishList={setWishList}
               addToCart={addToCart}
               setAddToCart={setAddToCart}
-              
             />
           ) : (
             <LogoutUser setTON={setTON} onTeachOnUdemy={onTeachOnUdemy} />
@@ -166,10 +165,7 @@ export default function Header() {
 
           <Nav>
             <Navbar.Brand href="/">
-              <img
-                src="Udemy_logo.svg.png"
-                width={100}
-              />
+              <img src="/images/homePage/udemy-logo.png" width={100} />
             </Navbar.Brand>
           </Nav>
 
