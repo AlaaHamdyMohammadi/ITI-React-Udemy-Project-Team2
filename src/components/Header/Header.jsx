@@ -3,24 +3,21 @@
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { BsSearch, BsCart3, BsGlobe, BsBell } from 'react-icons/bs';
+import { BsSearch, BsCart3} from 'react-icons/bs';
 import './Header.css';
 import { useContext, useEffect, useState } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { NavLink } from 'react-router-dom';
 import { authentication } from '../../contextConfig/authentication';
 import axiosInstance from '../../axiosConfig/instance';
-import { AiOutlineHeart } from 'react-icons/ai';
 import NavLogo from './NavLogo';
 import NavCategories from './NavCategories';
 import NavForm from './NavForm';
 import NavBusiness from './NavBusiness';
-import Categories from '../userLogin/Categories';
 import LoginUser from './LoginUser';
 import LogoutUser from './LogoutUser';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getMe } from '../../services/authentication';
 
 export default function Header() {
   const [onUdemyBusiness, setUB] = useState(false);
