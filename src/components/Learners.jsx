@@ -15,7 +15,7 @@ function Learners() {
 
       <div className="flex justify-between gap-1">
         <div className="border-1 mt-5 w-96 border-slate-300 bg-white p-4">
-          <img className="w-6" src="./../../public/images/homePage/quote.svg" />
+          <img className="w-6" src="/images/homePage/quote.svg" />
           <p className="pb-4 pt-4">
             {t(
               'I am proud to say that after a few months of taking this course...',
@@ -39,7 +39,7 @@ function Learners() {
           </div>
         </div>
         <div className="border-1 mt-5 w-96 border-slate-300 bg-white p-4">
-          <img className="w-6" src="./../../public/images/homePage/quote.svg" />
+          <img className="w-6" src="/images/homePage/quote.svg" />
           <p className="pb-20 pt-4">
             {t('This course helped me')}
             <strong>
@@ -61,7 +61,7 @@ function Learners() {
           </div>
         </div>
         <div className="border-1 mt-5 w-96 border-slate-300 bg-white p-4">
-          <img className="w-6" src="./../../public/images/homePage/quote.svg" />
+          <img className="w-6" src="/images/homePage/quote.svg" />
           <p className="pb-4 pt-4">
             {t(
               'One of the best courses on management and leadership I have come across so far. The advice is practical, and examples highly relatable.',
