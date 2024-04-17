@@ -165,7 +165,7 @@ export default function Header() {
 
           <Nav>
             <Navbar.Brand href="/">
-              <img src="/images/homePage/udemy-logo.png" width={100} />
+              <img src="udemy-logo.png" width={100} />
             </Navbar.Brand>
           </Nav>
 
