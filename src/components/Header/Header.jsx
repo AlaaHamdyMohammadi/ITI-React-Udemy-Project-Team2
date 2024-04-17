@@ -167,7 +167,7 @@ export default function Header() {
           <Nav>
             <Navbar.Brand href="/">
               <img
-                src="/images/instractor/Udemy_logo.svg.png"
+                src="Udemy_logo.svg.png"
                 width={100}
               />
             </Navbar.Brand>
