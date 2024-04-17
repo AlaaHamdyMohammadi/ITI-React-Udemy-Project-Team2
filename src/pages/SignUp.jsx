@@ -1,26 +1,22 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import Button from './../components/Button';
-import { useContext, useEffect, useState } from 'react';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
-import './LoginAndSignUp.css';
 import { signupUser } from '../services/authentication';
-import { authentication } from '../contextConfig/authentication';
-import axiosInstance from '../axiosConfig/instance';
-import { Helmet } from 'react-helmet';
 import Spinner from '../components/Spinner';
+import { Helmet } from 'react-helmet';
+import './LoginAndSignUp.css';
 
 function SignUp() {
   const navigate = useNavigate();
   const [showPassword, setshowPassword] = useState(false);
   const [showPasswordConfirm, setshowPasswordConfirm] = useState(false);
-  //const {isSignup, setIsSignup} = useContext(authentication);
-  const[isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [signup, setSignup] = useState({
     username: '',
@@ -86,11 +82,16 @@ function SignUp() {
       });
     }
   }
- 
+
   async function handleSubmit(e) {
     e.preventDefault();
     if (signup.password === signup.passwordConfirm) {
-      const user = {username: signup.username, email: signup.email, password: signup.password, passwordConfirm: signup.passwordConfirm};
+      const user = {
+        username: signup.username,
+        email: signup.email,
+        password: signup.password,
+        passwordConfirm: signup.passwordConfirm,
+      };
       signupUser(user);
       try {
         toast.success('The Account has been created');
@@ -103,7 +104,7 @@ function SignUp() {
     }
   }
 
-  useEffect(function(){
+  useEffect(function () {
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
@@ -111,143 +112,147 @@ function SignUp() {
 
   return (
     <>
-    <Helmet>
-      <title>Sign Up and Start Learning | Udemy</title>
-    </Helmet>
-      {isLoading ? <Spinner/> : <form
-        onSubmit={(e) => handleSubmit(e)}
-        className="flex h-screen flex-col items-center justify-center"
-      >
-        <label className="mr-32 font-bold">Sign up and start learning</label>
-        <div className="relative">
-          <input
-            type="text"
-            name="username"
-            value={signup.username}
-            onChange={(e) => handleValidation(e)}
-            placeholder=""
-            id="username"
-            className="textbox border-1  w-80 border-solid border-black p-3 "
-          />
-          <label
-            htmlFor="username"
-            className="form-label absolute left-4 top-5 cursor-text font-bold transition-all"
-          >
-            Full name
-          </label>
-          <p className="text-sm font-bold text-red-600">
-            {error.usernameError}
-          </p>
-        </div>
-        <div className="relative">
-          <input
-            type="email"
-            name="email"
-            value={signup.email}
-            onChange={(e) => handleValidation(e)}
-            id="email"
-            placeholder=""
-            className="textbox border-1  w-80 border-solid border-black p-3 "
-          />
-          <label
-            htmlFor="email"
-            className="form-label absolute left-4 top-5 cursor-text font-bold transition-all"
-          >
-            Email
-          </label>
-          <p className="text-sm font-bold text-red-600">{error.emailError}</p>
-        </div>
-        <div className="relative">
-          <input
-            type={showPassword ? 'text' : 'password'}
-            id="password"
-            name="password"
-            value={signup.password}
-            onChange={(e) => handleValidation(e)}
-            placeholder=""
-            className="textbox border-1  w-80 border-solid border-black p-3 "
-          />
-          <label
-            htmlFor="password"
-            className="form-label absolute left-4 top-5 cursor-text font-bold transition-all"
-          >
-            Password
-          </label>
-          <p className="text-sm font-bold text-red-600">
-            {error.passwordError}
-          </p>
-        </div>
-        {showPassword ? (
-          <AiFillEye
-            onClick={() => setshowPassword(!showPassword)}
-            className="relative bottom-16 left-44 text-xl"
-          />
-        ) : (
-          <AiFillEyeInvisible
-            onClick={() => setshowPassword(!showPassword)}
-            className="relative bottom-16 left-36 text-xl"
-          />
-        )}
-        <div className="relative -my-4">
-          <input
-            type={showPasswordConfirm ? 'text' : 'password'}
-            placeholder=""
-            name="passwordConfirm"
-            value={signup.passwordConfirm}
-            onChange={(e) => handleValidation(e)}
-            id="confirmPassword"
-            className="textbox border-1 w-80 border-solid border-black p-3"
-          />
-          <label
-            htmlFor="confirmPassword"
-            className="form-label absolute left-4 top-5 cursor-text font-bold transition-all"
-          >
-            Confirm Password
-          </label>
-          <p className="text-sm font-bold text-red-600">
-            {error.passwordConfirmError}
-          </p>
-        </div>
-        {showPasswordConfirm ? (
-          <AiFillEye
-            onClick={() => setshowPasswordConfirm(!showPasswordConfirm)}
-            className="relative bottom-16 left-36 text-xl"
-          />
-        ) : (
-          <AiFillEyeInvisible
-            onClick={() => setshowPasswordConfirm(!showPasswordConfirm)}
-            className="relative bottom-12 left-36 text-xl"
-          />
-        )}
-        <div className="w-80 text-left">
-          <input type="checkbox" className="border-none" />
-          <span className="w-80 pl-2">
-            Send me special offers, personalized recommendations, and learning
-            tips.
-          </span>
-        </div>
-        <Button
-          width="w-80"
-          backgroundColor="bg-violet-600 hover:bg-violet-800"
-          text="text-white"
+      <Helmet>
+        <title>Sign Up and Start Learning | Udemy</title>
+      </Helmet>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <form
+          onSubmit={(e) => handleSubmit(e)}
+          className="flex h-screen flex-col items-center justify-center"
         >
-          Sign Up
-        </Button>
-        <p className="border-b-2 p-2.5 text-xs">
-          By signing up, you agree to our <u>Terms of Use</u> and
-          <u>Privacy Policy.</u>
-        </p>
-        <p className="text-sm">
-          Already have an account?
-          <a
-            href=""
-            onClick={() => navigate('/login')}
-            className="font-bold text-violet-600 hover:text-violet-800"
+          <label className="mr-32 font-bold">Sign up and start learning</label>
+          <div className="relative">
+            <input
+              type="text"
+              name="username"
+              value={signup.username}
+              onChange={(e) => handleValidation(e)}
+              placeholder=""
+              id="username"
+              className="textbox border-1  w-80 border-solid border-black p-3 "
+            />
+            <label
+              htmlFor="username"
+              className="form-label absolute left-4 top-5 cursor-text font-bold transition-all"
+            >
+              Full name
+            </label>
+            <p className="text-sm font-bold text-red-600">
+              {error.usernameError}
+            </p>
+          </div>
+          <div className="relative">
+            <input
+              type="email"
+              name="email"
+              value={signup.email}
+              onChange={(e) => handleValidation(e)}
+              id="email"
+              placeholder=""
+              className="textbox border-1  w-80 border-solid border-black p-3 "
+            />
+            <label
+              htmlFor="email"
+              className="form-label absolute left-4 top-5 cursor-text font-bold transition-all"
+            >
+              Email
+            </label>
+            <p className="text-sm font-bold text-red-600">{error.emailError}</p>
+          </div>
+          <div className="relative">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              id="password"
+              name="password"
+              value={signup.password}
+              onChange={(e) => handleValidation(e)}
+              placeholder=""
+              className="textbox border-1  w-80 border-solid border-black p-3 "
+            />
+            <label
+              htmlFor="password"
+              className="form-label absolute left-4 top-5 cursor-text font-bold transition-all"
+            >
+              Password
+            </label>
+            <p className="text-sm font-bold text-red-600">
+              {error.passwordError}
+            </p>
+          </div>
+          {showPassword ? (
+            <AiFillEye
+              onClick={() => setshowPassword(!showPassword)}
+              className="relative bottom-16 left-44 text-xl"
+            />
+          ) : (
+            <AiFillEyeInvisible
+              onClick={() => setshowPassword(!showPassword)}
+              className="relative bottom-16 left-36 text-xl"
+            />
+          )}
+          <div className="relative -my-4">
+            <input
+              type={showPasswordConfirm ? 'text' : 'password'}
+              placeholder=""
+              name="passwordConfirm"
+              value={signup.passwordConfirm}
+              onChange={(e) => handleValidation(e)}
+              id="confirmPassword"
+              className="textbox border-1 w-80 border-solid border-black p-3"
+            />
+            <label
+              htmlFor="confirmPassword"
+              className="form-label absolute left-4 top-5 cursor-text font-bold transition-all"
+            >
+              Confirm Password
+            </label>
+            <p className="text-sm font-bold text-red-600">
+              {error.passwordConfirmError}
+            </p>
+          </div>
+          {showPasswordConfirm ? (
+            <AiFillEye
+              onClick={() => setshowPasswordConfirm(!showPasswordConfirm)}
+              className="relative bottom-16 left-36 text-xl"
+            />
+          ) : (
+            <AiFillEyeInvisible
+              onClick={() => setshowPasswordConfirm(!showPasswordConfirm)}
+              className="relative bottom-12 left-36 text-xl"
+            />
+          )}
+          <div className="w-80 text-left">
+            <input type="checkbox" className="border-none" />
+            <span className="w-80 pl-2">
+              Send me special offers, personalized recommendations, and learning
+              tips.
+            </span>
+          </div>
+          <Button
+            width="w-80"
+            backgroundColor="bg-violet-600 hover:bg-violet-800"
+            text="text-white"
           >
-            Log in
-          </a>
-        </p>
-      </form>}
+            Sign Up
+          </Button>
+          <p className="border-b-2 p-2.5 text-xs">
+            By signing up, you agree to our <u>Terms of Use</u> and
+            <u>Privacy Policy.</u>
+          </p>
+          <p className="text-sm">
+            Already have an account?
+            <a
+              href=""
+              onClick={() => navigate('/login')}
+              className="font-bold text-violet-600 hover:text-violet-800"
+            >
+              Log in
+            </a>
+          </p>
+        </form>
+      )}
 
       <ToastContainer position="top-right" autoClose={3000} />
     </>

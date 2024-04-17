@@ -21,7 +21,6 @@ import MyLearning from './pages/MyLearningPage/MyLearning';
 import './App.css';
 import WishListPage from './pages/WishListPage';
 import CategoriesPage from './pages/CategoriesPage/CategoriesPage';
-//, { loadercourseShow }
 import Profile from './pages/Profile/Profile';
 import ProfilePicture from './pages/ProfilePicture/ProfilePicture';
 import PrivacySettings from './pages/PrivacySettings/PrivacySettings';
@@ -89,7 +88,6 @@ const router = createBrowserRouter([
       {
         path: '/CourseDetials/:courseID',
         element: <CourseDetials />,
-        // loader: loadercourse,
       },
 
       { path: '/cart', element: <CartPage /> },

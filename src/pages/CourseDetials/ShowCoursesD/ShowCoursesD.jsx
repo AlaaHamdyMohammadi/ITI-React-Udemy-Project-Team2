@@ -1,7 +1,6 @@
 /* eslint-disable no-inner-declarations */
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from 'react';
-// import './CartPage.css';
 import { AiFillStar } from 'react-icons/ai';
 import { AiOutlineClose } from 'react-icons/ai';
 import { CiShoppingTag } from 'react-icons/ci';
@@ -15,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function ShowCoursesD() {
   const [courses, setCourses] = useState([]);
   const wishList = useSelector((state) => state.wishList.wishList);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   function addToFav(course) {
     var check = wishList.map((wish) => {
@@ -25,7 +24,7 @@ export default function ShowCoursesD() {
         return false;
       }
     });
-    console.log(check);
+    //console.log(check);
     var wish = [];
     if (check.includes(true) || check == []) {
       dispatch(setWishList([...wishList]));
@@ -35,14 +34,14 @@ export default function ShowCoursesD() {
       wish = [...wishList, course];
     }
     localStorage.setItem('wishList', JSON.stringify(wish));
-    console.log(wishList);
+    //console.log(wishList);
   }
 
   useEffect(function () {
     axiosInstance
       .get('courses/')
       .then((res) => {
-        console.log(res.data.data);
+        //console.log(res.data.data);
         //   console.log(res.data.data.courses);
 
         const courses = res.data.data.courses.slice(0, 6);
@@ -72,16 +71,12 @@ export default function ShowCoursesD() {
                         className="bg-image hover-overlay hover-zoom ripple rounded"
                         data-mdb-ripple-color="light"
                       >
-                        {/* <div className='bg-[url(./../../public/images/cart/php.jpeg)]'></div> */}
                         <img
                           src={`http://localhost:4000/img/courses/${item.photo}`}
                           className=" w-full"
-                          style={{height: "50px"}}
+                          style={{ height: '50px' }}
                           alt="Blue Jeans Jacket"
                         />
-                        {/* <a href="#!">
-                                            <div className="mask color" ></div>
-                                        </a> */}
                       </div>
                     </div>
 
@@ -119,10 +114,6 @@ export default function ShowCoursesD() {
                     <div className="col-span-2  pl-10">
                       <GrFavorite onClick={() => addToFav(item)} />
                     </div>
-
-                    {/* <span className="text-sm/[17px]">
-                        (23.558.650 ratings)
-                      </span> */}
                   </div>
                   {/* <!-- Single item --> */}
 

@@ -1,17 +1,15 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-inner-declarations */
 /* eslint-disable no-unused-vars */
-import React, { useContext, useEffect, useState } from 'react';
-import './WishListPage.css';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { AiFillStar } from 'react-icons/ai';
 import { CiShoppingTag } from 'react-icons/ci';
 import CoursesCarousel from '../components/Courses/CoursesCarousel';
-import axiosInstance from '../axiosConfig/instance';
-import { Helmet } from 'react-helmet';
-import { useDispatch, useSelector } from 'react-redux';
-import { setCartItems } from '../store/slices/CartItems';
 import { setWishList } from '../store/slices/WishList';
 import { setTotalCost } from '../store/slices/TotalCost';
+import { Helmet } from 'react-helmet';
+import './WishListPage.css';
 
 function WishListPage() {
   const dispatch = useDispatch();
@@ -24,7 +22,7 @@ function WishListPage() {
         return false;
       }
     });
-    console.log(check);
+    //console.log(check);
     var cart = [];
     var price = TotalPrice;
     if (check.includes(true) || check == []) {
@@ -39,7 +37,7 @@ function WishListPage() {
     }
     localStorage.setItem('cartItems', JSON.stringify(cart));
     localStorage.setItem('TotalPrice', price);
-    console.log(cartItems, TotalPrice);
+    //console.log(cartItems, TotalPrice);
   }
 
   function removeWish(course) {
@@ -64,7 +62,7 @@ function WishListPage() {
 
   useEffect(
     function () {
-      console.log(wishList);
+      //console.log(wishList);
     },
     [wishList, cartItems],
   );
@@ -93,15 +91,11 @@ function WishListPage() {
                           className="bg-image hover-overlay hover-zoom ripple rounded"
                           data-mdb-ripple-color="light"
                         >
-                          {/* <div className='bg-[url(./../../public/images/cart/php.jpeg)]'></div> */}
                           <img
                             src={`http://localhost:4000/img/courses/${item.photo}`}
                             className="h-50 w-full object-cover"
                             alt={item.title}
                           />
-                          {/* <a href="#!">
-                                            <div className="mask color" ></div>
-                                        </a> */}
                         </div>
                       </div>
 

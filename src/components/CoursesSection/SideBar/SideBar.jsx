@@ -4,8 +4,6 @@
 import React from 'react';
 import { BiSquare, BiCircle } from 'react-icons/bi';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
-// import { useHistory } from 'react-router-dom';
-
 import { BsStarHalf } from 'react-icons/bs';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -125,34 +123,12 @@ export default function SideBar({ subCategories, coursesSUB, id }) {
       console.log(filtered);
     }
   }
-
-  // const [subCategories, setSubCategories] = useState([]);
-  // console.log(coursesSUB);
-  // //`/subCategories/${currentId}/subCategories`
-  // useEffect(() => {
-  //   axiosInstance
-  //     .get(`/categories/${id}/subCategories`)
-  //     .then((res) => {
-  //       //console.log(res.data.data.subCategories);
-  //       setSubCategories(res.data.data.subCategories);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, [id]);
-
-  // var es='kk';
-  // const sideBar=[{title:"Rating",inside:`${es}`},{title:"Video Duration"},{title:"Topics"},{title:"SubCategory"},{title:"Level"},
-  // {title:"Language"},{title:"Price"},{title:"Subtitle"}]
   return (
     <>
       {/*Rating */}
       <div className="pr-5">
-        {/* {sideBar.map((item) => ( */}
-        {/* <div key={item.title}> */}
         <details className="group mb-3">
           <summary className="  grid cursor-pointer  list-none grid-cols-12 items-center justify-between font-extrabold">
-            {/* <span className='col-span-10'> {item.title}</span> */}
             <span className="col-span-10">Rating </span>
 
             <span className=" transition  group-open:rotate-180">
@@ -171,7 +147,6 @@ export default function SideBar({ subCategories, coursesSUB, id }) {
               </svg>
             </span>
           </summary>
-          {/* {item.inside} */}
           <div className="group-open:animate-fadeIn mt-3 pr-3 text-neutral-600">
             <ul className="list-disc" onClick={(event) => RatingFilter(event)}>
               <li>
@@ -288,11 +263,8 @@ export default function SideBar({ subCategories, coursesSUB, id }) {
       </div>
       {/*Duration */}
       <div className="pr-5">
-        {/* {sideBar.map((item) => ( */}
-        {/* <div key={item.title}> */}
         <details className="group mb-3">
           <summary className="  grid cursor-pointer  list-none grid-cols-12 items-center justify-between font-extrabold">
-            {/* <span className='col-span-10'> {item.title}</span> */}
             <span className="col-span-10">Video Duration </span>
 
             <span className=" transition  group-open:rotate-180">
@@ -395,18 +367,12 @@ export default function SideBar({ subCategories, coursesSUB, id }) {
         <div className="pr-5">
           <hr className=" w-100 text-gray-500" />
         </div>
-        {/* </div> */}
-
-        {/* ))} */}
       </div>
 
       {/*Level */}
       <div className="pr-5">
-        {/* {sideBar.map((item) => ( */}
-        {/* <div key={item.title}> */}
         <details className="group mb-3">
           <summary className="  grid cursor-pointer  list-none grid-cols-12 items-center justify-between font-extrabold">
-            {/* <span className='col-span-10'> {item.title}</span> */}
             <span className="col-span-10 font-extrabold">Level </span>
 
             <span className=" transition  group-open:rotate-180">
@@ -425,7 +391,6 @@ export default function SideBar({ subCategories, coursesSUB, id }) {
               </svg>
             </span>
           </summary>
-          {/* {item.inside} */}
           <div className="group-open:animate-fadeIn mt-3 pr-3 text-neutral-600">
             <ul className="list-disc" onClick={(event) => LevelFilter(event)}>
               <li>
@@ -515,18 +480,12 @@ export default function SideBar({ subCategories, coursesSUB, id }) {
         <div className="pr-5">
           <hr className=" w-100 text-gray-500" />
         </div>
-        {/* </div> */}
-
-        {/* ))} */}
       </div>
 
       {/*Price */}
       <div className="pr-5">
-        {/* {sideBar.map((item) => ( */}
-        {/* <div key={item.title}> */}
         <details className="group mb-3">
           <summary className="  grid cursor-pointer  list-none grid-cols-12 items-center justify-between font-extrabold">
-            {/* <span className='col-span-10'> {item.title}</span> */}
             <span className="col-span-10 font-extrabold">Price </span>
 
             <span className=" transition  group-open:rotate-180">
@@ -596,9 +555,6 @@ export default function SideBar({ subCategories, coursesSUB, id }) {
         <div className="pr-5">
           <hr className=" w-100 text-gray-500" />
         </div>
-        {/* </div> */}
-
-        {/* ))} */}
       </div>
     </>
   );

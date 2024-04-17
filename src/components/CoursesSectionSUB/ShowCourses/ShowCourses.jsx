@@ -1,16 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import { NavLink } from 'react-router-dom';
-// import axiosInstance from '../../../axiosConfig/instance';
-// import { useParams } from 'react-router-dom';
+
 
 export default function ShowCourses({ coursesSUB }) {
-  // console.log(id);
-  // const {currentId}=useParams()
-  // console.log(currentId);
-  console.log(coursesSUB);
   return (
     <>
       <div className="flex flex-col">
@@ -23,21 +18,16 @@ export default function ShowCourses({ coursesSUB }) {
                   className="bg-image hover-overlay hover-zoom ripple rounded"
                   data-mdb-ripple-color="light"
                 >
-                  {/* <div className='bg-[url(./../../public/images/cart/php.jpeg)]'></div> */}
                   <NavLink
                     className="text-white no-underline"
                     to={`/CourseDetials/${item._id}`}
                   >
                     <img
                       src={`http://localhost:4000/img/courses/${item.photo}`}
-                      // src={`${item.photo}`}
                       className="h-32 w-full object-cover"
                       alt="Blue Jeans Jacket"
                     />
                   </NavLink>
-                  {/* <a href="#!">
-                                            <div className="mask color" ></div>
-                                        </a> */}
                 </div>
               </div>
 

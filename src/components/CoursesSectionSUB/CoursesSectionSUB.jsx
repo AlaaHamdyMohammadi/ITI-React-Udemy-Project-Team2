@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ShowCourses from './ShowCourses/ShowCourses';
 import SideBar from './SideBar/SideBar';
-import axiosInstance from '../../axiosConfig/instance';
 import StaticSection from './ShowCourses/staticSection/staticSection';
 import { AiFillExclamationCircle } from 'react-icons/ai';
 import { useSelector } from 'react-redux';

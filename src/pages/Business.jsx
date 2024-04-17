@@ -1,22 +1,16 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { Button, NavDropdown, Dropdown } from 'react-bootstrap';
-// import Overlay from 'react-bootstrap/Overlay';
-// import { useState, useRef } from 'react';
-// import { FaTimes } from 'react-icons/fa';
-import './Business.css';
+
 import { changeNavbar } from './../store/slices/navbar';
 import { useDispatch } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap/dist/js/bootstrap";
+import { Helmet } from 'react-helmet';
+import './Business.css';
 
 export default function Business() {
   const { t } = useTranslation();
 
-  // const [show, setShow] = useState(false);
-  // const target = useRef(null);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(changeNavbar(false));
@@ -58,7 +52,6 @@ export default function Business() {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav mb-lg-0 mb-2 me-auto">
-                {/* Add your list items here */}
                 <li className="what-we-do nav-item dropdown">
                   <NavDropdown title="What we do" id="navbarDropdown">
                     <div className="d-flex gap-4">
@@ -200,7 +193,6 @@ export default function Business() {
                   </NavDropdown>
                 </li>
 
-                {/* How we do it Dropdown */}
                 <li className="nav-item dropdown">
                   <NavDropdown title="How we do it" id="navbarDropdown">
                     <NavDropdown.Item as="a" href="#">
@@ -248,7 +240,6 @@ export default function Business() {
                   </NavDropdown>
                 </li>
 
-                {/* Resources Dropdown */}
                 <li className="nav-item dropdown">
                   <NavDropdown title="Resources" id="navbarDropdown">
                     <div className="btn-group dropend">
@@ -306,7 +297,6 @@ export default function Business() {
                   </NavDropdown>
                 </li>
 
-                {/* Language Selector */}
                 <li className="nav-item dropdown ">
                   <Dropdown>
                     <Dropdown.Toggle
@@ -347,9 +337,7 @@ export default function Business() {
                           alt="usa-logo"
                         />
                       </Dropdown.Item>
-                      <Dropdown.Item href="#">
-                        {/* Add more language options */}
-                      </Dropdown.Item>
+                      <Dropdown.Item href="#"></Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </li>
@@ -373,7 +361,6 @@ export default function Business() {
         </nav>
       </div>
 
-      {/* Section */}
       <div className="row mt-5">
         <div className="col-lg-7 col-md-7 mx-4">
           <h2
@@ -416,18 +403,10 @@ export default function Business() {
           <div className="container">
             <div className="row d-flex m-5">
               <div className="col-md-4 col-sm-6 p-4">
-                <img
-                  src="/images/Business/citi.webp"
-                  alt="citi"
-                  width="100"
-                />
+                <img src="/images/Business/citi.webp" alt="citi" width="100" />
               </div>
               <div className="col-md-4 col-sm-6 p-4">
-                <img
-                  src="/images/Business/Box.webp"
-                  alt="Box"
-                  width="100"
-                />
+                <img src="/images/Business/Box.webp" alt="Box" width="100" />
               </div>
               <div className="col-md-4 col-sm-6 p-4">
                 <img
@@ -464,7 +443,6 @@ export default function Business() {
           </div>
         </div>
 
-        {/* FORM */}
         <div className="col-lg-4 col-md-4 container">
           <form>
             <div className="form-group mb-3">
@@ -600,38 +578,6 @@ export default function Business() {
           </form>
         </div>
       </div>
-
-      {/* <Button variant="danger" ref={target} onClick={() => setShow(!show)}>
-                Click me to see
-            </Button>
-            <Overlay target={target.current} show={show} placement="right">
-                {({
-                    placement: _placement,
-                    arrowProps: _arrowProps,
-                    show: _show,
-                    popper: _popper,
-                    hasDoneInitialMeasure: _hasDoneInitialMeasure,
-                    ...props
-                }) => (
-                    <div
-                        {...props}
-                        style={{
-                            position: 'absolute',
-                            backgroundColor: 'rgba(255, 100, 100, 0.85)',
-                            padding: '10px',
-                            color: 'white',
-                            borderRadius: '3px',
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            ...props.style,
-                        }}
-                    >
-                        <div>Simple tooltip</div>
-                        <FaTimes onClick={() => setShow(false)} style={{ cursor: 'pointer' }} />
-                    </div>
-                )}
-            </Overlay> */}
     </div>
   );
 }

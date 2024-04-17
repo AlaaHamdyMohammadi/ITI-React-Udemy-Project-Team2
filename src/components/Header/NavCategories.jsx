@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { Nav, NavDropdown } from 'react-bootstrap';
-import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import axiosInstance from '../../axiosConfig/instance';
 import './Header.css';
 
@@ -11,19 +11,6 @@ function NavCategories({ setCAT, onCategories, categories }) {
   const navigate = useNavigate();
   const [subCategories, setSubCategories] = useState([]);
   const [currentId, setCurrentId] = useState('');
-  //const { _id } = useParams();
-
-  // useEffect(() => {
-  //   axiosInstance
-  //     .get(`subCategories/${_id}`)
-  //     .then((res) => {
-  //       //console.log(res.data.data.subCategories);
-  //       setSubCategories(res.data.data.subCategories);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, [_id]);
 
   useEffect(() => {
     axiosInstance
@@ -40,8 +27,6 @@ function NavCategories({ setCAT, onCategories, categories }) {
   function handleClick(id) {
     setCurrentId(id);
   }
-
-  
 
   return (
     <Nav className="me-auto">
@@ -89,7 +74,6 @@ function NavCategories({ setCAT, onCategories, categories }) {
                           event.preventDefault();
                           event.stopPropagation();
                           navigate(`/subCategories/${subCategory._id}`);
-                          // handleClick(category._id);
                         }}
                       >
                         {subCategory.name}

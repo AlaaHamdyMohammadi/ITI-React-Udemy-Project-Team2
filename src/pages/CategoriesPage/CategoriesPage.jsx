@@ -6,21 +6,15 @@ import axiosInstance from '../../axiosConfig/instance';
 import { Link, NavLink, useParams } from 'react-router-dom';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { BsStarHalf } from 'react-icons/bs';
-
-//useLoaderData
 import { Helmet } from 'react-helmet';
 import { FaGreaterThan } from 'react-icons/fa6';
 import { AiFillExclamationCircle } from 'react-icons/ai';
-//import { getCourseSub } from '../../services/CoursesSub';
 import CoursesSection from '../../components/CoursesSection/CoursesSection';
 import './Categories.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeSpinner } from '../../store/slices/spinner';
 import Spinner from '../../components/Spinner';
-// import { Spinner } from 'react-bootstrap';
 import { Carousel } from 'react-bootstrap';
-
-//`http://localhost:4000/img/courses/${item.photo}`
 
 export const loadercourseShow = async () => {
   var res = await getCourseSub();
@@ -84,7 +78,7 @@ function CategoriesPage() {
       //console.log(res.data.data.courses);
       setInstructors(res.data.data.courses);
     });
-  }, [])
+  }, []);
 
   return (
     <>
@@ -205,11 +199,7 @@ function NavSubCategory({ category, subCategories }) {
   );
 }
 
-function CategoriesCarousel({
-  coursesSUB,
-  secondSetOfCourses,
-  firstSetOfCourses,
-}) {
+function CategoriesCarousel({ secondSetOfCourses, firstSetOfCourses }) {
   return (
     <Carousel className="mb-2 mt-2 border-t-2 pt-4">
       <Carousel.Item>
@@ -242,7 +232,6 @@ function CategoriesCarousel({
                     <BsStarHalf />
                   </span>
                 </span>
-                {/* <p className="font-bold">E{props.course.price}</p> */}
                 <div className="flex flex-row gap-2">
                   <span className=" font-semibold text-black">
                     E${course.price}
@@ -290,7 +279,6 @@ function CategoriesCarousel({
                     <BsStarHalf />
                   </span>
                 </span>
-                {/* <p className="font-bold">E{props.course.price}</p> */}
                 <div className="flex flex-row gap-2">
                   <span className=" font-semibold text-black">
                     E${course.price}
@@ -342,7 +330,6 @@ function CategoriesCarousel({
                     <BsStarHalf />
                   </span>
                 </span>
-                {/* <p className="font-bold">E{props.course.price}</p> */}
                 <div className="flex flex-row gap-2">
                   <span className=" font-semibold text-black">
                     E${course.price}
@@ -390,7 +377,6 @@ function CategoriesCarousel({
                     <BsStarHalf />
                   </span>
                 </span>
-                {/* <p className="font-bold">E{props.course.price}</p> */}
                 <div className="flex flex-row gap-2">
                   <span className=" font-semibold text-black">
                     E${course.price}
@@ -465,7 +451,6 @@ function Instructors() {
               ></img>
               <div className=" ml-20 text-gray-950">
                 <h6 className="text-sm font-bold">{instructor.username}</h6>
-                {/*<p className="text-xs">{instructor.lastCourse}</p>*/}
                 <p className="text-xs">
                   <strong>{instructor.instructorRating}</strong>
                   <AiFillStar className="inline text-yellow-400	" /> Instructor

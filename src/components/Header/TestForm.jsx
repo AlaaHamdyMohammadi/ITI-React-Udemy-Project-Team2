@@ -9,11 +9,6 @@ function TestForm() {
 
   useEffect(function () {
     axiosInstance.get('/courses').then((res) => {
-    //   console.log(
-    //     res.data.data.courses.filter((course) =>
-    //       course.title.toLowerCase().includes('mo'),
-    //     ),
-    //   );
       setInputs(res.data.data.courses);
     });
   }, []);
@@ -23,27 +18,32 @@ function TestForm() {
       <input
         type="text"
         value={query}
-        onChange={(e) => {setQuery(e.target.value); setDropdown(true);}}
+        onChange={(e) => {
+          setQuery(e.target.value);
+          setDropdown(true);
+        }}
         placeholder="Search.."
         className="search"
       />
-      {dropdown && inputs && <ul className='absolute w-80 bg-gray-400  top-16'>
-        {inputs
-          .filter((course) => course.title.toLowerCase().includes(query))
-          .map((item) => (
-            <li
-              className="listItem flex m-4 cursor-pointer border-b-2 pb-2
+      {dropdown && inputs && (
+        <ul className="absolute top-16 w-80  bg-gray-400">
+          {inputs
+            .filter((course) => course.title.toLowerCase().includes(query))
+            .map((item) => (
+              <li
+                className="listItem m-4 flex cursor-pointer border-b-2 pb-2
               "
-              key={item._id}
-            >
-              <img
-                className="h-8 w-14"
-                src={`http://localhost:4000/img/courses/${item.photo}`}
-              />
-              <span className="ml-4 text-sm font-bold">{item.title}</span>
-            </li>
-          ))}
-      </ul>}
+                key={item._id}
+              >
+                <img
+                  className="h-8 w-14"
+                  src={`http://localhost:4000/img/courses/${item.photo}`}
+                />
+                <span className="ml-4 text-sm font-bold">{item.title}</span>
+              </li>
+            ))}
+        </ul>
+      )}
     </div>
   );
 }

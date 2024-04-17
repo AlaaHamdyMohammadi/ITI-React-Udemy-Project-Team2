@@ -1,9 +1,8 @@
-// import React from 'react';
 import './Featured.css';
-import { useTranslation } from 'react-i18next'; // Import the useTranslation hook
+import { useTranslation } from 'react-i18next'; 
 
 export default function Featured() {
-  const { t } = useTranslation(); // Initialize the useTranslation hook
+  const { t } = useTranslation(); 
 
   const featuredData = [
     {

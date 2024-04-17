@@ -3,21 +3,18 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from 'react';
-// import toast, {Toaster} from 'react-hot-toast'; npm i react-hot-toast
-
-import { toast, ToastContainer } from 'react-toastify';
+import { useNavigate, useNavigation } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { toast, ToastContainer } from 'react-toastify';
 import { loginUser } from '../services/authentication';
 import Button from './../components/Button';
 import { FcGoogle } from 'react-icons/fc';
 import { BsFacebook, BsApple } from 'react-icons/bs';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
-import { useNavigate, NavLink, Link, useNavigation } from 'react-router-dom';
-import './LoginAndSignUp.css';
 import { authentication } from '../contextConfig/authentication';
-import { Helmet } from 'react-helmet';
 import Spinner from '../components/Spinner';
+import { Helmet } from 'react-helmet';
+import './LoginAndSignUp.css';
 
 function Login() {
   const navigate = useNavigate();
@@ -25,13 +22,11 @@ function Login() {
   const [login, setLogin] = useState({ email: '', password: '' });
   const [error, setError] = useState({ emailError: '', passwordError: '' });
   const { isLogin, setIsLogin } = useContext(authentication);
-  //const { userName, setUsername } = useContext(authentication);
   const [isLoading, setIsLoading] = useState(true);
   const [isDisable, setIsDisable] = useState(false);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
-  console.log(isSubmitting);
-  // const [isSubmitting, setIsSubmitting] = useState(true);
+  //console.log(isSubmitting);
   function handleValidation(e) {
     if (e.target.name === 'email') {
       const emailValue = e.target.value;
@@ -68,7 +63,7 @@ function Login() {
     } else {
       try {
         const res = await loginUser(login);
-        console.log(res);
+        //console.log(res);
         localStorage.setItem('token', res.data.token);
         setIsLogin(true);
         // setIsSubmitting(false);

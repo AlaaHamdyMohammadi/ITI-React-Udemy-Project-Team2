@@ -1,21 +1,13 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
-import { getCourse } from '../../../services/Detials';
+/* eslint-disable react/prop-types */
 import { BiSolidCalendarExclamation } from 'react-icons/bi';
-import './firstComp.css';
 import AboveList from './aboveComp/aboveComp';
-// export  const loadercourse= async()=>{
-//     var res=await getCourse()
-//     return res.data.data.document
-//     // console.log(res.data.data.document);
-//    }
-export default function FirstComp({ course }) {
-  // const Course=useLoaderData()
+import './firstComp.css';
 
+export default function FirstComp({ course }) {
   return (
     <>
       <div className=" relative bg-zinc-700  p-12 text-white ">
-        <div className="grid grid-cols-3 container  ">
+        <div className="container grid grid-cols-3  ">
           <div className="col-span-2 ">
             <div className=" styling ">
               <div>{course.title}</div>
@@ -25,9 +17,9 @@ export default function FirstComp({ course }) {
             <div className="text-sm	">
               <span className="flex  ">
                 <span className="custom flex items-center font-bold text-yellow-500">
-                <div className="update mt-0 pr-1">
-                        <span className="bestseller p-1">Best Seller</span>
-                      </div>
+                  <div className="update mt-0 pr-1">
+                    <span className="bestseller p-1">Best Seller</span>
+                  </div>
                   {course.rating}
 
                   <svg
@@ -88,7 +80,6 @@ export default function FirstComp({ course }) {
                 </span>
 
                 <span className="p-2 ">
-                  
                   <a className="text-slate-300" href="#">
                     ({course.NumRating} ratings)
                   </a>
@@ -97,13 +88,12 @@ export default function FirstComp({ course }) {
               </span>
               <span>
                 Created by
-                <a className="text-slate-300 pr-1" href="#">
+                <a className="pr-1 text-slate-300" href="#">
                   {course.instructor}
                 </a>
               </span>
               <div>
                 <span className="flex p-2">
-                
                   <span className="pr-2 ">
                     <BiSolidCalendarExclamation />
                   </span>
@@ -113,9 +103,8 @@ export default function FirstComp({ course }) {
             </div>
           </div>
 
-          <div className="col-span-1 absolute  right-20 top-20">
-          <AboveList   course={course} />
-
+          <div className="absolute right-20  top-20 col-span-1">
+            <AboveList course={course} />
           </div>
         </div>
       </div>

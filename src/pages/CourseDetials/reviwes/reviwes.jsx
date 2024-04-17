@@ -1,31 +1,22 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from 'react';
 import axiosInstance from '../../../axiosConfig/instance';
-import { AiOutlineLike, AiFillLike } from 'react-icons/ai';
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { BiSolidDislike } from 'react-icons/bi';
 import { BsStarHalf } from 'react-icons/bs';
-
-// import { TbPointFilled } from 'react-icons/';
-
-import { BiDislike, BiSolidDislike } from 'react-icons/bi';
-
-// import { useContext } from 'react';
-// import { TERipple } from 'tw-elements-react';
-// import { getMe } from '../../../services/authentication';
-// import { authentication } from '../../../contextConfig/authentication';
 import { NavLink } from 'react-bootstrap';
+import { AiFillStar, AiFillLike } from 'react-icons/ai';
 
 export default function Reviwes({ course }) {
   const [reviews, setReviews] = useState([]);
-  
 
   useEffect(function () {
     axiosInstance
       .get('courses/650ade93fd4c1daaa2b19210/reviews')
       .then((res) => {
-        console.log(res.data.data.reviews);
-        console.log(res.data.data.reviews);
+        //console.log(res.data.data.reviews);
+        //console.log(res.data.data.reviews);
 
-        const coursReview = res.data.data.reviews.slice(0,4);
+        const coursReview = res.data.data.reviews.slice(0, 4);
 
         setReviews(coursReview);
       })
@@ -57,15 +48,7 @@ export default function Reviwes({ course }) {
               </span>
             </span>
 
-            {/* <span className="p-2 ">
-                  <a className="text-black-300" href="#">
-                    {course.NumRating} ratings
-                  </a>
-                </span> */}
-            <span className="p-2">
-              {/* <span><TbPointFilled/></span> */}
-              {course.NumRating} ratings
-            </span>
+            <span className="p-2">{course.NumRating} ratings</span>
           </span>
           <div className="pr-5">
             <hr className=" w-100 text-gray-500" />
@@ -109,13 +92,10 @@ export default function Reviwes({ course }) {
                   </NavLink>
                 </div>
               </div>
-              {/* // */}
 
-              {/* //* */}
               <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
                 {item.review}
               </p>
-              {/* // */}
 
               <App />
             </div>
@@ -124,14 +104,7 @@ export default function Reviwes({ course }) {
             </div>
           </div>
         ))}
-         <div className=" col-span-2 pl-4">
-        {/* <button
-          type="button"
-          className=" checkout11  border border-black bg-white px-2 py-2 font-bold text-black hover:bg-gray-400  "
-        >
-          More Reviews
-        </button> */}
-      </div>
+        <div className=" col-span-2 pl-4"></div>
       </div>
     </>
   );
@@ -190,9 +163,6 @@ function App() {
           className={`btn ${activeBtn === 'like' ? 'like-active' : ''}`}
           onClick={handleLikeClick}
         >
-          {/* <span className="material-symbols-rounded">thumb_up</span> */}
-          {/* {activeBtn === 'like' ?`<AiOutlineLike/> `:   `<AiFillLike/>`} */}
-          {/* <AiOutlineLike/>{likeCount} */}
           <AiFillLike
             className={` ${activeBtn === 'like' ? '' : ' text-gray-500'}`}
           />
@@ -203,17 +173,10 @@ function App() {
           className={`btn ${activeBtn === 'dislike' ? 'dislike-active' : ''}`}
           onClick={handleDisikeClick}
         >
-          {/* <span className="material-symbols-rounded">thumb_down</span> */}
-          {/* {activeBtn === 'like' ?`<BiDislike/> `:   `<BiSolidDislike/>`} */}
-
           <BiSolidDislike
             className={` ${activeBtn === 'dislike' ? '' : ' text-gray-500'}`}
           />
           {dislikeCount}
-
-          {/* <BiDislike/> {dislikeCount} */}
-
-          {/* <BiSolidDislike/>  */}
         </button>
       </div>
     </div>

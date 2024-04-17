@@ -1,44 +1,17 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 
 import { useEffect, useState } from "react";
 import axiosInstance from "../../axiosConfig/instance";
 import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
 
-/* eslint-disable no-unused-vars */
-
-//{subCategories.map((subCategory) => <div key={subCategory.id}>{subCategory.name}</div>) }
-//<div>
-//   {subCategory.category.map(cat => <div key={cat.id}>{cat.name}</div>)}
-// </div>
-
-// useEffect(function () {
-  //   axiosInstance
-  //     .get('/categories')
-  //     .then((res) => {
-  //       //console.log(res.data.data.documents);
-  //       //const numOfCategories = res.data.data.documents.slice(0, 10);
-  //       setCategory(res.data.data.documents);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-
-  // useEffect(function(){
-  //   axiosInstance
-  //     .get(`/subCategories`)
-  //     .then((res) => {
-  //       console.log(res.data.data);
-  //       setSubCategories(res.data.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
 
 function ToolTip({ handleShow, handleClose, currentId }) {
   const [subCategories, setSubCategories] = useState([]);
 
-  //`/subCategories/${currentId}/subCategories`
   useEffect(() => {
     axiosInstance
       .get(`/categories/${currentId}/subCategories`)

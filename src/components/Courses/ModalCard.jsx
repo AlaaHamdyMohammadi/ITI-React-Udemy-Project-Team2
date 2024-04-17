@@ -84,12 +84,6 @@ function ModalCard({ course, handleShow, handleClose }) {
         {course.description ? course.description.slice(0, 200) + '...' : ''}
       </p>
 
-      {/*<p className="flex">
-        <BsCheckLg className=" text-3xl" />
-        FULLY UPDATED FOR CLF-C01 & CLF-C02: Pass the AWS Certified Cloud
-        Practitioner Certification
-  </p>*/}
-
       <div className="flex items-center">
         <Button
           width="w-60"

@@ -1,14 +1,13 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { Nav, NavDropdown } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { BsSearch, BsCart3, BsGlobe, BsBell } from 'react-icons/bs';
+import { BsCart3, BsBell } from 'react-icons/bs';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { useContext, useEffect, useState } from 'react';
 import { authentication } from '../../contextConfig/authentication';
 import { getMe } from '../../services/authentication';
 import { useDispatch, useSelector } from 'react-redux';
-import { setTotalCost } from '../../store/slices/TotalCost';
 function LoginUser({
   setTON,
   setMyLearning,
@@ -106,9 +105,9 @@ function MyLearning({ setMyLearning, myLearning }) {
 function GoToWishList() {
   const [onWishList, setUB] = useState(false);
   const wishListe = useSelector((state) => state.wishList.wishList);
-    const counter = useSelector((state) =>
-      state.wishList.wishList ? state.wishList.wishList.length : 0,
-    );
+  const counter = useSelector((state) =>
+    state.wishList.wishList ? state.wishList.wishList.length : 0,
+  );
 
   return (
     <div
@@ -197,11 +196,12 @@ function GoToWishList() {
 }
 
 function GoToCart({ addToCart, setAddToCart }) {
-  const dispatch = useDispatch();
   const [onCart, setUB] = useState(false);
   const cartItems = useSelector((state) => state.cartItems.cartItems);
   const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
-  const counter = useSelector((state) => state.cartItems.cartItems ? state.cartItems.cartItems.length : 0);
+  const counter = useSelector((state) =>
+    state.cartItems.cartItems ? state.cartItems.cartItems.length : 0,
+  );
 
   return (
     <div
@@ -262,9 +262,7 @@ function GoToCart({ addToCart, setAddToCart }) {
                           <span className="fw-light text-xs">
                             Course By: {item.instructor}
                           </span>
-                          <p className="mb-0 text-xs">
-                            {'E$' + item.price}
-                          </p>
+                          <p className="mb-0 text-xs">{'E$' + item.price}</p>
                         </div>
                       </div>
                     </li>

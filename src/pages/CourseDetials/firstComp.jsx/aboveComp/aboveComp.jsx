@@ -1,27 +1,23 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import './above.css';
 import { LuAlarmClock } from 'react-icons/lu';
-
 import { AiOutlineHeart } from 'react-icons/ai';
 import { GoVideo } from 'react-icons/go';
-// import {TfiCup  } from 'react-icons/tf';
-
 import { AiOutlineFile } from 'react-icons/ai';
-import { BiCode} from 'react-icons/bi';
+import { BiCode } from 'react-icons/bi';
 import { HiOutlineFolderDownload } from 'react-icons/hi';
 import { IoMdPhonePortrait } from 'react-icons/io';
 import { AiFillThunderbolt, AiFillTrophy } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeScrollBar } from '../../../../store/slices/ScrollBar';
-import Video from './Video';
 import Spinner from '../../../../components/Spinner';
 import { setWishList } from '../../../../store/slices/WishList';
 import { setTotalCost } from '../../../../store/slices/TotalCost';
 import { setCartItems } from '../../../../store/slices/CartItems';
 import { useNavigate } from 'react-router-dom';
-
+import './above.css';
+import Video from './Video';
 
 export default function AboveList({ course }) {
   const navigate = useNavigate();
@@ -32,7 +28,7 @@ export default function AboveList({ course }) {
   const wishList = useSelector((state) => state.wishList.wishList);
   const cartItems = useSelector((state) => state.cartItems.cartItems);
   const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
-  
+
   function addToCart(course) {
     var check = cartItems.map((item) => {
       if (item._id == course._id) {
@@ -41,7 +37,7 @@ export default function AboveList({ course }) {
         return false;
       }
     });
-    console.log(check);
+    //console.log(check);
     var cart = [];
     var price = TotalPrice;
     if (check.includes(true) || check == []) {
@@ -60,7 +56,7 @@ export default function AboveList({ course }) {
     }
     localStorage.setItem('cartItems', JSON.stringify(cart));
     localStorage.setItem('TotalPrice', price);
-    console.log(cartItems, TotalPrice);
+    //console.log(cartItems, TotalPrice);
   }
 
   function addToFav(course) {
@@ -71,7 +67,7 @@ export default function AboveList({ course }) {
         return false;
       }
     });
-    console.log(check);
+    //console.log(check);
     var wish = [];
     if (check.includes(true) || check == []) {
       dispatch(setWishList([...wishList]));
@@ -81,15 +77,14 @@ export default function AboveList({ course }) {
       wish = [...wishList, course];
     }
     localStorage.setItem('wishList', JSON.stringify(wish));
-    console.log(wishList);
+    //console.log(wishList);
   }
 
   const handleScroll = () => {
-    if (window.scrollY >= 97 &&window.scrollY<2000) {
-document.getElementsByClassName('above')[0].style.position='fixed'
+    if (window.scrollY >= 97 && window.scrollY < 2000) {
+      document.getElementsByClassName('above')[0].style.position = 'fixed';
     } else {
-      document.getElementsByClassName('above')[0].style.position=''
-
+      document.getElementsByClassName('above')[0].style.position = '';
     }
   };
 
@@ -101,11 +96,11 @@ document.getElementsByClassName('above')[0].style.position='fixed'
     };
   }, []);
 
-  useEffect(function(){
+  useEffect(function () {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000)
-  }, [])
+    }, 1000);
+  }, []);
 
   return (
     <>
@@ -170,7 +165,10 @@ document.getElementsByClassName('above')[0].style.position='fixed'
                 <div className="my-2">
                   <button
                     type="button"
-                    onClick={() => {navigate('/cart'); addToCart(course);}}
+                    onClick={() => {
+                      navigate('/cart');
+                      addToCart(course);
+                    }}
                     className=" checkout11 w-100 border border-black bg-white px-4 py-3 font-bold text-black hover:bg-gray-400  "
                   >
                     Buy Now

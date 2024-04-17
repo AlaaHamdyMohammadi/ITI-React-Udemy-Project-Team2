@@ -2,14 +2,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { BiSquare, BiCircle } from 'react-icons/bi';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { setSubRatingFilteredCourses } from '../../../store/slices/SubRatingFilteredCourses';
 import { BsStarHalf } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
-// import { useState } from 'react';
-// import { useEffect } from 'react';
-// import axiosInstance from '../../../axiosConfig/instance';
 
 export default function SideBar({ coursesSUB, id }) {
   const dispatch = useDispatch();
@@ -27,15 +23,15 @@ export default function SideBar({ coursesSUB, id }) {
       } else {
         setRate(0);
       }
-      console.log(less);
+      //console.log(less);
       var filtered = coursesSUB.filter((course) => {
         if (course.rating >= less) {
           return course;
         }
       });
       dispatch(setSubRatingFilteredCourses(filtered));
-      console.log(filtered);
-      console.log(Rate);
+      //console.log(filtered);
+      //console.log(Rate);
     }
   }
 
@@ -51,7 +47,7 @@ export default function SideBar({ coursesSUB, id }) {
         setduration(-1);
       }
 
-      console.log(from);
+      //console.log(from);
       var filtered = coursesSUB.filter((course) => {
         if (course.duration >= from && course.duration <= to) {
           console.log(true);
@@ -59,7 +55,7 @@ export default function SideBar({ coursesSUB, id }) {
         }
       });
       dispatch(setSubRatingFilteredCourses(filtered));
-      console.log(filtered);
+      //console.log(filtered);
     }
   }
 
@@ -86,12 +82,12 @@ export default function SideBar({ coursesSUB, id }) {
 
       var filtered = coursesSUB.filter((course) => {
         if (course.NumStd >= from && course.NumStd <= to) {
-          console.log(true);
+          //console.log(true);
           return course;
         }
       });
       dispatch(setSubRatingFilteredCourses(filtered));
-      console.log(filtered);
+      //console.log(filtered);
     }
   }
 
@@ -120,36 +116,16 @@ export default function SideBar({ coursesSUB, id }) {
         }
       });
       dispatch(setSubRatingFilteredCourses(filtered));
-      console.log(filtered);
+      //console.log(filtered);
     }
   }
 
-  // const [subCategories, setSubCategories] = useState([]);
-
-  // //`/subCategories/${currentId}/subCategories`
-  // useEffect(() => {
-  //   axiosInstance
-  //     .get(`/categories/${id}/subCategories`)
-  //     .then((res) => {
-  //       //console.log(res.data.data.subCategories);
-  //       setSubCategories(res.data.data.subCategories);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, [id]);
-
-  // var es='kk';
-  // const sideBar=[{title:"Rating",inside:`${es}`},{title:"Video Duration"},{title:"Topics"},{title:"SubCategory"},{title:"Level"},
-  // {title:"Language"},{title:"Price"},{title:"Subtitle"}]
   return (
     <>
       <div className="pr-5">
-        {/* {sideBar.map((item) => ( */}
-        {/* <div key={item.title}> */}
+       
         <details className="group mb-3">
           <summary className="  grid cursor-pointer  list-none grid-cols-12 items-center justify-between font-extrabold">
-            {/* <span className='col-span-10'> {item.title}</span> */}
             <span className="col-span-10">Rating </span>
 
             <span className=" transition  group-open:rotate-180">
@@ -279,17 +255,12 @@ export default function SideBar({ coursesSUB, id }) {
         <div className="pr-5">
           <hr className=" w-100 text-gray-500" />
         </div>
-        {/* </div> */}
-
-        {/* ))} */}
       </div>
 
       <div className="pr-5">
-        {/* {sideBar.map((item) => ( */}
-        {/* <div key={item.title}> */}
+  
         <details className="group mb-3">
           <summary className="  grid cursor-pointer  list-none grid-cols-12 items-center justify-between font-extrabold">
-            {/* <span className='col-span-10'> {item.title}</span> */}
             <span className="col-span-10">Video Duration </span>
 
             <span className=" transition  group-open:rotate-180">
@@ -392,17 +363,13 @@ export default function SideBar({ coursesSUB, id }) {
         <div className="pr-5">
           <hr className=" w-100 text-gray-500" />
         </div>
-        {/* </div> */}
-
-        {/* ))} */}
+   
       </div>
 
       <div className="pr-5">
-        {/* {sideBar.map((item) => ( */}
-        {/* <div key={item.title}> */}
+    
         <details className="group mb-3">
           <summary className="  grid cursor-pointer  list-none grid-cols-12 items-center justify-between font-extrabold">
-            {/* <span className='col-span-10'> {item.title}</span> */}
             <span className="col-span-10 font-extrabold">Level </span>
 
             <span className=" transition  group-open:rotate-180">
@@ -511,17 +478,13 @@ export default function SideBar({ coursesSUB, id }) {
         <div className="pr-5">
           <hr className=" w-100 text-gray-500" />
         </div>
-        {/* </div> */}
 
-        {/* ))} */}
       </div>
 
       <div className="pr-5">
-        {/* {sideBar.map((item) => ( */}
-        {/* <div key={item.title}> */}
+      
         <details className="group mb-3">
           <summary className="  grid cursor-pointer  list-none grid-cols-12 items-center justify-between font-extrabold">
-            {/* <span className='col-span-10'> {item.title}</span> */}
             <span className="col-span-10 font-extrabold">Price </span>
 
             <span className=" transition  group-open:rotate-180">
@@ -591,9 +554,6 @@ export default function SideBar({ coursesSUB, id }) {
         <div className="pr-5">
           <hr className=" w-100 text-gray-500" />
         </div>
-        {/* </div> */}
-
-        {/* ))} */}
       </div>
     </>
   );

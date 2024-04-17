@@ -1,15 +1,12 @@
 /* eslint-disable no-unused-vars */
-import { Helmet } from 'react-helmet';
 import { useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
-import { AiOutlineHeart, AiFillHeart, AiOutlineSearch } from 'react-icons/ai';
-import { toast, ToastContainer } from 'react-toastify';
+import { useLocation } from 'react-router-dom';
+import { AiOutlineSearch } from 'react-icons/ai';
 import 'react-toastify/dist/ReactToastify.css';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import axios from 'axios';
 import axiosInstance from '../../axiosConfig/instance';
-//enrolled
+import axios from 'axios';
+
 function AllCourses() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -18,17 +15,15 @@ function AllCourses() {
   const token = localStorage.getItem('token');
   const [progress, setProgress] = useState(0);
   const [query, setQuery] = useState('');
-  const [courses, setCourses] = useState([]);
 
   async function handleSubmit(e) {
     e.preventDefault();
     if (!query) return;
     try {
       const res = await axiosInstance.get(`/enrolled`);
-      console.log(res.data.enrolledCourses);
+      //console.log(res.data.enrolledCourses);
     } catch (err) {
       console.error('Error searching:', err);
-      // Handle the error appropriately
     }
 
     setQuery('');
@@ -36,7 +31,6 @@ function AllCourses() {
 
   useEffect(() => {
     if (isSuccess === 'true') {
-      // Fetch and display course data
       axios
         .get('http://localhost:4000/api/v1/enrolled', {
           headers: {
@@ -46,7 +40,6 @@ function AllCourses() {
         .then((res) => {
           setCourseData(res.data.enrolledCourses);
           //console.log(res.data.enrolledCourses);
-          //toast.success('Checkout successfully')
         })
         .catch((err) => {
           console.error('Error fetching purchased courses: ', err);
@@ -94,7 +87,6 @@ function AllCourses() {
                 </div>
               ))}
             </div>
-            <ToastContainer position="top-right" autoClose={3000} />
           </>
         ) : (
           ''

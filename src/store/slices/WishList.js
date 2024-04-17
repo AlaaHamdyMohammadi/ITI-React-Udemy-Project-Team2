@@ -1,5 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
-
+import { createSlice } from '@reduxjs/toolkit';
 
 const wishListSlice = createSlice({
   name: 'wishList',
@@ -15,7 +14,9 @@ const wishListSlice = createSlice({
     },
 
     addFavorite: function (state, action) {
-      const course = state.favorites.find((item) => item._id == action.payload._id);
+      const course = state.favorites.find(
+        (item) => item._id == action.payload._id,
+      );
       if (!course) {
         state.favorites.push(action.payload);
         //state.count += 1;
@@ -27,7 +28,6 @@ const wishListSlice = createSlice({
     },
   },
 });
-export const { addFavorite, setWishList } = wishListSlice.actions;  
+export const { addFavorite, setWishList } = wishListSlice.actions;
 
-
-export default wishListSlice.reducer
+export default wishListSlice.reducer;

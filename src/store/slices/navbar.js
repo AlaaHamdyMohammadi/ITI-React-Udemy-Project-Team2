@@ -1,16 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit"
-
+import { createSlice } from '@reduxjs/toolkit';
 
 const navbarSlice = createSlice({
-  name: "navbar",
+  name: 'navbar',
   initialState: { navbar: true },
   reducers: {
     changeNavbar: function (state, action) {
-      state.navbar = action.payload
-    }
-  }
-})
-export const {changeNavbar} = navbarSlice.actions  
+      state.navbar = action.payload;
+    },
+  },
+});
+export const { changeNavbar } = navbarSlice.actions;
 
-
-export default navbarSlice.reducer
+export default navbarSlice.reducer;

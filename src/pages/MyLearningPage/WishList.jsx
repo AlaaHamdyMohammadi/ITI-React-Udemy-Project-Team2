@@ -2,13 +2,12 @@
 import { useSelector } from 'react-redux';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { BsStarHalf } from 'react-icons/bs';
-import { AiOutlineHeart, AiFillHeart, AiOutlineSearch } from 'react-icons/ai';
+import { AiFillHeart, AiOutlineSearch } from 'react-icons/ai';
 import { useState } from 'react';
-          
+
 function WishList() {
   const wishList = useSelector((state) => state.wishList.wishList);
   const [query, setQuery] = useState('');
-  // const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -25,7 +24,7 @@ function WishList() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <AiOutlineSearch className="absolute top-0 h-[37px] text-xl w-10 p-1 right-0 cursor-pointer hover:bg-stone-600 bg-stone-800 text-stone-100 " />
+          <AiOutlineSearch className="absolute right-0 top-0 h-[37px] w-10 cursor-pointer bg-stone-800 p-1 text-xl text-stone-100 hover:bg-stone-600 " />
         </div>
       </form>
       <div className="mx-5 flex flex-grow flex-wrap justify-between px-5 py-5">

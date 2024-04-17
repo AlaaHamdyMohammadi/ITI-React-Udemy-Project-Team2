@@ -94,7 +94,6 @@ function CardItem(props) {
               <BsStarHalf />
             </span>
           </span>
-          {/* <p className="font-bold">E{props.course.price}</p> */}
           <div className="flex flex-row gap-2">
             <span className=" font-semibold text-black">
               E${props.course.price}

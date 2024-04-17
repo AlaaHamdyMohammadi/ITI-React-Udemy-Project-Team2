@@ -1,32 +1,30 @@
 /* eslint-disable no-inner-declarations */
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from 'react';
-import './CartPage.css';
-import { AiFillStar } from 'react-icons/ai';
-import { AiOutlineClose } from 'react-icons/ai';
-import { CiShoppingTag } from 'react-icons/ci';
-import CoursesCarousel from '../components/Courses/CoursesCarousel';
-import axiosInstance from '../axiosConfig/instance';
-import { authentication } from '../contextConfig/authentication';
-import { useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { authentication } from '../contextConfig/authentication';
+import CoursesCarousel from '../components/Courses/CoursesCarousel';
 import { setWishList } from '../store/slices/WishList';
 import { setCartItems } from '../store/slices/CartItems';
 import { setTotalCost } from '../store/slices/TotalCost';
 import Checkout from '../components/Checkout';
-import { useTranslation } from 'react-i18next';
+import { CiShoppingTag } from 'react-icons/ci';
+import { AiFillStar } from 'react-icons/ai';
+import { Helmet } from 'react-helmet';
+import './CartPage.css';
 
-function CartPage() { 
+function CartPage() {
   const dispatch = useDispatch();
   const wishList = useSelector((state) => state.wishList.wishList);
   const cartItems = useSelector((state) => state.cartItems.cartItems);
   const TotalPrice = useSelector((state) => state.TotalCost.TotalCost);
-  const {isLogin} = useContext(authentication);
+  const { isLogin } = useContext(authentication);
   const { t } = useTranslation();
- 
+
   const navigate = useNavigate();
-  
+
   function addToWishList(course) {
     var check = wishList.map((wish) => {
       if (wish._id == course._id) {
@@ -35,7 +33,7 @@ function CartPage() {
         return false;
       }
     });
-    console.log(check);
+    //console.log(check);
     var wish = [];
     if (check.includes(true) || check == []) {
       dispatch(setWishList([...wishList]));
@@ -45,7 +43,7 @@ function CartPage() {
       wish = [...wishList, course];
     }
     localStorage.setItem('wishList', JSON.stringify(wish));
-    console.log(wishList);
+    //console.log(wishList);
   }
 
   function removeCart(course) {
@@ -59,7 +57,7 @@ function CartPage() {
     var i = check.indexOf(true);
     var arr = [...cartItems].filter((item) => {
       return item._id != course._id;
-    }); 
+    });
     dispatch(setCartItems([...arr]));
     var price = TotalPrice;
     if (course.price) {
@@ -75,7 +73,7 @@ function CartPage() {
 
   useEffect(
     function () {
-      console.log(wishList);
+      //console.log(wishList);
     },
     [wishList, cartItems],
   );
@@ -111,9 +109,6 @@ function CartPage() {
                             className="h-50 w-full object-cover"
                             alt={item.title}
                           />
-                          {/* <a href="#!">
-                                            <div className="mask color" ></div>
-                                        </a> */}
                         </div>
                       </div>
 

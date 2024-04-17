@@ -1,13 +1,11 @@
 /* eslint-disable no-unused-vars */
-import { BsCheckCircleFill } from 'react-icons/bs';
-import Button from '../components/Button';
-import CoursesList from '../components/Courses/CoursesList';
-import StudentsViewing from '../components/StudentsViewing';
-import { NavLink } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import Spinner from '../components/Spinner';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router-dom';
+import { BsCheckCircleFill } from 'react-icons/bs';
+import StudentsViewing from '../components/StudentsViewing';
+import Spinner from '../components/Spinner';
+import { Helmet } from 'react-helmet';
 
 function Logout() {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,10 +36,7 @@ function Logout() {
             <img className="w-100" src="/images/logoutImg.jpg" />
             <div className="absolute left-16 top-44">
               <div className="flex items-center">
-                <img
-                  className="w-32"
-                  src="/images/homePage/udemy-logo.png"
-                />
+                <img className="w-32" src="/images/homePage/udemy-logo.png" />
                 <span className=" text-4xl text-purple-500">business</span>
               </div>
               <p className="mb-4 w-96 text-xl">
@@ -58,7 +53,7 @@ function Logout() {
           </div>
         </div>
       )}
-      
+
       <StudentsViewing />
     </>
   );

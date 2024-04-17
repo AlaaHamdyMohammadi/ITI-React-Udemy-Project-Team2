@@ -7,8 +7,8 @@ import {
   faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
 import { Button, Modal } from 'react-bootstrap';
-import './Footer.css'; // Make sure to import your CSS file
-import { useTranslation } from 'react-i18next'; // Import useTranslation hook
+import './Footer.css';
+import { useTranslation } from 'react-i18next';
 import { BsGlobe } from 'react-icons/bs';
 
 export default function Footer() {
@@ -28,7 +28,7 @@ export default function Footer() {
     i18n.changeLanguage(newLanguage);
 
     if (newLanguage === 'ar') {
-      document.documentElement.classList.add('rtl'); // Add RTL class for Arabic
+      document.documentElement.classList.add('rtl');
     } else {
       document.documentElement.classList.remove('rtl');
     }
@@ -180,7 +180,7 @@ export default function Footer() {
                   className="nav-link text-dark"
                   aria-current="page"
                   href="#"
-                  onClick={() => changeLanguage('en')} // Change to English
+                  onClick={() => changeLanguage('en')}
                 >
                   English
                 </a>
@@ -190,7 +190,7 @@ export default function Footer() {
                   className="nav-link text-dark"
                   aria-current="page"
                   href="#"
-                  onClick={() => changeLanguage('ar')} // Change to Arabic
+                  onClick={() => changeLanguage('ar')}
                 >
                   {t('Arabic')}
                 </a>

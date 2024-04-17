@@ -23,7 +23,6 @@ function NavForm() {
       async function getCourses() {
         const res = await axiosInstance.get('/courses');
         setInputs(res.data.data.courses.slice(0, 8));
-        // setDropdown(false);
       }
       getCourses();
     },

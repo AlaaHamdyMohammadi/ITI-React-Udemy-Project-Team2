@@ -5,15 +5,13 @@ import { NavLink } from 'react-router-dom';
 import axiosInstance from '../../axiosConfig/instance';
 import { useTranslation } from 'react-i18next';
 
-//grid grid-cols-5 grid-rows-2 gap-2 md:grid-col-3 md:grid-row-4
-
 export default function TopCategory() {
     const { t } = useTranslation();
 
   const [categories, setCategories] = useState([]);
   useEffect(function(){
     axiosInstance.get('/categories').then(res => {
-      console.log(res.data.data.documents.slice(0,10))
+      //console.log(res.data.data.documents.slice(0,10))
       setCategories(res.data.data.documents.slice(0,10))
     })
   }, []);

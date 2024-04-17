@@ -3,7 +3,7 @@
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { BsSearch, BsCart3} from 'react-icons/bs';
+import { BsSearch, BsCart3 } from 'react-icons/bs';
 import './Header.css';
 import { useContext, useEffect, useState } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
@@ -30,8 +30,6 @@ export default function Header() {
   const [addToCart, setAddToCart] = useState(false);
   const [categories, setCategories] = useState([]);
   const { isLogin, setIsLogin } = useContext(authentication);
-  const {userName, setUsername} = useContext(authentication);
-  const { email, setEmail } = useContext(authentication);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -41,7 +39,7 @@ export default function Header() {
       .get('/categories')
       .then((res) => {
         //console.log(res.data.data.documents);
-        const numOfCategories = res.data.data.documents.slice(0,10);
+        const numOfCategories = res.data.data.documents.slice(0, 10);
         setCategories(numOfCategories);
       })
       .catch((err) => console.log(err));

@@ -13,7 +13,7 @@ function Video({ course }) {
 
   useEffect(function () {
     axiosInstance.get('/videos').then((res) => {
-      console.log(res.data.data);
+      //console.log(res.data.data);
       setVideos(res.data.data);
     });
   }, []);

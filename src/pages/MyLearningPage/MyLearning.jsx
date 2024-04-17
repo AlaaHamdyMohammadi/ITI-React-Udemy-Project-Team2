@@ -2,12 +2,10 @@
 import { Helmet } from 'react-helmet';
 import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
-import ProgressBar from 'react-bootstrap/ProgressBar';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setWishList } from '../../store/slices/WishList';
 import './../Profile/Profile.css';
+import axios from 'axios';
 
 function MyLearning() {
   const location = useLocation();
@@ -15,7 +13,6 @@ function MyLearning() {
   const isSuccess = queryParams.get('success');
   const [courseData, setCourseData] = useState([]);
   const token = localStorage.getItem('token');
-  const [progress, setProgress] = useState(0);
   const wishList = useSelector((state) => state.wishList.wishList);
   const dispatch = useDispatch();
 
@@ -27,7 +24,7 @@ function MyLearning() {
         return false;
       }
     });
-    console.log(check);
+    //console.log(check);
     var wish = [];
     if (check.includes(true) || check == []) {
       dispatch(setWishList([...wishList]));
@@ -37,7 +34,7 @@ function MyLearning() {
       wish = [...wishList, course];
     }
     localStorage.setItem('wishList', JSON.stringify(wish));
-    console.log(wishList);
+    //console.log(wishList);
   }
 
   useEffect(() => {
@@ -73,7 +70,7 @@ function MyLearning() {
           <NavLink
             to="/my-learning"
             className=" absolute left-64 top-[163px] font-bold text-gray-100 no-underline hover:text-stone-300"
-          > 
+          >
             All Courses
           </NavLink>
           <NavLink
@@ -86,7 +83,6 @@ function MyLearning() {
         </div>
         <Outlet />
       </div>
-      
     </div>
   );
 }

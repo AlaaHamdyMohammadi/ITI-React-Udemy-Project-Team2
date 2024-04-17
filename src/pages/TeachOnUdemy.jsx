@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import Carousel from 'react-bootstrap/Carousel';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import Carousel from 'react-bootstrap/Carousel';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
 
 export default function TeachOnUdemy() {
   const { t } = useTranslation();

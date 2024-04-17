@@ -1,16 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit"
-
+import { createSlice } from '@reduxjs/toolkit';
 
 const categoryCourseSlice = createSlice({
-  name: "categoryCourse",
+  name: 'categoryCourse',
   initialState: { categoryCourse: {} },
   reducers: {
     setcategoryCourse: function (state, action) {
-      state.categoryCourse = action.payload
-    }
-  }
-})
-export const {setcategoryCourse} = categoryCourseSlice.actions  
+      state.categoryCourse = action.payload;
+    },
+  },
+});
+export const { setcategoryCourse } = categoryCourseSlice.actions;
 
-
-export default categoryCourseSlice.reducer
+export default categoryCourseSlice.reducer;
