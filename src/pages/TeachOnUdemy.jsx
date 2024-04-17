@@ -53,7 +53,7 @@ export default function TeachOnUdemy() {
             <div className="col-lg-3 m-12 m-auto">
               <img
                 className="m-auto"
-                src="./public/images/teach on udemy/value-prop-teach-v3.jpg"
+                src="/images/teach on udemy/value-prop-teach-v3.jpg"
               />
               <h3>{t('Teach your way')}</h3>
               <p>
@@ -65,7 +65,7 @@ export default function TeachOnUdemy() {
             <div className="col-lg-3 m-12 m-auto">
               <img
                 className="m-auto"
-                src="./public/images/teach on udemy/value-prop-inspire-v3.jpg"
+                src="/images/teach on udemy/value-prop-inspire-v3.jpg"
               />
               <h3>{t('Inspire learners')}</h3>
               <p>
@@ -77,7 +77,7 @@ export default function TeachOnUdemy() {
             <div className="col-lg-3 m-12 m-auto">
               <img
                 className="m-auto"
-                src="./public/images/teach on udemy/value-prop-get-rewarded-v3.jpg"
+                src="/images/teach on udemy/value-prop-get-rewarded-v3.jpg"
               />
               <h3>{t('Get rewarded')}</h3>
               <p>
@@ -138,7 +138,7 @@ export default function TeachOnUdemy() {
                     </div>
                     <div className="col-lg-3 me-auto">
                       <img
-                        src="./public/images/teach on udemy/1.jpg"
+                        src="/images/teach on udemy/1.jpg"
                         className="col-10"
                       />
                     </div>
@@ -162,7 +162,7 @@ export default function TeachOnUdemy() {
                     </div>
                     <div className="col-lg-3 me-auto">
                       <img
-                        src="./public/images/teach on udemy/2.jpg"
+                        src="/images/teach on udemy/2.jpg"
                         className="col-10"
                       />
                     </div>
@@ -186,7 +186,7 @@ export default function TeachOnUdemy() {
                     </div>
                     <div className="col-lg-3 me-auto">
                       <img
-                        src="./public/images/teach on udemy/3.jpg"
+                        src="/images/teach on udemy/3.jpg"
                         className="col-10"
                       />
                     </div>
@@ -207,7 +207,7 @@ export default function TeachOnUdemy() {
             <div className="row g-5 justify-content-center">
               <div className="col-md-3 col-7">
                 <img
-                  src="./public/images/teach on udemy/11.jpg"
+                  src="/images/teach on udemy/11.jpg"
                   className="img-fluid rounded-start"
                   alt="..."
                 />
@@ -228,7 +228,7 @@ export default function TeachOnUdemy() {
             <div className="row g-5 justify-content-center">
               <div className="col-md-3 col-7">
                 <img
-                  src="./public/images/teach on udemy/12.jpg"
+                  src="/images/teach on udemy/12.jpg"
                   className="img-fluid rounded-start"
                   alt="..."
                 />
@@ -249,7 +249,7 @@ export default function TeachOnUdemy() {
             <div className="row g-5 justify-content-center">
               <div className="col-md-3 col-7">
                 <img
-                  src="./public/images/teach on udemy/13.jpg"
+                  src="/images/teach on udemy/13.jpg"
                   className="img-fluid rounded-start"
                   alt="..."
                 />
@@ -269,7 +269,7 @@ export default function TeachOnUdemy() {
 
         <div className="d-flex flex-md-row flex-column justify-content-center">
           <div className="flex-grow-1">
-            <img src="./public/images/teach on udemy/21.jpg" />
+            <img src="/images/teach on udemy/21.jpg" />
           </div>
           <div className="col-md-6 col-12 m-auto text-center">
             <h1>{t('You won’t have to do it alone')}</h1>
@@ -291,7 +291,7 @@ export default function TeachOnUdemy() {
             </a>
           </div>
           <div className="flex-grow-1">
-            <img src="./public/images/teach on udemy/22.jpg" />
+            <img src="/images/teach on udemy/22.jpg" />
           </div>
         </div>
 

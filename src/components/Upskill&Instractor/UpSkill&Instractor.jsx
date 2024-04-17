@@ -12,7 +12,7 @@ export default function UpSkillInstractor() {
         <div className="col-lg-6 col-md-12">
           <a className="navbar-brand fs-3 mt-3" href="./index.html">
             <img
-              src="./../../../public/images/homePage/udemy-logo.png"
+              src="/images/homePage/udemy-logo.png"
               alt=""
               width="110"
               height="50"
@@ -42,7 +42,7 @@ export default function UpSkillInstractor() {
         <div className="col-lg-6 col-md-12 mt-md-4">
           <img
             className="w-75"
-            src="./../../../public/images/homePage/student.jpg"
+            src="/images/homePage/student.jpg"
             alt=""
           />
         </div>
@@ -52,7 +52,7 @@ export default function UpSkillInstractor() {
         <div className="col-lg-6 col-md-12">
           <img
             style={{ width: '400px' }}
-            src="./../../../public/images/homePage/person.jpg"
+            src="/images/homePage/person.jpg"
             alt=""
           />
         </div>

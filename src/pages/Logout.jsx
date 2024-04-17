@@ -35,12 +35,12 @@ function Logout() {
             </span>
           </div>
           <div className="relative mt-4">
-            <img className="w-100" src="./../../public/images/logoutImg.jpg" />
+            <img className="w-100" src="/images/logoutImg.jpg" />
             <div className="absolute left-16 top-44">
               <div className="flex items-center">
                 <img
                   className="w-32"
-                  src="./../../public/images/homePage/udemy-logo.png"
+                  src="/images/homePage/udemy-logo.png"
                 />
                 <span className=" text-4xl text-purple-500">business</span>
               </div>

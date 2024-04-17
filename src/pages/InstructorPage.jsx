@@ -36,12 +36,12 @@ export default function Instractor(){
         >
           {isWide ? (
             <img
-              src="./public/images/instractor/udemy.png"
+              src="/images/instractor/udemy.png"
               className="col-10 fullUdemy"
             />
           ) : (
             <img
-              src="./public/images/instractor/xShJF4Km_400x400.png"
+              src="/images/instractor/xShJF4Km_400x400.png"
               className="col-10 Ulogo"
             />
           )}
@@ -83,7 +83,7 @@ export default function Instractor(){
           </div>
 
           <div className="row justify-content-center p-5 shadow">
-            <img className="col-3" src="./public/images/instractor/1.jpg" />
+            <img className="col-3" src="/images/instractor/1.jpg" />
             <div className="col-7">
               <h2 className="mb-5">Create an Engaging Course</h2>
               <h6 className="mt-5">
@@ -99,7 +99,7 @@ export default function Instractor(){
           <div className="row justify-content-between mt-5">
             <div className="col-6 p-5 shadow">
               <div className="row">
-                <img className="col-4" src="./public/images/instractor/2.jpg" />
+                <img className="col-4" src="/images/instractor/2.jpg" />
                 <div className="col-7">
                   <h2 className="mb-5">Get Started with Video</h2>
                   <h6 className="mt-5">
@@ -113,7 +113,7 @@ export default function Instractor(){
 
             <div className="col-6 p-5 shadow">
               <div className="row">
-                <img className="col-4" src="./public/images/instractor/3.jpg" />
+                <img className="col-4" src="/images/instractor/3.jpg" />
                 <div className="col-7">
                   <h2 className="mb-5">Build Your Audience</h2>
                   <h6 className="mt-5">
@@ -126,7 +126,7 @@ export default function Instractor(){
           </div>
 
           <div className="row justify-content-center mt-5 p-5 shadow">
-            <img className="col-3" src="./public/images/instractor/4.jpg" />
+            <img className="col-3" src="/images/instractor/4.jpg" />
             <div className="col-7">
               <h2 className="mb-5">Join the New Instructor Challenge!</h2>
               <h6 className="mt-5">

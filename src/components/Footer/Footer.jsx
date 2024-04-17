@@ -202,7 +202,7 @@ export default function Footer() {
         {/* LOGO */}
         <div className="container-fluid d-flex justify-content-between mt-4">
           <img
-            src="./../../../public/images/homePage/udemy.png"
+            src="/images/homePage/udemy.png"
             className="ms-1"
             width="100"
             alt="Udemy-symbol"

@@ -315,7 +315,7 @@ export default function Business() {
                       id="navbarDropdown4"
                     >
                       <img
-                        src="./../../public/images/flags-png/usa.png"
+                        src="/images/flags-png/usa.png"
                         width="22"
                         alt="usa-logo"
                       />
@@ -327,22 +327,22 @@ export default function Business() {
                         className="d-flex flex-column gap-2"
                       >
                         <img
-                          src="./../../public/images/flags-png/usa.png"
+                          src="/images/flags-png/usa.png"
                           width="22"
                           alt="usa-logo"
                         />
                         <img
-                          src="./../../public/images/flags-png/brazil.png"
+                          src="/images/flags-png/brazil.png"
                           width="22"
                           alt="usa-logo"
                         />
                         <img
-                          src="./../../public/images/flags-png/mexico.png"
+                          src="/images/flags-png/mexico.png"
                           width="22"
                           alt="usa-logo"
                         />
                         <img
-                          src="./../../public/images/flags-png/germany.png"
+                          src="/images/flags-png/germany.png"
                           width="22"
                           alt="usa-logo"
                         />
@@ -417,28 +417,28 @@ export default function Business() {
             <div className="row d-flex m-5">
               <div className="col-md-4 col-sm-6 p-4">
                 <img
-                  src="./../../public/images/Business/citi.webp"
+                  src="/images/Business/citi.webp"
                   alt="citi"
                   width="100"
                 />
               </div>
               <div className="col-md-4 col-sm-6 p-4">
                 <img
-                  src="./../../public/images/Business/Box.webp"
+                  src="/images/Business/Box.webp"
                   alt="Box"
                   width="100"
                 />
               </div>
               <div className="col-md-4 col-sm-6 p-4">
                 <img
-                  src="./../../public/images/Business/Fender.webp"
+                  src="/images/Business/Fender.webp"
                   alt="Fender"
                   width="100"
                 />
               </div>
               <div className="col-md-4 col-sm-6 p-4">
                 <img
-                  src="./../../public/images/Business/Aflac.webp"
+                  src="/images/Business/Aflac.webp"
                   alt="Aflac"
                   width="100"
                   className="img-fluid"
@@ -446,7 +446,7 @@ export default function Business() {
               </div>
               <div className="col-md-4 col-sm-6 VW p-4">
                 <img
-                  src="./../../public/images/Business/VW-logo-grey.webp"
+                  src="/images/Business/VW-logo-grey.webp"
                   alt="VW-logo-grey"
                   width="90"
                   className="img-fluid"
@@ -454,7 +454,7 @@ export default function Business() {
               </div>
               <div className="col-md-4 col-sm-6 p-4">
                 <img
-                  src="./../../public/images/Business/Tata.TCS.webp"
+                  src="/images/Business/Tata.TCS.webp"
                   alt="Tata.TCS"
                   width="100"
                   className="img-fluid"
