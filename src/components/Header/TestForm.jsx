@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import axiosInstance from '../../axiosConfig/instance';
 import './TestForm.css';
 
+const BASE_URL = 'https://udemy-clone-uief.onrender.com';
+
 function TestForm() {
   const [inputs, setInputs] = useState([]);
   const [query, setQuery] = useState('');
@@ -37,7 +39,7 @@ function TestForm() {
               >
                 <img
                   className="h-8 w-14"
-                  src={`http://localhost:4000/img/courses/${item.photo}`}
+                  src={`${BASE_URL}/img/courses/${item.photo}`}
                 />
                 <span className="ml-4 text-sm font-bold">{item.title}</span>
               </li>

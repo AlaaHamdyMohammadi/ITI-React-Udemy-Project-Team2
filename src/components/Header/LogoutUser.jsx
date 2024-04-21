@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { BsCart3, BsGlobe } from 'react-icons/bs';
-import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Button, Modal } from 'react-bootstrap';
+
+const BASE_URL = 'https://udemy-clone-uief.onrender.com';
 
 function LogoutUser({ setTON, onTeachOnUdemy }) {
   const [onCart, setUB] = useState(false);
@@ -131,7 +133,7 @@ function LogoutUser({ setTON, onTeachOnUdemy }) {
                             <img
                               className=""
                               style={{ width: '200px', height: '70px' }}
-                              src={`http://localhost:4000/img/courses/${item.photo}`}
+                              src={`${BASE_URL}/img/courses/${item.photo}`}
                               alt={item.title}
                             />
                           </div>

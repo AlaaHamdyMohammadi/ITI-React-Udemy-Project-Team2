@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import { useSelector } from 'react-redux';
 import ShowCourses from './ShowCourses/ShowCourses';
 import SideBar from './SideBar/SideBar';
 import StaticSection from '../CoursesSectionSUB/ShowCourses/staticSection/staticSection';
-import { useSelector } from 'react-redux';
 
 export default function CoursesSection({subCategories,coursesSUB,id}) {
     const Filtered = useSelector(

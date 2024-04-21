@@ -2,9 +2,10 @@
 /* eslint-disable no-unused-vars */
 
 import axios from 'axios';
+const BASE_URL = 'https://udemy-clone-uief.onrender.com';
 
 function Checkout({ cartItems }) {
-  const url = 'http://localhost:4000/api/v1/buyings';
+  const url = `${BASE_URL}/api/v1/buyings`;
   const token = localStorage.getItem('token');
 
   const handleCheckout = () => {

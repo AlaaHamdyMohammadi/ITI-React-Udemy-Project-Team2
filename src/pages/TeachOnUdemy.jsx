@@ -22,7 +22,7 @@ export default function TeachOnUdemy() {
           <div className="row position-relative head flex-grow-1">
             <div>
               <img
-                src="./public/images/teach on udemy/billboard-desktop-v4.jpg"
+                src="/images/teach on udemy/billboard-desktop-v4.jpg"
                 className="vw-100"
               />
             </div>

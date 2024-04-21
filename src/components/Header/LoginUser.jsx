@@ -1,13 +1,16 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+import { useContext, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { BsCart3, BsBell } from 'react-icons/bs';
 import { AiOutlineHeart } from 'react-icons/ai';
-import { useContext, useEffect, useState } from 'react';
 import { authentication } from '../../contextConfig/authentication';
 import { getMe } from '../../services/authentication';
-import { useDispatch, useSelector } from 'react-redux';
+
+const BASE_URL = 'https://udemy-clone-uief.onrender.com';
+
 function LoginUser({
   setTON,
   setMyLearning,
@@ -159,7 +162,7 @@ function GoToWishList() {
                           <img
                             className=""
                             style={{ width: '200px', height: '70px' }}
-                            src={`http://localhost:4000/img/courses/${item.photo}`}
+                            src={`${BASE_URL}/img/courses/${item.photo}`}
                           />
                         </div>
 
@@ -253,7 +256,7 @@ function GoToCart({ addToCart, setAddToCart }) {
                           <img
                             className=""
                             style={{ width: '200px', height: '70px' }}
-                            src={`http://localhost:4000/img/courses/${item.photo}`}
+                            src={`${BASE_URL}/img/courses/${item.photo}`}
                           />
                         </div>
 

@@ -1,11 +1,11 @@
 /* eslint-disable no-redeclare */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { setSubRatingFilteredCourses } from '../../../store/slices/SubRatingFilteredCourses';
 import { BsStarHalf } from 'react-icons/bs';
-import { useDispatch } from 'react-redux';
 
 export default function SideBar({ coursesSUB, id }) {
   const dispatch = useDispatch();

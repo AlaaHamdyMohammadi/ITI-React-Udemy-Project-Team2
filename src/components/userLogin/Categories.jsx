@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
-import ToolTip from './ToolTip';
+import { Link } from 'react-router-dom';
 import axiosInstance from '../../axiosConfig/instance';
-import { Link, NavLink, useParams } from 'react-router-dom';
+import ToolTip from './ToolTip';
 
 function Categories() {
   const [showTooltip, setShowTooltip] = useState(false);

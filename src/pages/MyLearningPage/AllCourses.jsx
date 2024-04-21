@@ -7,6 +7,8 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import axiosInstance from '../../axiosConfig/instance';
 import axios from 'axios';
 
+const BASE_URL = 'https://udemy-clone-uief.onrender.com';
+
 function AllCourses() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -68,7 +70,7 @@ function AllCourses() {
                   <div style={{ width: '16rem' }}>
                     <img
                       className="w-62"
-                      src={`http://localhost:4000/img/courses/${course.photo}`}
+                      src={`${BASE_URL}/img/courses/${course.photo}`}
                     />
                     <div className="mt-2">
                       <h6 className="font-bold">{course.course.title}</h6>

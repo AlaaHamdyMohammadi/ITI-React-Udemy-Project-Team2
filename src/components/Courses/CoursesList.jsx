@@ -1,11 +1,10 @@
 /* eslint-disable no-unused-vars */
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import ContentOutOfTheBox from './ContentOutOfTheBox';
 import ContentInTheBox from './ContentInTheBox';
 import CoursesCarousel from './CoursesCarousel';
 import { useEffect, useState } from 'react';
 import axiosInstance from '../../axiosConfig/instance';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 function CoursesList() {

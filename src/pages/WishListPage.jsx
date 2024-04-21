@@ -11,6 +11,8 @@ import { setTotalCost } from '../store/slices/TotalCost';
 import { Helmet } from 'react-helmet';
 import './WishListPage.css';
 
+const BASE_URL = 'https://udemy-clone-uief.onrender.com';
+
 function WishListPage() {
   const dispatch = useDispatch();
 
@@ -92,7 +94,7 @@ function WishListPage() {
                           data-mdb-ripple-color="light"
                         >
                           <img
-                            src={`http://localhost:4000/img/courses/${item.photo}`}
+                            src={`${BASE_URL}/img/courses/${item.photo}`}
                             className="h-50 w-full object-cover"
                             alt={item.title}
                           />

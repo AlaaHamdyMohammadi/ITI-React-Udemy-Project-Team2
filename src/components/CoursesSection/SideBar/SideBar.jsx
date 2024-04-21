@@ -1,14 +1,10 @@
 /* eslint-disable no-redeclare */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { BiSquare, BiCircle } from 'react-icons/bi';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { BsStarHalf } from 'react-icons/bs';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import axiosInstance from '../../../axiosConfig/instance';
-import { useDispatch } from 'react-redux';
 import { setCatRatingFilteredCourses } from '../../../store/slices/CatRatingFilteredCourses';
 
 export default function SideBar({ subCategories, coursesSUB, id }) {

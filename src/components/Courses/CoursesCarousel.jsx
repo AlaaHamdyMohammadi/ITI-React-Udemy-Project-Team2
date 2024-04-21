@@ -3,16 +3,15 @@
 
 import { Carousel } from 'react-bootstrap';
 import ModalCard from './ModalCard';
-import { useEffect, useState } from 'react';
-import axiosInstance from '../../axiosConfig/instance';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import {  useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { AiFillStar } from 'react-icons/ai';
 import { BsStarHalf } from 'react-icons/bs';
 import Spinner from 'react-bootstrap/Spinner';
+const BASE_URL = 'https://udemy-clone-uief.onrender.com';
 
-function CoursesCarousel(props) {
-  const dispatch = useDispatch();
+function CoursesCarousel() {
   const courses = useSelector(
     (state) => state.categoryCourses.categoryCourse.courses,
   );
@@ -72,7 +71,7 @@ function CardItem(props) {
       >
         <img
           className="h-40 w-60"
-          src={`http://localhost:4000/img/courses/${props.course.photo}`}
+          src={`${BASE_URL}/img/courses/${props.course.photo}`}
           onMouseOver={handleShow}
           onMouseLeave={handleClose}
         />

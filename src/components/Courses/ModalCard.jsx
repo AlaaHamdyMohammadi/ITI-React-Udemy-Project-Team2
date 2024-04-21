@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 
-import { BsCheckLg } from 'react-icons/bs';
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { AiFillHeart } from 'react-icons/ai';
 import Button from '../Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, setWishList } from '../../store/slices/WishList';

@@ -4,7 +4,7 @@ import './TopCategory.css';
 import { NavLink } from 'react-router-dom';
 import axiosInstance from '../../axiosConfig/instance';
 import { useTranslation } from 'react-i18next';
-
+const BASE_URL = "https://udemy-clone-uief.onrender.com";
 export default function TopCategory() {
     const { t } = useTranslation();
 
@@ -33,7 +33,7 @@ export default function TopCategory() {
               >
                 <img
                   className="image"
-                  src={`http://localhost:4000/img/categories/${item.photo}`}
+                  src={`${BASE_URL}/img/categories/${item.photo}`}
                   alt=""
                 />
                 <p className="text-center font-bold">{item.name}</p>

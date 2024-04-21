@@ -8,6 +8,8 @@ import { BsSearch } from 'react-icons/bs';
 import { AiOutlineSearch } from 'react-icons/ai';
 import axiosInstance from '../../axiosConfig/instance';
 
+const BASE_URL = 'https://udemy-clone-uief.onrender.com';
+
 function NavForm() {
   const [query, setQuery] = useState('');
   const [inputs, setInputs] = useState([]);
@@ -70,7 +72,7 @@ function NavForm() {
                   >
                     <img
                       className="inline h-8 w-14"
-                      src={`http://localhost:4000/img/courses/${item.photo}`}
+                      src={`${BASE_URL}/img/courses/${item.photo}`}
                     />
                     <span className="ml-4 text-sm  font-bold text-black">
                       {item.title}

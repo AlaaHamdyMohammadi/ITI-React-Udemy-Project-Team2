@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import { useSelector } from 'react-redux';
+import { AiFillExclamationCircle } from 'react-icons/ai';
 import ShowCourses from './ShowCourses/ShowCourses';
 import SideBar from './SideBar/SideBar';
 import StaticSection from './ShowCourses/staticSection/staticSection';
-import { AiFillExclamationCircle } from 'react-icons/ai';
-import { useSelector } from 'react-redux';
 
 
 export default function CoursesSectionSUB({coursesSUB,id}) {

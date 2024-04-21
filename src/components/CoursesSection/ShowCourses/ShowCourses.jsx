@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
-import axiosInstance from '../../../axiosConfig/instance';
 import { NavLink } from 'react-router-dom';
+const BASE_URL = 'https://udemy-clone-uief.onrender.com';
 
 export default function ShowCourses({ coursesSUB }) {
   return (
@@ -23,7 +22,7 @@ export default function ShowCourses({ coursesSUB }) {
                     to={`/CourseDetials/${item._id}`}
                   >
                     <img
-                      src={`http://localhost:4000/img/courses/${item.photo}`}
+                      src={`${BASE_URL}/img/courses/${item.photo}`}
                       // src={`${item.photo}`}
                       className="h-32 w-full object-cover"
                       alt="Blue Jeans Jacket"

@@ -5,6 +5,8 @@ import { BsStarHalf } from 'react-icons/bs';
 import { AiFillHeart, AiOutlineSearch } from 'react-icons/ai';
 import { useState } from 'react';
 
+const BASE_URL = 'https://udemy-clone-uief.onrender.com';
+
 function WishList() {
   const wishList = useSelector((state) => state.wishList.wishList);
   const [query, setQuery] = useState('');
@@ -33,7 +35,7 @@ function WishList() {
             <div style={{ width: '16rem' }}>
               <img
                 className="w-62 h-32"
-                src={`http://localhost:4000/img/courses/${course.photo}`}
+                src={`${BASE_URL}/img/courses/${course.photo}`}
               />
               <div className="relative">
                 <AiFillHeart className="absolute -top-[120px] left-[230px] cursor-pointer  text-2xl text-stone-100" />

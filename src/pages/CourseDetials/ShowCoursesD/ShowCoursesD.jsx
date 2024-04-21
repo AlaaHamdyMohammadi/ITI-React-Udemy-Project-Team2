@@ -1,15 +1,14 @@
 /* eslint-disable no-inner-declarations */
 /* eslint-disable no-unused-vars */
-import React, { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { AiFillStar } from 'react-icons/ai';
-import { AiOutlineClose } from 'react-icons/ai';
-import { CiShoppingTag } from 'react-icons/ci';
 import axiosInstance from '../../../axiosConfig/instance';
 import { BsPersonHeart } from 'react-icons/bs';
-
 import { GrFavorite } from 'react-icons/gr';
 import { setWishList } from '../../../store/slices/WishList';
-import { useDispatch, useSelector } from 'react-redux';
+
+const BASE_URL = 'https://udemy-clone-uief.onrender.com';
 
 export default function ShowCoursesD() {
   const [courses, setCourses] = useState([]);
@@ -72,7 +71,7 @@ export default function ShowCoursesD() {
                         data-mdb-ripple-color="light"
                       >
                         <img
-                          src={`http://localhost:4000/img/courses/${item.photo}`}
+                          src={`${BASE_URL}/img/courses/${item.photo}`}
                           className=" w-full"
                           style={{ height: '50px' }}
                           alt="Blue Jeans Jacket"

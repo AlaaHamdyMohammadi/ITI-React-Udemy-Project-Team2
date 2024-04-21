@@ -2,19 +2,21 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
-import axiosInstance from '../../axiosConfig/instance';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import { Carousel } from 'react-bootstrap';
+import axiosInstance from '../../axiosConfig/instance';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { BsStarHalf } from 'react-icons/bs';
-import { Helmet } from 'react-helmet';
 import { FaGreaterThan } from 'react-icons/fa6';
 import { AiFillExclamationCircle } from 'react-icons/ai';
 import CoursesSection from '../../components/CoursesSection/CoursesSection';
 import './Categories.css';
-import { useDispatch, useSelector } from 'react-redux';
 import { changeSpinner } from '../../store/slices/spinner';
 import Spinner from '../../components/Spinner';
-import { Carousel } from 'react-bootstrap';
+
+const BASE_URL = 'https://udemy-clone-uief.onrender.com';
 
 export const loadercourseShow = async () => {
   var res = await getCourseSub();
@@ -128,7 +130,7 @@ function CategoriesPage() {
               <div className="border-1 flex flex-col p-3 hover:bg-slate-100 md:flex-row md:items-center">
                 <img
                   className="sm:w-100 h-60 md:w-96"
-                  src={`http://localhost:4000/img/courses/${item.photo}`}
+                  src={`${BASE_URL}/img/courses/${item.photo}`}
                 />
 
                 <div className="w-100 lg:w-50 ml-4 cursor-pointer text-black">
@@ -212,7 +214,7 @@ function CategoriesCarousel({ secondSetOfCourses, firstSetOfCourses }) {
             >
               <img
                 className="h-40 w-60"
-                src={`http://localhost:4000/img/courses/${course.photo}`}
+                src={`${BASE_URL}/img/courses/${course.photo}`}
               />
               <div className="w-64 pt-2 font-bold text-black">
                 {course.title}
@@ -259,7 +261,7 @@ function CategoriesCarousel({ secondSetOfCourses, firstSetOfCourses }) {
             >
               <img
                 className="h-40 w-60"
-                src={`http://localhost:4000/img/courses/${course.photo}`}
+                src={`${BASE_URL}/img/courses/${course.photo}`}
               />
               <div className="w-64 pt-2 font-bold text-black">
                 {course.title}
@@ -310,7 +312,7 @@ function CategoriesCarousel({ secondSetOfCourses, firstSetOfCourses }) {
             >
               <img
                 className="h-40 w-60"
-                src={`http://localhost:4000/img/courses/${course.photo}`}
+                src={`${BASE_URL}/img/courses/${course.photo}`}
               />
               <div className="w-64 pt-2 font-bold text-black">
                 {course.title}
@@ -357,7 +359,7 @@ function CategoriesCarousel({ secondSetOfCourses, firstSetOfCourses }) {
             >
               <img
                 className="h-40 w-60"
-                src={`http://localhost:4000/img/courses/${course.photo}`}
+                src={`${BASE_URL}/img/courses/${course.photo}`}
               />
               <div className="w-64 pt-2 font-bold text-black">
                 {course.title}
@@ -447,7 +449,7 @@ function Instructors() {
             >
               <img
                 className="absolute top-2 w-16 rounded-full border-2"
-                src={`http://localhost:4000/img/users/${instructor.photo}`}
+                src={`${BASE_URL}/img/users/${instructor.photo}`}
               ></img>
               <div className=" ml-20 text-gray-950">
                 <h6 className="text-sm font-bold">{instructor.username}</h6>

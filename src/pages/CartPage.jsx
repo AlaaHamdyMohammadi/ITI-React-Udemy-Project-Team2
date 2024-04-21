@@ -1,6 +1,6 @@
 /* eslint-disable no-inner-declarations */
 /* eslint-disable no-unused-vars */
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +14,8 @@ import { CiShoppingTag } from 'react-icons/ci';
 import { AiFillStar } from 'react-icons/ai';
 import { Helmet } from 'react-helmet';
 import './CartPage.css';
+
+const BASE_URL = 'https://udemy-clone-uief.onrender.com';
 
 function CartPage() {
   const dispatch = useDispatch();
@@ -105,7 +107,7 @@ function CartPage() {
                         >
                           {/* <div className='bg-[url(./../../public/images/cart/php.jpeg)]'></div> */}
                           <img
-                            src={`http://localhost:4000/img/courses/${item.photo}`}
+                            src={`${BASE_URL}/img/courses/${item.photo}`}
                             className="h-50 w-full object-cover"
                             alt={item.title}
                           />

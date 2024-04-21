@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
-import { NavLink } from "react-router-dom"
-import Button from "../Button";
 import { useContext, useEffect, useState } from "react";
+import { NavLink } from "react-router-dom"
 import { authentication } from "../../contextConfig/authentication";
 import { getMe } from "../../services/authentication";
 

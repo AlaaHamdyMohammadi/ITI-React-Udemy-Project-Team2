@@ -4,9 +4,9 @@
 /* eslint-disable no-unused-vars */
 
 import { useEffect, useState } from "react";
-import axiosInstance from "../../axiosConfig/instance";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
+import axiosInstance from "../../axiosConfig/instance";
 
 
 function ToolTip({ handleShow, handleClose, currentId }) {
